@@ -1,0 +1,230 @@
+{
+  "RootLayout": {
+    "home_link": "Home",
+    "about_link": "About",
+    "counter_link": "Counter",
+    "portfolio_link": "Portfolio",
+    "sign_in_link": "Sign in",
+    "sign_up_link": "Sign up"
+  },
+  "BaseTemplate": {
+    "description": "Starter code for your Nextjs Boilerplate with Tailwind CSS",
+    "made_with": "Made with <author></author>."
+  },
+  "Index": {
+    "meta_title": "Next.js Boilerplate Presentation",
+    "meta_description": "Next js Boilerplate is the perfect starter code for your project. Build your React application with the Next.js framework.",
+    "sponsors_title": "Sponsors"
+  },
+  "Counter": {
+    "meta_title": "Counter",
+    "meta_description": "An example of DB operation",
+    "security_powered_by": "Security, bot detection and rate limiting powered by"
+  },
+  "CounterForm": {
+    "presentation": "The counter is stored in the database and incremented by the value you provide.",
+    "label_increment": "Increment by",
+    "button_increment": "Increment",
+    "error_increment_range": "Value must be between 1 and 3"
+  },
+  "CurrentCount": {
+    "count": "Count: {count}"
+  },
+  "About": {
+    "meta_title": "About",
+    "meta_description": "About page description",
+    "about_paragraph": "Welcome to our About page! We are a team of passionate individuals dedicated to creating amazing software.",
+    "translation_powered_by": "Translation powered by"
+  },
+  "Portfolio": {
+    "meta_title": "Portfolio",
+    "meta_description": "Welcome to my portfolio page!",
+    "presentation": "Welcome to my portfolio page! Here you will find a carefully curated collection of my work and accomplishments. Through this portfolio, I'm to showcase my expertise, creativity, and the value I can bring to your projects.",
+    "portfolio_name": "Portfolio {name}",
+    "error_reporting_powered_by": "Error reporting powered by",
+    "coverage_powered_by": "Code coverage powered by"
+  },
+  "PortfolioSlug": {
+    "meta_title": "Portfolio {slug}",
+    "meta_description": "Portfolio {slug} description",
+    "header": "Portfolio {slug}",
+    "content": "Created a set of promotional materials and branding elements for a corporate event. Crafted a visually unified theme, encompassing a logo, posters, banners, and digital assets. Integrated the client's brand identity while infusing it with a contemporary and innovative approach.",
+    "code_review_powered_by": "Code review powered by"
+  },
+  "SignIn": {
+    "meta_title": "Sign in",
+    "meta_description": "Seamlessly sign in to your account with our user-friendly login process."
+  },
+  "SignUp": {
+    "meta_title": "Sign up",
+    "meta_description": "Effortlessly create an account through our intuitive sign-up process."
+  },
+  "Dashboard": {
+    "meta_title": "Dashboard",
+    "hello_message": "Hello {email}!",
+    "alternative_message": "Want to build your SaaS faster using the same stack? Try <url></url>."
+  },
+  "UserProfile": {
+    "meta_title": "User Profile"
+  },
+  "DashboardLayout": {
+    "dashboard_link": "Dashboard",
+    "user_profile_link": "Manage your account",
+    "sign_out": "Sign out"
+  },
+  "Navigation": {
+    "home": "Home",
+    "categories": "Categories",
+    "search": "Search",
+    "submit_url": "Submit URL",
+    "blog": "Blog",
+    "login": "Login",
+    "register": "Register"
+  },
+  "HomePage": {
+    "hero_title": "AI Navigation Platform",
+    "hero_subtitle": "Discover the best AI tools trusted by millions of users",
+    "search_placeholder": "Search for AI products",
+    "hot_searches": "Hot Searches",
+    "featured_tools": "Featured Tools",
+    "view_more": "View More",
+    "categories": "Categories"
+  },
+  "CategoryPage": {
+    "tools_count": "{count} tools",
+    "sort_by": "Sort by",
+    "recommended": "Recommended",
+    "newest": "Newest",
+    "rating": "Rating",
+    "popular": "Popular"
+  },
+  "ToolDetailPage": {
+    "visit_website": "Visit Website",
+    "favorite": "Favorite",
+    "tool_introduction": "Tool Introduction",
+    "core_features": "Core Features",
+    "basic_info": "Basic Information",
+    "related_tools": "Related Tools",
+    "website": "Website",
+    "developer": "Developer",
+    "launch_date": "Launch Date",
+    "platforms": "Platforms",
+    "price": "Price"
+  },
+  "SearchPage": {
+    "search_results": "Search Results",
+    "found_results": "Found {count} results in {time} seconds",
+    "no_results": "No results found",
+    "try_different_keywords": "Try different keywords"
+  },
+  "Admin": {
+    "dashboard": "Dashboard",
+    "tools_management": "Tools Management",
+    "categories_management": "Categories Management",
+    "users_management": "Users Management",
+    "analytics": "Analytics",
+    "system_settings": "System Settings"
+  },
+  "AdminDashboard": {
+    "total_tools": "Total Tools",
+    "total_categories": "Total Categories",
+    "total_users": "Total Users",
+    "daily_visitors": "Daily Visitors",
+    "active_users": "Active Users",
+    "recent_activities": "Recent Activities",
+    "view_all": "View All"
+  },
+  "ToolsManagement": {
+    "add_tool": "Add Tool",
+    "search_placeholder": "Search tool name or URL",
+    "filter_by_category": "Filter by Category",
+    "filter_by_status": "Filter by Status",
+    "all_categories": "All Categories",
+    "all_status": "All Status",
+    "online": "Online",
+    "pending": "Pending",
+    "offline": "Offline",
+    "edit": "Edit",
+    "delete": "Delete",
+    "showing_results": "Showing {start}-{end} of {total} results"
+  },
+  "CategoriesManagement": {
+    "add_category": "Add Category",
+    "search_placeholder": "Search category name or description",
+    "category_name": "Category Name",
+    "category_description": "Category Description",
+    "icon_name": "Icon Name",
+    "sort_order": "Sort Order",
+    "status": "Status",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "tool_count": "Tool Count",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "UsersManagement": {
+    "search_placeholder": "Search username or email",
+    "filter_by_role": "Filter by Role",
+    "filter_by_status": "Filter by Status",
+    "all_roles": "All Roles",
+    "all_status": "All Status",
+    "admin": "Admin",
+    "user": "User",
+    "contributor": "Contributor",
+    "active": "Active",
+    "inactive": "Inactive",
+    "register_date": "Register Date",
+    "total_users": "Total Users",
+    "active_users": "Active Users",
+    "admins": "Admins",
+    "contributors": "Contributors"
+  },
+  "Analytics": {
+    "total_visitors": "Total Visitors",
+    "page_views": "Page Views",
+    "average_session_duration": "Average Session Duration",
+    "bounce_rate": "Bounce Rate",
+    "top_pages": "Top Pages",
+    "top_tools": "Top Tools",
+    "traffic_sources": "Traffic Sources",
+    "device_types": "Device Types",
+    "visit_trends": "Visit Trends",
+    "direct_access": "Direct Access",
+    "search_engines": "Search Engines",
+    "social_media": "Social Media",
+    "other": "Other",
+    "desktop": "Desktop",
+    "mobile": "Mobile",
+    "tablet": "Tablet",
+    "views": "views",
+    "visitors": "visitors"
+  },
+  "Common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Info",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "refresh": "Refresh",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "page": "Page",
+    "of": "of",
+    "results": "results",
+    "no_data": "No data available",
+    "try_again": "Try again"
+  }
+}

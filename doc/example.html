@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI导航平台原型设计</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36CFC9',
+                        accent: '#722ED1',
+                        neutral: '#F2F3F5',
+                        'neutral-dark': '#4E5969',
+                        success: '#52C41A',
+                        warning: '#FAAD14',
+                        danger: '#F5222D',
+                        'gray-light': '#F7F8FA',
+                        'gray-medium': '#E5E6EB',
+                        'gray-dark': '#86909C'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 2px 8px rgba(0, 0, 0, 0.08)',
+                        'card-hover': '0 4px 16px rgba(0, 0, 0, 0.12)',
+                        'dropdown': '0 4px 16px rgba(0, 0, 0, 0.1)',
+                    }
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .scrollbar-hide {
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .text-balance {
+                text-wrap: balance;
+            }
+            .transition-bg {
+                transition: background-color 0.2s ease;
+            }
+            .transition-all-300 {
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-light font-sans text-gray-800">
+    <!-- 页面标题 -->
+    <header class="bg-white shadow-sm py-6 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-gray-900">AI导航平台原型设计</h1>
+            <p class="text-gray-dark mt-2">包含前端展示与管理后台完整界面</p>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="max-w-7xl mx-auto py-8 px-4 md:px-8">
+        <!-- 前端展示区 -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <i class="fa fa-desktop text-primary mr-2"></i>前端展示界面
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 前端首页 -->
+                <div class="bg-white rounded-lg shadow-card hover:shadow-card-hover transition-all-300 overflow-hidden">
+                    <div class="bg-primary text-white px-4 py-3 font-semibold flex justify-between items-center">
+                        <span>首页</span>
+                        <span class="text-xs bg-white/20 px-2 py-1 rounded-full">前端</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="border border-gray-medium rounded-lg overflow-hidden mb-3">
+                            <!-- 模拟导航栏 -->
+                            <div class="bg-white p-2 border-b border-gray-medium flex items-center">
+                                <div class="font-bold text-primary text-xl">Xui</div>
+                                <nav class="ml-6 hidden md:flex space-x-6">
+                                    <a href="#" class="text-primary font-medium">首页</a>
+                                    <a href="#" class="text-gray-dark hover:text-primary transition-all-300">提交网址</a>
+                                    <a href="#" class="text-gray-dark hover:text-primary transition-all-300">博客</a>
+                                </nav>
+                                <div class="ml-auto flex items-center space-x-4">
+                                    <div class="relative hidden md:block">
+                                        <input type="text" placeholder="搜索" class="pl-8 pr-3 py-1 text-sm border border-gray-medium rounded-full focus:outline-none focus:border-primary">
+                                        <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-dark text-sm"></i>
+                                    </div>
+                                    <a href="#" class="text-gray-dark hover:text-primary transition-all-300">登录/注册</a>
+                                </div>
+                            </div>
+                            
+                            <!-- 主体内容 -->
+                            <div class="flex min-h-[300px]">
+                                <!-- 侧边栏 -->
+                                <div class="w-1/4 bg-neutral p-3 hidden md:block">
+                                    <div class="bg-primary text-white p-2 rounded font-medium mb-3">热门推荐</div>
+                                    <ul class="space-y-1">
+                                        <li class="p-2 hover:bg-white rounded cursor-pointer transition-bg">
+                                            <i class="fa fa-briefcase mr-2 text-primary"></i>AI办公工具
+                                        </li>
+                                        <li class="p-2 hover:bg-white rounded cursor-pointer transition-bg">
+                                            <i class="fa fa-video-camera mr-2 text-primary"></i>AI视频工具
+                                        </li>
+                                        <li class="p-2 hover:bg-white rounded cursor-pointer transition-bg">
+                                            <i class="fa fa-code mr-2 text-primary"></i>AI编程工具
+                                        </li>
+                                        <li class="p-2 hover:bg-white rounded cursor-pointer transition-bg">
+                                            <i class="fa fa-comments mr-2 text-primary"></i>AI聊天助手
+                                        </li>
+                                        <li class="p-2 hover:bg-white rounded cursor-pointer transition-bg">
+                                            <i class="fa fa-pencil mr-2 text-primary"></i>AI写作工具
+                                        </li>
+                                        <li class="p-2 hover:bg-white rounded cursor-pointer transition-bg">
+                                            <i class="fa fa-graduation-cap mr-2 text-primary"></i>AI学习网站
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- 主内容区 -->
+                                <div class="w-full md:w-3/4 p-4">
+                                    <h3 class="text-xl font-bold mb-6 text-center">千万用户信赖的AI工具导航平台</h3>
+                                    
+                                    <!-- 搜索框 -->
+                                    <div class="relative mb-4">
+                                        <input type="text" placeholder="请输入您要搜索的AI产品" class="w-full pl-4 pr-10 py-2 border border-gray-medium rounded-lg focus:outline-none focus:border-primary">
+                                        <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-dark hover:text-primary">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- 热搜榜 -->
+                                    <div class="mb-6">
+                                        <span class="text-sm text-gray-dark">热搜榜：</span>
+                                        <div class="inline-flex flex-wrap gap-2 ml-2">
+                                            <span class="text-sm bg-neutral px-2 py-1 rounded-full hover:bg-primary hover:text-white cursor-pointer transition-all-300">Liblibai</span>
+                                            <span class="text-sm bg-neutral px-2 py-1 rounded-full hover:bg-primary hover:text-white cursor-pointer transition-all-300">Coze扣子</span>
+                                            <span class="text-sm bg-neutral px-2 py-1 rounded-full hover:bg-primary hover:text-white cursor-pointer transition-all-300">剪映</span>
+                                            <span class="text-sm bg-neutral px-2 py-1 rounded-full hover:bg-primary hover:text-white cursor-pointer transition-all-300">Trac国内版</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 轮播图 -->
+                                    <div class="bg-gray-medium h-32 rounded-lg mb-6 flex items-center justify-center">
+                                        <div class="text-4xl font-bold text-gray-dark">轮播区</div>
+                                    </div>
+                                    
+                                    <!-- 热门推荐 -->
+                                    <div class="mb-4">
+                                        <div class="flex justify-between items-center mb-3">
+                                            <h4 class="font-bold">热门推荐</h4>
+                                            <a href="#" class="text-primary text-sm hover:underline">查看更多</a>
+                                        </div>
+                                        
+                                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                            <div class="bg-white border border-gray-medium rounded p-2 hover:border-primary cursor-pointer transition-all-300">
+                                                <div class="h-10 bg-primary/10 rounded mb-2 flex items-center justify-center">
+                                                    <i class="fa fa-rocket text-primary text-xl"></i>
+                                                </div>
+                                                <div class="text-sm font-medium">DeepSeek</div>
+                                                <p class="text-xs text-gray-dark mt-1 line-clamp-2">深度求索AI工具</p>
+                                            </div>
+                                            <div class="bg-white border border-gray-medium rounded p-2 hover:border-primary cursor-pointer transition-all-300">
+                                                <div class="h-10 bg-primary/10 rounded mb-2 flex items-center justify-center">
+                                                    <i class="fa fa-robot text-primary text-xl"></i>
+                                                </div>
+                                                <div class="text-sm font-medium">腾讯元宝</div>
+                                                <p class="text-xs text-gray-dark mt-1 line-clamp-2">腾讯AI助手</p>
+                                            </div>
+                                            <div class="bg-white border border-gray-medium rounded p-2 hover:border-primary cursor-pointer transition-all-300">
+                                                <div class="h-10 bg-primary/10 rounded mb-2 flex items-center justify-center">
+                                                    <i class="fa fa-code text-primary text-xl"></i>
+                                                </div>
+                                                <div class="text-sm font-medium">Cursor</div>
+                                                <p class="text-xs text-gray-dark mt-1 line-clamp-2">AI代码助手</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-sm text-gray-dark">
+                            <p class="font-medium mb-1">功能特点：</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>AI工具分类导航</li>
+                                <li>搜索功能与热搜榜</li>
+                                <li>热门工具推荐展示</li>
+                                <li>响应式设计适配多设备</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 分类页面 -->
+                <div class="bg-white rounded-lg shadow-card hover:shadow-card-hover transition-all-300 overflow-hidden">
+                    <div class="bg-primary text-white px-4 py-3 font-semibold flex justify-between items-center">
+                        <span>分类页面</span>
+                        <span class="text-xs bg-white/20 px-2 py-1 rounded-full">前端</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="border border-gray-medium rounded-lg overflow-hidden mb-3">
+                            <!-- 导航栏 -->
+                            <div class="bg-white p-2 border-b border-gray-medium flex items-center">
+                                <div class="font-bold text-primary text-xl">Xui</div>
+                                <nav class="ml-6 hidden md:flex space-x-6">
+                                    <a href="#" class="text-gray-dark hover:text-primary transition-all-300">首页</a>
+                                    <a href="#" class="text-gray-dark hover:text-primary transition-all-300">提交网址</a>
+                                    <a href="#" class="text-gray-dark hover:text-primary transition-all-300">博客</a>
+                                </nav>
+                                <div class="ml-auto flex items-center space-x-4">
+                                    <div class="relative hidden md:block">
+                                        <input type="text" placeholder="搜索" class="pl-8 pr-3 py-1 text-sm border border-gray-medium rounded-full focus:outline-none focus:border-primary">
+                                        <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-dark text-sm"></i>
+                                    </div>
+                                    <a href="#" class="text-gray-dark hover:text-primary transition-all-300">登录/注册</a>
+                                </div>
+                            </div>
+                            
+                            <!-- 主体内容 -->
+                            <div class="flex min-h-[300px]">
+                                <!-- 侧边栏 -->
+                                <div class="w-1/4 bg-neutral p-3 hidden md:block">
+                                    <div class="bg-primary text-white p-2 rounded font-medium mb-3">AI工具分类</div>
+                                    <ul class="space-y-1">
+                                        <li class="p-2 bg-white rounded font-medium text-primary border-l-4 border-primary">
+                                            <i class="fa fa-briefcase mr-2"></i>AI办公工具
+                                        </li>
+                                        <li class="p-2 hover:bg-white rounded cursor-pointer transition-bg">
+                                            <i class="fa fa-video-camera mr-2 text-primary"></i>AI视频工具
+                                        </li>
+                                        <li class="p-2 hover:bg-white rounded cursor-pointer transition-bg">
+                                            <i class="fa fa-code mr-2 text-primary"></i>AI编程工具
+                                        </li>
+                                        <li class="p-2 hover:bg-white rounded cursor-pointer transition-bg">
+                                            <i class="fa fa-comments mr-2 text-primary"></i>AI聊天助手
+                                        </li>
+                                        <li class="p-2 hover:bg-white rounded cursor-pointer transition-bg">
+                                            <i class="fa fa-pencil mr-2 text-primary"></i>AI写作工具
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- 主内容区 -->
+                                <div class="w-full md:w-3/4 p-4">
+                                    <div class="flex justify-between items-center mb-6">
+                                        <h3 class="text-xl font-bold">AI办公工具</h3>
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-sm text-gray-dark">排序：</span>
+                                            <select class="text-sm border border-gray-medium rounded px-2 py-1 focus:outline-none focus:border-primary">
+                                                <option>推荐</option>
+                                                <option>最新</option>
+                                                <option>最热</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 工具列表 -->
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="border border-gray-medium rounded-lg p-3 hover:border-primary hover:shadow-card cursor-pointer transition-all-300">
+                                            <div class="flex">
+                                                <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mr-3">
+                                                    <i class="fa fa-file-text-o text-primary text-xl"></i>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <h4 class="font-medium">WPS AI</h4>
+                                                    <p class="text-sm text-gray-dark mt-1 line-clamp-2">智能文档处理，支持自动生成、摘要和翻译</p>
+                                                    <div class="flex items-center mt-2 text-xs">
+                                                        <span class="bg-success/10 text-success px-2 py-0.5 rounded-full">办公</span>
+                                                        <span class="ml-2 text-gray-dark"><i class="fa fa-star text-warning"></i> 4.8</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="border border-gray-medium rounded-lg p-3 hover:border-primary hover:shadow-card cursor-pointer transition-all-300">
+                                            <div class="flex">
+                                                <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mr-3">
+                                                    <i class="fa fa-table text-primary text-xl"></i>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <h4 class="font-medium">Excel AI助手</h4>
+                                                    <p class="text-sm text-gray-dark mt-1 line-clamp-2">智能数据分析与公式生成，提升表格处理效率</p>
+                                                    <div class="flex items-center mt-2 text-xs">
+                                                        <span class="bg-success/10 text-success px-2 py-0.5 rounded-full">办公</span>
+                                                        <span class="ml-2 text-gray-dark"><i class="fa fa-star text-warning"></i> 4.6</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="border border-gray-medium rounded-lg p-3 hover:border-primary hover:shadow-card cursor-pointer transition-all-300">
+                                            <div class="flex">
+                                                <div class="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mr-3">
+                                                    <i class="fa fa-calendar text-primary text-xl"></i>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <h4 class="font-medium">智能日程助手</h4>
+                                                    <p class="text-sm text-gray-dark mt-1 line-clamp-2">自动安排会议，智能提醒，优化时间管理</p>
+                                                    <div class="flex items-center mt-2 text-xs">
+                                                        <span class="bg-success/10 text-success px-2 py-0.5 rounded-full">办公</span>
+                                                        <span class="ml-2 text-gray-dark"><i class="fa fa-star text-warning"></i> 4.5</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 分页 -->
+                                    <div class="flex justify-center mt-6">
+                                        <div class="flex items-center space-x-1">
+                                            <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-medium hover:border-primary disabled:opacity-50" disabled>
+                                                <i class="fa fa-chevron-left text-xs"></i>
+                                            </button>
+                                            <button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white">1</button>
+                                            <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-medium hover:border-primary">2</button>
+                                            <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-medium hover:border-primary">3</button>
+                                            <span>...</span>
+                                            <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-medium hover:border-primary">10</button>
+                                            <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-medium hover:border-primary">
+                                                <i class="fa fa-chevron-right text-xs"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-sm text-gray-dark">
+                            <p class="font-medium mb-1">功能特点：</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>分类筛选与工具列表展示</li>
+                                <li>工具排序功能</li>
+                                <li>分页导航</li>
+                                <li>工具简要信息展示</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 工具详情页 -->
+                <div class="bg-white rounded-lg shadow-card hover:shadow-card-hover transition-all-300 overflow-hidden">
+                    <div class="bg-primary text-white px-4 py-3 font-semibold flex justify-between items-center">
+                        <span>工具详情页</span>
+                        <span class="text-xs bg-white/20 px-2 py-1 rounded-full">前端</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="border border-gray-medium rounded-lg overflow-hidden mb-3">
+                            <!-- 导航栏 -->
+                            <div class="bg-white p-2 border-b border-gray-medium flex items-center">
+                                <div class="font-bold text-primary text-xl">Xui</div>
+                                <nav class="ml-6 hidden md:flex space-x-6">
+                                    <a href="#" class="text-gray-dark hover:text-primary transition-all-300">首页</a>
+                                    <a href="#" class="text-gray-dark hover:text-primary transition-all-300">提交网址</a>
+                                    <a href="#" class="text-gray-dark hover:text-primary transition-all-300">博客</a>
+                                </nav>
+                                <div class="ml-auto flex items-center space-x-4">
+                                    <div class="relative hidden md:block">
+                                        <input type="text" placeholder="搜索" class="pl-8 pr-3 py-1 text-sm border border-gray-medium rounded-full focus:outline-none focus:border-primary">
+                                        <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-dark text-sm"></i>
+                                    </div>
+                                    <a href="#" class="text-gray-dark hover:text-primary transition-all-300">登录/注册</a>
+                                </div>
+                            </div>
+                            
+                            <!-- 主体内容 -->
+                            <div class="min-h-[300px] p-4">
+                                <!-- 面包屑导航 -->
+                                <div class="text-sm text-gray-dark mb-4">
+                                    <a href="#" class="hover:text-primary">首页</a>
+                                    <span class="mx-2">/</span>
+                                    <a href="#" class="hover:text-primary">AI办公工具</a>
+                                    <span class="mx-2">/</span>
+                                    <span>WPS AI</span>
+                                </div>
+                                
+                                <!-- 工具详情 -->
+                                <div class="flex flex-col md:flex-row gap-6">
+                                    <!-- 左侧信息 -->
+                                    <div class="md:w-2/3">
+                                        <div class="flex items-start">
+                                            <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                                <i class="fa fa-file-text-o text-primary text-2xl"></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-xl font-bold">WPS AI</h3>
+                                                <div class="flex items-center mt-1 space-x-3">
+                                                    <span class="bg-success/10 text-success text-xs px-2 py-0.5 rounded-full">办公</span>
+                                                    <div class="flex items-center text-sm">
+                                                        <i class="fa fa-star text-warning"></i>
+                                                        <span class="ml-1">4.8</span>
+                                                        <span class="ml-1 text-gray-dark">(1256评分)</span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center mt-2 space-x-2">
+                                                    <button class="bg-primary text-white px-4 py-1 rounded hover:bg-primary/90 transition-all-300 text-sm flex items-center">
+                                                        <i class="fa fa-external-link mr-1"></i> 访问官网
+                                                    </button>
+                                                    <button class="border border-primary text-primary px-3 py-1 rounded hover:bg-primary/5 transition-all-300 text-sm flex items-center">
+                                                        <i class="fa fa-heart-o mr-1"></i> 收藏
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mt-6">
+                                            <h4 class="font-bold mb-2">工具介绍</h4>
+                                            <p class="text-gray-dark text-sm leading-relaxed">
+                                                WPS AI是一款集成在WPS办公套件中的人工智能助手，能够帮助用户更高效地处理文档、表格和演示文稿。
+                                                其核心功能包括智能文档生成、内容摘要、多语言翻译、格式优化等，大幅提升办公效率。
+                                            </p>
+                                            
+                                            <h4 class="font-bold mt-4 mb-2">核心功能</h4>
+                                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                                                <li class="flex items-start">
+                                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                                    <span>文档智能生成与续写</span>
+                                                </li>
+                                                <li class="flex items-start">
+                                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                                    <span>多语言翻译与校对</span>
+                                                </li>
+                                                <li class="flex items-start">
+                                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                                    <span>内容摘要与重点提取</span>
+                                                </li>
+                                                <li class="flex items-start">
+                                                    <i class="fa fa-check-circle text-success mt-1 mr-2"></i>
+                                                    <span>表格数据智能分析</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 右侧信息 -->
+                                    <div class="md:w-1/3">
+                                        <div class="border border-gray-medium rounded-lg p-3 bg-neutral">
+                                            <h4 class="font-bold mb-3">基本信息</h4>
+                                            <ul class="space-y-2 text-sm">
+                                                <li class="flex">
+                                                    <span class="w-1/3 text-gray-dark">网址：</span>
+                                                    <span class="flex-1 truncate">https://ai.wps.cn</span>
+                                                </li>
+                                                <li class="flex">
+                                                    <span class="w-1/3 text-gray-dark">开发商：</span>
+                                                    <span>金山办公</span>
+                                                </li>
+                                                <li class="flex">
+                                                    <span class="w-1/3 text-gray-dark">上线时间：</span>
+                                                    <span>2023-08-15</span>
+                                                </li>
+                                                <li class="flex">
+                                                    <span class="w-1/3 text-gray-dark">适用平台：</span>
+                                                    <span>Web、Windows、Mac、移动端</span>
+                                                </li>
+                                                <li class="flex">
+                                                    <span class="w-1/3 text-gray-dark">价格：</span>
+                                                    <span>免费基础功能，高级功能付费</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="mt-4">
+                                            <h4 class="font-bold mb-2">相关推荐</h4>
+                                            <div class="space-y-2">
+                                                <div class="flex items-center p-2 border border-gray-medium rounded hover:border-primary cursor-pointer transition-all-300">
+                                                    <div class="w-8 h-8 bg-primary/10 rounded flex items-center justify-center mr-2">
+                                                        <i class="fa fa-file-text text-primary text-sm"></i>
+                                                    </div>
+                                                    <span class="text-sm">石墨文档AI</span>
+                                                </div>
+                                                <div class="flex items-center p-2 border border-gray-medium rounded hover:border-primary cursor-pointer transition-all-300">
+                                                    <div class="w-8 h-8 bg-primary/10 rounded flex items-center justify-center mr-2">
+                                                        <i class="fa fa-pencil text-primary text-sm"></i>
+                                                    </div>
+                                                    <span class="text-sm">豆包AI写作</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-sm text-gray-dark">
+                            <p class="font-medium mb-1">功能特点：</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>工具详细信息展示</li>
+                                <li>访问官网与收藏功能</li>
+                                <li>工具介绍与核心功能说明</li>
+                                <li>基本信息与相关推荐</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 搜索结果页 -->
+                <div class="bg-white rounded-lg shadow-card hover:shadow-card-hover transition-all-300 overflow-hidden">
+                    <div class="bg-primary text-white px-4 py-3 font-semibold flex justify-between items-center">
+                        <span>搜索结果页</span>
+                        <span class="text-xs bg-white/20 px-2 py-1 rounded-full">前端</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="border border-gray-medium rounded-lg overflow-hidden mb-3">
+                            <!-- 导航栏 -->
+                            <div class="bg-white p-2 border-b border-gray-medium flex items-center">
+                                <div class="font-bold text-primary text-xl">Xui</div>
+                                <nav class="ml-6 hidden md:flex space-x-6">
+                                    <a href="#" class="text-gray-dark hover:text-primary transition-all-300">首页</a>
+                                    <a href="#" class="text-gray-dark hover:text-primary transition-all-300">提交网址</a>
+                                    <a href="#" class="text-gray-dark hover:text-primary transition-all-300">博客</a>
+                                </nav>
+                                <div class="ml-auto flex items-center space-x-4">
+                                    <div class="relative hidden md:block">
+                                        <input type="text" value="AI 写作" class="pl-8 pr-3 py-1 text-sm border border-primary rounded-full focus:outline-none">
+                                        <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-primary text-sm"></i>
+                                    </div>
+                                    <a href="#" class="text-gray-dark hover:text-primary transition-all-300">登录/注册</a>
+                                </div>
+                            </div>
+                            
+                            <!-- 主体内容 -->
+                            <div class="min-h-[300px] p-4">
+                                <!-- 搜索条件 -->
+                                <div class="bg-neutral p-3 rounded-lg mb-4">
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="text-sm">搜索：</span>
+                                        <span class="text-sm font-medium">AI 写作</span>
+                                        <button class="ml-auto text-sm text-primary hover:underline">清除筛选</button>
+                                    </div>
+                                    
+                                    <div class="mt-3">
+                                        <span class="text-sm font-medium block mb-2">筛选条件</span>
+                                        <div class="flex flex-wrap gap-2">
+                                            <button class="bg-primary text-white text-xs px-3 py-1 rounded-full">全部类型</button>
+                                            <button class="bg-white text-gray-dark text-xs px-3 py-1 rounded-full border border-gray-medium hover:border-primary hover:text-primary">AI写作工具</button>
+                                            <button class="bg-white text-gray-dark text-xs px-3 py-1 rounded-full border border-gray-medium hover:border-primary hover:text-primary">AI办公工具</button>
+                                            <button class="bg-white text-gray-dark text-xs px-3 py-1 rounded-full border border-gray-medium hover:border-primary hover:text-primary">AI内容生成</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 搜索结果统计 -->
+                                <div class="text-sm text-gray-dark mb-4">
+                                    找到约 <span class="text-primary font-medium">24</span> 个结果，用时 <span class="font-medium">0.32</span> 秒
+                                </div>
+                                
+                                <!-- 搜索结果列表 -->
+                                <div class="space-y-4">
+                                    <div class="border border-gray-medium rounded-lg p-3 hover:border-primary hover:shadow-card cursor-pointer transition-all-300">
+                                        <h4 class="font-bold text-primary hover:underline">豆包AI写作</h4>
+                                        <p class="text-sm text-gray-dark mt-1 line-clamp-2">
+                                            豆包AI写作是一款智能内容生成工具，支持多种文体创作，包括文章、邮件、文案等，
+                                            可根据用户需求快速生成高质量内容，并提供编辑和优化建议。
+                                        </p>
+                                        <div class="flex items-center mt-2 text-xs">
+                                            <span class="bg-success/10 text-success px-2 py-0.5 rounded-full">写作</span>
+                                            <span class="ml-2 text-gray-dark">https://write.doubao.com</span>
+                                            <span class="ml-auto text-gray-dark"><i class="fa fa-star text-warning"></i> 4.9</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="border border-gray-medium rounded-lg p-3 hover:border-primary hover:shadow-card cursor-pointer transition-all-300">
+                                        <h4 class="font-bold text-primary hover:underline">WPS AI写作助手</h4>
+                                        <p class="text-sm text-gray-dark mt-1 line-clamp-2">
+                                            集成在WPS中的AI写作工具，支持文档续写、改写、翻译等功能，与文档编辑无缝衔接，
+                                            提升写作效率和质量。
+                                        </p>
+                                        <div class="flex items-center mt-2 text-xs">
+                                            <span class="bg-success/10 text-success px-2 py-0.5 rounded-full">办公</span>
+                                            <span class="ml-2 text-gray-dark">https://ai.wps.cn/write</span>
+                                            <span class="ml-auto text-gray-dark"><i class="fa fa-star text-warning"></i> 4.7</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="border border-gray-medium rounded-lg p-3 hover:border-primary hover:shadow-card cursor-pointer transition-all-300">
+                                        <h4 class="font-bold text-primary hover:underline">智谱AI写作</h4>
+                                        <p class="text-sm text-gray-dark mt-1 line-clamp-2">
+                                            基于大语言模型的专业写作工具，支持学术论文、商业报告、创意写作等场景，
+                                            提供智能大纲、内容生成和润色服务。
+                                        </p>
+                                        <div class="flex items-center mt-2 text-xs">
+                                            <span class="bg-success/10 text-success px-2 py-0.5 rounded-full">写作</span>
+                                            <span class="ml-2 text-gray-dark">https://write.zhipuai.com</span>
+                                            <span class="ml-auto text-gray-dark"><i class="fa fa-star text-warning"></i> 4.6</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 分页 -->
+                                <div class="flex justify-center mt-6">
+                                    <div class="flex items-center space-x-1">
+                                        <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-medium hover:border-primary disabled:opacity-50" disabled>
+                                            <i class="fa fa-chevron-left text-xs"></i>
+                                        </button>
+                                        <button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white">1</button>
+                                        <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-medium hover:border-primary">2</button>
+                                        <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-medium hover:border-primary">3</button>
+                                        <span>...</span>
+                                        <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-medium hover:border-primary">8</button>
+                                        <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-medium hover:border-primary">
+                                            <i class="fa fa-chevron-right text-xs"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-sm text-gray-dark">
+                            <p class="font-medium mb-1">功能特点：</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>搜索结果展示与统计</li>
+                                <li>多维度筛选功能</li>
+                                <li>结果排序与分页</li>
+                                <li>工具简要信息与评分</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 管理后台区 -->
+        <section>
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <i class="fa fa-cogs text-accent mr-2"></i>管理后台界面
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 管理后台仪表盘 -->
+                <div class="bg-white rounded-lg shadow-card hover:shadow-card-hover transition-all-300 overflow-hidden">
+                    <div class="bg-accent text-white px-4 py-3 font-semibold flex justify-between items-center">
+                        <span>仪表盘</span>
+                        <span class="text-xs bg-white/20 px-2 py-1 rounded-full">后管</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="border border-gray-medium rounded-lg overflow-hidden mb-3">
+                            <!-- 顶部导航 -->
+                            <div class="bg-gray-50 p-3 border-b border-gray-medium flex items-center justify-between">
+                                <div class="font-bold text-accent">AI导航管理系统</div>
+                                <div class="flex items-center">
+                                    <span class="text-sm mr-3">管理员</span>
+                                    <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 主体内容 -->
+                            <div class="flex min-h-[300px]">
+                                <!-- 侧边导航 -->
+                                <div class="w-1/4 bg-gray-50 border-r border-gray-medium p-3 hidden md:block">
+                                    <ul class="space-y-1">
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 bg-primary/10 text-primary rounded font-medium">
+                                                <i class="fa fa-tachometer mr-2"></i>仪表盘
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-th-large mr-2"></i>工具管理
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-folder mr-2"></i>分类管理
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-users mr-2"></i>用户管理
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-line-chart mr-2"></i>数据分析
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-cog mr-2"></i>系统设置
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- 主内容区 -->
+                                <div class="w-full md:w-3/4 p-4">
+                                    <h3 class="font-bold text-lg mb-4">数据概览</h3>
+                                    
+                                    <!-- 数据卡片 -->
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+                                        <div class="bg-white border border-gray-medium rounded-lg p-3">
+                                            <div class="text-sm text-gray-dark">总工具数</div>
+                                            <div class="text-2xl font-bold mt-1">256</div>
+                                            <div class="text-xs text-success mt-1 flex items-center">
+                                                <i class="fa fa-arrow-up mr-1"></i> 5.2% 较上月
+                                            </div>
+                                        </div>
+                                        <div class="bg-white border border-gray-medium rounded-lg p-3">
+                                            <div class="text-sm text-gray-dark">日访问量</div>
+                                            <div class="text-2xl font-bold mt-1">12,548</div>
+                                            <div class="text-xs text-success mt-1 flex items-center">
+                                                <i class="fa fa-arrow-up mr-1"></i> 12.8% 较昨日
+                                            </div>
+                                        </div>
+                                        <div class="bg-white border border-gray-medium rounded-lg p-3">
+                                            <div class="text-sm text-gray-dark">活跃用户</div>
+                                            <div class="text-2xl font-bold mt-1">8,321</div>
+                                            <div class="text-xs text-danger mt-1 flex items-center">
+                                                <i class="fa fa-arrow-down mr-1"></i> 2.1% 较昨日
+                                            </div>
+                                        </div>
+                                        <div class="bg-white border border-gray-medium rounded-lg p-3">
+                                            <div class="text-sm text-gray-dark">总分类数</div>
+                                            <div class="text-2xl font-bold mt-1">16</div>
+                                            <div class="text-xs text-gray-dark mt-1 flex items-center">
+                                                <i class="fa fa-minus mr-1"></i> 持平
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 图表 -->
+                                    <div class="bg-white border border-gray-medium rounded-lg p-3 mb-4">
+                                        <h4 class="font-medium text-sm mb-3">访问量趋势</h4>
+                                        <div class="h-40">
+                                            <canvas id="visitorsChart"></canvas>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 最近动态 -->
+                                    <div class="bg-white border border-gray-medium rounded-lg p-3">
+                                        <div class="flex justify-between items-center mb-3">
+                                            <h4 class="font-medium text-sm">最近动态</h4>
+                                            <a href="#" class="text-xs text-primary hover:underline">查看全部</a>
+                                        </div>
+                                        <div class="space-y-2 max-h-32 overflow-y-auto scrollbar-hide">
+                                            <div class="flex items-start text-xs">
+                                                <div class="w-6 h-6 rounded-full bg-success/10 flex items-center justify-center text-success mr-2 mt-0.5">
+                                                    <i class="fa fa-plus"></i>
+                                                </div>
+                                                <div>
+                                                    <p>新工具 <span class="font-medium">DeepSeek</span> 已添加</p>
+                                                    <p class="text-gray-dark mt-0.5">2023-06-15 09:32</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start text-xs">
+                                                <div class="w-6 h-6 rounded-full bg-warning/10 flex items-center justify-center text-warning mr-2 mt-0.5">
+                                                    <i class="fa fa-edit"></i>
+                                                </div>
+                                                <div>
+                                                    <p>工具 <span class="font-medium">Cursor</span> 信息已更新</p>
+                                                    <p class="text-gray-dark mt-0.5">2023-06-14 16:45</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start text-xs">
+                                                <div class="w-6 h-6 rounded-full bg-danger/10 flex items-center justify-center text-danger mr-2 mt-0.5">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                                <div>
+                                                    <p>用户 <span class="font-medium">user123</span> 被禁用</p>
+                                                    <p class="text-gray-dark mt-0.5">2023-06-14 10:18</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-sm text-gray-dark">
+                            <p class="font-medium mb-1">功能特点：</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>平台数据概览仪表盘</li>
+                                <li>关键指标数据卡片</li>
+                                <li>访问趋势图表分析</li>
+                                <li>系统最近动态记录</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 工具管理页面 -->
+                <div class="bg-white rounded-lg shadow-card hover:shadow-card-hover transition-all-300 overflow-hidden">
+                    <div class="bg-accent text-white px-4 py-3 font-semibold flex justify-between items-center">
+                        <span>工具管理</span>
+                        <span class="text-xs bg-white/20 px-2 py-1 rounded-full">后管</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="border border-gray-medium rounded-lg overflow-hidden mb-3">
+                            <!-- 顶部导航 -->
+                            <div class="bg-gray-50 p-3 border-b border-gray-medium flex items-center justify-between">
+                                <div class="font-bold text-accent">AI导航管理系统</div>
+                                <div class="flex items-center">
+                                    <span class="text-sm mr-3">管理员</span>
+                                    <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 主体内容 -->
+                            <div class="flex min-h-[300px]">
+                                <!-- 侧边导航 -->
+                                <div class="w-1/4 bg-gray-50 border-r border-gray-medium p-3 hidden md:block">
+                                    <ul class="space-y-1">
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-tachometer mr-2"></i>仪表盘
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 bg-primary/10 text-primary rounded font-medium">
+                                                <i class="fa fa-th-large mr-2"></i>工具管理
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-folder mr-2"></i>分类管理
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-users mr-2"></i>用户管理
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-line-chart mr-2"></i>数据分析
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- 主内容区 -->
+                                <div class="w-full md:w-3/4 p-4">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <h3 class="font-bold text-lg">AI工具管理</h3>
+                                        <button class="bg-primary text-white px-3 py-1 rounded text-sm hover:bg-primary/90 transition-all-300 flex items-center">
+                                            <i class="fa fa-plus mr-1"></i> 添加工具
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- 搜索与筛选 -->
+                                    <div class="flex flex-col md:flex-row gap-3 mb-4">
+                                        <div class="relative flex-1">
+                                            <input type="text" placeholder="搜索工具名称或网址" class="w-full pl-8 pr-3 py-1.5 text-sm border border-gray-medium rounded focus:outline-none focus:border-primary">
+                                            <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-dark text-sm"></i>
+                                        </div>
+                                        <select class="text-sm border border-gray-medium rounded px-3 py-1.5 focus:outline-none focus:border-primary">
+                                            <option>全部分类</option>
+                                            <option>AI办公工具</option>
+                                            <option>AI视频工具</option>
+                                            <option>AI编程工具</option>
+                                            <option>AI聊天助手</option>
+                                        </select>
+                                        <select class="text-sm border border-gray-medium rounded px-3 py-1.5 focus:outline-none focus:border-primary">
+                                            <option>全部状态</option>
+                                            <option>已上线</option>
+                                            <option>审核中</option>
+                                            <option>已下架</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <!-- 工具列表 -->
+                                    <div class="border border-gray-medium rounded-lg overflow-hidden">
+                                        <table class="min-w-full text-sm">
+                                            <thead>
+                                                <tr class="bg-gray-50 text-left">
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">ID</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">工具名称</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">分类</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">网址</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">状态</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="border-t border-gray-medium">
+                                                    <td class="px-3 py-2">001</td>
+                                                    <td class="px-3 py-2 font-medium">DeepSeek</td>
+                                                    <td class="px-3 py-2">AI编程工具</td>
+                                                    <td class="px-3 py-2 truncate max-w-[80px] md:max-w-[120px]">https://www.deepseek.com</td>
+                                                    <td class="px-3 py-2"><span class="bg-success/10 text-success text-xs px-2 py-0.5 rounded-full">已上线</span></td>
+                                                    <td class="px-3 py-2">
+                                                        <div class="flex space-x-1">
+                                                            <button class="text-primary hover:text-primary/80"><i class="fa fa-edit"></i></button>
+                                                            <button class="text-danger hover:text-danger/80"><i class="fa fa-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-t border-gray-medium">
+                                                    <td class="px-3 py-2">002</td>
+                                                    <td class="px-3 py-2 font-medium">腾讯元宝</td>
+                                                    <td class="px-3 py-2">AI聊天助手</td>
+                                                    <td class="px-3 py-2 truncate max-w-[80px] md:max-w-[120px]">https://yuanbao.qq.com</td>
+                                                    <td class="px-3 py-2"><span class="bg-success/10 text-success text-xs px-2 py-0.5 rounded-full">已上线</span></td>
+                                                    <td class="px-3 py-2">
+                                                        <div class="flex space-x-1">
+                                                            <button class="text-primary hover:text-primary/80"><i class="fa fa-edit"></i></button>
+                                                            <button class="text-danger hover:text-danger/80"><i class="fa fa-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-t border-gray-medium">
+                                                    <td class="px-3 py-2">003</td>
+                                                    <td class="px-3 py-2 font-medium">Cursor</td>
+                                                    <td class="px-3 py-2">AI编程工具</td>
+                                                    <td class="px-3 py-2 truncate max-w-[80px] md:max-w-[120px]">https://www.cursor.so</td>
+                                                    <td class="px-3 py-2"><span class="bg-success/10 text-success text-xs px-2 py-0.5 rounded-full">已上线</span></td>
+                                                    <td class="px-3 py-2">
+                                                        <div class="flex space-x-1">
+                                                            <button class="text-primary hover:text-primary/80"><i class="fa fa-edit"></i></button>
+                                                            <button class="text-danger hover:text-danger/80"><i class="fa fa-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-t border-gray-medium">
+                                                    <td class="px-3 py-2">004</td>
+                                                    <td class="px-3 py-2 font-medium">新AI工具</td>
+                                                    <td class="px-3 py-2">AI写作工具</td>
+                                                    <td class="px-3 py-2 truncate max-w-[80px] md:max-w-[120px]">https://newai.example.com</td>
+                                                    <td class="px-3 py-2"><span class="bg-warning/10 text-warning text-xs px-2 py-0.5 rounded-full">审核中</span></td>
+                                                    <td class="px-3 py-2">
+                                                        <div class="flex space-x-1">
+                                                            <button class="text-primary hover:text-primary/80"><i class="fa fa-edit"></i></button>
+                                                            <button class="text-danger hover:text-danger/80"><i class="fa fa-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <!-- 分页 -->
+                                    <div class="flex justify-between items-center mt-4 text-sm">
+                                        <div class="text-gray-dark">显示 1-4 条，共 256 条</div>
+                                        <div class="flex items-center space-x-1">
+                                            <button class="w-7 h-7 flex items-center justify-center rounded border border-gray-medium hover:border-primary disabled:opacity-50" disabled>
+                                                <i class="fa fa-chevron-left text-xs"></i>
+                                            </button>
+                                            <button class="w-7 h-7 flex items-center justify-center rounded bg-primary text-white text-xs">1</button>
+                                            <button class="w-7 h-7 flex items-center justify-center rounded border border-gray-medium hover:border-primary text-xs">2</button>
+                                            <button class="w-7 h-7 flex items-center justify-center rounded border border-gray-medium hover:border-primary text-xs">3</button>
+                                            <span>...</span>
+                                            <button class="w-7 h-7 flex items-center justify-center rounded border border-gray-medium hover:border-primary text-xs">64</button>
+                                            <button class="w-7 h-7 flex items-center justify-center rounded border border-gray-medium hover:border-primary text-xs">
+                                                <i class="fa fa-chevron-right text-xs"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-sm text-gray-dark">
+                            <p class="font-medium mb-1">功能特点：</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>AI工具列表展示与管理</li>
+                                <li>工具搜索、分类与状态筛选</li>
+                                <li>工具添加、编辑与删除功能</li>
+                                <li>分页导航与数据统计</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 分类管理页面 -->
+                <div class="bg-white rounded-lg shadow-card hover:shadow-card-hover transition-all-300 overflow-hidden">
+                    <div class="bg-accent text-white px-4 py-3 font-semibold flex justify-between items-center">
+                        <span>分类管理</span>
+                        <span class="text-xs bg-white/20 px-2 py-1 rounded-full">后管</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="border border-gray-medium rounded-lg overflow-hidden mb-3">
+                            <!-- 顶部导航 -->
+                            <div class="bg-gray-50 p-3 border-b border-gray-medium flex items-center justify-between">
+                                <div class="font-bold text-accent">AI导航管理系统</div>
+                                <div class="flex items-center">
+                                    <span class="text-sm mr-3">管理员</span>
+                                    <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 主体内容 -->
+                            <div class="flex min-h-[300px]">
+                                <!-- 侧边导航 -->
+                                <div class="w-1/4 bg-gray-50 border-r border-gray-medium p-3 hidden md:block">
+                                    <ul class="space-y-1">
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-tachometer mr-2"></i>仪表盘
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-th-large mr-2"></i>工具管理
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 bg-primary/10 text-primary rounded font-medium">
+                                                <i class="fa fa-folder mr-2"></i>分类管理
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-users mr-2"></i>用户管理
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-line-chart mr-2"></i>数据分析
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- 主内容区 -->
+                                <div class="w-full md:w-3/4 p-4">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <h3 class="font-bold text-lg">分类管理</h3>
+                                        <button class="bg-primary text-white px-3 py-1 rounded text-sm hover:bg-primary/90 transition-all-300 flex items-center">
+                                            <i class="fa fa-plus mr-1"></i> 添加分类
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- 分类列表 -->
+                                    <div class="border border-gray-medium rounded-lg overflow-hidden mb-6">
+                                        <table class="min-w-full text-sm">
+                                            <thead>
+                                                <tr class="bg-gray-50 text-left">
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">ID</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">分类名称</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">工具数量</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">排序</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">状态</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="border-t border-gray-medium">
+                                                    <td class="px-3 py-2">01</td>
+                                                    <td class="px-3 py-2 font-medium">AI办公工具</td>
+                                                    <td class="px-3 py-2">32</td>
+                                                    <td class="px-3 py-2">1</td>
+                                                    <td class="px-3 py-2"><span class="bg-success/10 text-success text-xs px-2 py-0.5 rounded-full">启用</span></td>
+                                                    <td class="px-3 py-2">
+                                                        <div class="flex space-x-1">
+                                                            <button class="text-primary hover:text-primary/80"><i class="fa fa-edit"></i></button>
+                                                            <button class="text-warning hover:text-warning/80"><i class="fa fa-eye-slash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-t border-gray-medium">
+                                                    <td class="px-3 py-2">02</td>
+                                                    <td class="px-3 py-2 font-medium">AI视频工具</td>
+                                                    <td class="px-3 py-2">24</td>
+                                                    <td class="px-3 py-2">2</td>
+                                                    <td class="px-3 py-2"><span class="bg-success/10 text-success text-xs px-2 py-0.5 rounded-full">启用</span></td>
+                                                    <td class="px-3 py-2">
+                                                        <div class="flex space-x-1">
+                                                            <button class="text-primary hover:text-primary/80"><i class="fa fa-edit"></i></button>
+                                                            <button class="text-warning hover:text-warning/80"><i class="fa fa-eye-slash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-t border-gray-medium">
+                                                    <td class="px-3 py-2">03</td>
+                                                    <td class="px-3 py-2 font-medium">AI编程工具</td>
+                                                    <td class="px-3 py-2">18</td>
+                                                    <td class="px-3 py-2">3</td>
+                                                    <td class="px-3 py-2"><span class="bg-success/10 text-success text-xs px-2 py-0.5 rounded-full">启用</span></td>
+                                                    <td class="px-3 py-2">
+                                                        <div class="flex space-x-1">
+                                                            <button class="text-primary hover:text-primary/80"><i class="fa fa-edit"></i></button>
+                                                            <button class="text-warning hover:text-warning/80"><i class="fa fa-eye-slash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-t border-gray-medium">
+                                                    <td class="px-3 py-2">04</td>
+                                                    <td class="px-3 py-2 font-medium">AI聊天助手</td>
+                                                    <td class="px-3 py-2">45</td>
+                                                    <td class="px-3 py-2">4</td>
+                                                    <td class="px-3 py-2"><span class="bg-success/10 text-success text-xs px-2 py-0.5 rounded-full">启用</span></td>
+                                                    <td class="px-3 py-2">
+                                                        <div class="flex space-x-1">
+                                                            <button class="text-primary hover:text-primary/80"><i class="fa fa-edit"></i></button>
+                                                            <button class="text-warning hover:text-warning/80"><i class="fa fa-eye-slash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <!-- 分类排序 -->
+                                    <div>
+                                        <h4 class="font-medium mb-3">分类排序</h4>
+                                        <div class="bg-gray-50 p-3 rounded-lg border border-gray-medium">
+                                            <p class="text-sm text-gray-dark mb-3">拖动分类调整显示顺序</p>
+                                            <div class="space-y-2">
+                                                <div class="bg-white p-2 rounded border border-gray-medium flex items-center cursor-move">
+                                                    <i class="fa fa-bars text-gray-dark mr-3"></i>
+                                                    <span class="text-sm">AI办公工具</span>
+                                                    <span class="ml-auto text-xs bg-gray-medium/50 text-gray-dark px-2 py-0.5 rounded">排序: 1</span>
+                                                </div>
+                                                <div class="bg-white p-2 rounded border border-gray-medium flex items-center cursor-move">
+                                                    <i class="fa fa-bars text-gray-dark mr-3"></i>
+                                                    <span class="text-sm">AI视频工具</span>
+                                                    <span class="ml-auto text-xs bg-gray-medium/50 text-gray-dark px-2 py-0.5 rounded">排序: 2</span>
+                                                </div>
+                                                <div class="bg-white p-2 rounded border border-gray-medium flex items-center cursor-move">
+                                                    <i class="fa fa-bars text-gray-dark mr-3"></i>
+                                                    <span class="text-sm">AI编程工具</span>
+                                                    <span class="ml-auto text-xs bg-gray-medium/50 text-gray-dark px-2 py-0.5 rounded">排序: 3</span>
+                                                </div>
+                                            </div>
+                                            <button class="mt-3 text-sm bg-primary text-white px-3 py-1 rounded hover:bg-primary/90 transition-all-300">
+                                                保存排序
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-sm text-gray-dark">
+                            <p class="font-medium mb-1">功能特点：</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>分类列表展示与管理</li>
+                                <li>分类添加、编辑与状态管理</li>
+                                <li>拖拽排序功能</li>
+                                <li>分类下工具数量统计</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 用户管理页面 -->
+                <div class="bg-white rounded-lg shadow-card hover:shadow-card-hover transition-all-300 overflow-hidden">
+                    <div class="bg-accent text-white px-4 py-3 font-semibold flex justify-between items-center">
+                        <span>用户管理</span>
+                        <span class="text-xs bg-white/20 px-2 py-1 rounded-full">后管</span>
+                    </div>
+                    <div class="p-4">
+                        <div class="border border-gray-medium rounded-lg overflow-hidden mb-3">
+                            <!-- 顶部导航 -->
+                            <div class="bg-gray-50 p-3 border-b border-gray-medium flex items-center justify-between">
+                                <div class="font-bold text-accent">AI导航管理系统</div>
+                                <div class="flex items-center">
+                                    <span class="text-sm mr-3">管理员</span>
+                                    <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 主体内容 -->
+                            <div class="flex min-h-[300px]">
+                                <!-- 侧边导航 -->
+                                <div class="w-1/4 bg-gray-50 border-r border-gray-medium p-3 hidden md:block">
+                                    <ul class="space-y-1">
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-tachometer mr-2"></i>仪表盘
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-th-large mr-2"></i>工具管理
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-folder mr-2"></i>分类管理
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 bg-primary/10 text-primary rounded font-medium">
+                                                <i class="fa fa-users mr-2"></i>用户管理
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center p-2 hover:bg-gray-100 rounded text-gray-dark">
+                                                <i class="fa fa-line-chart mr-2"></i>数据分析
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- 主内容区 -->
+                                <div class="w-full md:w-3/4 p-4">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <h3 class="font-bold text-lg">用户管理</h3>
+                                        <div class="relative">
+                                            <input type="text" placeholder="搜索用户名或邮箱" class="w-full md:w-auto pl-8 pr-3 py-1.5 text-sm border border-gray-medium rounded focus:outline-none focus:border-primary">
+                                            <i class="fa fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-dark text-sm"></i>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 用户筛选 -->
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <button class="bg-primary text-white text-xs px-3 py-1 rounded-full">全部用户</button>
+                                        <button class="bg-white text-gray-dark text-xs px-3 py-1 rounded-full border border-gray-medium hover:border-primary hover:text-primary">管理员</button>
+                                        <button class="bg-white text-gray-dark text-xs px-3 py-1 rounded-full border border-gray-medium hover:border-primary hover:text-primary">普通用户</button>
+                                        <button class="bg-white text-gray-dark text-xs px-3 py-1 rounded-full border border-gray-medium hover:border-primary hover:text-primary">贡献者</button>
+                                        <button class="bg-white text-gray-dark text-xs px-3 py-1 rounded-full border border-gray-medium hover:border-primary hover:text-primary">禁用用户</button>
+                                    </div>
+                                    
+                                    <!-- 用户列表 -->
+                                    <div class="border border-gray-medium rounded-lg overflow-hidden">
+                                        <table class="min-w-full text-sm">
+                                            <thead>
+                                                <tr class="bg-gray-50 text-left">
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">ID</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">用户名</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">邮箱</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">角色</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">注册时间</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">状态</th>
+                                                    <th class="px-3 py-2 font-medium text-gray-dark">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="border-t border-gray-medium">
+                                                    <td class="px-3 py-2">1001</td>
+                                                    <td class="px-3 py-2 font-medium">admin</td>
+                                                    <td class="px-3 py-2">admin@example.com</td>
+                                                    <td class="px-3 py-2"><span class="bg-accent/10 text-accent text-xs px-2 py-0.5 rounded-full">管理员</span></td>
+                                                    <td class="px-3 py-2">2023-01-15</td>
+                                                    <td class="px-3 py-2"><span class="bg-success/10 text-success text-xs px-2 py-0.5 rounded-full">正常</span></td>
+                                                    <td class="px-3 py-2">
+                                                        <div class="flex space-x-1">
+                                                            <button class="text-primary hover:text-primary/80"><i class="fa fa-edit"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-t border-gray-medium">
+                                                    <td class="px-3 py-2">1002</td>
+                                                    <td class="px-3 py-2 font-medium">user123</td>
+                                                    <td class="px-3 py-2">user123@example.com</td>
+                                                    <td class="px-3 py-2"><span class="bg-primary/10 text-primary text-xs px-2 py-0.5 rounded-full">普通用户</span></td>
+                                                    <td class="px-3 py-2">2023-02-20</td>
+                                                    <td class="px-3 py-2"><span class="bg-danger/10 text-danger text-xs px-2 py-0.5 rounded-full">禁用</span></td>
+                                                    <td class="px-3 py-2">
+                                                        <div class="flex space-x-1">
+                                                            <button class="text-primary hover:text-primary/80"><i class="fa fa-edit"></i></button>
+                                                            <button class="text-success hover:text-success/80"><i class="fa fa-check"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="border-t border-gray-medium">
+                                                    <td class="px-3 py-2">1003</td>
+                                                    <td class="px-3 py-2 font-medium">contributor</td>
+                                                    <td class="px-3 py-2">contri@example.com</td>
+                                                    <td class="px-3 py-2"><span class="bg-warning/10 text-warning text-xs px-2 py-0.5 rounded-full">贡献者</span></td>
+                                                    <td class="px-3 py-2">2023-03-05</td>
+                                                    <td class="px-3 py-2"><span class="bg-success/10 text-success text-xs px-2 py-0.5 rounded-full">正常</span></td>
+                                                    <td class="px-3 py-2">
+                                                        <div class="flex space-x-1">
+                                                            <button class="text-primary hover:text-primary/80"><i class="fa fa-edit"></i></button>
+                                                            <button class="text-danger hover:text-danger/80"><i class="fa fa-ban"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <!-- 分页 -->
+                                    <div class="flex justify-between items-center mt-4 text-sm">
+                                        <div class="text-gray-dark">显示 1-3 条，共 1258 条</div>
+                                        <div class="flex items-center space-x-1">
+                                            <button class="w-7 h-7 flex items-center justify-center rounded border border-gray-medium hover:border-primary disabled:opacity-50" disabled>
+                                                <i class="fa fa-chevron-left text-xs"></i>
+                                            </button>
+                                            <button class="w-7 h-7 flex items-center justify-center rounded bg-primary text-white text-xs">1</button>
+                                            <button class="w-7 h-7 flex items-center justify-center rounded border border-gray-medium hover:border-primary text-xs">2</button>
+                                            <button class="w-7 h-7 flex items-center justify-center rounded border border-gray-medium hover:border-primary text-xs">3</button>
+                                            <span>...</span>
+                                            <button class="w-7 h-7 flex items-center justify-center rounded border border-gray-medium hover:border-primary text-xs">126</button>
+                                            <button class="w-7 h-7 flex items-center justify-center rounded border border-gray-medium hover:border-primary text-xs">
+                                                <i class="fa fa-chevron-right text-xs"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-sm text-gray-dark">
+                            <p class="font-medium mb-1">功能特点：</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>用户列表展示与管理</li>
+                                <li>多角色用户管理（管理员、普通用户、贡献者）</li>
+                                <li>用户搜索与状态筛选</li>
+                                <li>用户编辑与状态管理</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- 页脚 -->
+    <footer class="bg-white border-t border-gray-medium py-6 px-4 mt-12">
+        <div class="max-w-7xl mx-auto text-center text-gray-dark text-sm">
+            <p>AI导航平台原型设计 &copy; 2023</p>
+        </div>
+    </footer>
+    
+    <script>
+        // 初始化访问量趋势图表
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('visitorsChart');
+            if (ctx) {
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
+                        datasets: [{
+                            label: '访问量',
+                            data: [5400, 6800, 7500, 9200, 10500, 12500],
+                            borderColor: '#165DFF',
+                            backgroundColor: 'rgba(22, 93, 255, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

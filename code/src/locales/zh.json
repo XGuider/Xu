@@ -1,0 +1,230 @@
+{
+  "RootLayout": {
+    "home_link": "首页",
+    "about_link": "关于",
+    "counter_link": "计数器",
+    "portfolio_link": "作品集",
+    "sign_in_link": "登录",
+    "sign_up_link": "注册"
+  },
+  "BaseTemplate": {
+    "description": "使用 Tailwind CSS 的 Next.js 启动代码",
+    "made_with": "由 <author></author> 制作。"
+  },
+  "Index": {
+    "meta_title": "Next.js 启动模板演示",
+    "meta_description": "Next.js 启动模板是您项目的完美起始代码。使用 Next.js 框架构建您的 React 应用程序。",
+    "sponsors_title": "赞助商"
+  },
+  "Counter": {
+    "meta_title": "计数器",
+    "meta_description": "数据库操作示例",
+    "security_powered_by": "安全、机器人检测和速率限制由以下提供支持"
+  },
+  "CounterForm": {
+    "presentation": "计数器存储在数据库中，并根据您提供的值递增。",
+    "label_increment": "递增",
+    "button_increment": "递增",
+    "error_increment_range": "值必须在 1 到 3 之间"
+  },
+  "CurrentCount": {
+    "count": "计数：{count}"
+  },
+  "About": {
+    "meta_title": "关于",
+    "meta_description": "关于页面描述",
+    "about_paragraph": "欢迎来到我们的关于页面！我们是一支充满激情的团队，致力于创造出色的软件。",
+    "translation_powered_by": "翻译由以下提供支持"
+  },
+  "Portfolio": {
+    "meta_title": "作品集",
+    "meta_description": "欢迎来到我的作品集页面！",
+    "presentation": "欢迎来到我的作品集页面！在这里，您将找到我精心策划的作品和成就集合。通过这个作品集，我旨在展示我的专业知识、创造力以及我能为您的项目带来的价值。",
+    "portfolio_name": "作品集 {name}",
+    "error_reporting_powered_by": "错误报告由以下提供支持",
+    "coverage_powered_by": "代码覆盖率由以下提供支持"
+  },
+  "PortfolioSlug": {
+    "meta_title": "作品集 {slug}",
+    "meta_description": "作品集 {slug} 描述",
+    "header": "作品集 {slug}",
+    "content": "为企业活动创建了一套宣传材料和品牌元素。设计了一个视觉统一的主题，包括标志、海报、横幅和数字资产。整合了客户的品牌标识，同时注入了现代和创新的方法。",
+    "code_review_powered_by": "代码审查由以下提供支持"
+  },
+  "SignIn": {
+    "meta_title": "登录",
+    "meta_description": "通过我们用户友好的登录流程无缝登录您的账户。"
+  },
+  "SignUp": {
+    "meta_title": "注册",
+    "meta_description": "通过我们直观的注册流程轻松创建账户。"
+  },
+  "Dashboard": {
+    "meta_title": "仪表盘",
+    "hello_message": "你好 {email}！",
+    "alternative_message": "想使用相同的技术栈更快地构建您的 SaaS？试试 <url></url>。"
+  },
+  "UserProfile": {
+    "meta_title": "用户资料"
+  },
+  "DashboardLayout": {
+    "dashboard_link": "仪表盘",
+    "user_profile_link": "管理您的账户",
+    "sign_out": "退出登录"
+  },
+  "Navigation": {
+    "home": "首页",
+    "categories": "分类",
+    "search": "搜索",
+    "submit_url": "提交网址",
+    "blog": "博客",
+    "login": "登录",
+    "register": "注册"
+  },
+  "HomePage": {
+    "hero_title": "Xu AI导航平台",
+    "hero_subtitle": "千万用户信赖的AI工具导航",
+    "search_placeholder": "请输入您要搜索的AI产品",
+    "hot_searches": "热搜榜",
+    "featured_tools": "热门推荐",
+    "view_more": "查看更多",
+    "categories": "分类"
+  },
+  "CategoryPage": {
+    "tools_count": "{count} 个工具",
+    "sort_by": "排序",
+    "recommended": "推荐",
+    "newest": "最新",
+    "rating": "评分",
+    "popular": "热门"
+  },
+  "ToolDetailPage": {
+    "visit_website": "访问官网",
+    "favorite": "收藏",
+    "tool_introduction": "工具介绍",
+    "core_features": "核心功能",
+    "basic_info": "基本信息",
+    "related_tools": "相关推荐",
+    "website": "网址",
+    "developer": "开发商",
+    "launch_date": "上线时间",
+    "platforms": "适用平台",
+    "price": "价格"
+  },
+  "SearchPage": {
+    "search_results": "搜索结果",
+    "found_results": "找到约 {count} 个结果，用时 {time} 秒",
+    "no_results": "未找到结果",
+    "try_different_keywords": "尝试不同的关键词"
+  },
+  "Admin": {
+    "dashboard": "仪表盘",
+    "tools_management": "工具管理",
+    "categories_management": "分类管理",
+    "users_management": "用户管理",
+    "analytics": "数据分析",
+    "system_settings": "系统设置"
+  },
+  "AdminDashboard": {
+    "total_tools": "总工具数",
+    "total_categories": "总分类数",
+    "total_users": "总用户数",
+    "daily_visitors": "日访问量",
+    "active_users": "活跃用户",
+    "recent_activities": "最近动态",
+    "view_all": "查看全部"
+  },
+  "ToolsManagement": {
+    "add_tool": "添加工具",
+    "search_placeholder": "搜索工具名称或网址",
+    "filter_by_category": "按分类筛选",
+    "filter_by_status": "按状态筛选",
+    "all_categories": "全部分类",
+    "all_status": "全部状态",
+    "online": "已上线",
+    "pending": "审核中",
+    "offline": "已下架",
+    "edit": "编辑",
+    "delete": "删除",
+    "showing_results": "显示 {start}-{end} 条，共 {total} 条"
+  },
+  "CategoriesManagement": {
+    "add_category": "添加分类",
+    "search_placeholder": "搜索分类名称或描述",
+    "category_name": "分类名称",
+    "category_description": "分类描述",
+    "icon_name": "图标名称",
+    "sort_order": "排序",
+    "status": "状态",
+    "enabled": "启用",
+    "disabled": "禁用",
+    "tool_count": "工具数量",
+    "actions": "操作",
+    "edit": "编辑",
+    "delete": "删除",
+    "save": "保存",
+    "cancel": "取消"
+  },
+  "UsersManagement": {
+    "search_placeholder": "搜索用户名或邮箱",
+    "filter_by_role": "按角色筛选",
+    "filter_by_status": "按状态筛选",
+    "all_roles": "全部角色",
+    "all_status": "全部状态",
+    "admin": "管理员",
+    "user": "普通用户",
+    "contributor": "贡献者",
+    "active": "正常",
+    "inactive": "禁用",
+    "register_date": "注册时间",
+    "total_users": "总用户数",
+    "active_users": "活跃用户",
+    "admins": "管理员",
+    "contributors": "贡献者"
+  },
+  "Analytics": {
+    "total_visitors": "总访问量",
+    "page_views": "页面浏览量",
+    "average_session_duration": "平均停留时间",
+    "bounce_rate": "跳出率",
+    "top_pages": "热门页面",
+    "top_tools": "热门工具",
+    "traffic_sources": "流量来源",
+    "device_types": "设备类型",
+    "visit_trends": "访问趋势",
+    "direct_access": "直接访问",
+    "search_engines": "搜索引擎",
+    "social_media": "社交媒体",
+    "other": "其他",
+    "desktop": "桌面端",
+    "mobile": "移动端",
+    "tablet": "平板",
+    "views": "次浏览",
+    "visitors": "访问者"
+  },
+  "Common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "warning": "警告",
+    "info": "信息",
+    "confirm": "确认",
+    "cancel": "取消",
+    "save": "保存",
+    "edit": "编辑",
+    "delete": "删除",
+    "add": "添加",
+    "search": "搜索",
+    "filter": "筛选",
+    "sort": "排序",
+    "refresh": "刷新",
+    "back": "返回",
+    "next": "下一页",
+    "previous": "上一页",
+    "page": "页",
+    "of": "共",
+    "results": "条结果",
+    "no_data": "暂无数据",
+    "try_again": "重试"
+  }
+}

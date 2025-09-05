@@ -1,0 +1,6 @@
+node_modules
+.next
+.cursor
+.DS_Store
+.cursorrules
+code/local.db/*

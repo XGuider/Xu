@@ -1,0 +1,28 @@
+@layer theme, base, clerk, components, utilities; /* Ensure Clerk is compatible with Tailwind CSS v4 */
+
+@import 'tailwindcss';
+
+/* 平滑滚动高亮效果 */
+@keyframes highlight-pulse {
+  0% {
+    background-color: rgba(59, 130, 246, 0.1);
+    transform: scale(1);
+  }
+  50% {
+    background-color: rgba(59, 130, 246, 0.2);
+    transform: scale(1.02);
+  }
+  100% {
+    background-color: rgba(59, 130, 246, 0.1);
+    transform: scale(1);
+  }
+}
+
+.highlight-section {
+  animation: highlight-pulse 2s ease-in-out;
+}
+
+/* 平滑滚动行为 */
+html {
+  scroll-behavior: smooth;
+}
