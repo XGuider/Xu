@@ -1,11 +1,14 @@
 'use client';
 
+import { useClerk, useUser } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
+import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
+import { useSidebarContext } from '@/contexts/SidebarContext';
 import { cn } from '@/utils/cn';
 
 // 搜索图标组件
@@ -33,6 +36,9 @@ const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const pathname = usePathname();
+  const { toggleSidebar } = useSidebarContext();
+  const { user, isSignedIn } = useUser();
+  const { signOut } = useClerk();
 
   const navigation = [
     { name: '首页', href: '/' },
@@ -56,8 +62,17 @@ const Header: React.FC = () => {
     <header className="fixed top-0 right-0 left-0 z-50 border-b border-gray-300 bg-white shadow-sm">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
+          {/* Logo 和侧边栏切换按钮 */}
           <div className="flex items-center">
+            {/* 侧边栏切换按钮 */}
+            <button
+              type="button"
+              onClick={toggleSidebar}
+              className="mr-3 rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600"
+            >
+              <MenuIcon />
+            </button>
+
             <Link href="/" className="flex items-center space-x-3 transition-opacity hover:opacity-80">
               <Image
                 src="/assets/images/logo.png"
@@ -113,14 +128,41 @@ const Header: React.FC = () => {
               </button>
             </form>
 
-            {/* 登录/注册按钮 */}
-            <div className="flex items-center space-x-2">
-              <Button variant="ghost" size="sm">
-                登录
-              </Button>
-              <Button variant="primary" size="sm">
-                注册
-              </Button>
+            {/* 用户操作区域 */}
+            <div className="flex items-center space-x-4">
+              {/* 语言切换器 */}
+              <LocaleSwitcher />
+
+              {isSignedIn
+                ? (
+                    <div className="flex items-center space-x-3">
+                      <span className="text-sm text-gray-700">
+                        欢迎，
+                        {user?.firstName || user?.emailAddresses[0]?.emailAddress}
+                      </span>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => signOut()}
+                      >
+                        登出
+                      </Button>
+                    </div>
+                  )
+                : (
+                    <>
+                      <Link href="/sign-in">
+                        <Button variant="ghost" size="sm">
+                          登录
+                        </Button>
+                      </Link>
+                      <Link href="/sign-up">
+                        <Button variant="primary" size="sm">
+                          注册
+                        </Button>
+                      </Link>
+                    </>
+                  )}
             </div>
           </div>
 
@@ -175,13 +217,43 @@ const Header: React.FC = () => {
 
               {/* 移动端用户操作 */}
               <div className="border-t border-gray-300 pt-4">
-                <div className="flex flex-col space-y-2">
-                  <Button variant="ghost" size="sm" className="w-full justify-center">
-                    登录
-                  </Button>
-                  <Button variant="primary" size="sm" className="w-full justify-center">
-                    注册
-                  </Button>
+                <div className="flex flex-col space-y-3">
+                  {/* 移动端语言切换器 */}
+                  <div className="flex justify-center">
+                    <LocaleSwitcher />
+                  </div>
+
+                  {isSignedIn
+                    ? (
+                        <>
+                          <div className="mb-2 text-center text-sm text-gray-700">
+                            欢迎，
+                            {user?.firstName || user?.emailAddresses[0]?.emailAddress}
+                          </div>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="w-full justify-center"
+                            onClick={() => signOut()}
+                          >
+                            登出
+                          </Button>
+                        </>
+                      )
+                    : (
+                        <>
+                          <Link href="/sign-in" className="w-full">
+                            <Button variant="ghost" size="sm" className="w-full justify-center">
+                              登录
+                            </Button>
+                          </Link>
+                          <Link href="/sign-up" className="w-full">
+                            <Button variant="primary" size="sm" className="w-full justify-center">
+                              注册
+                            </Button>
+                          </Link>
+                        </>
+                      )}
                 </div>
               </div>
             </div>

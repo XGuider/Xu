@@ -1,13 +1,17 @@
 'use client';
 
 import type { Category, Tool } from '@/types';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import FixedSidebar from '@/components/layout/FixedSidebar';
+import { useRouter } from 'next/navigation';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import Sidebar from '@/components/layout/Sidebar';
 import ToolCard from '@/components/tools/ToolCard';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
+import Loading from '@/components/ui/Loading';
 import { useCategoryContext } from '@/contexts/CategoryContext';
+import { useSidebarContext } from '@/contexts/SidebarContext';
 import { cn } from '@/utils/cn';
 
 // 默认分类数据（用于工具数据中的引用）
@@ -217,32 +221,34 @@ const allTools: Tool[] = [
 const HomePage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentSlide, setCurrentSlide] = useState(0);
+  const t = useTranslations('HomePage');
   const {
     activeCategory,
     categories,
     isLoading,
   } = useCategoryContext();
+  const { isSidebarOpen } = useSidebarContext();
 
   // 模拟轮播图数据
   const carouselSlides = [
     {
       id: '1',
-      title: 'AI工具导航平台',
-      subtitle: '发现最好的AI工具',
+      title: t('carousel.slide1_title'),
+      subtitle: t('carousel.slide1_subtitle'),
       image: '/assets/images/carousel-1.jpg',
       link: '/search?q=AI工具',
     },
     {
       id: '2',
-      title: '最新AI工具推荐',
-      subtitle: '探索前沿AI技术',
+      title: t('carousel.slide2_title'),
+      subtitle: t('carousel.slide2_subtitle'),
       image: '/assets/images/carousel-2.jpg',
       link: '/category/ai-office',
     },
     {
       id: '3',
-      title: 'AI编程助手',
-      subtitle: '提升开发效率',
+      title: t('carousel.slide3_title'),
+      subtitle: t('carousel.slide3_subtitle'),
       image: '/assets/images/carousel-3.jpg',
       link: '/category/ai-coding',
     },
@@ -346,29 +352,88 @@ const HomePage: React.FC = () => {
     },
   ];
 
-  const handleSearch = (e: React.FormEvent) => {
+  const router = useRouter();
+  const [isSearching, setIsSearching] = useState(false);
+
+  // 实时搜索建议
+  const [searchSuggestions, setSearchSuggestions] = useState<string[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  // 搜索建议数据
+  const suggestionKeywords = useMemo(() => [
+    'AI写作',
+    '代码生成',
+    '图像生成',
+    '视频编辑',
+    '语音识别',
+    '翻译工具',
+    '数据分析',
+    '聊天机器人',
+    '办公助手',
+    '学习工具',
+  ], []);
+
+  // 实时搜索建议
+  const updateSearchSuggestions = useCallback((query: string) => {
+    if (query.trim().length > 0) {
+      const filtered = suggestionKeywords.filter(keyword =>
+        keyword.toLowerCase().includes(query.toLowerCase()),
+      );
+      setSearchSuggestions(filtered.slice(0, 5));
+      setShowSuggestions(true);
+    } else {
+      setSearchSuggestions([]);
+      setShowSuggestions(false);
+    }
+  }, [suggestionKeywords]);
+
+  // 搜索处理
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      window.location.href = `/search?q=${encodeURIComponent(searchQuery.trim())}`;
+      setIsSearching(true);
+      try {
+        router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      } finally {
+        setIsSearching(false);
+      }
     }
+  };
+
+  // 快速搜索
+  const handleQuickSearch = (keyword: string) => {
+    setSearchQuery(keyword);
+    setShowSuggestions(false);
+    router.push(`/search?q=${encodeURIComponent(keyword)}`);
+  };
+
+  // 搜索输入变化处理
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+    updateSearchSuggestions(value);
   };
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* 固定侧边栏 */}
-      <FixedSidebar />
-
-      <main className="mx-auto max-w-7xl px-4 py-8 pt-20 pl-72 md:px-8">
+      {/* 侧边栏 */}
+      <Sidebar />
+      {/* 主内容区域 */}
+      <main className={cn(
+        'mx-auto max-w-7xl px-4 py-8 pt-20 transition-all duration-300',
+        isSidebarOpen ? 'lg:ml-80' : 'lg:ml-0', // 根据侧边栏状态调整边距
+        'pl-4', // 移动端正常边距
+      )}
+      >
         <div className="flex flex-col gap-8">
           {/* 英雄区域 */}
           <section className="mb-12 text-center">
             <h1 className="mb-6 text-4xl font-bold text-gray-900 md:text-6xl">
-              千万用户信赖的
-              <span className="block text-blue-600">AI工具导航平台</span>
+              {t('hero_subtitle')}
+              <span className="block text-blue-600">{t('hero_title')}</span>
             </h1>
             <p className="mx-auto mb-8 max-w-3xl text-xl text-gray-700">
-              发现最好的AI工具，包括AI办公、AI编程、AI视频、AI写作等各类智能工具，
-              提升工作效率和创造力
+              {t('hero_description')}
             </p>
 
             {/* 搜索框 */}
@@ -376,10 +441,17 @@ const HomePage: React.FC = () => {
               <div className="relative">
                 <Input
                   type="text"
-                  placeholder="请输入您要搜索的AI产品"
+                  placeholder={t('search_placeholder')}
                   value={searchQuery}
-                  onChange={(e) => {
-                    setSearchQuery(e.target.value);
+                  onChange={handleSearchInputChange}
+                  onFocus={() => {
+                    if (searchQuery.trim()) {
+                      setShowSuggestions(true);
+                    }
+                  }}
+                  onBlur={() => {
+                    // 延迟隐藏建议，让用户能点击建议项
+                    setTimeout(() => setShowSuggestions(false), 200);
                   }}
                   className="w-full py-4 pr-20 pl-6 text-lg"
                 />
@@ -387,15 +459,46 @@ const HomePage: React.FC = () => {
                   type="submit"
                   size="lg"
                   className="absolute top-1/2 right-2 -translate-y-1/2"
+                  disabled={isSearching}
                 >
-                  搜索
+                  {isSearching
+                    ? (
+                        <Loading size="sm" text="" />
+                      )
+                    : (
+                        t('search_button')
+                      )}
                 </Button>
+
+                {/* 搜索建议下拉框 */}
+                {showSuggestions && searchSuggestions.length > 0 && (
+                  <div className="absolute top-full right-0 left-0 z-10 mt-2 rounded-lg border border-gray-200 bg-white shadow-lg">
+                    {searchSuggestions.map(suggestion => (
+                      <button
+                        key={suggestion}
+                        type="button"
+                        onClick={() => handleQuickSearch(suggestion)}
+                        className="w-full px-4 py-3 text-left text-gray-700 first:rounded-t-lg last:rounded-b-lg hover:bg-gray-50"
+                      >
+                        <div className="flex items-center gap-2">
+                          <svg className="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                          </svg>
+                          {suggestion}
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             </form>
 
             {/* 热搜榜 */}
             <div className="flex flex-wrap justify-center gap-3">
-              <span className="text-sm text-gray-700">热搜榜：</span>
+              <span className="text-sm text-gray-700">
+                {t('hot_searches')}
+                ：
+              </span>
               {hotSearches.map((item) => {
                 return (
                   <button
@@ -446,7 +549,7 @@ const HomePage: React.FC = () => {
                               window.location.href = slide.link;
                             }}
                           >
-                            立即探索
+                            {t('explore_now')}
                           </Button>
                         </div>
                       </div>
@@ -480,10 +583,10 @@ const HomePage: React.FC = () => {
           <section className="mb-12">
             <div className="mb-8 text-center">
               <h2 className="mb-4 text-3xl font-bold text-gray-900">
-                热门推荐
+                {t('featured_tools')}
               </h2>
               <p className="text-lg text-gray-700">
-                精选最受欢迎的AI工具
+                {t('featured_tools_subtitle')}
               </p>
             </div>
 
@@ -504,10 +607,10 @@ const HomePage: React.FC = () => {
           <section className="mb-12">
             <div className="mb-8 text-center">
               <h2 className="mb-4 text-3xl font-bold text-gray-900">
-                按分类浏览
+                {t('browse_by_category')}
               </h2>
               <p className="text-lg text-gray-700">
-                探索不同类别的AI工具
+                {t('browse_by_category_subtitle')}
               </p>
             </div>
 
@@ -564,9 +667,8 @@ const HomePage: React.FC = () => {
                                 </h3>
                                 <p className="text-gray-600">
                                   {category.description}
-                                  {' · 共 '}
-                                  {categoryTools.length}
-                                  {' 个工具'}
+                                  {' · '}
+                                  {t('tools_count', { count: categoryTools.length })}
                                 </p>
                               </div>
                             </div>
@@ -574,7 +676,7 @@ const HomePage: React.FC = () => {
                               href={`/category/${category.slug}`}
                               className="flex items-center space-x-1 font-medium text-blue-600 hover:text-blue-700"
                             >
-                              <span>查看全部</span>
+                              <span>{t('view_more')}</span>
                               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                               </svg>

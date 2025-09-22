@@ -1,6 +1,5 @@
 import { setRequestLocale } from 'next-intl/server';
 import ClientLayout from '@/components/layout/ClientLayout';
-import Header from '@/components/layout/Header';
 
 export default async function Layout(props: {
   children: React.ReactNode;
@@ -11,8 +10,7 @@ export default async function Layout(props: {
 
   return (
     <ClientLayout>
-      <Header />
-      <main>{props.children}</main>
+      {props.children}
     </ClientLayout>
   );
 }

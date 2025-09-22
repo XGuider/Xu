@@ -1,16 +1,15 @@
 'use client';
 
-import type { Category } from '@/types';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import React from 'react';
+import { useCategoryContext } from '@/contexts/CategoryContext';
+import { useSidebarContext } from '@/contexts/SidebarContext';
 import { cn } from '@/utils/cn';
 
 // 分类图标映射
 const categoryIcons: Record<string, React.ReactNode> = {
   'ai-office': (
     <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
     </svg>
   ),
   'ai-video': (
@@ -30,143 +29,104 @@ const categoryIcons: Record<string, React.ReactNode> = {
   ),
   'ai-writing': (
     <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
     </svg>
   ),
   'ai-learning': (
     <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
     </svg>
   ),
 };
 
-type SidebarProps = {
-  categories?: Category[];
-  className?: string;
-};
+const Sidebar: React.FC = () => {
+  const {
+    activeCategory,
+    setActiveCategory,
+    categories,
+    isLoading,
+    scrollToCategory,
+  } = useCategoryContext();
+  const { isSidebarOpen } = useSidebarContext();
 
-const defaultCategories: Category[] = [
-  {
-    id: '1',
-    name: 'AI办公工具',
-    slug: 'ai-office',
-    description: '提升办公效率的AI工具',
-    icon: 'ai-office',
-    sort: 1,
-    isActive: true,
-    toolCount: 32,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: '2',
-    name: 'AI视频工具',
-    slug: 'ai-video',
-    description: 'AI驱动的视频创作工具',
-    icon: 'ai-video',
-    sort: 2,
-    isActive: true,
-    toolCount: 24,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: '3',
-    name: 'AI编程工具',
-    slug: 'ai-coding',
-    description: '智能代码助手和开发工具',
-    icon: 'ai-coding',
-    sort: 3,
-    isActive: true,
-    toolCount: 18,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: '4',
-    name: 'AI聊天助手',
-    slug: 'ai-chat',
-    description: '智能对话和问答工具',
-    icon: 'ai-chat',
-    sort: 4,
-    isActive: true,
-    toolCount: 45,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: '5',
-    name: 'AI写作工具',
-    slug: 'ai-writing',
-    description: '智能内容创作和写作助手',
-    icon: 'ai-writing',
-    sort: 5,
-    isActive: true,
-    toolCount: 28,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: '6',
-    name: 'AI学习网站',
-    slug: 'ai-learning',
-    description: 'AI教育和学习资源',
-    icon: 'ai-learning',
-    sort: 6,
-    isActive: true,
-    toolCount: 15,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-];
-
-const Sidebar: React.FC<SidebarProps> = ({ categories = defaultCategories, className }) => {
-  const pathname = usePathname();
-
-  const displayCategories = categories.length > 0 ? categories : defaultCategories;
+  // 处理分类点击
+  const handleCategoryClick = (categoryId: string) => {
+    setActiveCategory(categoryId);
+    scrollToCategory(categoryId);
+  };
 
   return (
-    <aside className={cn('bg-neutral p-4 rounded-lg', className)}>
-      <div className="mb-4">
-        <h3 className="mb-2 text-lg font-semibold text-gray-900">热门推荐</h3>
-        <div className="rounded bg-blue-600 px-3 py-2 text-sm font-medium text-white">
-          精选AI工具
+    <>
+      {/* 侧边栏 */}
+      <div
+        className={cn(
+          'fixed left-0 top-16 z-40 h-[calc(100vh-4rem)] w-80 transform bg-white shadow-xl transition-transform duration-300 ease-in-out',
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full',
+        )}
+      >
+
+        {/* 分类列表 */}
+        <div className="p-4">
+          <h3 className="mb-4 text-lg font-semibold text-gray-900">AI工具分类</h3>
+          {isLoading
+            ? (
+                <div className="space-y-2">
+                  {[1, 2, 3, 4].map(i => (
+                    <div key={i} className="flex w-full animate-pulse items-center justify-between rounded-lg bg-gray-100 p-3">
+                      <div className="flex items-center space-x-3">
+                        <div className="h-3 w-3 rounded-full bg-gray-300"></div>
+                        <div className="h-4 w-20 rounded bg-gray-300"></div>
+                      </div>
+                      <div className="h-4 w-8 rounded bg-gray-300"></div>
+                    </div>
+                  ))}
+                </div>
+              )
+            : (
+                <nav className="space-y-2">
+                  {categories.map(category => (
+                    <button
+                      key={category.id}
+                      type="button"
+                      className={cn(
+                        'flex w-full items-center rounded-lg px-3 py-3 text-sm transition-all duration-200',
+                        activeCategory === category.id
+                          ? 'bg-blue-50 text-blue-600 border-l-4 border-blue-600'
+                          : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900',
+                      )}
+                      onClick={() => handleCategoryClick(category.id)}
+                    >
+                      {/* 图标 */}
+                      <div
+                        className={cn(
+                          'mr-3 flex h-8 w-8 items-center justify-center rounded-lg',
+                          activeCategory === category.id
+                            ? 'bg-blue-100'
+                            : 'bg-gray-100',
+                        )}
+                      >
+                        {categoryIcons[category.slug] || (
+                          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                          </svg>
+                        )}
+                      </div>
+
+                      {/* 文字和数量 */}
+                      <div className="flex flex-1 items-center justify-between">
+                        <span className="font-medium">{category.name}</span>
+                        <span className="rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-600">
+                          {category.toolCount}
+                        </span>
+                      </div>
+                    </button>
+                  ))}
+                </nav>
+              )}
         </div>
       </div>
 
-      <nav className="space-y-1">
-        {displayCategories.map((category) => {
-          const isActive = pathname === `/category/${category.slug}`;
-          const icon = categoryIcons[category.icon || category.slug] || (
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
-          );
-
-          return (
-            <Link
-              key={category.id}
-              href={`/category/${category.slug}`}
-              className={cn(
-                'flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer',
-                isActive
-                  ? 'bg-white text-blue-600 border-l-4 border-blue-600'
-                  : 'text-gray-700 hover:bg-white hover:text-blue-600',
-              )}
-            >
-              <span className={cn('mr-3', isActive ? 'text-blue-600' : 'text-blue-600')}>
-                {icon}
-              </span>
-              <span className="flex-1">{category.name}</span>
-              <span className="rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700">
-                {category.toolCount}
-              </span>
-            </Link>
-          );
-        })}
-      </nav>
-    </aside>
+    </>
   );
 };
 

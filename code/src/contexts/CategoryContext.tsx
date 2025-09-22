@@ -33,7 +33,7 @@ export const CategoryProvider: React.FC<CategoryProviderProps> = ({ children }) 
   const [isLoading, setIsLoading] = useState(true);
 
   // 滚动到指定分类的函数
-  const scrollToCategory = (categoryId: string) => {
+  const scrollToCategory = useCallback((categoryId: string) => {
     const element = document.getElementById(`category-${categoryId}`);
     if (element) {
       element.scrollIntoView({
@@ -42,7 +42,7 @@ export const CategoryProvider: React.FC<CategoryProviderProps> = ({ children }) 
         inline: 'nearest',
       });
     }
-  };
+  }, []);
 
   // 从API加载分类数据
   useEffect(() => {

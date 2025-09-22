@@ -4,111 +4,123 @@ import React, { useState } from 'react';
 
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
+import { useNotification } from '@/contexts/NotificationContext';
+import { useTools } from '@/hooks/useTools';
 import { cn } from '@/utils/cn';
-
-// 模拟工具数据
-const mockTools = [
-  {
-    id: '001',
-    name: 'DeepSeek',
-    category: 'AI编程工具',
-    url: 'https://www.deepseek.com',
-    status: '已上线',
-  },
-  {
-    id: '002',
-    name: '腾讯元宝',
-    category: 'AI聊天助手',
-    url: 'https://yuanbao.qq.com',
-    status: '已上线',
-  },
-  {
-    id: '003',
-    name: 'Cursor',
-    category: 'AI编程工具',
-    url: 'https://www.cursor.so',
-    status: '已上线',
-  },
-  {
-    id: '004',
-    name: '新AI工具',
-    category: 'AI写作工具',
-    url: 'https://newai.example.com',
-    status: '审核中',
-  },
-];
 
 const ToolsManagementPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('');
-  const [tools, setTools] = useState(mockTools);
   const [isAddingTool, setIsAddingTool] = useState(false);
   const [editingTool, setEditingTool] = useState<any>(null);
   const [newTool, setNewTool] = useState({
     name: '',
-    category: '',
+    description: '',
     url: '',
-    status: '审核中',
+    categoryId: '',
+    tags: [] as string[],
+    developer: '',
   });
+  // 使用通知系统
+  const { addNotification } = useNotification();
 
-  const filteredTools = tools.filter((tool) => {
-    const matchesSearch = tool.name.toLowerCase().includes(searchQuery.toLowerCase())
-      || tool.url.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = !selectedCategory || tool.category === selectedCategory;
-    const matchesStatus = !selectedStatus || tool.status === selectedStatus;
-
-    return matchesSearch && matchesCategory && matchesStatus;
+  // 使用真实的API Hook
+  const {
+    tools,
+    loading,
+    error,
+    pagination,
+    createTool,
+    updateTool,
+    deleteTool,
+    toggleToolStatus,
+    fetchTools: _fetchTools,
+  } = useTools({
+    page: 1,
+    limit: 50,
+    search: searchQuery,
+    category: selectedCategory,
+    status: selectedStatus,
   });
 
   // 添加工具
-  const handleAddTool = () => {
-    if (newTool.name.trim() && newTool.url.trim()) {
-      const tool = {
-        id: (tools.length + 1).toString().padStart(3, '0'),
-        name: newTool.name,
-        category: newTool.category,
-        url: newTool.url,
-        status: newTool.status,
-      };
-      setTools([...tools, tool]);
-      setNewTool({ name: '', category: '', url: '', status: '审核中' });
+  const handleAddTool = async () => {
+    if (!newTool.name.trim() || !newTool.url.trim() || !newTool.categoryId) {
+      addNotification({ type: 'error', message: '请填写所有必填字段' });
+      return;
+    }
+
+    const success = await createTool({
+      name: newTool.name,
+      description: newTool.description,
+      url: newTool.url,
+      categoryId: newTool.categoryId,
+      tags: newTool.tags,
+      developer: newTool.developer,
+    });
+
+    if (success) {
+      addNotification({ type: 'success', message: '工具添加成功' });
+      setNewTool({ name: '', description: '', url: '', categoryId: '', tags: [], developer: '' });
       setIsAddingTool(false);
+    } else {
+      addNotification({ type: 'error', message: '工具添加失败' });
     }
   };
 
   // 编辑工具
   const handleEditTool = (tool: any) => {
-    setEditingTool(tool);
+    setEditingTool({
+      ...tool,
+      categoryId: tool.categoryId || '',
+    });
   };
 
   // 保存编辑
-  const handleSaveEdit = () => {
-    if (editingTool) {
-      setTools(tools.map(t =>
-        t.id === editingTool.id
-          ? { ...editingTool }
-          : t,
-      ));
+  const handleSaveEdit = async () => {
+    if (!editingTool) {
+      return;
+    }
+
+    const success = await updateTool({
+      id: editingTool.id,
+      name: editingTool.name,
+      description: editingTool.description,
+      url: editingTool.url,
+      categoryId: editingTool.categoryId,
+      tags: editingTool.tags || [],
+      developer: editingTool.developer || '',
+    });
+
+    if (success) {
+      addNotification({ type: 'success', message: '工具更新成功' });
       setEditingTool(null);
+    } else {
+      addNotification({ type: 'error', message: '工具更新失败' });
     }
   };
 
   // 删除工具
-  const handleDeleteTool = (toolId: string) => {
-    // eslint-disable-next-line no-alert
+  const handleDeleteTool = async (toolId: string) => {
     if (confirm('确定要删除这个工具吗？')) {
-      setTools(tools.filter(t => t.id !== toolId));
+      const success = await deleteTool(toolId);
+      if (success) {
+        addNotification({ type: 'success', message: '工具删除成功' });
+      } else {
+        addNotification({ type: 'error', message: '工具删除失败' });
+      }
     }
   };
 
   // 切换状态
-  const handleToggleStatus = (toolId: string) => {
-    setTools(tools.map(t =>
-      t.id === toolId
-        ? { ...t, status: t.status === '已上线' ? '已下架' : '已上线' }
-        : t,
-    ));
+  const handleToggleStatus = async (toolId: string) => {
+    const success = await toggleToolStatus(toolId);
+    if (success) {
+      addNotification({ type: 'success', message: '状态更新成功' });
+    } else {
+      addNotification({ type: 'error', message: '状态更新失败' });
+    }
   };
 
   return (
@@ -119,11 +131,11 @@ const ToolsManagementPage: React.FC = () => {
           <h1 className="text-2xl font-bold text-gray-900">AI工具管理</h1>
           <p className="text-gray-600">管理平台上的AI工具信息</p>
         </div>
-        <Button onClick={() => setIsAddingTool(true)}>
+        <Button onClick={() => setIsAddingTool(true)} disabled={loading}>
           <svg className="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
           </svg>
-          添加工具
+          {loading ? '加载中...' : '添加工具'}
         </Button>
       </div>
 
@@ -174,48 +186,67 @@ const ToolsManagementPage: React.FC = () => {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <Input
               type="text"
-              placeholder="工具名称"
+              placeholder="工具名称 *"
               value={newTool.name}
               onChange={e => setNewTool({ ...newTool, name: e.target.value })}
             />
             <select
-              value={newTool.category}
-              onChange={e => setNewTool({ ...newTool, category: e.target.value })}
+              value={newTool.categoryId}
+              onChange={e => setNewTool({ ...newTool, categoryId: e.target.value })}
               className="rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 focus:outline-none"
             >
-              <option value="">选择分类</option>
-              <option value="AI办公工具">AI办公工具</option>
-              <option value="AI视频工具">AI视频工具</option>
-              <option value="AI编程工具">AI编程工具</option>
-              <option value="AI聊天助手">AI聊天助手</option>
-              <option value="AI写作工具">AI写作工具</option>
+              <option value="">选择分类 *</option>
+              <option value="1">AI办公工具</option>
+              <option value="2">AI视频工具</option>
+              <option value="3">AI编程工具</option>
+              <option value="4">AI聊天助手</option>
+              <option value="5">AI写作工具</option>
+              <option value="6">AI学习网站</option>
             </select>
             <div className="md:col-span-2">
               <Input
                 type="url"
-                placeholder="工具网址"
+                placeholder="工具网址 *"
                 value={newTool.url}
                 onChange={e => setNewTool({ ...newTool, url: e.target.value })}
               />
             </div>
-            <select
-              value={newTool.status}
-              onChange={e => setNewTool({ ...newTool, status: e.target.value })}
-              className="rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 focus:outline-none"
-            >
-              <option value="审核中">审核中</option>
-              <option value="已上线">已上线</option>
-              <option value="已下架">已下架</option>
-            </select>
+            <div className="md:col-span-2">
+              <textarea
+                placeholder="工具描述"
+                value={newTool.description}
+                onChange={e => setNewTool({ ...newTool, description: e.target.value })}
+                className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 focus:outline-none"
+                rows={3}
+              />
+            </div>
+            <Input
+              type="text"
+              placeholder="开发者"
+              value={newTool.developer}
+              onChange={e => setNewTool({ ...newTool, developer: e.target.value })}
+            />
+            <Input
+              type="text"
+              placeholder="标签 (用逗号分隔)"
+              value={newTool.tags.join(', ')}
+              onChange={e => setNewTool({
+                ...newTool,
+                tags: e.target.value.split(',').map(tag => tag.trim()).filter(tag => tag),
+              })}
+            />
           </div>
           <div className="mt-4 flex gap-2">
-            <Button onClick={handleAddTool}>保存</Button>
+            <Button onClick={handleAddTool} disabled={loading}>
+              {loading ? '保存中...' : '保存'}
+            </Button>
             <Button
               variant="outline"
               onClick={() => {
                 setIsAddingTool(false);
-                setNewTool({ name: '', category: '', url: '', status: '审核中' });
+                setNewTool({ name: '', description: '', url: '', categoryId: '', tags: [], developer: '' });
               }}
+              disabled={loading}
             >
               取消
             </Button>
@@ -250,65 +281,101 @@ const ToolsManagementPage: React.FC = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200 bg-white">
-              {filteredTools.map(tool => (
-                <tr key={tool.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
-                    {tool.id}
-                  </td>
-                  <td className="px-6 py-4 text-sm font-medium whitespace-nowrap text-gray-900">
-                    {tool.name}
-                  </td>
-                  <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-500">
-                    {tool.category}
-                  </td>
-                  <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-500">
-                    <div className="max-w-xs truncate" title={tool.url}>
-                      {tool.url}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={cn(
-                      'inline-flex px-2 py-1 text-xs font-semibold rounded-full',
-                      tool.status === '已上线'
-                        ? 'bg-green-100 text-green-800'
-                        : tool.status === '审核中'
-                          ? 'bg-yellow-100 text-yellow-800'
-                          : 'bg-red-100 text-red-800',
-                    )}
-                    >
-                      {tool.status}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 text-sm font-medium whitespace-nowrap">
-                    <div className="flex space-x-2">
-                      <button
-                        type="button"
-                        onClick={() => handleEditTool(tool)}
-                        className="text-blue-600 hover:text-blue-900"
-                      >
-                        编辑
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => handleToggleStatus(tool.id)}
-                        className={cn(
-                          'text-sm',
-                          tool.status === '已上线' ? 'text-red-600 hover:text-red-900' : 'text-green-600 hover:text-green-900',
-                        )}
-                      >
-                        {tool.status === '已上线' ? '下架' : '上线'}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => handleDeleteTool(tool.id)}
-                        className="text-red-600 hover:text-red-900"
-                      >
-                        删除
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+              {loading
+                ? (
+                    <tr>
+                      <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
+                        <div className="flex items-center justify-center">
+                          <svg className="mr-2 h-4 w-4 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                          </svg>
+                          加载中...
+                        </div>
+                      </td>
+                    </tr>
+                  )
+                : error
+                  ? (
+                      <tr>
+                        <td colSpan={6} className="px-6 py-8 text-center text-red-500">
+                          加载失败:
+                          {' '}
+                          {error}
+                        </td>
+                      </tr>
+                    )
+                  : tools.length === 0
+                    ? (
+                        <tr>
+                          <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
+                            暂无工具数据
+                          </td>
+                        </tr>
+                      )
+                    : (
+                        tools.map(tool => (
+                          <tr key={tool.id} className="hover:bg-gray-50">
+                            <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
+                              {tool.id}
+                            </td>
+                            <td className="px-6 py-4 text-sm font-medium whitespace-nowrap text-gray-900">
+                              {tool.name}
+                            </td>
+                            <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-500">
+                              {tool.category}
+                            </td>
+                            <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-500">
+                              <div className="max-w-xs truncate" title={tool.url}>
+                                <a href={tool.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
+                                  {tool.url}
+                                </a>
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <span className={cn(
+                                'inline-flex px-2 py-1 text-xs font-semibold rounded-full',
+                                tool.isActive
+                                  ? 'bg-green-100 text-green-800'
+                                  : 'bg-red-100 text-red-800',
+                              )}
+                              >
+                                {tool.isActive ? '已上线' : '已下架'}
+                              </span>
+                            </td>
+                            <td className="px-6 py-4 text-sm font-medium whitespace-nowrap">
+                              <div className="flex space-x-2">
+                                <button
+                                  type="button"
+                                  onClick={() => handleEditTool(tool)}
+                                  className="text-blue-600 hover:text-blue-900"
+                                  disabled={loading}
+                                >
+                                  编辑
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => handleToggleStatus(tool.id)}
+                                  className={cn(
+                                    'text-sm',
+                                    tool.isActive ? 'text-red-600 hover:text-red-900' : 'text-green-600 hover:text-green-900',
+                                  )}
+                                  disabled={loading}
+                                >
+                                  {tool.isActive ? '下架' : '上线'}
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => handleDeleteTool(tool.id)}
+                                  className="text-red-600 hover:text-red-900"
+                                  disabled={loading}
+                                >
+                                  删除
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))
+                      )}
             </tbody>
           </table>
         </div>
@@ -319,11 +386,11 @@ const ToolsManagementPage: React.FC = () => {
         <div className="flex items-center justify-between">
           <div className="text-sm text-gray-700">
             显示 1-
-            {filteredTools.length}
+            {tools.length}
             {' '}
             条，共
             {' '}
-            {filteredTools.length}
+            {pagination?.total || tools.length}
             {' '}
             条
           </div>
@@ -340,49 +407,70 @@ const ToolsManagementPage: React.FC = () => {
       {/* 编辑工具模态框 */}
       {editingTool && (
         <div className="fixed inset-0 z-50 h-full w-full overflow-y-auto bg-gray-600/50">
-          <div className="relative top-20 mx-auto w-96 rounded-md border bg-white p-5 shadow-lg">
+          <div className="relative top-10 mx-auto w-full max-w-2xl rounded-md border bg-white p-6 shadow-lg">
             <div className="mt-3">
               <h3 className="mb-4 text-lg font-medium text-gray-900">编辑工具</h3>
-              <div className="space-y-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <Input
                   type="text"
-                  placeholder="工具名称"
+                  placeholder="工具名称 *"
                   value={editingTool.name}
                   onChange={e => setEditingTool({ ...editingTool, name: e.target.value })}
                 />
                 <select
-                  value={editingTool.category}
-                  onChange={e => setEditingTool({ ...editingTool, category: e.target.value })}
+                  value={editingTool.categoryId}
+                  onChange={e => setEditingTool({ ...editingTool, categoryId: e.target.value })}
                   className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 focus:outline-none"
                 >
-                  <option value="">选择分类</option>
-                  <option value="AI办公工具">AI办公工具</option>
-                  <option value="AI视频工具">AI视频工具</option>
-                  <option value="AI编程工具">AI编程工具</option>
-                  <option value="AI聊天助手">AI聊天助手</option>
-                  <option value="AI写作工具">AI写作工具</option>
+                  <option value="">选择分类 *</option>
+                  <option value="1">AI办公工具</option>
+                  <option value="2">AI视频工具</option>
+                  <option value="3">AI编程工具</option>
+                  <option value="4">AI聊天助手</option>
+                  <option value="5">AI写作工具</option>
+                  <option value="6">AI学习网站</option>
                 </select>
+                <div className="md:col-span-2">
+                  <Input
+                    type="url"
+                    placeholder="工具网址 *"
+                    value={editingTool.url}
+                    onChange={e => setEditingTool({ ...editingTool, url: e.target.value })}
+                  />
+                </div>
+                <div className="md:col-span-2">
+                  <textarea
+                    placeholder="工具描述"
+                    value={editingTool.description || ''}
+                    onChange={e => setEditingTool({ ...editingTool, description: e.target.value })}
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 focus:outline-none"
+                    rows={3}
+                  />
+                </div>
                 <Input
-                  type="url"
-                  placeholder="工具网址"
-                  value={editingTool.url}
-                  onChange={e => setEditingTool({ ...editingTool, url: e.target.value })}
+                  type="text"
+                  placeholder="开发者"
+                  value={editingTool.developer || ''}
+                  onChange={e => setEditingTool({ ...editingTool, developer: e.target.value })}
                 />
-                <select
-                  value={editingTool.status}
-                  onChange={e => setEditingTool({ ...editingTool, status: e.target.value })}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 focus:outline-none"
-                >
-                  <option value="审核中">审核中</option>
-                  <option value="已上线">已上线</option>
-                  <option value="已下架">已下架</option>
-                </select>
+                <Input
+                  type="text"
+                  placeholder="标签 (用逗号分隔)"
+                  value={(editingTool.tags || []).join(', ')}
+                  onChange={e => setEditingTool({
+                    ...editingTool,
+                    tags: e.target.value.split(',').map(tag => tag.trim()).filter(tag => tag),
+                  })}
+                />
               </div>
               <div className="mt-6 flex gap-2">
-                <Button onClick={handleSaveEdit}>保存</Button>
+                <Button onClick={handleSaveEdit} disabled={loading}>
+                  {loading ? '保存中...' : '保存'}
+                </Button>
                 <Button
                   variant="outline"
                   onClick={() => setEditingTool(null)}
+                  disabled={loading}
                 >
                   取消
                 </Button>

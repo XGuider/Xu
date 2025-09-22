@@ -10,26 +10,38 @@ import {
 let db: any;
 let sql: any;
 
-if (process.env.NODE_ENV === 'production' || process.env.USE_POSTGRES === 'true') {
-  // 生产环境使用 postgres
-  const { drizzle } = require('drizzle-orm/postgres-js');
-  const postgres = require('postgres');
-  const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:5432/xu_ai_navigation';
-  sql = postgres(connectionString);
-  db = drizzle(sql);
-} else {
-  const { PGlite } = require('@electric-sql/pglite');
-  // 开发环境使用 pglite
-  const { drizzle } = require('drizzle-orm/pglite');
-  sql = new PGlite('./local.db');
-  db = drizzle(sql);
-}
+const initializeDatabase = async () => {
+  if (process.env.NODE_ENV === 'production' || process.env.USE_POSTGRES === 'true') {
+    // 生产环境使用 postgres
+    const { drizzle } = await import('drizzle-orm/postgres-js');
+    const postgres = await import('postgres');
+    const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:5432/xu_ai_navigation';
+    sql = postgres.default(connectionString);
+    db = drizzle(sql);
+  } else {
+    const { PGlite } = await import('@electric-sql/pglite');
+    // 开发环境使用 pglite
+    const { drizzle } = await import('drizzle-orm/pglite');
+    sql = new PGlite('./local.db');
+    db = drizzle(sql);
+  }
+};
 
 // 测试数据
 const seedData = async () => {
+  await initializeDatabase();
   console.log('🌱 开始生成测试数据...');
 
   try {
+    // 0. 清空现有数据
+    console.log('🗑️ 清空现有数据...');
+    await db.delete(visitStatsSchema);
+    await db.delete(searchLogsSchema);
+    await db.delete(toolsSchema);
+    await db.delete(categoriesSchema);
+    await db.delete(usersSchema);
+    console.log('✅ 现有数据已清空');
+
     // 1. 创建分类数据
     console.log('📁 创建分类数据...');
     const categories = await db.insert(categoriesSchema).values([

@@ -84,11 +84,26 @@
   "HomePage": {
     "hero_title": "Xu AI导航平台",
     "hero_subtitle": "千万用户信赖的AI工具导航",
+    "hero_description": "发现最好的AI工具，包括AI办公、AI编程、AI视频、AI写作等各类智能工具，提升工作效率和创造力",
     "search_placeholder": "请输入您要搜索的AI产品",
+    "search_button": "搜索",
     "hot_searches": "热搜榜",
     "featured_tools": "热门推荐",
+    "featured_tools_subtitle": "精选最受欢迎的AI工具",
     "view_more": "查看更多",
-    "categories": "分类"
+    "categories": "分类",
+    "browse_by_category": "按分类浏览",
+    "browse_by_category_subtitle": "探索不同类别的AI工具",
+    "tools_count": "共 {count} 个工具",
+    "explore_now": "立即探索",
+    "carousel": {
+      "slide1_title": "AI工具导航平台",
+      "slide1_subtitle": "发现最好的AI工具",
+      "slide2_title": "最新AI工具推荐",
+      "slide2_subtitle": "探索前沿AI技术",
+      "slide3_title": "AI编程助手",
+      "slide3_subtitle": "提升开发效率"
+    }
   },
   "CategoryPage": {
     "tools_count": "{count} 个工具",
@@ -201,6 +216,91 @@
     "tablet": "平板",
     "views": "次浏览",
     "visitors": "访问者"
+  },
+  "SubmitPage": {
+    "meta_title": "提交AI工具",
+    "meta_description": "发现了一个优秀的AI工具？分享给更多用户，让更多人受益于AI技术的力量",
+    "page_title": "提交AI工具",
+    "page_subtitle": "发现了一个优秀的AI工具？分享给更多用户，让更多人受益于AI技术的力量",
+    "form": {
+      "tool_name": "工具名称",
+      "tool_url": "工具网址",
+      "description": "工具描述",
+      "category": "工具分类",
+      "developer": "开发者/公司",
+      "email": "联系邮箱",
+      "tags": "标签",
+      "required": "必填",
+      "tool_name_placeholder": "请输入AI工具的名称",
+      "tool_url_placeholder": "https://example.com",
+      "description_placeholder": "请详细描述这个AI工具的功能、特点和用途",
+      "category_placeholder": "请选择分类",
+      "developer_placeholder": "开发者或公司名称",
+      "email_placeholder": "your@email.com",
+      "tags_placeholder": "用逗号分隔多个标签，如：AI写作, 内容生成, 免费",
+      "tags_help": "标签有助于用户更好地发现您的工具",
+      "submit_button": "提交工具",
+      "submitting": "提交中...",
+      "success_title": "提交成功！",
+      "success_message": "感谢您的提交，我们会在24小时内审核并发布您的工具。",
+      "error_title": "提交失败",
+      "error_message": "提交过程中出现错误，请稍后重试或联系客服。"
+    },
+    "guidelines": {
+      "title": "提交指南",
+      "welcome_title": "✅ 我们欢迎",
+      "welcome_items": [
+        "功能完整、稳定可用的AI工具",
+        "有明确用途和价值的应用",
+        "提供准确、详细的描述信息",
+        "免费或付费的优质工具"
+      ],
+      "reject_title": "❌ 我们不接受",
+      "reject_items": [
+        "恶意软件或钓鱼网站",
+        "违反法律法规的内容",
+        "功能不完整或无法访问的工具",
+        "重复提交的工具"
+      ]
+    }
+  },
+  "Auth": {
+    "sign_in": {
+      "meta_title": "登录",
+      "meta_description": "登录您的账户，开始使用AI工具导航平台",
+      "page_title": "登录",
+      "page_subtitle": "欢迎回来！请登录您的账户",
+      "email": "邮箱地址",
+      "password": "密码",
+      "remember_me": "记住我",
+      "forgot_password": "忘记密码？",
+      "sign_in_button": "登录",
+      "no_account": "还没有账户？",
+      "sign_up_link": "立即注册",
+      "email_placeholder": "请输入您的邮箱地址",
+      "password_placeholder": "请输入您的密码"
+    },
+    "sign_up": {
+      "meta_title": "注册",
+      "meta_description": "创建新账户，加入AI工具导航平台",
+      "page_title": "注册",
+      "page_subtitle": "创建新账户，开始您的AI工具探索之旅",
+      "username": "用户名",
+      "email": "邮箱地址",
+      "password": "密码",
+      "confirm_password": "确认密码",
+      "agree_terms": "我同意",
+      "terms_link": "服务条款",
+      "and": "和",
+      "privacy_link": "隐私政策",
+      "sign_up_button": "注册",
+      "have_account": "已有账户？",
+      "sign_in_link": "立即登录",
+      "username_placeholder": "请输入用户名",
+      "email_placeholder": "请输入您的邮箱地址",
+      "password_placeholder": "请输入密码（至少8位）",
+      "confirm_password_placeholder": "请再次输入密码"
+    }
   },
   "Common": {
     "loading": "加载中...",

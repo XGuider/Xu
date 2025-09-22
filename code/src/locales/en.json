@@ -84,11 +84,26 @@
   "HomePage": {
     "hero_title": "AI Navigation Platform",
     "hero_subtitle": "Discover the best AI tools trusted by millions of users",
+    "hero_description": "Discover the best AI tools, including AI office, AI programming, AI video, AI writing and other intelligent tools to improve work efficiency and creativity",
     "search_placeholder": "Search for AI products",
+    "search_button": "Search",
     "hot_searches": "Hot Searches",
     "featured_tools": "Featured Tools",
+    "featured_tools_subtitle": "Handpicked most popular AI tools",
     "view_more": "View More",
-    "categories": "Categories"
+    "categories": "Categories",
+    "browse_by_category": "Browse by Category",
+    "browse_by_category_subtitle": "Explore AI tools by different categories",
+    "tools_count": "{count} tools",
+    "explore_now": "Explore Now",
+    "carousel": {
+      "slide1_title": "AI Tool Navigation Platform",
+      "slide1_subtitle": "Discover the best AI tools",
+      "slide2_title": "Latest AI Tool Recommendations",
+      "slide2_subtitle": "Explore cutting-edge AI technology",
+      "slide3_title": "AI Programming Assistant",
+      "slide3_subtitle": "Boost development efficiency"
+    }
   },
   "CategoryPage": {
     "tools_count": "{count} tools",
@@ -201,6 +216,91 @@
     "tablet": "Tablet",
     "views": "views",
     "visitors": "visitors"
+  },
+  "SubmitPage": {
+    "meta_title": "Submit AI Tool",
+    "meta_description": "Found an excellent AI tool? Share it with more users and let more people benefit from the power of AI technology",
+    "page_title": "Submit AI Tool",
+    "page_subtitle": "Found an excellent AI tool? Share it with more users and let more people benefit from the power of AI technology",
+    "form": {
+      "tool_name": "Tool Name",
+      "tool_url": "Tool URL",
+      "description": "Tool Description",
+      "category": "Tool Category",
+      "developer": "Developer/Company",
+      "email": "Contact Email",
+      "tags": "Tags",
+      "required": "Required",
+      "tool_name_placeholder": "Enter the name of the AI tool",
+      "tool_url_placeholder": "https://example.com",
+      "description_placeholder": "Please describe the functionality, features and uses of this AI tool in detail",
+      "category_placeholder": "Please select a category",
+      "developer_placeholder": "Developer or company name",
+      "email_placeholder": "your@email.com",
+      "tags_placeholder": "Separate multiple tags with commas, e.g.: AI Writing, Content Generation, Free",
+      "tags_help": "Tags help users discover your tool better",
+      "submit_button": "Submit Tool",
+      "submitting": "Submitting...",
+      "success_title": "Submission Successful!",
+      "success_message": "Thank you for your submission. We will review and publish your tool within 24 hours.",
+      "error_title": "Submission Failed",
+      "error_message": "An error occurred during submission. Please try again later or contact customer service."
+    },
+    "guidelines": {
+      "title": "Submission Guidelines",
+      "welcome_title": "✅ We Welcome",
+      "welcome_items": [
+        "Complete and stable AI tools",
+        "Applications with clear purpose and value",
+        "Accurate and detailed description information",
+        "Quality tools, both free and paid"
+      ],
+      "reject_title": "❌ We Don't Accept",
+      "reject_items": [
+        "Malware or phishing websites",
+        "Content that violates laws and regulations",
+        "Incomplete or inaccessible tools",
+        "Duplicate submissions"
+      ]
+    }
+  },
+  "Auth": {
+    "sign_in": {
+      "meta_title": "Sign In",
+      "meta_description": "Sign in to your account and start using the AI tool navigation platform",
+      "page_title": "Sign In",
+      "page_subtitle": "Welcome back! Please sign in to your account",
+      "email": "Email Address",
+      "password": "Password",
+      "remember_me": "Remember me",
+      "forgot_password": "Forgot password?",
+      "sign_in_button": "Sign In",
+      "no_account": "Don't have an account?",
+      "sign_up_link": "Sign up now",
+      "email_placeholder": "Enter your email address",
+      "password_placeholder": "Enter your password"
+    },
+    "sign_up": {
+      "meta_title": "Sign Up",
+      "meta_description": "Create a new account and join the AI tool navigation platform",
+      "page_title": "Sign Up",
+      "page_subtitle": "Create a new account and start your AI tool exploration journey",
+      "username": "Username",
+      "email": "Email Address",
+      "password": "Password",
+      "confirm_password": "Confirm Password",
+      "agree_terms": "I agree to the",
+      "terms_link": "Terms of Service",
+      "and": "and",
+      "privacy_link": "Privacy Policy",
+      "sign_up_button": "Sign Up",
+      "have_account": "Already have an account?",
+      "sign_in_link": "Sign in now",
+      "username_placeholder": "Enter username",
+      "email_placeholder": "Enter your email address",
+      "password_placeholder": "Enter password (at least 8 characters)",
+      "confirm_password_placeholder": "Enter password again"
+    }
   },
   "Common": {
     "loading": "Loading...",
