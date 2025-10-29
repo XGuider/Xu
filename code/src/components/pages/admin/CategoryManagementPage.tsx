@@ -125,13 +125,12 @@ const CategoryManagementPage: React.FC = () => {
 
   // 删除分类
   const handleDeleteCategory = async (categoryId: string) => {
-    if (confirm('确定要删除这个分类吗？')) {
-      const success = await deleteCategory(categoryId);
-      if (success) {
-        addNotification({ type: 'success', message: '分类删除成功' });
-      } else {
-        addNotification({ type: 'error', message: '分类删除失败' });
-      }
+    // 直接执行删除，由上层UI负责二次确认
+    const success = await deleteCategory(categoryId);
+    if (success) {
+      addNotification({ type: 'success', message: '分类删除成功' });
+    } else {
+      addNotification({ type: 'error', message: '分类删除失败' });
     }
   };
 
@@ -203,7 +202,7 @@ const CategoryManagementPage: React.FC = () => {
           <h3 className="mb-4 text-lg font-semibold">添加新分类</h3>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">分类名称 *</label>
+              <label htmlFor="newCategoryName" className="mb-2 block text-sm font-medium text-gray-700">分类名称 *</label>
               <Input
                 type="text"
                 placeholder="输入分类名称"
@@ -216,46 +215,51 @@ const CategoryManagementPage: React.FC = () => {
                     slug: newCategory.slug || generateSlug(name),
                   });
                 }}
+                id="newCategoryName"
                 required
               />
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">分类标识</label>
+              <label htmlFor="newCategorySlug" className="mb-2 block text-sm font-medium text-gray-700">分类标识</label>
               <Input
                 type="text"
                 placeholder="自动生成或手动输入"
                 value={newCategory.slug}
                 onChange={e => setNewCategory({ ...newCategory, slug: e.target.value })}
+                id="newCategorySlug"
               />
               <p className="mt-1 text-xs text-gray-500">用于URL路径，如：ai-office</p>
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">图标</label>
+              <label htmlFor="newCategoryIcon" className="mb-2 block text-sm font-medium text-gray-700">图标</label>
               <Input
                 type="text"
                 placeholder="输入图标名称"
                 value={newCategory.icon}
                 onChange={e => setNewCategory({ ...newCategory, icon: e.target.value })}
+                id="newCategoryIcon"
               />
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">排序</label>
+              <label htmlFor="newCategorySort" className="mb-2 block text-sm font-medium text-gray-700">排序</label>
               <Input
                 type="number"
                 value={categories.length + 1}
                 disabled
                 className="bg-gray-50"
+                id="newCategorySort"
               />
               <p className="mt-1 text-xs text-gray-500">自动设置为下一个排序值</p>
             </div>
             <div className="md:col-span-2">
-              <label className="mb-2 block text-sm font-medium text-gray-700">描述</label>
+              <label htmlFor="newCategoryDesc" className="mb-2 block text-sm font-medium text-gray-700">描述</label>
               <textarea
                 placeholder="输入分类描述"
                 value={newCategory.description}
                 onChange={e => setNewCategory({ ...newCategory, description: e.target.value })}
                 className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
                 rows={3}
+                id="newCategoryDesc"
               />
             </div>
           </div>

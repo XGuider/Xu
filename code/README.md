@@ -6,6 +6,15 @@
 
 Xu AI导航平台是一个专业的AI工具聚合平台，旨在为用户提供最全面、最便捷的AI工具发现和使用体验。平台采用现代化的技术栈，支持多语言、响应式设计，并提供完整的管理后台功能。
 
+### 🏗️ 架构特点
+- **现代前端**: Next.js 15 App Router + React 19 + TypeScript 5.8+
+- **数据库**: DrizzleORM + PostgreSQL/PGlite 双模式支持
+- **认证系统**: Clerk 集成，支持多语言本地化和多种登录方式
+- **安全防护**: Arcjet 集成，提供速率限制和机器人检测
+- **监控分析**: Sentry + PostHog 完整的错误监控和用户行为分析
+- **国际化**: next-intl 支持中英文法三语切换
+- **开发体验**: 完整的 TypeScript 支持、ESLint + Prettier、自动化测试
+
 ### 🎯 核心价值
 - **工具发现**: 帮助用户快速发现适合的AI工具
 - **分类导航**: 按功能分类组织AI工具，便于浏览
@@ -40,17 +49,21 @@ Xu AI导航平台是一个专业的AI工具聚合平台，旨在为用户提供�
 - **图标**: Lucide React + 自定义SVG
 
 ### 后端技术
-- **API**: Next.js API Routes
-- **数据库**: DrizzleORM + PostgreSQL/PGlite
-- **认证**: Clerk (支持多种登录方式)
-- **安全**: Arcjet (速率限制、机器人检测)
-- **监控**: Sentry (错误监控) + PostHog (用户分析)
+- **API**: Next.js API Routes + 中间件支持
+- **数据库**: DrizzleORM + PostgreSQL/PGlite 双模式 (内存/文件)
+- **认证**: Clerk (多语言本地化 + 多种登录方式)
+- **安全**: Arcjet (速率限制、机器人检测、表单保护)
+- **监控**: Sentry (错误监控) + PostHog (用户行为分析)
+- **国际化**: next-intl (支持en/zh/fr三语)
+- **数据验证**: Zod (运行时类型验证)
 
 ### 开发工具
-- **代码质量**: ESLint + Prettier + TypeScript
-- **测试**: Vitest + Playwright (E2E测试)
-- **构建**: Next.js 15 + Turbopack
-- **部署**: Vercel (推荐) / Docker
+- **代码质量**: ESLint + Prettier + TypeScript (严格模式)
+- **测试**: Vitest + Playwright (E2E测试) + Storybook (组件测试)
+- **构建**: Next.js 15 + Turbopack (极速构建)
+- **部署**: Vercel (推荐) / Docker / 其他云平台
+- **Git工作流**: Conventional Commits + 语义化版本发布
+- **代码检查**: Knip (依赖检查) + i18n-check (国际化检查)
 
 ## 📁 项目结构
 
@@ -213,6 +226,25 @@ src/
 - **统一响应格式**: 标准化的JSON响应结构
 - **参数验证**: 使用Zod进行输入验证
 - **错误处理**: 统一的错误处理机制
+- **安全防护**: Arcjet中间件集成，防止恶意请求
+- **类型安全**: 完整的TypeScript类型定义
+
+### 状态管理架构
+
+#### 1. 全局状态管理
+- **CategoryContext**: 管理分类数据和当前选中分类
+- **SidebarContext**: 管理侧边栏开关状态
+- **NotificationContext**: 管理全局通知消息
+
+#### 2. 服务端状态管理
+- **Next.js Server Components**: 默认使用服务端组件
+- **API Routes**: 提供RESTful数据接口
+- **数据获取**: 使用原生fetch，支持缓存和重新验证
+
+#### 3. 客户端状态管理
+- **React Hooks**: useState, useReducer 管理组件状态
+- **自定义Hooks**: useTools, useCategories 封装业务逻辑
+- **URL状态**: 搜索参数、分页等通过URL管理
 
 ### 核心组件说明
 
@@ -243,11 +275,20 @@ src/
 ### 数据库设计
 
 #### 核心表结构
-1. **users**: 用户表，存储用户基本信息
-2. **categories**: 分类表，存储工具分类信息
-3. **tools**: 工具表，存储AI工具详细信息
+1. **users**: 用户表，存储用户基本信息 (用户名、邮箱、角色、状态)
+2. **categories**: 分类表，存储工具分类信息 (名称、slug、描述、图标、排序)
+3. **tools**: 工具表，存储AI工具详细信息 (名称、描述、URL、分类、评分、标签等)
 4. **search_logs**: 搜索记录表，用于分析用户搜索行为
-5. **visit_stats**: 访问统计表，用于数据分析
+5. **visit_stats**: 访问统计表，用于数据分析 (页面浏览量、独立访客等)
+6. **counter**: 计数器表，保留原有功能
+
+#### 数据模型关系
+```
+users (1:N) → search_logs (搜索记录)
+users (1:N) → visit_stats (访问统计)
+categories (1:N) → tools (工具分类)
+tools (N:1) → categories (所属分类)
+```
 
 #### 索引优化
 - 为常用查询字段建立索引
@@ -317,35 +358,41 @@ npm run build
 npm start
 ```
 
-### 开发命令
+### 开发命令详解
 
 ```bash
-# 开发服务器 (带热重载)
-npm run dev
-
-# 构建应用
-npm run build
-
-# 启动生产服务器
-npm start
-
-# 代码检查
-npm run lint
-
-# 自动修复代码问题
-npm run lint:fix
-
-# 类型检查
-npm run check:types
-
-# 运行测试
-npm run test
-
-# E2E测试
-npm run test:e2e
+# 开发环境 (包含数据库和Spotlight调试)
+npm run dev              # 启动开发服务器 (包含数据库和调试工具)
+npm run dev:next         # 仅启动Next.js开发服务器
+npm run dev:spotlight    # 启动Spotlight调试工具
 
 # 数据库管理
-npm run db:studio
+npm run db-server:file   # 启动文件数据库 (开发环境)
+npm run db-server:memory # 启动内存数据库 (测试环境)
+npm run db:generate      # 生成数据库迁移文件
+npm run db:migrate       # 执行数据库迁移
+npm run db:studio        # 打开Drizzle Studio数据库管理界面
+npm run db:seed          # 填充示例数据
+
+# 代码质量检查
+npm run lint             # 运行ESLint代码检查
+npm run lint:fix         # 自动修复ESLint问题
+npm run check:types      # TypeScript类型检查
+npm run check:deps       # 检查未使用的依赖
+npm run check:i18n       # 国际化完整性检查
+
+# 测试
+npm run test             # 运行单元测试 (Vitest)
+npm run test:e2e         # 运行端到端测试 (Playwright)
+npm run storybook        # 启动Storybook组件测试
+npm run storybook:test   # 运行Storybook测试
+
+# 构建和部署
+npm run build            # 构建生产版本 (包含数据库)
+npm run build:next       # 仅构建Next.js应用
+npm run build-stats      # 构建并生成包分析报告
+npm start                # 启动生产服务器
+npm run clean            # 清理构建文件
 ```
 
 ## 📱 响应式设计
@@ -374,7 +421,7 @@ npm run db:studio
 ### 组件开发指南
 
 #### 1. 创建新组件
-```typescript
+```text
 // 组件文件结构
 src/components/
 ├── ui/           # 基础UI组件
@@ -498,27 +545,66 @@ npm run db:migrate
 
 创建 `.env.local` 文件并配置以下环境变量：
 
+#### 必需环境变量
 ```bash
-# 数据库配置
+# 数据库配置 (PostgreSQL)
 DATABASE_URL="postgresql://username:password@localhost:5432/xu_ai_navigation"
 
 # Clerk 认证配置
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="your_clerk_publishable_key"
 CLERK_SECRET_KEY="your_clerk_secret_key"
 
-# Arcjet 安全配置
+# Arcjet 安全配置 (必需)
 ARCJET_KEY="your_arcjet_key"
 
-# PostHog 分析配置
+# PostHog 分析配置 (可选)
 NEXT_PUBLIC_POSTHOG_KEY="your_posthog_key"
 NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"
 
-# Sentry 监控配置
+# Sentry 监控配置 (可选)
 SENTRY_DSN="your_sentry_dsn"
 
-# 应用配置
+# 应用基础配置
 NEXT_PUBLIC_APP_URL="http://localhost:3000"
 NODE_ENV="development"
+```
+
+#### 开发环境变量
+```bash
+# 开发数据库 (PGlite文件模式)
+# 如果使用PGlite，可以省略DATABASE_URL或设置为内存模式
+
+# Clerk开发环境密钥
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_test_..."
+CLERK_SECRET_KEY="sk_test_..."
+
+# Arcjet开发密钥
+ARCJET_KEY="ajkey_..."
+
+# 本地开发配置
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+NODE_ENV="development"
+```
+
+#### 生产环境变量
+```bash
+# PostgreSQL数据库 (推荐Vercel Postgres或Supabase)
+DATABASE_URL="postgresql://..."
+
+# Clerk生产环境
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_live_..."
+CLERK_SECRET_KEY="sk_live_..."
+
+# Arcjet生产密钥
+ARCJET_KEY="ajkey_..."
+
+# 分析工具 (生产环境推荐)
+NEXT_PUBLIC_POSTHOG_KEY="phc_..."
+SENTRY_DSN="https://..."
+
+# 生产域名
+NEXT_PUBLIC_APP_URL="https://your-domain.com"
+NODE_ENV="production"
 ```
 
 ### 部署到 Vercel
@@ -605,20 +691,117 @@ npm run db:migrate
 npm run db:studio
 ```
 
+## 🔧 故障排除
+
+### 常见问题解决
+
+#### 1. 数据库连接问题
+```bash
+# 问题：数据库连接失败
+# 解决：确保数据库服务正在运行
+npm run db-server:file  # 启动文件数据库
+
+# 问题：数据库迁移失败
+# 解决：重新生成迁移文件
+npm run db:generate
+npm run db:migrate
+```
+
+#### 2. 环境变量配置问题
+```bash
+# 问题：Clerk认证无法工作
+# 解决：检查环境变量是否正确设置
+echo $NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+echo $CLERK_SECRET_KEY
+
+# 问题：Arcjet安全验证失败
+# 解决：确保Arcjet密钥已配置
+echo $ARCJET_KEY
+```
+
+#### 3. 构建和部署问题
+```bash
+# 问题：构建失败
+# 解决：清理缓存并重新构建
+npm run clean
+npm run build
+
+# 问题：类型检查失败
+# 解决：运行类型检查并修复错误
+npm run check:types
+```
+
+#### 4. 国际化问题
+```bash
+# 问题：翻译缺失
+# 解决：检查国际化文件完整性
+npm run check:i18n
+
+# 问题：语言切换不生效
+# 解决：检查next-intl配置和中间件设置
+```
+
+#### 5. 性能优化建议
+```bash
+# 问题：开发服务器响应慢
+# 解决：使用Turbopack加速
+npm run dev:next
+
+# 问题：构建产物过大
+# 解决：分析包大小并优化
+npm run build-stats
+```
+
+### 开发环境调试
+
+#### 1. Spotlight调试工具
+```bash
+# 启动Spotlight调试工具
+npm run dev:spotlight
+
+# 在浏览器中访问 http://localhost:3000
+# Spotlight会自动捕获和分析应用数据
+```
+
+#### 2. 数据库调试
+```bash
+# 打开Drizzle Studio
+npm run db:studio
+
+# 查看数据库结构和数据
+# 执行SQL查询和数据分析
+```
+
+#### 3. 日志和监控
+```bash
+# 查看Sentry错误监控
+# 登录Sentry控制台查看错误详情
+
+# 查看PostHog用户分析
+# 登录PostHog控制台查看用户行为
+```
+
 ## 📊 代码质量报告
 
 ### 当前状态
 - ✅ **TypeScript**: 严格类型检查，无类型错误
-- ✅ **ESLint**: 代码规范检查，已修复大部分问题
+- ✅ **ESLint**: 代码规范检查，遵循Antfu配置
 - ✅ **Prettier**: 代码格式化，保持一致的代码风格
 - ✅ **组件结构**: 模块化设计，组件职责清晰
 - ✅ **API设计**: RESTful风格，统一的响应格式
+- ✅ **安全**: Arcjet集成，提供完整的安全防护
+- ✅ **国际化**: 支持en/zh/fr三语，完整的本地化
+- ✅ **数据库**: DrizzleORM + PostgreSQL，完整的类型安全
+- ✅ **测试**: Vitest + Playwright + Storybook，全面的测试覆盖
 
 ### 代码统计
-- **总文件数**: 50+ 个源文件
+- **总文件数**: 70+ 个源文件
 - **TypeScript覆盖率**: 100%
 - **组件复用率**: 高 (UI组件库化)
 - **测试覆盖率**: 基础测试框架已配置
+- **国际化覆盖率**: 三语完整支持 (en/zh/fr)
+- **数据库表**: 6个核心表，完整的索引优化
+- **API端点**: 10+ 个RESTful API接口
 
 ### 性能优化
 - **Next.js 15**: 使用最新的App Router和Turbopack

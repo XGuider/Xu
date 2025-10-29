@@ -281,8 +281,8 @@ const SubmitPage: React.FC = () => {
             <div>
               <h3 className="mb-2 text-lg font-semibold text-gray-900">{t('guidelines.welcome_title')}</h3>
               <ul className="space-y-2 text-gray-700">
-                {t.raw('guidelines.welcome_items').map((item: string, index: number) => (
-                  <li key={index}>
+                {t.raw('guidelines.welcome_items').map((item: string) => (
+                  <li key={item}>
                     •
                     {item}
                   </li>
@@ -292,8 +292,8 @@ const SubmitPage: React.FC = () => {
             <div>
               <h3 className="mb-2 text-lg font-semibold text-gray-900">{t('guidelines.reject_title')}</h3>
               <ul className="space-y-2 text-gray-700">
-                {t.raw('guidelines.reject_items').map((item: string, index: number) => (
-                  <li key={index}>
+                {t.raw('guidelines.reject_items').map((item: string) => (
+                  <li key={item}>
                     •
                     {item}
                   </li>

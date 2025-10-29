@@ -103,13 +103,12 @@ const ToolsManagementPage: React.FC = () => {
 
   // 删除工具
   const handleDeleteTool = async (toolId: string) => {
-    if (confirm('确定要删除这个工具吗？')) {
-      const success = await deleteTool(toolId);
-      if (success) {
-        addNotification({ type: 'success', message: '工具删除成功' });
-      } else {
-        addNotification({ type: 'error', message: '工具删除失败' });
-      }
+    // 直接执行删除，由上层UI负责二次确认
+    const success = await deleteTool(toolId);
+    if (success) {
+      addNotification({ type: 'success', message: '工具删除成功' });
+    } else {
+      addNotification({ type: 'error', message: '工具删除失败' });
     }
   };
 

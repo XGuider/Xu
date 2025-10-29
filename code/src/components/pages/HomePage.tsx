@@ -12,6 +12,7 @@ import Input from '@/components/ui/Input';
 import Loading from '@/components/ui/Loading';
 import { useCategoryContext } from '@/contexts/CategoryContext';
 import { useSidebarContext } from '@/contexts/SidebarContext';
+import { useTools } from '@/hooks/useTools';
 import { cn } from '@/utils/cn';
 
 // 默认分类数据（用于工具数据中的引用）
@@ -66,157 +67,7 @@ const defaultCategories: Category[] = [
   },
 ];
 
-// 工具数据
-const allTools: Tool[] = [
-  // AI办公工具
-  {
-    id: '1',
-    name: 'WPS AI',
-    description: '智能文档处理，支持自动生成、摘要和翻译',
-    url: 'https://ai.wps.cn',
-    categoryId: '1',
-    category: defaultCategories[0]!,
-    rating: 4.8,
-    ratingCount: 1256,
-    isActive: true,
-    isFeatured: true,
-    tags: ['办公', '文档', 'AI助手'],
-    developer: '金山办公',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: '2',
-    name: 'Excel AI助手',
-    description: '智能数据分析与公式生成，提升表格处理效率',
-    url: 'https://excel.ai',
-    categoryId: '1',
-    category: defaultCategories[0]!,
-    rating: 4.6,
-    ratingCount: 892,
-    isActive: true,
-    isFeatured: false,
-    tags: ['办公', '表格', '数据分析'],
-    developer: 'Microsoft',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: '3',
-    name: '智能日程助手',
-    description: '自动安排会议，智能提醒，优化时间管理',
-    url: 'https://calendar.ai',
-    categoryId: '1',
-    category: defaultCategories[0]!,
-    rating: 4.5,
-    ratingCount: 654,
-    isActive: true,
-    isFeatured: false,
-    tags: ['办公', '日程', '时间管理'],
-    developer: 'Google',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  // AI视频工具
-  {
-    id: '4',
-    name: 'Runway ML',
-    description: 'AI视频编辑和生成平台，支持文本转视频',
-    url: 'https://runwayml.com',
-    categoryId: '2',
-    category: defaultCategories[1]!,
-    rating: 4.7,
-    ratingCount: 2341,
-    isActive: true,
-    isFeatured: true,
-    tags: ['视频', 'AI生成', '编辑'],
-    developer: 'Runway',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: '5',
-    name: 'Luma AI',
-    description: '3D视频生成和编辑工具',
-    url: 'https://lumalabs.ai',
-    categoryId: '2',
-    category: defaultCategories[1]!,
-    rating: 4.4,
-    ratingCount: 1234,
-    isActive: true,
-    isFeatured: false,
-    tags: ['视频', '3D', '生成'],
-    developer: 'Luma Labs',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  // AI编程工具
-  {
-    id: '6',
-    name: 'GitHub Copilot',
-    description: 'AI代码助手，智能代码补全和建议',
-    url: 'https://github.com/features/copilot',
-    categoryId: '3',
-    category: defaultCategories[2]!,
-    rating: 4.9,
-    ratingCount: 5678,
-    isActive: true,
-    isFeatured: true,
-    tags: ['编程', '代码助手', 'AI'],
-    developer: 'GitHub',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: '7',
-    name: 'Cursor',
-    description: 'AI驱动的代码编辑器',
-    url: 'https://cursor.sh',
-    categoryId: '3',
-    category: defaultCategories[2]!,
-    rating: 4.6,
-    ratingCount: 3456,
-    isActive: true,
-    isFeatured: false,
-    tags: ['编程', '编辑器', 'AI'],
-    developer: 'Cursor',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  // AI聊天助手
-  {
-    id: '8',
-    name: 'ChatGPT',
-    description: 'OpenAI的智能对话助手',
-    url: 'https://chat.openai.com',
-    categoryId: '4',
-    category: defaultCategories[3]!,
-    rating: 4.8,
-    ratingCount: 9876,
-    isActive: true,
-    isFeatured: true,
-    tags: ['聊天', '对话', 'AI助手'],
-    developer: 'OpenAI',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: '9',
-    name: 'Claude',
-    description: 'Anthropic的AI助手，擅长分析和写作',
-    url: 'https://claude.ai',
-    categoryId: '4',
-    category: defaultCategories[3]!,
-    rating: 4.7,
-    ratingCount: 5432,
-    isActive: true,
-    isFeatured: false,
-    tags: ['聊天', '分析', '写作'],
-    developer: 'Anthropic',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-];
+// 移除硬编码的工具数据，改为使用API获取
 
 const HomePage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -227,7 +78,16 @@ const HomePage: React.FC = () => {
     categories,
     isLoading,
   } = useCategoryContext();
+
+  // 确保 categories 始终是数组，防止运行时错误
+  const safeCategories = Array.isArray(categories) ? categories : [];
   const { isSidebarOpen } = useSidebarContext();
+
+  // 获取工具数据
+  const { tools: allTools, loading: toolsLoading } = useTools({
+    status: 'active',
+    limit: 100, // 获取更多工具用于展示
+  });
 
   // 模拟轮播图数据
   const carouselSlides = [
@@ -614,7 +474,7 @@ const HomePage: React.FC = () => {
               </p>
             </div>
 
-            {isLoading
+            {isLoading || toolsLoading
               ? (
                   <div className="space-y-12">
                     {[1, 2, 3, 4].map(i => (
@@ -640,7 +500,7 @@ const HomePage: React.FC = () => {
                 )
               : (
                   <div className="space-y-12">
-                    {categories.map((category) => {
+                    {safeCategories.map((category) => {
                       const categoryTools = allTools.filter(tool => tool.categoryId === category.id);
                       const displayTools = categoryTools.slice(0, 4);
 

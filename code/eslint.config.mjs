@@ -38,6 +38,7 @@ export default antfu(
   {
     settings: {
       tailwindcss: {
+        // 还原为原始设置，避免 TS Config 导致的解析问题
         config: `${dirname(fileURLToPath(import.meta.url))}/src/styles/global.css`,
       },
     },

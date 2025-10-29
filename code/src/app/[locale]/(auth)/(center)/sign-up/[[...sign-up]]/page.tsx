@@ -116,9 +116,6 @@ export default async function Page(props: {
                   formFieldInputGroupInputShowPasswordButton: 'text-gray-400 hover:text-gray-600',
                   formFieldInputGroupInputShowPasswordIcon: 'text-gray-400',
                   formFieldInputGroupInputHidePasswordIcon: 'text-gray-400',
-                  formFieldInputGroupInputShowPasswordButton: 'text-gray-400 hover:text-gray-600',
-                  formFieldInputGroupInputShowPasswordIcon: 'text-gray-400',
-                  formFieldInputGroupInputHidePasswordIcon: 'text-gray-400',
                 },
               }}
               redirectUrl="/dashboard"
@@ -128,12 +125,11 @@ export default async function Page(props: {
 
           {/* 底部链接 */}
           <div className="mt-6 text-center">
+            <p className="text-sm text-gray-600">已有账户？</p>
             <p className="text-sm text-gray-600">
-              已有账户？
-              {' '}
-              <a href="/sign-in" className="font-medium text-indigo-600 transition-colors duration-200 hover:text-indigo-500">
+              <Link href="/sign-in" className="font-medium text-indigo-600 transition-colors duration-200 hover:text-indigo-500">
                 立即登录
-              </a>
+              </Link>
             </p>
           </div>
         </div>

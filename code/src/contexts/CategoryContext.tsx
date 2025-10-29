@@ -1,7 +1,7 @@
 'use client';
 
 import type { Category } from '@/types';
-import React, { createContext, use, useEffect, useMemo, useState } from 'react';
+import React, { createContext, use, useCallback, useEffect, useMemo, useState } from 'react';
 
 type CategoryContextType = {
   activeCategory: string | null;
@@ -51,7 +51,13 @@ export const CategoryProvider: React.FC<CategoryProviderProps> = ({ children }) 
         setIsLoading(true);
         const response = await fetch('/api/categories');
         if (response.ok) {
-          const categoriesData = await response.json();
+          const result = await response.json();
+          // 检查API响应结构，提取data字段
+          const categoriesData = result.success && Array.isArray(result.data) 
+            ? result.data 
+            : Array.isArray(result) 
+              ? result 
+              : [];
           setCategories(categoriesData);
         } else {
           throw new Error('Failed to fetch categories');

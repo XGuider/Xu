@@ -35,11 +35,9 @@ export default async function TestPage(props: TestPageProps) {
                 try {
                   const response = await fetch('/api/tools');
                   const data = await response.json();
-                  console.log('Tools API:', data);
-                  alert('工具API连接成功！');
+                  console.warn('Tools API:', data);
                 } catch (error) {
                   console.error('Tools API Error:', error);
-                  alert('工具API连接失败！');
                 }
               }}
               className="w-full rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
@@ -52,11 +50,9 @@ export default async function TestPage(props: TestPageProps) {
                 try {
                   const response = await fetch('/api/categories');
                   const data = await response.json();
-                  console.log('Categories API:', data);
-                  alert('分类API连接成功！');
+                  console.warn('Categories API:', data);
                 } catch (error) {
                   console.error('Categories API Error:', error);
-                  alert('分类API连接失败！');
                 }
               }}
               className="w-full rounded bg-green-600 px-4 py-2 text-white hover:bg-green-700"
@@ -76,11 +72,9 @@ export default async function TestPage(props: TestPageProps) {
                 try {
                   const response = await fetch('/api/counter');
                   const data = await response.json();
-                  console.log('Counter API:', data);
-                  alert('数据库连接成功！');
+                  console.warn('Counter API:', data);
                 } catch (error) {
                   console.error('Database Error:', error);
-                  alert('数据库连接失败！');
                 }
               }}
               className="w-full rounded bg-purple-600 px-4 py-2 text-white hover:bg-purple-700"
@@ -96,10 +90,7 @@ export default async function TestPage(props: TestPageProps) {
           <div className="space-y-2">
             <button
               type="button"
-              onClick={() => {
-                // 这个需要在客户端组件中测试
-                alert('请在管理后台页面测试通知功能');
-              }}
+              onClick={() => { /* 通知功能请在客户端组件中测试 */ }}
               className="w-full rounded bg-yellow-600 px-4 py-2 text-white hover:bg-yellow-700"
             >
               测试通知系统

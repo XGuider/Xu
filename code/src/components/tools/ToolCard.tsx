@@ -1,8 +1,6 @@
 'use client';
 
 import type { Tool } from '@/types';
-import Image from 'next/image';
-
 import React, { useState } from 'react';
 import { cn } from '@/utils/cn';
 
@@ -39,25 +37,11 @@ const ToolCard: React.FC<ToolCardProps> = ({
       role="button"
       tabIndex={0}
     >
-      {/* 图标区域 - 类似图片 */}
+      {/* Logo区域 - 显示工具名称首字母 */}
       <div className="flex aspect-square items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100">
-        {tool.icon
-          ? (
-              <Image
-                src={tool.icon}
-                alt={tool.name}
-                width={64}
-                height={64}
-                className="h-16 w-16 object-contain transition-transform duration-300 group-hover:scale-110"
-              />
-            )
-          : (
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600">
-                <svg className="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-            )}
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600 text-white font-bold text-xl transition-transform duration-300 group-hover:scale-110">
+          {tool.name.charAt(0).toUpperCase()}
+        </div>
       </div>
 
       {/* 内容区域 */}
