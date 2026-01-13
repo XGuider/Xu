@@ -201,7 +201,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ category, tools }) => {
         {currentTools.length > 0
           ? (
               <>
-                <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+                <div className="mb-8 grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-5">
                   {currentTools.map(tool => (
                     <ToolCard
                       key={tool.id}

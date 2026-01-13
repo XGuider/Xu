@@ -13,9 +13,8 @@ const baseConfig: NextConfig = {
   },
   poweredByHeader: false,
   reactStrictMode: true,
-  outputFileTracingIncludes: {
-    '/': ['./migrations/**/*'],
-  },
+  // 禁用Next.js遥测
+  telemetry: false,
 };
 
 // Initialize the Next-Intl plugin

@@ -1,0 +1,71 @@
+[
+  {
+    "id": 1,
+    "name": "WPS AI",
+    "description": "智能办公助手，提供文档编辑、表格处理、演示文稿等功能",
+    "url": "https://www.wps.cn",
+    "categoryId": 1,
+    "rating": 4.5,
+    "ratingCount": 100,
+    "isActive": true,
+    "isFeatured": true,
+    "tags": [
+      "办公",
+      "AI",
+      "文档"
+    ],
+    "developer": "金山办公",
+    "logo": "/assets/images/logo.png",
+    "pricing": "免费"
+  },
+  {
+    "id": 2,
+    "name": "DeepSeek",
+    "description": "强大的AI编程助手，支持代码生成、调试和优化",
+    "url": "https://www.deepseek.com",
+    "categoryId": 3,
+    "rating": 4.8,
+    "ratingCount": 500,
+    "isActive": true,
+    "isFeatured": true,
+    "tags": [
+      "编程",
+      "AI",
+      "代码生成"
+    ],
+    "developer": "DeepSeek",
+    "logo": "/assets/images/logo.png",
+    "pricing": "免费"
+  },
+  {
+    "id": 3,
+    "name": "腾讯元宝",
+    "description": "腾讯推出的AI对话助手，支持多种场景应用",
+    "url": "https://yuanbao.tencent.com",
+    "categoryId": 4,
+    "rating": 4.6,
+    "ratingCount": 300,
+    "isActive": true,
+    "isFeatured": true,
+    "tags": [
+      "聊天",
+      "AI",
+      "对话"
+    ],
+    "developer": "腾讯",
+    "logo": "/assets/images/logo.png",
+    "pricing": "免费"
+  },
+  {
+    "id": 4,
+    "name": "李白",
+    "description": "ssss",
+    "url": "https://baidu.com",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": []
+  }
+]

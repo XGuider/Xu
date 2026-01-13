@@ -1,6 +1,6 @@
 'use client';
 
-import type { Category, Tool } from '@/types';
+import type { Tool } from '@/types';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -14,60 +14,6 @@ import { useCategoryContext } from '@/contexts/CategoryContext';
 import { useSidebarContext } from '@/contexts/SidebarContext';
 import { useTools } from '@/hooks/useTools';
 import { cn } from '@/utils/cn';
-
-// 默认分类数据（用于工具数据中的引用）
-const defaultCategories: Category[] = [
-  {
-    id: '1',
-    name: 'AI办公工具',
-    slug: 'ai-office',
-    description: '提升办公效率的AI工具',
-    icon: 'ai-office',
-    sort: 1,
-    isActive: true,
-    toolCount: 32,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: '2',
-    name: 'AI视频工具',
-    slug: 'ai-video',
-    description: 'AI驱动的视频创作工具',
-    icon: 'ai-video',
-    sort: 2,
-    isActive: true,
-    toolCount: 24,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: '3',
-    name: 'AI编程工具',
-    slug: 'ai-coding',
-    description: '智能代码助手和开发工具',
-    icon: 'ai-coding',
-    sort: 3,
-    isActive: true,
-    toolCount: 18,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: '4',
-    name: 'AI聊天助手',
-    slug: 'ai-chat',
-    description: '智能对话和问答工具',
-    icon: 'ai-chat',
-    sort: 4,
-    isActive: true,
-    toolCount: 45,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-];
-
-// 移除硬编码的工具数据，改为使用API获取
 
 const HomePage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -450,7 +396,7 @@ const HomePage: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-5">
               {featuredTools.map((tool) => {
                 return (
                   <ToolCard
@@ -544,7 +490,7 @@ const HomePage: React.FC = () => {
                           </div>
 
                           {/* 工具网格 */}
-                          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+                          <div className="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-5">
                             {displayTools.map(tool => (
                               <ToolCard
                                 key={tool.id}

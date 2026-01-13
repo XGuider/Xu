@@ -25,13 +25,6 @@ const sentryOptions: Sentry.NodeOptions | Sentry.EdgeOptions = {
 };
 
 export async function register() {
-  if (process.env.NEXT_RUNTIME === 'nodejs') {
-    // Run DB migrations only when explicitly enabled
-    if (process.env.RUN_DB_MIGRATIONS === 'true') {
-      await import('./utils/DBMigration');
-    }
-  }
-
   if (!process.env.NEXT_PUBLIC_SENTRY_DISABLED) {
     if (process.env.NEXT_RUNTIME === 'nodejs') {
       // Node.js Sentry configuration

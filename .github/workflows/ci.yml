@@ -1,0 +1,141 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  lint-and-type-check:
+    name: Lint and Type Check
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./code
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: ./code/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run check:types
+
+      - name: Check dependencies
+        run: npm run check:deps
+        continue-on-error: true
+
+      - name: Check i18n
+        run: npm run check:i18n
+        continue-on-error: true
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./code
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: ./code/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm run test
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./code
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: ./code/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build:next
+        env:
+          NODE_ENV: production
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: code/.next
+          retention-days: 1
+
+  e2e-test:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./code
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: ./code/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Build application
+        run: npm run build:next
+
+      - name: Run E2E tests
+        run: npm run test:e2e
+        env:
+          NODE_ENV: test
+

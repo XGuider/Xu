@@ -7,9 +7,8 @@ import { usePathname } from '@/libs/I18nNavigation';
 import { routing } from '@/libs/I18nRouting';
 
 const languageNames: Record<string, string> = {
-  en: 'English',
   zh: '中文',
-  fr: 'Français',
+  en: 'English',
 };
 
 export const LocaleSwitcher = () => {

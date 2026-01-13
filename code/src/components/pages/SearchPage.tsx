@@ -290,7 +290,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ query: initialQuery, category: 
             {/* 搜索结果列表 */}
             {searchResults.length > 0
               ? (
-                  <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+                  <div className="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-5">
                     {searchResults.map(tool => (
                       <ToolCard
                         key={tool.id}

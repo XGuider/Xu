@@ -1,37 +1,19 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { z } from 'zod';
-import {
-  createCategory,
-  deleteCategory,
-  getActiveCategories,
-  getAllCategories,
-  updateCategory,
-} from '@/services/categoryService';
-
-// 分类验证模式
-const CategorySchema = z.object({
-  name: z.string().min(1, '分类名称不能为空'),
-  slug: z.string().min(1, '分类标识不能为空'),
-  description: z.string().optional(),
-  icon: z.string().optional(),
-  sort: z.number().int().min(0).default(0),
-  isActive: z.boolean().default(true),
-});
+import { createCategory, getCategories, updateCategory } from '@/services/fileDataService';
+import { createCategorySchema, updateCategorySchema } from '@/validations/categoryValidation';
 
 // GET - 获取分类列表
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
-    const { searchParams } = new URL(request.url);
-    const includeInactive = searchParams.get('includeInactive') === 'true';
+    const categories = await getCategories();
 
-    const categories = includeInactive
-      ? await getAllCategories()
-      : await getActiveCategories();
+    // 只返回活跃的分类
+    const activeCategories = categories.filter(cat => cat.isActive);
 
     return NextResponse.json({
       success: true,
-      data: categories,
+      data: activeCategories,
     });
   } catch (error) {
     console.error('获取分类数据失败:', error);
@@ -51,32 +33,38 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    // 验证输入数据
-    const validatedData = CategorySchema.parse(body);
+    // 验证请求数据
+    const validationResult = createCategorySchema.safeParse(body);
+    if (!validationResult.success) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: '数据验证失败',
+          message: '请检查输入数据',
+          details: validationResult.error.issues.map(err => ({
+            field: err.path.join('.'),
+            message: err.message,
+          })),
+        },
+        { status: 400 },
+      );
+    }
 
     // 创建分类
-    const newCategory = await createCategory(validatedData);
+    const category = await createCategory(validationResult.data);
 
     return NextResponse.json({
       success: true,
+      data: category,
       message: '分类创建成功',
-      data: newCategory,
     }, { status: 201 });
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return NextResponse.json({
-        success: false,
-        message: '数据验证失败',
-        errors: error.issues,
-      }, { status: 400 });
-    }
-
     console.error('创建分类失败:', error);
     return NextResponse.json(
       {
         success: false,
-        message: '创建分类失败',
-        error: error instanceof Error ? error.message : '未知错误',
+        error: '创建分类失败',
+        message: error instanceof Error ? error.message : '未知错误',
       },
       { status: 500 },
     );
@@ -87,88 +75,64 @@ export async function POST(request: NextRequest) {
 export async function PUT(request: NextRequest) {
   try {
     const body = await request.json();
-    const { id, ...updateData } = body;
 
-    if (!id) {
-      return NextResponse.json({
-        success: false,
-        message: '分类ID不能为空',
-      }, { status: 400 });
+    // 验证请求数据
+    const validationResult = updateCategorySchema.safeParse(body);
+    if (!validationResult.success) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: '数据验证失败',
+          message: '请检查输入数据',
+          details: validationResult.error.issues.map(err => ({
+            field: err.path.join('.'),
+            message: err.message,
+          })),
+        },
+        { status: 400 },
+      );
     }
-
-    // 验证更新数据
-    const validatedData = CategorySchema.partial().parse(updateData);
 
     // 更新分类
-    const updatedCategory = await updateCategory(id, validatedData);
-
-    if (!updatedCategory) {
-      return NextResponse.json({
-        success: false,
-        message: '分类不存在',
-      }, { status: 404 });
-    }
+    const category = await updateCategory(validationResult.data);
 
     return NextResponse.json({
       success: true,
+      data: category,
       message: '分类更新成功',
-      data: updatedCategory,
     });
   } catch (error) {
-    if (error instanceof z.ZodError) {
-      return NextResponse.json({
-        success: false,
-        message: '数据验证失败',
-        errors: error.issues,
-      }, { status: 400 });
-    }
-
     console.error('更新分类失败:', error);
+
+    // 检查是否是404错误（分类不存在）
+    if (error instanceof Error && error.message.includes('不存在')) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: '分类不存在',
+          message: error.message,
+        },
+        { status: 404 },
+      );
+    }
+
+    // 检查是否是400错误（slug已存在）
+    if (error instanceof Error && error.message.includes('已存在')) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: '数据冲突',
+          message: error.message,
+        },
+        { status: 400 },
+      );
+    }
+
     return NextResponse.json(
       {
         success: false,
-        message: '更新分类失败',
-        error: error instanceof Error ? error.message : '未知错误',
-      },
-      { status: 500 },
-    );
-  }
-}
-
-// DELETE - 删除分类
-export async function DELETE(request: NextRequest) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const id = searchParams.get('id');
-
-    if (!id) {
-      return NextResponse.json({
-        success: false,
-        message: '分类ID不能为空',
-      }, { status: 400 });
-    }
-
-    // 删除分类
-    const success = await deleteCategory(id);
-
-    if (!success) {
-      return NextResponse.json({
-        success: false,
-        message: '分类不存在或删除失败',
-      }, { status: 404 });
-    }
-
-    return NextResponse.json({
-      success: true,
-      message: '分类删除成功',
-    });
-  } catch (error) {
-    console.error('删除分类失败:', error);
-    return NextResponse.json(
-      {
-        success: false,
-        message: '删除分类失败',
-        error: error instanceof Error ? error.message : '未知错误',
+        error: '更新分类失败',
+        message: error instanceof Error ? error.message : '未知错误',
       },
       { status: 500 },
     );

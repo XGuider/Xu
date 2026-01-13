@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
-import { ClerkProvider } from '@clerk/nextjs';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { PostHogProvider } from '@/components/analytics/PostHogProvider';
 import { StagewiseToolbar } from '@/components/StagewiseToolbar';
+import ToolDetailModal from '@/components/tools/ToolDetailModal';
 import { NotificationProvider } from '@/contexts/NotificationContext';
+import { ToolDetailProvider } from '@/contexts/ToolDetailContext';
 import { routing } from '@/libs/I18nRouting';
 import '@/styles/global.css';
 
@@ -92,37 +93,20 @@ export default async function RootLayout(props: {
 
   setRequestLocale(locale);
 
-  // 检查是否有Clerk配置
-  const hasClerkConfig = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && process.env.CLERK_SECRET_KEY;
-
   return (
     <html lang={locale}>
       <body>
-        {hasClerkConfig
-          ? (
-              <ClerkProvider>
-                <NextIntlClientProvider>
-                  <NotificationProvider>
-                    <PostHogProvider>
-                      {props.children}
-                    </PostHogProvider>
-                    {/* <DemoBadge /> */}
-                    <StagewiseToolbar />
-                  </NotificationProvider>
-                </NextIntlClientProvider>
-              </ClerkProvider>
-            )
-          : (
-              <NextIntlClientProvider>
-                <NotificationProvider>
-                  <PostHogProvider>
-                    {props.children}
-                  </PostHogProvider>
-                  {/* <DemoBadge /> */}
-                  <StagewiseToolbar />
-                </NotificationProvider>
-              </NextIntlClientProvider>
-            )}
+        <NextIntlClientProvider>
+          <NotificationProvider>
+            <ToolDetailProvider>
+              <PostHogProvider>
+                {props.children}
+              </PostHogProvider>
+              <ToolDetailModal />
+              <StagewiseToolbar />
+            </ToolDetailProvider>
+          </NotificationProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

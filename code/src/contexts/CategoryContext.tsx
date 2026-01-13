@@ -53,10 +53,10 @@ export const CategoryProvider: React.FC<CategoryProviderProps> = ({ children }) 
         if (response.ok) {
           const result = await response.json();
           // 检查API响应结构，提取data字段
-          const categoriesData = result.success && Array.isArray(result.data) 
-            ? result.data 
-            : Array.isArray(result) 
-              ? result 
+          const categoriesData = result.success && Array.isArray(result.data)
+            ? result.data
+            : Array.isArray(result)
+              ? result
               : [];
           setCategories(categoriesData);
         } else {

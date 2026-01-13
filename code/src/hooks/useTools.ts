@@ -1,21 +1,5 @@
+import type { Tool } from '@/types';
 import { useCallback, useEffect, useState } from 'react';
-
-export type Tool = {
-  id: string;
-  name: string;
-  description: string;
-  url: string;
-  categoryId: string;
-  category: string;
-  rating: number;
-  ratingCount: number;
-  isActive: boolean;
-  isFeatured: boolean;
-  tags: string[];
-  developer?: string;
-  createdAt: string;
-  updatedAt: string;
-};
 
 export type ToolsResponse = {
   success: boolean;
@@ -30,21 +14,7 @@ export type ToolsResponse = {
   };
 };
 
-export type CreateToolData = {
-  name: string;
-  description: string;
-  url: string;
-  categoryId: string;
-  tags?: string[];
-  developer?: string;
-  price?: string;
-  platforms?: string[];
-};
-
-export type UpdateToolData = Partial<CreateToolData> & {
-  id: string;
-  isActive?: boolean;
-};
+// 注意：数据通过编辑 data/tools.json 文件进行管理，不再需要这些类型
 
 export type UseToolsOptions = {
   page?: number;
@@ -104,110 +74,7 @@ export const useTools = (options: UseToolsOptions = {}) => {
     }
   }, []);
 
-  // 创建工具
-  const createTool = useCallback(async (toolData: CreateToolData): Promise<boolean> => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await fetch('/api/tools', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(toolData),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        // 重新获取工具列表
-        await fetchTools(options);
-        return true;
-      } else {
-        setError(data.message || '创建工具失败');
-        return false;
-      }
-    } catch (err) {
-      setError('网络错误，请稍后重试');
-      console.error('创建工具失败:', err);
-      return false;
-    } finally {
-      setLoading(false);
-    }
-  }, [fetchTools, options]);
-
-  // 更新工具
-  const updateTool = useCallback(async (toolData: UpdateToolData): Promise<boolean> => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await fetch('/api/tools', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(toolData),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        // 重新获取工具列表
-        await fetchTools(options);
-        return true;
-      } else {
-        setError(data.message || '更新工具失败');
-        return false;
-      }
-    } catch (err) {
-      setError('网络错误，请稍后重试');
-      console.error('更新工具失败:', err);
-      return false;
-    } finally {
-      setLoading(false);
-    }
-  }, [fetchTools, options]);
-
-  // 删除工具
-  const deleteTool = useCallback(async (toolId: string): Promise<boolean> => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await fetch(`/api/tools?id=${toolId}`, {
-        method: 'DELETE',
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        // 重新获取工具列表
-        await fetchTools(options);
-        return true;
-      } else {
-        setError(data.message || '删除工具失败');
-        return false;
-      }
-    } catch (err) {
-      setError('网络错误，请稍后重试');
-      console.error('删除工具失败:', err);
-      return false;
-    } finally {
-      setLoading(false);
-    }
-  }, [fetchTools, options]);
-
-  // 切换工具状态
-  const toggleToolStatus = useCallback(async (toolId: string): Promise<boolean> => {
-    const tool = tools.find(t => t.id === toolId);
-    if (!tool) {
-      return false;
-    }
-
-    return await updateTool({
-      id: toolId,
-      isActive: !tool.isActive,
-    });
-  }, [tools, updateTool]);
+  // 注意：数据通过编辑 data/tools.json 文件进行管理，API只提供读取功能
 
   // 初始加载
   useEffect(() => {
@@ -221,10 +88,6 @@ export const useTools = (options: UseToolsOptions = {}) => {
     error,
     pagination,
     fetchTools,
-    createTool,
-    updateTool,
-    deleteTool,
-    toggleToolStatus,
     clearError: () => setError(null),
   };
 };

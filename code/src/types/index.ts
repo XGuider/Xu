@@ -106,3 +106,54 @@ export type Feedback = {
   createdAt: Date;
   updatedAt: Date;
 };
+
+// API输入类型
+export type CreateCategoryInput = {
+  name: string;
+  slug: string;
+  description?: string;
+  icon?: string;
+  sort?: number;
+  isActive?: boolean;
+};
+
+export type UpdateCategoryInput = {
+  id: string | number;
+  name?: string;
+  slug?: string;
+  description?: string;
+  icon?: string;
+  sort?: number;
+  isActive?: boolean;
+};
+
+export type CreateToolInput = {
+  name: string;
+  description: string;
+  url: string;
+  categoryId: string | number;
+  rating?: number;
+  ratingCount?: number;
+  isActive?: boolean;
+  isFeatured?: boolean;
+  tags?: string[];
+  developer?: string;
+  logo?: string;
+  pricing?: string;
+};
+
+export type UpdateToolInput = {
+  id: string | number;
+  name?: string;
+  description?: string;
+  url?: string;
+  categoryId?: string | number;
+  rating?: number;
+  ratingCount?: number;
+  isActive?: boolean;
+  isFeatured?: boolean;
+  tags?: string[];
+  developer?: string;
+  logo?: string;
+  pricing?: string;
+};

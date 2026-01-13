@@ -20,18 +20,7 @@ export type CategoriesResponse = {
   error?: string;
 };
 
-export type CreateCategoryData = {
-  name: string;
-  slug: string;
-  description?: string;
-  icon?: string;
-  sort?: number;
-  isActive?: boolean;
-};
-
-export type UpdateCategoryData = Partial<CreateCategoryData> & {
-  id: string;
-};
+// 注意：数据通过编辑 data/categories.json 文件进行管理，不再需要这些类型
 
 export type UseCategoriesOptions = {
   includeInactive?: boolean;
@@ -68,110 +57,7 @@ export const useCategories = (options: UseCategoriesOptions = {}) => {
     }
   }, []);
 
-  // 创建分类
-  const createCategory = useCallback(async (categoryData: CreateCategoryData): Promise<boolean> => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await fetch('/api/categories', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(categoryData),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        // 重新获取分类列表
-        await fetchCategories(options);
-        return true;
-      } else {
-        setError(data.message || '创建分类失败');
-        return false;
-      }
-    } catch (err) {
-      setError('网络错误，请稍后重试');
-      console.error('创建分类失败:', err);
-      return false;
-    } finally {
-      setLoading(false);
-    }
-  }, [fetchCategories, options]);
-
-  // 更新分类
-  const updateCategory = useCallback(async (categoryData: UpdateCategoryData): Promise<boolean> => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await fetch('/api/categories', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(categoryData),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        // 重新获取分类列表
-        await fetchCategories(options);
-        return true;
-      } else {
-        setError(data.message || '更新分类失败');
-        return false;
-      }
-    } catch (err) {
-      setError('网络错误，请稍后重试');
-      console.error('更新分类失败:', err);
-      return false;
-    } finally {
-      setLoading(false);
-    }
-  }, [fetchCategories, options]);
-
-  // 删除分类
-  const deleteCategory = useCallback(async (categoryId: string): Promise<boolean> => {
-    setLoading(true);
-    setError(null);
-    try {
-      const response = await fetch(`/api/categories?id=${categoryId}`, {
-        method: 'DELETE',
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        // 重新获取分类列表
-        await fetchCategories(options);
-        return true;
-      } else {
-        setError(data.message || '删除分类失败');
-        return false;
-      }
-    } catch (err) {
-      setError('网络错误，请稍后重试');
-      console.error('删除分类失败:', err);
-      return false;
-    } finally {
-      setLoading(false);
-    }
-  }, [fetchCategories, options]);
-
-  // 切换分类状态
-  const toggleCategoryStatus = useCallback(async (categoryId: string): Promise<boolean> => {
-    const category = categories.find(cat => cat.id === categoryId);
-    if (!category) {
-      return false;
-    }
-
-    return await updateCategory({
-      id: categoryId,
-      isActive: !category.isActive,
-    });
-  }, [categories, updateCategory]);
+  // 注意：数据通过编辑 data/categories.json 文件进行管理，API只提供读取功能
 
   // 初始加载
   useEffect(() => {
@@ -184,10 +70,6 @@ export const useCategories = (options: UseCategoriesOptions = {}) => {
     loading,
     error,
     fetchCategories,
-    createCategory,
-    updateCategory,
-    deleteCategory,
-    toggleCategoryStatus,
     clearError: () => setError(null),
   };
 };

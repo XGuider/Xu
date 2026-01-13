@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "AI办公工具",
+    "slug": "ai-office",
+    "description": "提升办公效率的AI工具",
+    "icon": "ai-office.svg",
+    "sort": 1,
+    "isActive": true,
+    "toolCount": 0
+  },
+  {
+    "id": 2,
+    "name": "AI视频工具",
+    "slug": "ai-video",
+    "description": "AI视频生成和编辑工具",
+    "icon": "ai-video.svg",
+    "sort": 2,
+    "isActive": true,
+    "toolCount": 0
+  },
+  {
+    "id": 3,
+    "name": "AI编程工具",
+    "slug": "ai-coding",
+    "description": "AI辅助编程开发工具",
+    "icon": "ai-coding.svg",
+    "sort": 3,
+    "isActive": true,
+    "toolCount": 1
+  },
+  {
+    "id": 4,
+    "name": "AI聊天助手",
+    "slug": "ai-chat",
+    "description": "智能对话和聊天助手",
+    "icon": "ai-chat.svg",
+    "sort": 4,
+    "isActive": true,
+    "toolCount": 0
+  },
+  {
+    "id": 5,
+    "name": "AI写作工具",
+    "slug": "ai-writing",
+    "description": "AI内容创作和写作工具",
+    "icon": "ai-writing.svg",
+    "sort": 5,
+    "isActive": true,
+    "toolCount": 0
+  },
+  {
+    "id": 6,
+    "name": "AI学习网站",
+    "slug": "ai-learning",
+    "description": "AI学习和教育平台",
+    "icon": "ai-learning.svg",
+    "sort": 6,
+    "isActive": true,
+    "toolCount": 0
+  }
+]
