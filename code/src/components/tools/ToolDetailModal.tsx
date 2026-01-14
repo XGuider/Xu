@@ -75,18 +75,20 @@ const ToolDetailModal: React.FC = () => {
 
   // 处理ESC键关闭
   useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === 'Escape') {
         closeToolDetail();
       }
     };
 
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      return () => {
-        document.removeEventListener('keydown', handleEscape);
-      };
-    }
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
   }, [isOpen, closeToolDetail]);
 
   if (!isOpen || !tool) {

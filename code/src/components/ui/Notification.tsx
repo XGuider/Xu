@@ -21,13 +21,15 @@ const Notification: React.FC<NotificationProps> = ({
   className,
 }) => {
   useEffect(() => {
-    if (duration > 0) {
-      const timer = setTimeout(() => {
-        onClose?.();
-      }, duration);
-
-      return () => clearTimeout(timer);
+    if (duration <= 0) {
+      return;
     }
+
+    const timer = setTimeout(() => {
+      onClose?.();
+    }, duration);
+
+    return () => clearTimeout(timer);
   }, [duration, onClose]);
 
   const getIcon = () => {
