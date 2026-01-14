@@ -2,16 +2,18 @@
 
 import type { Category } from '@/types';
 import { useTranslations } from 'next-intl';
-import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import { cn } from '@/utils/cn';
 
-const SubmitPage: React.FC = () => {
+type SubmitPageProps = {
+  toolId?: string | null;
+};
+
+const SubmitPage: React.FC<SubmitPageProps> = ({ toolId: initialToolId = null }) => {
   const t = useTranslations('SubmitPage');
-  const searchParams = useSearchParams();
-  const toolId = searchParams.get('id'); // 获取 URL 参数中的 id，用于判断是否为编辑模式
+  const toolId = initialToolId; // 从 props 获取 toolId
   const isEditMode = !!toolId; // 是否为编辑模式
 
   const [formData, setFormData] = useState({

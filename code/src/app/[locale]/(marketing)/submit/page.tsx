@@ -1,5 +1,6 @@
+import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import SubmitPage from '@/components/pages/SubmitPage';
+import SubmitPageWithSearchParams from '@/components/pages/SubmitPageWithSearchParams';
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
@@ -19,5 +20,9 @@ export default async function Page(props: {
   const { locale } = await props.params;
   setRequestLocale(locale);
 
-  return <SubmitPage />;
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">加载中...</div>}>
+      <SubmitPageWithSearchParams />
+    </Suspense>
+  );
 }

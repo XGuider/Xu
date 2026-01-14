@@ -13,8 +13,6 @@ const baseConfig: NextConfig = {
   },
   poweredByHeader: false,
   reactStrictMode: true,
-  // 禁用Next.js遥测
-  telemetry: false,
 };
 
 // Initialize the Next-Intl plugin
