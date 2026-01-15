@@ -3,7 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Xu AI导航平台 - 千万用户信赖的AI工具导航平台，发现最好的AI工具">
+    <meta name="keywords" content="AI工具,人工智能,导航平台,AI导航,Xu">
+    <meta name="author" content="Xu AI导航平台">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xu-ai-navigation.com/">
+    <meta property="og:title" content="Xu AI导航平台">
+    <meta property="og:description" content="千万用户信赖的AI工具导航平台，发现最好的AI工具">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://xu-ai-navigation.com/">
+    <meta property="twitter:title" content="Xu AI导航平台">
+    <meta property="twitter:description" content="千万用户信赖的AI工具导航平台，发现最好的AI工具">
+    
     <title>Xu AI导航平台</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/images/logo.png">
+    
     <style>
         * {
             margin: 0;
@@ -15,6 +37,40 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            background-color: #000;
+        }
+        
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            z-index: 1;
+            transition: opacity 0.3s ease;
+        }
+        
+        .loading-container.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         iframe {
@@ -22,18 +78,132 @@
             height: 100%;
             border: none;
             display: block;
+            background-color: #fff;
+        }
+        
+        .error-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+            text-align: center;
+            max-width: 90%;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .error-message h2 {
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+        
+        .error-message p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .error-message a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .error-message a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+    <!-- 加载提示 -->
+    <div class="loading-container" id="loadingContainer">
+        <div class="loading-spinner"></div>
+    </div>
+    
+    <!-- 错误提示 -->
+    <div class="error-message" id="errorMessage">
+        <h2>页面加载失败</h2>
+        <p>无法加载嵌入的页面，请稍后重试或直接访问：</p>
+        <a href="https://xu-orcin.vercel.app/" target="_blank" rel="noopener noreferrer">
+            打开 Xu AI导航平台
+        </a>
+    </div>
+    
+    <!-- 主内容 iframe -->
     <iframe 
-        src="https://yiwan.vercel.app/" 
-        title="嵌入页面"
+        id="mainFrame"
+        src="https://xu-orcin.vercel.app/" 
+        title="Xu AI导航平台"
         allowfullscreen
-        loading="lazy"
+        loading="eager"
         referrerpolicy="no-referrer-when-downgrade"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-presentation allow-top-navigation"
+        onload="handleFrameLoad()"
+        onerror="handleFrameError()"
     ></iframe>
-    <!-- src="https://xu-iueyfhmvk-sliences-projects.vercel.app/"  -->
+    
+    <script>
+        // 处理 iframe 加载完成
+        function handleFrameLoad() {
+            const loadingContainer = document.getElementById('loadingContainer');
+            if (loadingContainer) {
+                setTimeout(() => {
+                    loadingContainer.classList.add('hidden');
+                }, 300);
+            }
+        }
+        
+        // 处理 iframe 加载错误
+        function handleFrameError() {
+            const loadingContainer = document.getElementById('loadingContainer');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (loadingContainer) {
+                loadingContainer.classList.add('hidden');
+            }
+            
+            if (errorMessage) {
+                errorMessage.classList.add('show');
+            }
+        }
+        
+        // 监听页面加载
+        window.addEventListener('load', function() {
+            const iframe = document.getElementById('mainFrame');
+            if (iframe) {
+                // 设置超时检测（10秒后如果还没加载完成，显示错误）
+                setTimeout(function() {
+                    const loadingContainer = document.getElementById('loadingContainer');
+                    if (loadingContainer && !loadingContainer.classList.contains('hidden')) {
+                        // 尝试访问 iframe 内容检测是否加载成功
+                        try {
+                            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                            // 如果能访问，说明加载成功
+                            handleFrameLoad();
+                        } catch (e) {
+                            // 跨域无法访问，但可能已加载成功，移除加载提示
+                            handleFrameLoad();
+                        }
+                    }
+                }, 10000);
+            }
+        });
+        
+        // 处理网络错误
+        window.addEventListener('online', function() {
+            const errorMessage = document.getElementById('errorMessage');
+            if (errorMessage && errorMessage.classList.contains('show')) {
+                // 网络恢复，重新加载
+                location.reload();
+            }
+        });
+    </script>
 </body>
 </html>
