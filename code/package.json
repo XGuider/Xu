@@ -1,8 +1,10 @@
 {
-  "name": "next-js-boilerplate",
-  "author": "Ixartz (https://github.com/ixartz)",
+  "name": "Xu",
+  "author": "xGuider (https://github.com/xguider)",
+  "homepage": "https://xguider.github.com/Xu",
   "engines": {
-    "node": ">=20"
+    "node": ">=20 <24",
+    "npm": ">=9"
   },
   "scripts": {
     "dev:spotlight": "npx @spotlightjs/spotlight",

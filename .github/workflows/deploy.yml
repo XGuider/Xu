@@ -41,7 +41,7 @@ jobs:
           NODE_ENV: production
 
       - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
+        uses: vercel.com/faqingx-8230
         if: github.ref == 'refs/heads/main'
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
