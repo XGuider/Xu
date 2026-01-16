@@ -3,6 +3,7 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { PostHogProvider } from '@/components/analytics/PostHogProvider';
+import { ServiceWorkerCleanup } from '@/components/ServiceWorkerCleanup';
 import { StagewiseToolbar } from '@/components/StagewiseToolbar';
 import ToolDetailModal from '@/components/tools/ToolDetailModal';
 import { NotificationProvider } from '@/contexts/NotificationContext';
@@ -75,6 +76,7 @@ export const metadata: Metadata = {
       url: '/assets/images/logo.png',
     },
   ],
+  manifest: '/manifest.json',
 };
 
 export function generateStaticParams() {
@@ -104,6 +106,7 @@ export default async function RootLayout(props: {
               </PostHogProvider>
               <ToolDetailModal />
               <StagewiseToolbar />
+              <ServiceWorkerCleanup />
             </ToolDetailProvider>
           </NotificationProvider>
         </NextIntlClientProvider>

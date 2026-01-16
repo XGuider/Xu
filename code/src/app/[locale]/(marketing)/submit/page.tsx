@@ -1,5 +1,5 @@
-import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Suspense } from 'react';
 import SubmitPageWithSearchParams from '@/components/pages/SubmitPageWithSearchParams';
 
 export async function generateMetadata(props: {

@@ -1,0 +1,54 @@
+# AI工具爬虫配置文件
+# 所有配置变量统一在此管理
+
+# 爬虫配置
+crawler:
+  # 最大内容长度（用于限制提示词长度，避免超出token限制）
+  max_content_length: 15000
+  # 日志级别 (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  log_level: "WARNING"
+  # 请求超时时间（秒）
+  request_timeout: 360
+
+# AI提供者配置
+providers:
+  # DeepSeek配置
+  deepseek:
+    env_key: "DEEPSEEK_API_KEY"
+    default_base_url: "https://api.deepseek.com/v1/chat/completions"
+    default_model: "deepseek-chat"
+    temperature: 0.7
+    max_tokens: 2000
+  
+  # SiliconFlow配置
+  siliconflow:
+    env_key: "SILICONFLOW_API_KEY"
+    default_base_url: "https://api.siliconflow.cn/v1/chat/completions"
+    default_model: "Qwen/Qwen3-VL-8B-Instruct"
+    temperature: 0.7
+    max_tokens: 2000
+  
+  # Kimi配置
+  kimi:
+    env_key: "KIMI_API_KEY"
+    default_base_url: "https://api.moonshot.cn/v1/chat/completions"
+    default_model: "moonshot-v1-32k"
+    temperature: 0.7
+    max_tokens: 2000
+  
+  # Doubao配置
+  doubao:
+    env_key: "DOUBAO_API_KEY"
+    default_base_url: "https://ark.cn-beijing.volces.com/api/v3/chat/completions"
+    default_model: "ep-20241208123456-abcde"  # 需要替换为实际的endpoint ID
+    temperature: 0.7
+    max_tokens: 2000
+
+# 数据文件路径配置
+data:
+  # 数据目录（相对于cornjob目录）
+  data_dir: "./code/data"
+  # 工具数据文件名
+  tools_file: "tools.json"
+  # 分类数据文件名
+  categories_file: "categories.json"

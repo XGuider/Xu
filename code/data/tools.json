@@ -1,71 +1,209 @@
 [
   {
-    "id": 1,
     "name": "WPS AI",
     "description": "智能办公助手，提供文档编辑、表格处理、演示文稿等功能",
     "url": "https://www.wps.cn",
-    "categoryId": 1,
-    "rating": 4.5,
-    "ratingCount": 100,
-    "isActive": true,
-    "isFeatured": true,
+    "category": "AI办公工具",
     "tags": [
       "办公",
       "AI",
       "文档"
-    ],
-    "developer": "金山办公",
-    "logo": "/assets/images/logo.png",
-    "pricing": "免费"
+    ]
   },
   {
-    "id": 2,
     "name": "DeepSeek",
-    "description": "强大的AI编程助手，支持代码生成、调试和优化",
+    "description": "中国自主研发的大语言模型，支持多语言对话、代码生成、文档总结和内容创作。",
     "url": "https://www.deepseek.com",
-    "categoryId": 3,
-    "rating": 4.8,
-    "ratingCount": 500,
-    "isActive": true,
-    "isFeatured": true,
+    "category": "AI聊天助手",
     "tags": [
       "编程",
+      "代码生成",
+      "中文支持",
       "AI",
-      "代码生成"
-    ],
-    "developer": "DeepSeek",
-    "logo": "/assets/images/logo.png",
-    "pricing": "免费"
+      "创作",
+      "大模型",
+      "代码",
+      "总结"
+    ]
   },
   {
-    "id": 3,
     "name": "腾讯元宝",
     "description": "腾讯推出的AI对话助手，支持多种场景应用",
     "url": "https://yuanbao.tencent.com",
-    "categoryId": 4,
-    "rating": 4.6,
-    "ratingCount": 300,
-    "isActive": true,
-    "isFeatured": true,
+    "category": "AI聊天助手",
     "tags": [
       "聊天",
       "AI",
       "对话"
-    ],
-    "developer": "腾讯",
-    "logo": "/assets/images/logo.png",
-    "pricing": "免费"
+    ]
   },
   {
-    "id": 4,
-    "name": "李白",
-    "description": "ssss",
-    "url": "https://baidu.com",
-    "categoryId": 3,
-    "rating": 0,
-    "ratingCount": 0,
-    "isActive": true,
-    "isFeatured": false,
-    "tags": []
+    "name": "ChatGPT",
+    "description": "由OpenAI开发的AI聊天助手，可进行多轮对话、内容创作、代码生成和逻辑推理，广泛用于学习、办公和创意写作。",
+    "url": "https://chatgpt.com",
+    "category": "AI聊天助手",
+    "tags": [
+      "对话",
+      "问答",
+      "内容创作",
+      "代码生成",
+      "AI助手"
+    ]
+  },
+  {
+    "name": "Claude",
+    "description": "Anthropic开发的AI助手，擅长长文本处理、多轮对话和复杂逻辑推理，适用于文档分析、写作和研究场景。",
+    "url": "https://claude.ai",
+    "category": "AI聊天助手",
+    "tags": [
+      "长文本",
+      "写作",
+      "研究",
+      "逻辑推理",
+      "AI助手"
+    ]
+  },
+  {
+    "name": "Notion AI",
+    "description": "Notion内置的AI助手，可帮助用户自动生成内容、整理笔记、优化文档结构，适用于知识管理和项目协作。",
+    "url": "https://www.notion.so/ai",
+    "category": "AI办公工具",
+    "tags": [
+      "笔记",
+      "知识管理",
+      "文档生成",
+      "办公效率",
+      "AI助手"
+    ]
+  },
+  {
+    "name": "Canva AI",
+    "description": "Canva平台的AI设计助手，可自动生成海报、PPT、社交媒体素材，提升视觉设计效率。",
+    "url": "https://www.canva.com/ai",
+    "category": "AI设计工具",
+    "tags": [
+      "设计",
+      "海报",
+      "PPT",
+      "AI创意",
+      "视觉工具"
+    ]
+  },
+  {
+    "name": "Runway ML",
+    "description": "AI视频和图像生成平台，支持视频编辑、图像风格迁移、AI生成视频和特效制作。",
+    "url": "https://runwayml.com",
+    "category": "AI视频工具",
+    "tags": [
+      "视频生成",
+      "图像编辑",
+      "特效",
+      "AI创意",
+      "视频工具"
+    ]
+  },
+  {
+    "name": "Gamma.app",
+    "description": "AI驱动的可视化内容创作平台，用户可通过自然语言生成图表、报告和可视化内容。",
+    "url": "https://gamma.app",
+    "category": "AI写作工具",
+    "tags": [
+      "可视化",
+      "报告",
+      "图表",
+      "自然语言",
+      "AI生成"
+    ]
+  },
+  {
+    "name": "Tabnine",
+    "description": "AI编程助手，支持代码补全、智能推荐和错误检测，适用于多种编程语言和开发环境。",
+    "url": "https://www.tabnine.com",
+    "category": "AI编程工具",
+    "tags": [
+      "编程",
+      "代码补全",
+      "智能推荐",
+      "开发工具",
+      "AI助手"
+    ]
+  },
+  {
+    "name": "WiseStamp",
+    "description": "AI智能合同审查与生成工具，支持自动填充合同、风险检测和条款优化。",
+    "url": "https://wisestamp.com",
+    "category": "AI办公工具",
+    "tags": [
+      "合同",
+      "法律",
+      "审查",
+      "生成",
+      "AI办公"
+    ]
+  },
+  {
+    "name": "Kling",
+    "description": "AI视频生成工具，支持文字到视频的快速转换，适用于营销、教育和创意内容制作。",
+    "url": "https://kling.ai",
+    "category": "AI视频工具",
+    "tags": [
+      "视频生成",
+      "营销",
+      "教育",
+      "创意",
+      "AI视频"
+    ]
+  },
+  {
+    "name": "Gemini",
+    "description": "Google推出的多模态AI助手，支持文本、图像、音频处理，可用于内容创作、数据分析和多语言翻译。",
+    "url": "https://gemini.google.com",
+    "category": "AI聊天助手",
+    "tags": [
+      "多模态",
+      "翻译",
+      "图像处理",
+      "内容创作",
+      "AI助手"
+    ]
+  },
+  {
+    "name": "Perplexity AI",
+    "description": "AI搜索引擎和问答工具，擅长上下文理解与精准信息检索，支持引用来源和深度研究。",
+    "url": "https://www.perplexity.ai",
+    "category": "AI学习网站",
+    "tags": [
+      "搜索",
+      "研究",
+      "引用",
+      "信息检索",
+      "AI助手"
+    ]
+  },
+  {
+    "name": "Wolfram Alpha",
+    "description": "AI计算引擎，提供数学、科学、工程和金融领域的精准计算和数据分析。",
+    "url": "https://www.wolframalpha.com",
+    "category": "AI学习网站",
+    "tags": [
+      "计算",
+      "数学",
+      "科学",
+      "数据分析",
+      "AI工具"
+    ]
+  },
+  {
+    "name": "HeyGen",
+    "description": "AI视频生成与虚拟人平台，支持创建虚拟形象、AI主播和视频内容，适用于电商、教育和营销。",
+    "url": "https://www.heygen.com",
+    "category": "AI视频工具",
+    "tags": [
+      "虚拟人",
+      "视频生成",
+      "AI主播",
+      "营销",
+      "视频工具"
+    ]
   }
 ]

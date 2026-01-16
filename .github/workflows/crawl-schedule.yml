@@ -1,0 +1,136 @@
+name: Crawl AI Tools Schedule
+
+on:
+  # 定时任务：每天 UTC 时间 2:00 执行（北京时间 10:00）
+  schedule:
+    - cron: '0 2 * * *'
+  # 支持手动触发
+  workflow_dispatch:
+    inputs:
+      content:
+        description: '可选的内容参数（留空则使用默认提示词）'
+        required: false
+        type: string
+      providers:
+        description: '要使用的AI提供者（可选，留空使用所有可用提供者，多个用逗号分隔）'
+        required: false
+        type: string
+
+jobs:
+  crawl:
+    name: Crawl AI Tools Data
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write  # 允许写入仓库内容
+      pull-requests: read  # 允许读取 PR
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 获取完整历史记录
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: ./cornjob/requirements.txt
+      
+      - name: Install dependencies
+        working-directory: ./cornjob
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Set up environment variables
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
+          KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
+          DOUBAO_API_KEY: ${{ secrets.DOUBAO_API_KEY }}
+        run: |
+          echo "环境变量已设置"
+          # 检查至少有一个API密钥已配置
+          if [ -z "$DEEPSEEK_API_KEY" ] && [ -z "$SILICONFLOW_API_KEY" ] && [ -z "$KIMI_API_KEY" ] && [ -z "$DOUBAO_API_KEY" ]; then
+            echo "警告: 没有配置任何AI提供者的API密钥"
+          fi
+      
+      - name: Run crawler
+        working-directory: ./cornjob
+        env:
+          # API密钥（从secrets读取）
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
+          KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
+          DOUBAO_API_KEY: ${{ secrets.DOUBAO_API_KEY }}
+          # 爬虫参数（从workflow inputs读取，可通过环境变量覆盖config.yaml中的配置）
+          CRAWL_CONTENT: ${{ github.event.inputs.content }}
+          CRAWL_PROVIDERS: ${{ github.event.inputs.providers }}
+          # 可选配置（如果设置，会覆盖config.yaml中的默认值）
+          MAX_CONTENT_LENGTH: ${{ vars.MAX_CONTENT_LENGTH || '' }}
+          LOG_LEVEL: ${{ vars.LOG_LEVEL || '' }}
+        run: |
+          python crawel.py
+      
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Check for changes
+        id: git-check
+        run: |
+          git add -A
+          if git diff --staged --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "没有检测到变更"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "检测到变更，准备提交"
+            git status
+          fi
+      
+      - name: Commit and push changes
+        if: steps.git-check.outputs.has_changes == 'true'
+        run: |
+          commit_message="chore: 自动更新工具数据 [skip ci]"
+          if [ -n "${{ github.event.inputs.content }}" ]; then
+            commit_message="chore: 自动更新工具数据 - ${{ github.event.inputs.content }} [skip ci]"
+          fi
+          git commit -m "$commit_message"
+          git push
+      
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: crawl-results
+          path: |
+            cornjob/*.json
+            cornjob/*.log
+          retention-days: 7
+          if-no-files-found: ignore
+      
+      - name: Summary
+        if: always()
+        env:
+          CRAWL_CONTENT: ${{ github.event.inputs.content }}
+          CRAWL_PROVIDERS: ${{ github.event.inputs.providers }}
+        run: |
+          echo "## 数据提取和整合任务完成" >> $GITHUB_STEP_SUMMARY
+          echo "- 执行时间: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- 工作流运行: ${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
+          echo "- 数据文件: code/data/tools.json" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.git-check.outputs.has_changes }}" == "true" ]; then
+            echo "- ✅ 已自动提交变更到仓库" >> $GITHUB_STEP_SUMMARY
+          elif [ -n "${{ steps.git-check.outputs.has_changes }}" ]; then
+            echo "- ℹ️ 未检测到变更" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ -n "$CRAWL_CONTENT" ]; then
+            echo "- 内容参数: 已提供" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ -n "$CRAWL_PROVIDERS" ]; then
+            echo "- 使用的提供者: $CRAWL_PROVIDERS" >> $GITHUB_STEP_SUMMARY
+          fi
