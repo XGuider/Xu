@@ -39,10 +39,14 @@
   },
   {
     "name": "ChatGPT",
-    "description": "由OpenAI开发的AI聊天助手，可进行多轮对话、内容创作、代码生成和逻辑推理，广泛用于学习、办公和创意写作。",
-    "url": "https://chatgpt.com",
+    "description": "由OpenAI开发的先进AI聊天助手，支持多轮对话、内容创作、编程辅助和逻辑推理等任务。",
+    "url": "https://chat.openai.com",
     "category": "AI聊天助手",
     "tags": [
+      "对话AI",
+      "内容生成",
+      "编程辅助",
+      "多语言支持",
       "对话",
       "问答",
       "内容创作",
@@ -52,10 +56,14 @@
   },
   {
     "name": "Claude",
-    "description": "Anthropic开发的AI助手，擅长长文本处理、多轮对话和复杂逻辑推理，适用于文档分析、写作和研究场景。",
+    "description": "由Anthropic开发的大型语言模型，擅长长文本处理、专业写作和复杂逻辑推理。",
     "url": "https://claude.ai",
     "category": "AI聊天助手",
     "tags": [
+      "长文本处理",
+      "专业写作",
+      "逻辑推理",
+      "企业级AI",
       "长文本",
       "写作",
       "研究",
@@ -65,10 +73,14 @@
   },
   {
     "name": "Notion AI",
-    "description": "Notion内置的AI助手，可帮助用户自动生成内容、整理笔记、优化文档结构，适用于知识管理和项目协作。",
-    "url": "https://www.notion.so/ai",
+    "description": "集成在Notion平台中的AI助手，支持笔记整理、内容生成、任务管理与自动化工作流。",
+    "url": "https://www.notion.so",
     "category": "AI办公工具",
     "tags": [
+      "笔记管理",
+      "内容生成",
+      "自动化",
+      "知识库",
       "笔记",
       "知识管理",
       "文档生成",
@@ -86,15 +98,23 @@
       "海报",
       "PPT",
       "AI创意",
-      "视觉工具"
+      "视觉工具",
+      "设计自动化",
+      "模板生成",
+      "视觉创作",
+      "创意设计"
     ]
   },
   {
     "name": "Runway ML",
-    "description": "AI视频和图像生成平台，支持视频编辑、图像风格迁移、AI生成视频和特效制作。",
+    "description": "提供AI视频编辑、图像生成和特效制作的一站式创意工具，支持AI驱动的视频创作。",
     "url": "https://runwayml.com",
     "category": "AI视频工具",
     "tags": [
+      "视频生成",
+      "AI特效",
+      "图像处理",
+      "创意工具",
       "视频生成",
       "图像编辑",
       "特效",
@@ -104,10 +124,14 @@
   },
   {
     "name": "Gamma.app",
-    "description": "AI驱动的可视化内容创作平台，用户可通过自然语言生成图表、报告和可视化内容。",
+    "description": "将自然语言转化为可视化图表和数据分析报告的AI工具，适合非技术用户快速生成数据可视化。",
     "url": "https://gamma.app",
-    "category": "AI写作工具",
+    "category": "AI数据分析工具",
     "tags": [
+      "数据可视化",
+      "自然语言查询",
+      "报告生成",
+      "非技术友好",
       "可视化",
       "报告",
       "图表",
@@ -182,10 +206,14 @@
   },
   {
     "name": "Wolfram Alpha",
-    "description": "AI计算引擎，提供数学、科学、工程和金融领域的精准计算和数据分析。",
+    "description": "基于数学和科学知识的AI问答引擎，提供精确计算、数据分析和学术信息查询。",
     "url": "https://www.wolframalpha.com",
     "category": "AI学习网站",
     "tags": [
+      "学术计算",
+      "数学分析",
+      "知识查询",
+      "科学计算",
       "计算",
       "数学",
       "科学",
@@ -204,6 +232,54 @@
       "AI主播",
       "营销",
       "视频工具"
+    ]
+  },
+  {
+    "name": "DALL·E 3",
+    "description": "由OpenAI开发的图像生成模型，可根据文本描述生成高质量、高细节的图像。",
+    "url": "https://openai.com/dall-e-3",
+    "category": "AI图像工具",
+    "tags": [
+      "图像生成",
+      "AI绘图",
+      "文本到图像",
+      "创意设计"
+    ]
+  },
+  {
+    "name": "Tabby",
+    "description": "开源AI编程助手，支持多语言代码补全、解释和调试，适合开发者本地部署。",
+    "url": "https://github.com/tabby-ai/tabby",
+    "category": "AI编程工具",
+    "tags": [
+      "代码补全",
+      "开源",
+      "本地部署",
+      "多语言支持"
+    ]
+  },
+  {
+    "name": "Grammarly",
+    "description": "AI写作辅助工具，实时检测语法、拼写和风格问题，提升写作质量。",
+    "url": "https://www.grammarly.com",
+    "category": "AI写作工具",
+    "tags": [
+      "语法检查",
+      "写作优化",
+      "拼写纠正",
+      "学术写作"
+    ]
+  },
+  {
+    "name": "Canva Magic Design",
+    "description": "AI驱动的图形设计工具，自动根据用户输入生成专业设计模板与视觉内容。",
+    "url": "https://www.canva.com/magic-design",
+    "category": "AI设计工具",
+    "tags": [
+      "设计自动化",
+      "模板生成",
+      "视觉创作",
+      "创意设计"
     ]
   }
 ]
