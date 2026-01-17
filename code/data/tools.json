@@ -75,9 +75,8 @@
     ]
   },
   {
-    "id": 5,
     "name": "Claude",
-    "description": "由Anthropic开发的大型语言模型，擅长长文本处理、专业写作和复杂逻辑推理。",
+    "description": "由Anthropic开发的AI助手，擅长长文本处理与复杂逻辑推理，适用于写作与研究。",
     "url": "https://claude.ai",
     "categoryId": 4,
     "rating": 0,
@@ -93,7 +92,8 @@
       "写作",
       "研究",
       "逻辑推理",
-      "AI助手"
+      "AI助手",
+      "研究助手"
     ]
   },
   {
@@ -139,7 +139,10 @@
       "设计自动化",
       "模板生成",
       "视觉创作",
-      "创意设计"
+      "创意设计",
+      "设计工具",
+      "图文排版",
+      "创意辅助"
     ]
   },
   {
@@ -256,7 +259,10 @@
       "翻译",
       "图像处理",
       "内容创作",
-      "AI助手"
+      "AI助手",
+      "多模态AI",
+      "文档处理",
+      "智能助手"
     ]
   },
   {
@@ -274,7 +280,10 @@
       "研究",
       "引用",
       "信息检索",
-      "AI助手"
+      "AI助手",
+      "研究工具",
+      "上下文对话",
+      "引用溯源"
     ]
   },
   {
@@ -333,7 +342,9 @@
       "图像生成",
       "AI绘图",
       "文本到图像",
-      "创意设计"
+      "创意设计",
+      "高精度",
+      "艺术创作"
     ]
   },
   {
@@ -417,7 +428,9 @@
     "tags": [
       "图像生成",
       "艺术创作",
-      "AI绘图"
+      "AI绘图",
+      "AI艺术",
+      "创意设计"
     ]
   },
   {
@@ -466,6 +479,186 @@
       "学术研究",
       "文献分析",
       "智能摘要"
+    ]
+  },
+  {
+    "name": "Stable Diffusion",
+    "description": "开源AI图像生成模型，支持本地部署，可根据文本提示生成多样化的图像。",
+    "url": "https://stability.ai/stable-diffusion",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "开源工具",
+      "本地部署",
+      "图像生成"
+    ]
+  },
+  {
+    "name": "Notion AI",
+    "description": "集成在Notion中的AI助手，支持内容生成、摘要、任务管理与知识整理。",
+    "url": "https://www.notion.so/ai",
+    "categoryId": 5,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "知识管理",
+      "内容生成",
+      "任务自动化"
+    ]
+  },
+  {
+    "name": "Hugging Face",
+    "description": "AI模型平台，提供大量开源模型与API，支持自然语言处理与多模态任务。",
+    "url": "https://huggingface.co",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "开源模型",
+      "自然语言处理",
+      "研究工具"
+    ]
+  },
+  {
+    "name": "Copilot",
+    "description": "微软开发的AI编程助手，支持代码补全、错误修复与项目生成。",
+    "url": "https://copilot.github.com",
+    "categoryId": 6,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "代码生成",
+      "编程辅助",
+      "开发工具"
+    ]
+  },
+  {
+    "name": "Microsoft Bing AI",
+    "description": "集成AI能力的搜索引擎，支持对话式查询、内容摘要与图像生成。",
+    "url": "https://www.bing.com/ai",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "搜索引擎",
+      "对话AI",
+      "内容摘要"
+    ]
+  },
+  {
+    "name": "ElevenLabs",
+    "description": "AI语音合成工具，支持多种语言与音色，用于配音、播客与虚拟助手。",
+    "url": "https://elevenlabs.io",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "语音合成",
+      "多语言支持",
+      "音频生成"
+    ]
+  },
+  {
+    "name": "Synthesia",
+    "description": "AI视频生成平台，支持创建虚拟人像视频，适用于营销、教育与培训。",
+    "url": "https://www.synthesia.io",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频生成",
+      "虚拟人物",
+      "营销工具"
+    ]
+  },
+  {
+    "name": "Kling AI",
+    "description": "AI视频生成工具，支持文本到视频的快速转换，适用于内容创作与营销。",
+    "url": "https://www.kling.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频生成",
+      "内容创作",
+      "营销工具"
+    ]
+  },
+  {
+    "name": "Pika Labs",
+    "description": "AI视频生成工具，支持从文本或图像生成动态视频，适用于创意与教育。",
+    "url": "https://pika.art",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频生成",
+      "动态图像",
+      "创意工具"
+    ]
+  },
+  {
+    "name": "Lensa AI",
+    "description": "AI图像增强与风格化工具，支持照片美化、AI艺术化与面部修复。",
+    "url": "https://www.lensa.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "图像美化",
+      "AI艺术",
+      "面部修复"
+    ]
+  },
+  {
+    "name": "Baidu ERNIE Bot",
+    "description": "百度推出的对话式AI助手，支持中文与多语言，适用于客服与内容创作。",
+    "url": "https://erniebot.baidu.com",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "对话AI",
+      "中文支持",
+      "客服工具"
+    ]
+  },
+  {
+    "name": "Qwen",
+    "description": "阿里云开发的大规模语言模型，支持对话、写作、编程与多模态任务。",
+    "url": "https://qwen.aliyun.com",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "大语言模型",
+      "多模态",
+      "中文优化"
     ]
   }
 ]
