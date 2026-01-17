@@ -18,11 +18,11 @@ const ToolCard: React.FC<ToolCardProps> = ({
   const [isHovered, setIsHovered] = useState(false);
   const { openToolDetail } = useToolDetail();
 
-  // 正方形样式的工具卡片
+  // 长方形样式的工具卡片（长是宽的两倍）
   return (
     <div
       className={cn(
-        'group relative aspect-square overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg cursor-pointer flex flex-col',
+        'group relative aspect-[2/1] overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg cursor-pointer flex flex-col',
         className,
       )}
       onClick={() => {
@@ -40,10 +40,8 @@ const ToolCard: React.FC<ToolCardProps> = ({
       tabIndex={0}
     >
       {/* Logo区域 - 显示工具名称首字母 */}
-      <div className="flex flex-1 items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white transition-transform duration-300 group-hover:scale-110">
-          {tool.name.charAt(0).toUpperCase()}
-        </div>
+      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white transition-transform duration-300 group-hover:scale-110">
+        {tool.name.charAt(0).toUpperCase()}
       </div>
 
       {/* 内容区域 */}
@@ -54,7 +52,7 @@ const ToolCard: React.FC<ToolCardProps> = ({
         </h3>
 
         {/* 分类 */}
-        <p className="mb-1 line-clamp-1 text-[10px] text-gray-500">{tool.category.name}</p>
+        {/* <p className="mb-1 line-clamp-1 text-[10px] text-gray-500">{tool.category.name}</p> */}
 
         {/* 描述 - 只在hover时显示 */}
         {isHovered && (

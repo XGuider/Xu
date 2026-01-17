@@ -1,2 +1,0 @@
-2026-01-17 03:36:57,757 - __main__ - ERROR - 解析AI响应JSON失败: Unterminated string starting at: line 289 column 17 (char 5347)
-2026-01-17 03:36:57,758 - __main__ - WARNING - AI整合失败，使用简单去重

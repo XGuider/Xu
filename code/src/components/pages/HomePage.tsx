@@ -396,7 +396,7 @@ const HomePage: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-5">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
               {featuredTools.map((tool) => {
                 return (
                   <ToolCard
@@ -448,7 +448,7 @@ const HomePage: React.FC = () => {
                   <div className="space-y-12">
                     {safeCategories.map((category) => {
                       const categoryTools = allTools.filter(tool => tool.categoryId === category.id);
-                      const displayTools = categoryTools.slice(0, 4);
+                      const displayTools = categoryTools; // 显示所有工具，不限制数量
 
                       return (
                         <div
@@ -489,8 +489,8 @@ const HomePage: React.FC = () => {
                             </Link>
                           </div>
 
-                          {/* 工具网格 */}
-                          <div className="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-5">
+                          {/* 工具网格 - 自动适应布局，全部展示，自动换行 */}
+                          <div className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-3 md:gap-4">
                             {displayTools.map(tool => (
                               <ToolCard
                                 key={tool.id}

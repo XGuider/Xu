@@ -7,7 +7,7 @@
     "icon": "ai-office.svg",
     "sort": 1,
     "isActive": true,
-    "toolCount": 0
+    "toolCount": 3
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@
     "icon": "ai-video.svg",
     "sort": 2,
     "isActive": true,
-    "toolCount": 0
+    "toolCount": 3
   },
   {
     "id": 3,
@@ -27,7 +27,7 @@
     "icon": "ai-coding.svg",
     "sort": 3,
     "isActive": true,
-    "toolCount": 1
+    "toolCount": 3
   },
   {
     "id": 4,
@@ -37,7 +37,7 @@
     "icon": "ai-chat.svg",
     "sort": 4,
     "isActive": true,
-    "toolCount": 0
+    "toolCount": 6
   },
   {
     "id": 5,
@@ -47,7 +47,7 @@
     "icon": "ai-writing.svg",
     "sort": 5,
     "isActive": true,
-    "toolCount": 0
+    "toolCount": 1
   },
   {
     "id": 6,
@@ -57,6 +57,36 @@
     "icon": "ai-learning.svg",
     "sort": 6,
     "isActive": true,
-    "toolCount": 0
+    "toolCount": 3
+  },
+  {
+    "id": 7,
+    "name": "AI设计工具",
+    "slug": "ai-design",
+    "description": "AI辅助设计和创意工具",
+    "icon": "ai-office.svg",
+    "sort": 7,
+    "isActive": true,
+    "toolCount": 3
+  },
+  {
+    "id": 8,
+    "name": "AI图像工具",
+    "slug": "ai-image",
+    "description": "AI图像生成和处理工具",
+    "icon": "ai-office.svg",
+    "sort": 8,
+    "isActive": true,
+    "toolCount": 2
+  },
+  {
+    "id": 9,
+    "name": "AI数据分析工具",
+    "slug": "ai-data-analysis",
+    "description": "AI数据分析和可视化工具",
+    "icon": "ai-office.svg",
+    "sort": 9,
+    "isActive": true,
+    "toolCount": 1
   }
 ]

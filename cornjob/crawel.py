@@ -56,33 +56,52 @@ class DataFetcher:
 
 # Objective (目标)
 请生成以下AI工具的关键信息：
-1. 工具名称 (Tool Name)
-2. 工具描述 (Tool Description)
-3. 工具URL (Tool URL)
-4. 工具分类 (Tool Category) 请参考/code/data/categories.json文件中的分类。
-5. 工具标签 (Tool Tags) 请根据工具的描述生成相关的标签。
-
+1. 工具名称 (Tool Name) - 必填，简洁明了
+2. 工具描述 (Tool Description) - 必填，包含核心功能和使用场景
+3. 工具URL (Tool URL) - 必填，完整且可访问的链接
+4. 工具分类ID (Category ID) - 必填，请参考/code/data/categories.json文件中的分类ID（1-9）
+5. 工具标签 (Tool Tags) - 可选，多个相关的关键词数组
 
 # Key Requirements (关键要求)
 - 确保生成的信息准确无误
-- 工具名称应该简洁明了
-- 工具描述应该包含核心功能和使用场景
-- 工具URL必须是完整且可访问的链接
-- 工具分类应该符合常见的AI工具分类体系（如：AI办公工具、AI视频工具、AI编程工具、AI聊天助手、AI写作工具、AI学习网站）
-- 工具标签应该是多个相关的关键词
+- 工具名称应该简洁明了，不超过50个字符
+- 工具描述应该详细描述核心功能和使用场景，建议10-50个字符
+- 工具URL必须是完整且可访问的HTTPS链接
+- 工具分类ID必须是在categories.json中存在的有效ID（1-9）
+- 工具标签应该是1-5个相关的关键词，使用中文
 
 # Expected Output (期望输出)
-请以JSON格式返回生成的数据。请生成多个工具（至少10个），返回一个JSON数组，格式如下：
+请以JSON格式返回生成的数据。请生成多个工具（至少20个），返回一个JSON数组，格式如下：
 [
   {{
-    "name": "工具名称",
-    "description": "工具描述",
-    "url": "工具URL",
-    "category": "工具分类",
-    "tags": ["标签1", "标签2", "标签3"]
+    "name": "ChatGPT",
+    "description": "由OpenAI开发的对话式AI助手，支持自然语言交互，可用于写作、编程、学习、客服等多种场景。",
+    "url": "https://chatgpt.com",
+    "categoryId": 4,
+    "tags": [
+      "对话AI",
+      "自然语言处理",
+      "多场景应用"
+    ]
   }},
-  ...
+  {{
+    "name": "Midjourney",
+    "description": "AI图像生成工具，通过自然语言描述生成高质量的艺术作品和图像。",
+    "url": "https://www.midjourney.com",
+    "categoryId": 8,
+    "tags": [
+      "图像生成",
+      "AI艺术",
+      "创意设计"
+    ]
+  }}
 ]
+
+注意：
+- 必须返回有效的JSON数组格式
+- 不要包含id、rating、ratingCount、isActive、isFeatured等字段（这些字段会在后续处理中自动添加）
+- categoryId必须是1-9之间的整数，对应categories.json中的分类ID
+- tags必须是字符串数组，至少包含3个标签
 
 # Content (内容)
 {content}
@@ -113,11 +132,19 @@ class DataFetcher:
 请返回整合去重后的JSON数组，格式与输入数据保持一致：
 [
   {{
-    "name": "工具名称",
-    "description": "工具描述",
-    "url": "工具URL",
-    "category": "工具分类",
-    "tags": ["标签1", "标签2", "标签3"]
+    "id": 5,
+    "name": "Claude",
+    "description": "由Anthropic开发的大型语言模型，擅长长文本处理、专业写作和复杂逻辑推理。",
+    "url": "https://claude.ai",
+    "categoryId": 4,
+    "rating": 0, 
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "专业写作",
+      "逻辑推理"
+    ]
   }},
   ...
 ]
@@ -216,13 +243,42 @@ class DataFetcher:
             tools = []
             for item in data:
                 if isinstance(item, dict) and "name" in item:
-                    tools.append({
+                    # 提取categoryId，如果没有则尝试从category字段获取
+                    category_id = item.get("categoryId")
+                    if category_id is None:
+                        # 尝试从category字段解析（可能是字符串或数字）
+                        category = item.get("category", "")
+                        if isinstance(category, int):
+                            category_id = category
+                        elif isinstance(category, str) and category.strip().isdigit():
+                            category_id = int(category.strip())
+                        else:
+                            logger.warning(f"工具 {item.get('name')} 缺少有效的categoryId")
+                            continue
+                    
+                    # 验证categoryId是否在有效范围内（1-9）
+                    if not isinstance(category_id, int) or category_id < 1 or category_id > 9:
+                        logger.warning(f"工具 {item.get('name')} 的categoryId无效: {category_id}")
+                        continue
+                    
+                    tool = {
                         "name": item.get("name", "").strip(),
                         "description": item.get("description", "").strip(),
                         "url": item.get("url", "").strip(),
-                        "category": item.get("category", "").strip(),
+                        "categoryId": category_id,
+                        "rating": 0,
+                        "ratingCount": 0,
+                        "isActive": True,
+                        "isFeatured": False,
                         "tags": item.get("tags", []) if isinstance(item.get("tags"), list) else []
-                    })
+                    }
+                    
+                    # 验证必填字段
+                    if not tool["name"] or not tool["description"] or not tool["url"]:
+                        logger.warning(f"工具数据不完整，跳过: {tool.get('name', '未知')}")
+                        continue
+                    
+                    tools.append(tool)
             
             logger.info(f"成功解析 {len(tools)} 个工具")
             return tools
@@ -306,7 +362,7 @@ class DataFetcher:
         tools_dict: Dict[str, Dict[str, Any]] = {}
         
         for tool in tools:
-            # 确定唯一标识
+            # 确定唯一标识（优先使用URL）
             identifier = tool.get("url", "").strip()
             if not identifier:
                 identifier = tool.get("name", "").strip().lower()
@@ -321,10 +377,15 @@ class DataFetcher:
                 # 如果新工具的描述更长，使用新工具
                 if len(tool.get("description", "")) > len(existing.get("description", "")):
                     tools_dict[identifier] = tool.copy()
-                # 合并标签
+                # 合并标签（去重）
                 existing_tags = existing.get("tags", [])
                 new_tags = tool.get("tags", [])
-                tools_dict[identifier]["tags"] = list(set(existing_tags + new_tags))
+                # 合并标签并去重，保持顺序
+                merged_tags = existing_tags + [tag for tag in new_tags if tag not in existing_tags]
+                tools_dict[identifier]["tags"] = merged_tags
+                # 如果新工具的categoryId更合理，更新它
+                if tool.get("categoryId") and not existing.get("categoryId"):
+                    tools_dict[identifier]["categoryId"] = tool.get("categoryId")
             else:
                 tools_dict[identifier] = tool.copy()
         
@@ -489,15 +550,57 @@ if __name__ == "__main__":
     import sys
     from datetime import datetime
     
+    # 自定义延迟文件处理器：只在有日志输出时才创建文件
+    class LazyFileHandler(logging.Handler):
+        """延迟文件处理器：只在第一次有日志记录时才创建文件"""
+        def __init__(self, filename, mode='a', encoding='utf-8'):
+            super().__init__()
+            self._filename = filename
+            self._mode = mode
+            self._encoding = encoding
+            self._file_handler = None
+            self._file_created = False
+        
+        def emit(self, record):
+            """发送日志记录，首次调用时创建文件"""
+            if not self._file_created:
+                # 首次有日志输出时才创建文件
+                try:
+                    self._file_handler = logging.FileHandler(
+                        self._filename, 
+                        self._mode, 
+                        encoding=self._encoding
+                    )
+                    self._file_handler.setFormatter(self.formatter)
+                    self._file_created = True
+                except Exception as e:
+                    # 如果创建文件失败，只输出到控制台，不抛出异常
+                    self.handleError(record)
+                    return
+            
+            # 调用文件处理器的emit方法
+            if self._file_handler:
+                self._file_handler.emit(record)
+        
+        def close(self):
+            """关闭文件处理器"""
+            if self._file_handler:
+                self._file_handler.close()
+            super().close()
+    
     # 配置日志（从配置文件读取，环境变量可覆盖）
     log_level = os.getenv("LOG_LEVEL", ConfigManager.get_crawler_config("log_level", "WARNING")).upper()
+    log_file = f'crawl_{datetime.now().strftime("%Y%m%d")}.log'
+    
+    # 创建处理器列表
+    handlers = [logging.StreamHandler(sys.stdout)]
+    # 使用延迟文件处理器，只在有日志输出时才创建文件
+    handlers.append(LazyFileHandler(log_file))
+    
     logging.basicConfig(
         level=getattr(logging, log_level, logging.WARNING),
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-        handlers=[
-            logging.StreamHandler(sys.stdout),
-            logging.FileHandler(f'crawl_{datetime.now().strftime("%Y%m%d")}.log')
-        ]
+        handlers=handlers
     )
     
 
