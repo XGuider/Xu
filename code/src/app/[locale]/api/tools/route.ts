@@ -1,6 +1,6 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { createTool, getFeaturedTools, getToolById, getTools, getToolsByCategoryId, searchTools, updateTool } from '@/services/fileDataService';
+import { createTool, getFeaturedTools, getLatestTools, getToolById, getTools, getToolsByCategoryId, searchTools, updateTool } from '@/services/fileDataService';
 import { createToolSchema, updateToolSchema } from '@/validations/toolValidation';
 
 // GET - 获取工具列表或单个工具（仅读取本地文件数据）
@@ -34,13 +34,16 @@ export async function GET(request: NextRequest) {
     const search = searchParams.get('search') || '';
     const category = searchParams.get('category') || '';
     const featured = searchParams.get('featured') === 'true';
+    const latest = searchParams.get('latest') === 'true';
     const page = Number.parseInt(searchParams.get('page') || '1');
     const limit = Number.parseInt(searchParams.get('limit') || '10');
 
     let tools = await getTools();
 
     // 应用筛选条件
-    if (featured) {
+    if (latest) {
+      tools = await getLatestTools(limit);
+    } else if (featured) {
       tools = await getFeaturedTools(limit);
     } else if (category) {
       tools = await getToolsByCategoryId(Number.parseInt(category));

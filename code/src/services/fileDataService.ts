@@ -18,7 +18,7 @@ type CategoryRaw = {
 };
 
 type ToolRaw = {
-  id: number;
+  id?: number; // id字段可能缺失（爬虫生成的数据可能没有id）
   name: string;
   description: string;
   url: string;
@@ -102,8 +102,23 @@ function transformTool(raw: ToolRaw, categories: Category[]): Tool {
     updatedAt: new Date(),
   };
 
+  // 处理缺失的id字段：如果没有id，使用临时id（基于索引或hash）
+  // 这应该不会发生，因为爬虫会在保存时自动分配id，但作为防御性编程
+  let toolId: string;
+  if (raw.id !== undefined && raw.id !== null) {
+    toolId = raw.id.toString();
+  } else {
+    // 生成临时id（基于名称和URL的hash）
+    const hash = raw.name + raw.url;
+    toolId = `temp_${hash.split('').reduce((acc, char) => {
+      const hash = ((acc << 5) - acc) + char.charCodeAt(0);
+      return hash & hash;
+    }, 0)}`;
+    console.warn(`工具 "${raw.name}" 缺少id字段，使用临时id: ${toolId}`);
+  }
+
   return {
-    id: raw.id.toString(),
+    id: toolId,
     name: raw.name,
     description: raw.description,
     url: raw.url,
@@ -226,6 +241,22 @@ export async function getFeaturedTools(limit = 10): Promise<Tool[]> {
   return tools
     .filter(tool => tool.isActive && tool.isFeatured)
     .sort((a, b) => (b.rating || 0) - (a.rating || 0))
+    .slice(0, limit);
+}
+
+/**
+ * 获取最新工具（按id降序，最新的在前）
+ */
+export async function getLatestTools(limit = 4): Promise<Tool[]> {
+  const tools = await getTools();
+  return tools
+    .filter(tool => tool.isActive)
+    .sort((a, b) => {
+      // 按id降序排列（id越大表示越新）
+      const aId = Number.parseInt(a.id) || 0;
+      const bId = Number.parseInt(b.id) || 0;
+      return bId - aId;
+    })
     .slice(0, limit);
 }
 
@@ -384,9 +415,14 @@ export async function createTool(input: CreateToolInput): Promise<Tool> {
       throw new Error(`分类ID "${input.categoryId}" 不存在`);
     }
 
-    // 生成新ID
-    const maxId = rawTools.length > 0
-      ? Math.max(...rawTools.map(tool => tool.id))
+    // 生成新ID（过滤掉没有id的工具，避免undefined导致的问题）
+    const existingIds = rawTools
+      .map(tool => tool.id)
+      .filter((id): id is number => id !== undefined && id !== null)
+      .map(id => Number(id));
+
+    const maxId = existingIds.length > 0
+      ? Math.max(...existingIds)
       : 0;
     const newId = maxId + 1;
 

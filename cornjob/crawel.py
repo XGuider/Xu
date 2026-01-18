@@ -28,12 +28,14 @@ logger = logging.getLogger(__name__)
 # 数据文件路径（从配置文件读取）
 _data_dir = ConfigManager.get_data_config("data_dir", "/code/data")
 _tools_file = ConfigManager.get_data_config("tools_file", "tools.json")
+_categories_file = ConfigManager.get_data_config("categories_file", "categories.json")
 # 处理相对路径和绝对路径
 if Path(_data_dir).is_absolute():
     DATA_DIR = Path(_data_dir)
 else:
     DATA_DIR = Path(__file__).parent.parent / _data_dir
 TOOLS_FILE = DATA_DIR / _tools_file
+CATEGORIES_FILE = DATA_DIR / _categories_file
 
 # 配置常量（从配置文件读取，环境变量可覆盖）
 MAX_CONTENT_LENGTH = int(os.getenv("MAX_CONTENT_LENGTH", str(ConfigManager.get_crawler_config("max_content_length", 15000))))
@@ -261,6 +263,7 @@ class DataFetcher:
                         logger.warning(f"工具 {item.get('name')} 的categoryId无效: {category_id}")
                         continue
                     
+                    # 新提取的工具不包含id，id会在保存时自动分配（自增）
                     tool = {
                         "name": item.get("name", "").strip(),
                         "description": item.get("description", "").strip(),
@@ -478,9 +481,87 @@ class DataFetcher:
             logger.exception(f"加载tools.json失败: {str(e)}")
             return []
     
+    def load_categories(self) -> List[Dict[str, Any]]:
+        """
+        加载已有的categories.json数据
+        
+        Returns:
+            List[Dict[str, Any]]: 分类数据列表
+        """
+        try:
+            if not CATEGORIES_FILE.exists():
+                logger.warning(f"文件不存在: {CATEGORIES_FILE}，返回空列表")
+                return []
+            
+            with open(CATEGORIES_FILE, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            # 验证数据格式
+            if isinstance(data, list):
+                logger.info(f"成功加载 {len(data)} 条分类数据")
+                return data
+            else:
+                logger.warning("分类数据格式不正确，返回空列表")
+                return []
+                
+        except Exception as e:
+            logger.exception(f"加载categories.json失败: {str(e)}")
+            return []
+    
+    def update_category_tool_counts(self, tools_data: List[Dict[str, Any]]) -> bool:
+        """
+        根据tools.json中的categoryId统计并更新categories.json中的toolCount字段
+        
+        Args:
+            tools_data: 工具数据列表
+            
+        Returns:
+            bool: 是否更新成功
+        """
+        try:
+            # 加载分类数据
+            categories = self.load_categories()
+            if not categories:
+                logger.warning("没有分类数据，跳过toolCount更新")
+                return False
+            
+            # 统计每个分类的工具数量（只统计isActive为True的工具）
+            tool_counts: Dict[int, int] = {}
+            for tool in tools_data:
+                category_id = tool.get("categoryId")
+                is_active = tool.get("isActive", True)
+                
+                if category_id is not None and is_active:
+                    category_id = int(category_id)
+                    tool_counts[category_id] = tool_counts.get(category_id, 0) + 1
+            
+            # 更新分类的toolCount
+            updated_count = 0
+            for category in categories:
+                category_id = category.get("id")
+                if category_id is not None:
+                    category_id = int(category_id)
+                    new_count = tool_counts.get(category_id, 0)
+                    old_count = category.get("toolCount", 0)
+                    category["toolCount"] = new_count
+                    if new_count != old_count:
+                        updated_count += 1
+                        logger.debug(f"分类 {category.get('name', '未知')} (ID: {category_id}) 的toolCount: {old_count} -> {new_count}")
+            
+            # 保存更新后的分类数据
+            with open(CATEGORIES_FILE, 'w', encoding='utf-8') as f:
+                json.dump(categories, f, ensure_ascii=False, indent=2)
+            
+            logger.info(f"成功更新 {updated_count} 个分类的toolCount字段")
+            return True
+            
+        except Exception as e:
+            logger.exception(f"更新categories.json的toolCount失败: {str(e)}")
+            return False
+    
     def save_tools(self, data: List[Dict[str, Any]]) -> bool:
         """
-        保存数据到tools.json
+        保存数据到tools.json，并自动更新categories.json中的toolCount字段
         
         Args:
             data: 要保存的数据列表
@@ -492,11 +573,63 @@ class DataFetcher:
             # 确保目录存在
             DATA_DIR.mkdir(parents=True, exist_ok=True)
             
+            # 确保每个工具都有id字段，自动分配缺失的id（自增）
+            processed_data = []
+            existing_ids = set()
+            
+            # 先收集所有已有的id
+            for tool in data:
+                if "id" in tool and tool["id"] is not None:
+                    existing_ids.add(int(tool["id"]))
+            
+            # 计算下一个可用的id（从最大id+1开始，如果没有id则从1开始）
+            next_id = max(existing_ids) + 1 if existing_ids else 1
+            
+            # 处理每个工具，确保都有id
+            for tool in data:
+                processed_tool = tool.copy()
+                
+                # 如果缺少id，自动分配自增id
+                if "id" not in processed_tool or processed_tool["id"] is None:
+                    # 确保next_id不与已有id冲突（处理可能的id间隙）
+                    while next_id in existing_ids:
+                        next_id += 1
+                    processed_tool["id"] = next_id
+                    existing_ids.add(next_id)
+                    next_id += 1  # 自增到下一个可用id
+                    logger.debug(f"为工具 '{processed_tool.get('name', '未知')}' 分配id: {processed_tool['id']}")
+                else:
+                    # 确保已有工具的id是整数类型
+                    processed_tool["id"] = int(processed_tool["id"])
+                
+                # 确保其他必需字段有默认值
+                if "rating" not in processed_tool:
+                    processed_tool["rating"] = 0
+                if "ratingCount" not in processed_tool:
+                    processed_tool["ratingCount"] = 0
+                if "isActive" not in processed_tool:
+                    processed_tool["isActive"] = True
+                if "isFeatured" not in processed_tool:
+                    processed_tool["isFeatured"] = False
+                if "tags" not in processed_tool:
+                    processed_tool["tags"] = []
+                
+                processed_data.append(processed_tool)
+            
             # 保存数据
             with open(TOOLS_FILE, 'w', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False, indent=2)
+                json.dump(processed_data, f, ensure_ascii=False, indent=2)
             
-            logger.info(f"成功保存 {len(data)} 条数据到 {TOOLS_FILE}")
+            logger.info(f"成功保存 {len(processed_data)} 条数据到 {TOOLS_FILE}")
+            
+            # 保存完成后，自动更新categories.json中的toolCount字段
+            logger.info("开始更新categories.json中的toolCount字段...")
+            update_success = self.update_category_tool_counts(processed_data)
+            if update_success:
+                logger.info("toolCount字段更新完成")
+            else:
+                logger.warning("toolCount字段更新失败，但不影响工具数据保存")
+            
             return True
             
         except Exception as e:
@@ -624,6 +757,8 @@ if __name__ == "__main__":
         
         # 执行完整流程
         success = fetcher.run(content=content, use_all_providers=use_all_providers)
+
+        
         
         if success:
             print(f"\n{'='*60}")

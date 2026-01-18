@@ -35,6 +35,29 @@ const HomePage: React.FC = () => {
     limit: 100, // 获取更多工具用于展示
   });
 
+  // 获取最新工具（最新4个）
+  const [featuredTools, setFeaturedTools] = useState<Tool[]>([]);
+  const [featuredToolsLoading, setFeaturedToolsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchLatestTools = async () => {
+      try {
+        setFeaturedToolsLoading(true);
+        const response = await fetch('/api/tools?latest=true&limit=4&status=active');
+        const data = await response.json();
+        if (data.success) {
+          setFeaturedTools(data.data.tools);
+        }
+      } catch (error) {
+        console.error('获取最新工具失败:', error);
+      } finally {
+        setFeaturedToolsLoading(false);
+      }
+    };
+
+    fetchLatestTools();
+  }, []);
+
   // 模拟轮播图数据
   const carouselSlides = [
     {
@@ -72,91 +95,12 @@ const HomePage: React.FC = () => {
   }, [carouselSlides.length]);
 
   // 模拟热搜数据
-  const hotSearches = [
-    { id: '1', keyword: 'Liblibai', searchCount: 1250, isTrending: true },
-    { id: '2', keyword: 'Coze扣子', searchCount: 980, isTrending: true },
-    { id: '3', keyword: '剪映', searchCount: 856, isTrending: false },
-    { id: '4', keyword: 'Trac国内版', searchCount: 743, isTrending: false },
-  ];
-
-  // 模拟热门工具数据
-  const featuredTools: Tool[] = [
-    {
-      id: '1',
-      name: 'DeepSeek',
-      description: '深度求索AI工具，强大的代码生成和编程助手',
-      url: 'https://www.deepseek.com',
-      categoryId: '3',
-      category: {
-        id: '3',
-        name: 'AI编程工具',
-        slug: 'ai-coding',
-        sort: 3,
-        isActive: true,
-        toolCount: 18,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      rating: 4.8,
-      ratingCount: 1256,
-      isActive: true,
-      isFeatured: true,
-      tags: ['编程', '代码生成', 'AI助手'],
-      developer: '深度求索',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      id: '2',
-      name: '腾讯元宝',
-      description: '腾讯AI助手，智能对话和内容创作',
-      url: 'https://yuanbao.qq.com',
-      categoryId: '4',
-      category: {
-        id: '4',
-        name: 'AI聊天助手',
-        slug: 'ai-chat',
-        sort: 4,
-        isActive: true,
-        toolCount: 45,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      rating: 4.6,
-      ratingCount: 892,
-      isActive: true,
-      isFeatured: true,
-      tags: ['聊天', 'AI助手', '腾讯'],
-      developer: '腾讯',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      id: '3',
-      name: 'Cursor',
-      description: 'AI代码助手，提升编程效率',
-      url: 'https://www.cursor.so',
-      categoryId: '3',
-      category: {
-        id: '3',
-        name: 'AI编程工具',
-        slug: 'ai-coding',
-        sort: 3,
-        isActive: true,
-        toolCount: 18,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      rating: 4.7,
-      ratingCount: 654,
-      isActive: true,
-      isFeatured: true,
-      tags: ['编程', '代码助手', '开发工具'],
-      developer: 'Cursor',
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ];
+  // const hotSearches = [
+  //   { id: '1', keyword: 'Liblibai', searchCount: 1250, isTrending: true },
+  //   { id: '2', keyword: 'Coze扣子', searchCount: 980, isTrending: true },
+  //   { id: '3', keyword: '剪映', searchCount: 856, isTrending: false },
+  //   { id: '4', keyword: 'Trac国内版', searchCount: 743, isTrending: false },
+  // ];
 
   const router = useRouter();
   const [isSearching, setIsSearching] = useState(false);
@@ -300,7 +244,7 @@ const HomePage: React.FC = () => {
             </form>
 
             {/* 热搜榜 */}
-            <div className="flex flex-wrap justify-center gap-3">
+            {/* <div className="flex flex-wrap justify-center gap-3">
               <span className="text-sm text-gray-700">
                 {t('hot_searches')}
                 ：
@@ -324,7 +268,7 @@ const HomePage: React.FC = () => {
                   </button>
                 );
               })}
-            </div>
+            </div> */}
           </section>
 
           {/* 轮播图 */}
@@ -385,7 +329,7 @@ const HomePage: React.FC = () => {
             </div>
           </section>
 
-          {/* 热门推荐工具 */}
+          {/* 最新工具推荐 */}
           <section className="mb-12">
             <div className="mb-8 text-center">
               <h2 className="mb-4 text-3xl font-bold text-gray-900">
@@ -396,17 +340,27 @@ const HomePage: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
-              {featuredTools.map((tool) => {
-                return (
-                  <ToolCard
-                    key={tool.id}
-                    tool={tool}
-                    className="h-full"
-                  />
-                );
-              })}
-            </div>
+            {featuredToolsLoading
+              ? (
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
+                    {[1, 2, 3, 4].map(i => (
+                      <div key={i} className="h-48 animate-pulse rounded-lg bg-gray-200"></div>
+                    ))}
+                  </div>
+                )
+              : (
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 md:gap-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
+                    {featuredTools.map((tool) => {
+                      return (
+                        <ToolCard
+                          key={tool.id}
+                          tool={tool}
+                          className="h-full"
+                        />
+                      );
+                    })}
+                  </div>
+                )}
           </section>
 
           {/* 分类工具展示 */}
