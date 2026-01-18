@@ -117,7 +117,8 @@
       "笔记",
       "AI助手",
       "知识管理",
-      "内容生成"
+      "内容生成",
+      "智能组织"
     ]
   },
   {
@@ -164,7 +165,9 @@
       "视频编辑",
       "特效",
       "视频生成",
-      "创意工具"
+      "创意工具",
+      "AI生成",
+      "创意设计"
     ]
   },
   {
@@ -283,7 +286,10 @@
       "AI助手",
       "研究工具",
       "上下文对话",
-      "引用溯源"
+      "引用溯源",
+      "搜索引擎",
+      "AI问答",
+      "上下文相关"
     ]
   },
   {
@@ -344,7 +350,9 @@
       "文本到图像",
       "创意设计",
       "高精度",
-      "艺术创作"
+      "艺术创作",
+      "高保真",
+      "自然语言描述"
     ]
   },
   {
@@ -379,7 +387,9 @@
       "写作优化",
       "语言润色",
       "学术写作",
-      "语法检查"
+      "语法检查",
+      "写作辅助",
+      "英文优化"
     ]
   },
   {
@@ -446,7 +456,9 @@
     "tags": [
       "图形设计",
       "模板生成",
-      "AI辅助设计"
+      "AI辅助设计",
+      "设计工具",
+      "AI辅助"
     ]
   },
   {
@@ -462,7 +474,10 @@
     "tags": [
       "代码生成",
       "智能编程",
-      "开发辅助"
+      "开发辅助",
+      "编程助手",
+      "代码补全",
+      "开发工具"
     ]
   },
   {
@@ -513,9 +528,9 @@
   },
   {
     "name": "Hugging Face",
-    "description": "AI模型平台，提供大量开源模型与API，支持自然语言处理与多模态任务。",
+    "description": "AI模型平台，提供大量开源模型和API，支持自然语言处理、图像识别等任务。",
     "url": "https://huggingface.co",
-    "categoryId": 3,
+    "categoryId": 5,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -523,7 +538,9 @@
     "tags": [
       "开源模型",
       "自然语言处理",
-      "研究工具"
+      "研究工具",
+      "API服务",
+      "NLP"
     ]
   },
   {
@@ -568,7 +585,9 @@
     "tags": [
       "语音合成",
       "多语言支持",
-      "音频生成"
+      "音频生成",
+      "多语言",
+      "自然语音"
     ]
   },
   {
@@ -583,12 +602,15 @@
     "tags": [
       "视频生成",
       "虚拟人物",
-      "营销工具"
+      "营销工具",
+      "虚拟人",
+      "视频制作",
+      "企业营销"
     ]
   },
   {
-    "name": "Kling AI",
-    "description": "AI视频生成工具，支持文本到视频的快速转换，适用于内容创作与营销。",
+    "name": "Kling",
+    "description": "AI视频生成工具，支持文本到视频的快速转换，适合广告和创意视频制作。",
     "url": "https://www.kling.ai",
     "categoryId": 8,
     "rating": 0,
@@ -598,7 +620,9 @@
     "tags": [
       "视频生成",
       "内容创作",
-      "营销工具"
+      "营销工具",
+      "AI创意",
+      "广告制作"
     ]
   },
   {
@@ -659,6 +683,111 @@
       "大语言模型",
       "多模态",
       "中文优化"
+    ]
+  },
+  {
+    "name": "Stable Diffusion",
+    "description": "开源AI图像生成模型，支持本地部署，可生成多样风格的艺术图像。",
+    "url": "https://stability.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "开源模型",
+      "图像生成",
+      "本地部署"
+    ]
+  },
+  {
+    "name": "Wombo Dream",
+    "description": "AI绘画工具，通过简单文本生成动漫风格或抽象艺术图像。",
+    "url": "https://wombo.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "AI绘画",
+      "动漫风格",
+      "轻量级工具"
+    ]
+  },
+  {
+    "name": "Otter.ai",
+    "description": "AI会议记录工具，自动转录语音并生成结构化会议摘要。",
+    "url": "https://otter.ai",
+    "categoryId": 6,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "语音转文字",
+      "会议记录",
+      "效率工具"
+    ]
+  },
+  {
+    "name": "Claude",
+    "description": "由Anthropic开发的大型语言模型，支持长文本处理与多轮对话。",
+    "url": "https://www.anthropic.com",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "大模型",
+      "长文本处理",
+      "对话助手"
+    ]
+  },
+  {
+    "name": "Loom",
+    "description": "AI视频录制与分享工具，支持自动字幕生成和会议回放。",
+    "url": "https://www.loom.com",
+    "categoryId": 6,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频录制",
+      "会议回放",
+      "AI字幕"
+    ]
+  },
+  {
+    "name": "Pictory",
+    "description": "AI视频生成工具，支持将博客文章或脚本自动转为短视频。",
+    "url": "https://pictory.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "内容转视频",
+      "短视频制作",
+      "AI自动化"
+    ]
+  },
+  {
+    "name": "Adobe Firefly",
+    "description": "Adobe推出的AI创意工具，支持图像生成、图像编辑和风格迁移。",
+    "url": "https://www.adobe.com/firefly.html",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "创意设计",
+      "图像编辑",
+      "AI生成"
     ]
   }
 ]
