@@ -76,7 +76,7 @@
   },
   {
     "name": "Claude",
-    "description": "由Anthropic开发的AI助手，擅长长文本处理与复杂逻辑推理，适用于写作与研究。",
+    "description": "Anthropic开发的大型语言模型，擅长长文本处理与逻辑推理，适用于学术写作与复杂任务分析。",
     "url": "https://claude.ai",
     "categoryId": 4,
     "rating": 0,
@@ -93,9 +93,10 @@
       "研究",
       "逻辑推理",
       "AI助手",
-      "研究助手"
+      "研究助手",
+      "学术写作"
     ],
-    "id": 26
+    "id": 46
   },
   {
     "id": 6,
@@ -168,7 +169,9 @@
       "视频生成",
       "创意工具",
       "AI生成",
-      "创意设计"
+      "创意设计",
+      "AI视觉",
+      "创意制作"
     ]
   },
   {
@@ -190,7 +193,10 @@
       "报告",
       "图表",
       "自然语言",
-      "AI生成"
+      "AI生成",
+      "视频生成",
+      "营销工具",
+      "教育内容"
     ]
   },
   {
@@ -290,7 +296,9 @@
       "引用溯源",
       "搜索引擎",
       "AI问答",
-      "上下文相关"
+      "上下文相关",
+      "问答系统",
+      "学术研究"
     ]
   },
   {
@@ -336,9 +344,8 @@
     ]
   },
   {
-    "id": 17,
     "name": "DALL·E 3",
-    "description": "由OpenAI开发的图像生成模型，可根据文本描述生成高质量、高细节的图像。",
+    "description": "由OpenAI推出的AI图像生成器，支持复杂图像描述和细节控制，适用于创意设计和内容创作。",
     "url": "https://openai.com/dall-e-3",
     "categoryId": 8,
     "rating": 0,
@@ -353,8 +360,10 @@
       "高精度",
       "艺术创作",
       "高保真",
-      "自然语言描述"
-    ]
+      "自然语言描述",
+      "细节控制"
+    ],
+    "id": 47
   },
   {
     "id": 18,
@@ -394,11 +403,10 @@
     ]
   },
   {
-    "id": 20,
     "name": "Canva Magic Design",
-    "description": "AI驱动的图形设计工具，自动根据用户输入生成专业设计模板与视觉内容。",
+    "description": "AI辅助设计工具，自动根据文本生成设计图，适用于社交媒体、海报与广告制作。",
     "url": "https://www.canva.com/magic-design",
-    "categoryId": 7,
+    "categoryId": 6,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -407,8 +415,12 @@
       "设计自动化",
       "模板生成",
       "视觉创作",
-      "创意设计"
-    ]
+      "创意设计",
+      "设计工具",
+      "AI辅助",
+      "社交媒体"
+    ],
+    "id": 48
   },
   {
     "id": 21,
@@ -478,7 +490,9 @@
       "开发辅助",
       "编程助手",
       "代码补全",
-      "开发工具"
+      "开发工具",
+      "办公工具",
+      "Office集成"
     ]
   },
   {
@@ -515,7 +529,7 @@
   },
   {
     "name": "Notion AI",
-    "description": "集成在Notion中的AI助手，支持内容生成、摘要、任务管理与知识整理。",
+    "description": "集成在Notion中的AI助手，支持文档自动生成、摘要提取与内容优化，提升知识管理效率。",
     "url": "https://www.notion.so/ai",
     "categoryId": 5,
     "rating": 0,
@@ -525,9 +539,10 @@
     "tags": [
       "知识管理",
       "内容生成",
-      "任务自动化"
+      "任务自动化",
+      "办公协作"
     ],
-    "id": 28
+    "id": 49
   },
   {
     "name": "Hugging Face",
@@ -543,7 +558,10 @@
       "自然语言处理",
       "研究工具",
       "API服务",
-      "NLP"
+      "NLP",
+      "开源平台",
+      "模型训练",
+      "AI研究"
     ],
     "id": 29
   },
@@ -581,9 +599,9 @@
   },
   {
     "name": "ElevenLabs",
-    "description": "AI语音合成工具，支持多种语言与音色，用于配音、播客与虚拟助手。",
+    "description": "AI语音合成平台，支持多语种、多风格语音生成，适用于播客、游戏与语音助手开发。",
     "url": "https://elevenlabs.io",
-    "categoryId": 9,
+    "categoryId": 3,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -593,15 +611,16 @@
       "多语言支持",
       "音频生成",
       "多语言",
-      "自然语音"
+      "自然语音",
+      "语音助手"
     ],
-    "id": 32
+    "id": 50
   },
   {
     "name": "Synthesia",
-    "description": "AI视频生成平台，支持创建虚拟人像视频，适用于营销、教育与培训。",
+    "description": "AI视频生成平台，支持虚拟主播与多语言视频制作，适用于企业宣传与在线教育。",
     "url": "https://www.synthesia.io",
-    "categoryId": 8,
+    "categoryId": 7,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -612,9 +631,12 @@
       "营销工具",
       "虚拟人",
       "视频制作",
-      "企业营销"
+      "企业营销",
+      "虚拟主播",
+      "多语言",
+      "在线教育"
     ],
-    "id": 33
+    "id": 51
   },
   {
     "name": "Kling",
@@ -700,7 +722,7 @@
   },
   {
     "name": "Stable Diffusion",
-    "description": "开源AI图像生成模型，支持本地部署，可生成多样风格的艺术图像。",
+    "description": "开源AI图像生成模型，支持本地部署，可生成高质量图像和艺术风格创作。",
     "url": "https://stability.ai",
     "categoryId": 8,
     "rating": 0,
@@ -710,9 +732,10 @@
     "tags": [
       "开源模型",
       "图像生成",
-      "本地部署"
+      "本地部署",
+      "开源工具"
     ],
-    "id": 39
+    "id": 52
   },
   {
     "name": "Wombo Dream",
@@ -732,9 +755,9 @@
   },
   {
     "name": "Otter.ai",
-    "description": "AI会议记录工具，自动转录语音并生成结构化会议摘要。",
+    "description": "AI会议录音与转录工具，自动识别语音并生成文字记录，支持会议管理与内容整理。",
     "url": "https://otter.ai",
-    "categoryId": 6,
+    "categoryId": 5,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -742,9 +765,11 @@
     "tags": [
       "语音转文字",
       "会议记录",
-      "效率工具"
+      "效率工具",
+      "语音转录",
+      "办公效率"
     ],
-    "id": 41
+    "id": 53
   },
   {
     "name": "Claude",
@@ -809,5 +834,85 @@
       "AI生成"
     ],
     "id": 45
+  },
+  {
+    "name": "Jasper",
+    "description": "AI内容创作平台，专为营销文案、广告、博客等场景提供自动化内容生成服务。",
+    "url": "https://jasper.ai",
+    "categoryId": 5,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "内容创作",
+      "营销文案",
+      "自动化写作"
+    ],
+    "id": 54
+  },
+  {
+    "name": "Writesonic",
+    "description": "AI写作助手，支持多种文体生成，如广告文案、邮件、SEO内容，提升写作效率。",
+    "url": "https://writesonic.com",
+    "categoryId": 5,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "写作助手",
+      "SEO内容",
+      "广告文案"
+    ],
+    "id": 55
+  },
+  {
+    "name": "DeepSeek",
+    "description": "国产AI大模型，支持多语言对话与代码生成，适用于开发、学术与日常问答场景。",
+    "url": "https://deepseek.com",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "国产AI",
+      "多语言",
+      "代码生成"
+    ],
+    "id": 56
+  },
+  {
+    "name": "Zapier AI",
+    "description": "AI自动化平台，支持连接多个应用并自动执行任务，适用于流程自动化与效率提升。",
+    "url": "https://zapier.com/ai",
+    "categoryId": 2,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "自动化",
+      "工作流",
+      "效率工具"
+    ],
+    "id": 57
+  },
+  {
+    "name": "Lensa AI",
+    "description": "AI图像美化与风格转换工具，支持照片生成艺术风格图像，适用于社交与创意分享。",
+    "url": "https://lensa.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "图像美化",
+      "风格转换",
+      "社交分享"
+    ],
+    "id": 58
   }
 ]
