@@ -123,7 +123,9 @@
       "AI助手",
       "知识管理",
       "内容生成",
-      "智能组织"
+      "智能组织",
+      "任务管理",
+      "生产力工具"
     ]
   },
   {
@@ -149,7 +151,8 @@
       "设计工具",
       "图文排版",
       "创意辅助",
-      "AI生成"
+      "AI生成",
+      "AI辅助"
     ]
   },
   {
@@ -202,7 +205,9 @@
       "视频生成",
       "营销工具",
       "教育内容",
-      "AI自动化"
+      "AI自动化",
+      "AI演示",
+      "内容创作"
     ]
   },
   {
@@ -280,7 +285,8 @@
       "AI助手",
       "多模态AI",
       "文档处理",
-      "智能助手"
+      "智能助手",
+      "Google生态"
     ]
   },
   {
@@ -411,7 +417,9 @@
       "学术写作",
       "语法检查",
       "写作辅助",
-      "英文优化"
+      "英文优化",
+      "写作助手",
+      "内容优化"
     ]
   },
   {
@@ -577,7 +585,9 @@
       "模型训练",
       "AI研究",
       "模型平台",
-      "AI社区"
+      "AI社区",
+      "自然语言",
+      "开源社区"
     ],
     "id": 29
   },
@@ -654,7 +664,8 @@
       "虚拟主播",
       "多语言",
       "在线教育",
-      "AI视频"
+      "AI视频",
+      "教育内容"
     ],
     "id": 51
   },
@@ -672,7 +683,10 @@
       "内容创作",
       "营销工具",
       "AI创意",
-      "广告制作"
+      "广告制作",
+      "3D动画",
+      "AI视频",
+      "虚拟角色"
     ],
     "id": 34
   },
@@ -762,7 +776,7 @@
   },
   {
     "name": "Wombo Dream",
-    "description": "AI绘画工具，通过文本描述快速生成动漫风格或写实风格的图像。",
+    "description": "AI绘画工具，通过简单文本输入生成动漫风格或油画风格的创意图像。",
     "url": "https://wombo.ai",
     "categoryId": 8,
     "rating": 0,
@@ -775,7 +789,7 @@
       "轻量级工具",
       "快速生成"
     ],
-    "id": 60
+    "id": 63
   },
   {
     "name": "Otter.ai",
@@ -791,7 +805,8 @@
       "会议记录",
       "效率工具",
       "语音转录",
-      "办公效率"
+      "办公效率",
+      "实时转录"
     ],
     "id": 53
   },
@@ -848,7 +863,7 @@
   },
   {
     "name": "Adobe Firefly",
-    "description": "Adobe推出的AI创意工具，支持图像生成、图像编辑和风格迁移。",
+    "description": "Adobe推出的AI图像生成工具，支持图像生成、编辑和风格迁移，适用于创意工作者。",
     "url": "https://www.adobe.com/firefly.html",
     "categoryId": 8,
     "rating": 0,
@@ -858,9 +873,11 @@
     "tags": [
       "创意设计",
       "图像编辑",
-      "AI生成"
+      "AI生成",
+      "图像生成",
+      "Adobe生态"
     ],
-    "id": 45
+    "id": 64
   },
   {
     "name": "Jasper",
@@ -957,5 +974,69 @@
       "风格控制"
     ],
     "id": 62
+  },
+  {
+    "name": "DALL·E 2",
+    "description": "由OpenAI开发的AI图像生成工具，支持根据文本描述生成逼真或艺术风格的图像。",
+    "url": "https://dall-e.com",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "AI图像",
+      "文本生成",
+      "高精度"
+    ],
+    "id": 65
+  },
+  {
+    "name": "Cohere AI",
+    "description": "企业级AI平台，支持文本生成、问答、语义分析等，适用于商业和科研场景。",
+    "url": "https://cohere.com",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "企业AI",
+      "文本生成",
+      "语义分析"
+    ],
+    "id": 66
+  },
+  {
+    "name": "Descript",
+    "description": "AI音频和视频编辑工具，支持文本编辑视频和音频内容，实现创意内容快速修改。",
+    "url": "https://www.descript.com",
+    "categoryId": 7,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频编辑",
+      "音频处理",
+      "文本驱动"
+    ],
+    "id": 67
+  },
+  {
+    "name": "Pictory",
+    "description": "AI视频生成工具，支持将长文或脚本自动转换为短视频，适用于营销和教育。",
+    "url": "https://www.pictory.ai",
+    "categoryId": 7,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "内容转化",
+      "营销视频",
+      "自动化生成"
+    ],
+    "id": 68
   }
 ]
