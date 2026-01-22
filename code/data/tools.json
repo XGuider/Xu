@@ -97,7 +97,8 @@
       "AI助手",
       "研究助手",
       "学术写作",
-      "复杂任务"
+      "复杂任务",
+      "大语言模型"
     ],
     "id": 46
   },
@@ -152,7 +153,9 @@
       "图文排版",
       "创意辅助",
       "AI生成",
-      "AI辅助"
+      "AI辅助",
+      "AI创作",
+      "视觉设计"
     ]
   },
   {
@@ -314,7 +317,10 @@
       "问答系统",
       "学术研究",
       "AI搜索",
-      "上下文理解"
+      "上下文理解",
+      "研究助手",
+      "知识查询",
+      "引用支持"
     ]
   },
   {
@@ -356,7 +362,9 @@
       "视频生成",
       "AI主播",
       "营销",
-      "视频工具"
+      "视频工具",
+      "AI视频",
+      "虚拟主播"
     ]
   },
   {
@@ -641,7 +649,8 @@
       "自然语音",
       "语音助手",
       "AI语音",
-      "角色音色"
+      "角色音色",
+      "AI配音"
     ],
     "id": 50
   },
@@ -708,7 +717,7 @@
   },
   {
     "name": "Lensa AI",
-    "description": "AI图像增强与风格化工具，支持照片美化、AI艺术化与面部修复。",
+    "description": "AI照片美化工具，支持一键生成艺术风格照片、人像增强和AI换脸功能。",
     "url": "https://www.lensa.ai",
     "categoryId": 8,
     "rating": 0,
@@ -721,9 +730,12 @@
       "面部修复",
       "人像美化",
       "AI滤镜",
-      "风格化"
+      "风格化",
+      "照片美化",
+      "AI换脸",
+      "人像生成"
     ],
-    "id": 36
+    "id": 69
   },
   {
     "name": "Baidu ERNIE Bot",
@@ -844,9 +856,9 @@
   },
   {
     "name": "Pictory",
-    "description": "AI视频制作工具，可将文字或脚本自动转为视频，支持多模板和素材库。",
+    "description": "AI视频生成工具，可将文章、脚本或视频自动转为带字幕和配音的短视频。",
     "url": "https://pictory.ai",
-    "categoryId": 8,
+    "categoryId": 9,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -857,9 +869,11 @@
       "AI自动化",
       "视频制作",
       "AI转换",
-      "内容创作"
+      "内容创作",
+      "视频生成",
+      "AI编辑"
     ],
-    "id": 61
+    "id": 70
   },
   {
     "name": "Adobe Firefly",
@@ -875,7 +889,8 @@
       "图像编辑",
       "AI生成",
       "图像生成",
-      "Adobe生态"
+      "Adobe生态",
+      "AI创意"
     ],
     "id": 64
   },
@@ -891,7 +906,8 @@
     "tags": [
       "内容创作",
       "营销文案",
-      "自动化写作"
+      "自动化写作",
+      "AI写作"
     ],
     "id": 54
   },
@@ -1038,5 +1054,85 @@
       "自动化生成"
     ],
     "id": 68
+  },
+  {
+    "name": "Stable Diffusion",
+    "description": "开源AI图像生成模型，支持本地部署，可生成多样风格的图像和艺术作品。",
+    "url": "https://stablediffusionweb.com",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "开源模型",
+      "本地部署",
+      "图像生成"
+    ],
+    "id": 71
+  },
+  {
+    "name": "Suno AI",
+    "description": "AI音乐生成工具，通过文本描述生成旋律、歌词和完整音乐作品。",
+    "url": "https://suno.ai",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "AI音乐",
+      "音乐创作",
+      "文本生成"
+    ],
+    "id": 72
+  },
+  {
+    "name": "Copy.ai",
+    "description": "AI辅助写作工具，支持邮件、社媒、广告、销售文案等场景的快速内容生成。",
+    "url": "https://copy.ai",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "文案生成",
+      "营销工具",
+      "AI写作"
+    ],
+    "id": 73
+  },
+  {
+    "name": "Microsoft Designer",
+    "description": "AI驱动的图形设计工具，支持一键生成专业级海报、社交媒体图文等视觉内容。",
+    "url": "https://www.microsoft.com/designer",
+    "categoryId": 7,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "AI设计",
+      "图形设计",
+      "一键生成"
+    ],
+    "id": 74
+  },
+  {
+    "name": "Linguee AI",
+    "description": "AI翻译和语义理解工具，支持多语种互译和上下文精准翻译。",
+    "url": "https://www.linguee.com",
+    "categoryId": 2,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "机器翻译",
+      "语义理解",
+      "多语言"
+    ],
+    "id": 75
   }
 ]
