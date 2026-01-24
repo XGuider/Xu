@@ -57,7 +57,7 @@
     "icon": "ai-learning.svg",
     "sort": 6,
     "isActive": true,
-    "toolCount": 6
+    "toolCount": 7
   },
   {
     "id": 7,
@@ -67,7 +67,7 @@
     "icon": "ai-office.svg",
     "sort": 7,
     "isActive": true,
-    "toolCount": 7
+    "toolCount": 8
   },
   {
     "id": 8,
