@@ -27,7 +27,7 @@
     "icon": "ai-coding.svg",
     "sort": 3,
     "isActive": true,
-    "toolCount": 5
+    "toolCount": 6
   },
   {
     "id": 4,
@@ -67,7 +67,7 @@
     "icon": "ai-office.svg",
     "sort": 7,
     "isActive": true,
-    "toolCount": 8
+    "toolCount": 9
   },
   {
     "id": 8,
@@ -77,7 +77,7 @@
     "icon": "ai-office.svg",
     "sort": 8,
     "isActive": true,
-    "toolCount": 14
+    "toolCount": 15
   },
   {
     "id": 9,
