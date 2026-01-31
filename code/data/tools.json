@@ -112,7 +112,8 @@
       "问答系统",
       "大模型",
       "复杂推理",
-      "对话理解"
+      "对话理解",
+      "企业级应用"
     ],
     "id": 46
   },
@@ -176,7 +177,8 @@
       "视觉设计",
       "素材创作",
       "设计辅助",
-      "图形设计"
+      "图形设计",
+      "内容生成"
     ]
   },
   {
@@ -242,7 +244,8 @@
       "AI写作",
       "PPT生成",
       "文档自动化",
-      "AI设计"
+      "AI设计",
+      "商务工具"
     ]
   },
   {
@@ -367,7 +370,8 @@
       "学术工具",
       "搜索增强",
       "内容溯源",
-      "知识总结"
+      "知识总结",
+      "上下文分析"
     ]
   },
   {
@@ -416,7 +420,8 @@
       "AI视频",
       "虚拟主播",
       "虚拟人物",
-      "内容营销"
+      "内容营销",
+      "教育内容"
     ]
   },
   {
@@ -615,7 +620,7 @@
   },
   {
     "name": "Stable Diffusion",
-    "description": "开源AI图像生成模型，支持本地部署，可生成高分辨率图像和艺术风格创作。",
+    "description": "开源AI图像生成模型，支持本地部署，适用于艺术创作、设计、游戏素材生成等场景。",
     "url": "https://stability.ai/stable-diffusion",
     "categoryId": 8,
     "rating": 0,
@@ -628,7 +633,7 @@
       "图像生成",
       "开源模型"
     ],
-    "id": 59
+    "id": 99
   },
   {
     "name": "Notion AI",
@@ -652,7 +657,9 @@
       "办公工具",
       "智能写作",
       "任务管理",
-      "写作优化"
+      "写作优化",
+      "任务助手",
+      "团队协作"
     ],
     "id": 49
   },
@@ -751,9 +758,9 @@
   },
   {
     "name": "Synthesia",
-    "description": "AI虚拟人视频生成平台，支持创建无真人出镜的AI视频，适用于企业培训和营销。",
+    "description": "AI虚拟人视频生成平台，支持自定义虚拟形象和背景，适用于营销、教育和培训视频。",
     "url": "https://www.synthesia.io",
-    "categoryId": 8,
+    "categoryId": 9,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -775,7 +782,7 @@
       "企业宣传",
       "企业应用"
     ],
-    "id": 94
+    "id": 100
   },
   {
     "name": "Kling",
@@ -826,7 +833,7 @@
   },
   {
     "name": "Lensa AI",
-    "description": "AI照片美化工具，支持一键生成艺术风格照片、人像增强和AI换脸功能。",
+    "description": "AI图像生成与编辑工具，支持照片风格转换、滤镜应用和AI肖像生成，适用于社交媒体和艺术创作。",
     "url": "https://www.lensa.ai",
     "categoryId": 8,
     "rating": 0,
@@ -846,9 +853,12 @@
       "风格化处理",
       "图像增强",
       "艺术风格",
-      "人像处理"
+      "人像处理",
+      "照片编辑",
+      "AI肖像",
+      "风格转换"
     ],
-    "id": 69
+    "id": 101
   },
   {
     "name": "Baidu ERNIE Bot",
@@ -903,7 +913,7 @@
   },
   {
     "name": "Wombo Dream",
-    "description": "AI艺术绘画工具，通过文本描述生成动漫风格图像，适合创作者和爱好者。",
+    "description": "AI绘画工具，通过简单文本提示生成动漫风格图像，适合快速创作和灵感激发。",
     "url": "https://wombo.ai",
     "categoryId": 8,
     "rating": 0,
@@ -915,9 +925,10 @@
       "动漫风格",
       "轻量级工具",
       "快速生成",
-      "艺术创作"
+      "艺术创作",
+      "快速创作"
     ],
-    "id": 90
+    "id": 102
   },
   {
     "name": "Otter.ai",
@@ -980,7 +991,7 @@
   },
   {
     "name": "Pictory",
-    "description": "AI视频生成工具，可将文章、脚本或视频自动转为带字幕和配音的短视频。",
+    "description": "AI视频生成工具，支持将博客文章、脚本自动转为视频，适用于教育和营销场景。",
     "url": "https://pictory.ai",
     "categoryId": 9,
     "rating": 0,
@@ -999,9 +1010,12 @@
       "内容转化",
       "多平台",
       "社交媒体",
-      "自动化"
+      "自动化",
+      "文章转视频",
+      "教育内容",
+      "营销工具"
     ],
-    "id": 70
+    "id": 103
   },
   {
     "name": "Adobe Firefly",
@@ -1406,9 +1420,9 @@
   },
   {
     "name": "Lumen5",
-    "description": "AI内容转化工具，可将文章自动转化为视频，适合社交媒体传播。",
+    "description": "AI视频生成工具，支持将文章自动转为视频，适用于社交媒体内容营销和品牌推广。",
     "url": "https://www.lumen5.com",
-    "categoryId": 7,
+    "categoryId": 9,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -1416,9 +1430,11 @@
     "tags": [
       "内容转化",
       "视频制作",
-      "社交媒体"
+      "社交媒体",
+      "文章转视频",
+      "内容营销"
     ],
-    "id": 91
+    "id": 104
   },
   {
     "name": "Lexica",
@@ -1501,5 +1517,69 @@
       "自然语言处理"
     ],
     "id": 98
+  },
+  {
+    "name": "Leonardo.AI",
+    "description": "AI图像生成平台，支持多种风格和模型，适用于艺术创作、游戏资产和商业设计。",
+    "url": "https://leonardo.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "图像生成",
+      "AI艺术",
+      "商业设计"
+    ],
+    "id": 105
+  },
+  {
+    "name": "DALL·E 3",
+    "description": "由OpenAI开发的AI图像生成工具，支持复杂场景和精细细节描述，适用于创意和商业项目。",
+    "url": "https://beta.openai.com/playground",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "图像生成",
+      "高精度",
+      "商业设计"
+    ],
+    "id": 106
+  },
+  {
+    "name": "ChatPDF",
+    "description": "AI文档分析工具，支持上传PDF文件并提取内容、总结、回答问题，适用于研究和办公场景。",
+    "url": "https://www.chatpdf.com",
+    "categoryId": 5,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "文档分析",
+      "内容提取",
+      "智能问答"
+    ],
+    "id": 107
+  },
+  {
+    "name": "Veed.io",
+    "description": "AI视频编辑工具，支持自动剪辑、字幕生成、配音，适用于视频创作者和内容团队。",
+    "url": "https://www.veed.io",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频剪辑",
+      "自动字幕",
+      "内容创作"
+    ],
+    "id": 108
   }
 ]
