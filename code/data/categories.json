@@ -27,7 +27,7 @@
     "icon": "ai-coding.svg",
     "sort": 3,
     "isActive": true,
-    "toolCount": 6
+    "toolCount": 5
   },
   {
     "id": 4,
@@ -37,7 +37,7 @@
     "icon": "ai-chat.svg",
     "sort": 4,
     "isActive": true,
-    "toolCount": 18
+    "toolCount": 20
   },
   {
     "id": 5,
@@ -57,7 +57,7 @@
     "icon": "ai-learning.svg",
     "sort": 6,
     "isActive": true,
-    "toolCount": 6
+    "toolCount": 5
   },
   {
     "id": 7,
@@ -67,7 +67,7 @@
     "icon": "ai-office.svg",
     "sort": 7,
     "isActive": true,
-    "toolCount": 7
+    "toolCount": 8
   },
   {
     "id": 8,
@@ -87,6 +87,6 @@
     "icon": "ai-office.svg",
     "sort": 9,
     "isActive": true,
-    "toolCount": 6
+    "toolCount": 5
   }
 ]
