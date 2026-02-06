@@ -1,0 +1,2 @@
+2026-02-06 04:23:42,150 - __main__ - ERROR - 解析AI响应JSON失败: Unterminated string starting at: line 316 column 5 (char 5436)
+2026-02-06 04:23:42,150 - __main__ - WARNING - AI整合失败，使用简单去重
