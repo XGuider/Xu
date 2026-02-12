@@ -77,7 +77,7 @@
     "icon": "ai-office.svg",
     "sort": 8,
     "isActive": true,
-    "toolCount": 22
+    "toolCount": 24
   },
   {
     "id": 9,
@@ -87,6 +87,6 @@
     "icon": "ai-office.svg",
     "sort": 9,
     "isActive": true,
-    "toolCount": 7
+    "toolCount": 8
   }
 ]

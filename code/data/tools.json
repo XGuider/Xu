@@ -120,7 +120,8 @@
       "对话AI",
       "多任务支持",
       "多轮对话",
-      "推理能力"
+      "推理能力",
+      "AI推理"
     ],
     "id": 109
   },
@@ -194,7 +195,8 @@
       "图形设计",
       "内容生成",
       "AI排版",
-      "创意内容"
+      "创意内容",
+      "营销素材"
     ]
   },
   {
@@ -505,7 +507,8 @@
       "文本转图",
       "高细节图像",
       "OpenAI",
-      "AI绘画"
+      "AI绘画",
+      "文字转图"
     ],
     "id": 47
   },
@@ -762,7 +765,8 @@
       "AI平台",
       "模型托管",
       "模型部署",
-      "AI实验"
+      "AI实验",
+      "NLP模型"
     ],
     "id": 76
   },
@@ -828,7 +832,8 @@
       "情绪控制",
       "多语种",
       "虚拟助手",
-      "情感语音"
+      "情感语音",
+      "音色定制"
     ],
     "id": 50
   },
@@ -1865,5 +1870,53 @@
       "多语言支持"
     ],
     "id": 132
+  },
+  {
+    "name": "Krea AI",
+    "description": "AI图像与视频编辑工具，支持一键生成艺术风格图像与视频特效处理。",
+    "url": "https://krea.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "图像编辑",
+      "视频特效",
+      "AI创作"
+    ],
+    "id": 133
+  },
+  {
+    "name": "Bing Image Creator",
+    "description": "微软AI图像生成器，通过文字提示生成高质量图像，支持多种艺术风格。",
+    "url": "https://www.bing.com/create",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "图像生成",
+      "文字转图",
+      "AI艺术"
+    ],
+    "id": 134
+  },
+  {
+    "name": "AI Dungeon",
+    "description": "AI驱动的互动小说平台，支持自定义剧情生成与角色对话，沉浸式游戏体验。",
+    "url": "https://www.aidungeon.io",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "互动小说",
+      "AI剧情",
+      "游戏体验"
+    ],
+    "id": 135
   }
 ]
