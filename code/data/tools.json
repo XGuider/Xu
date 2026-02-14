@@ -336,7 +336,9 @@
       "短视频",
       "创意视频",
       "电影级",
-      "AI创意"
+      "AI创意",
+      "视频创作",
+      "实时编辑"
     ]
   },
   {
@@ -470,7 +472,8 @@
       "教育内容",
       "营销工具",
       "视频对话",
-      "多语言"
+      "多语言",
+      "营销应用"
     ]
   },
   {
@@ -671,7 +674,8 @@
       "智能写作",
       "办公自动化",
       "多模态AI",
-      "AI集成"
+      "AI集成",
+      "内容创作"
     ]
   },
   {
@@ -734,7 +738,9 @@
       "团队协作",
       "文档管理",
       "办公自动化",
-      "文档助手"
+      "文档助手",
+      "笔记管理",
+      "生产力工具"
     ],
     "id": 49
   },
@@ -1116,7 +1122,8 @@
       "视频自动化",
       "内容转换",
       "内容自动化",
-      "营销视频"
+      "营销视频",
+      "教育营销"
     ],
     "id": 112
   },
@@ -1793,7 +1800,7 @@
   },
   {
     "name": "Lumen5",
-    "description": "AI视频生成工具，将文章自动转化为视频内容，适用于营销与内容创作。",
+    "description": "AI内容转视频工具，可将博客文章自动转换为社交媒体视频，提升传播效率。",
     "url": "https://lumen5.com",
     "categoryId": 8,
     "rating": 0,
@@ -1803,9 +1810,11 @@
     "tags": [
       "视频生成",
       "内容营销",
-      "自动化创作"
+      "自动化创作",
+      "内容转化",
+      "社交媒体"
     ],
-    "id": 122
+    "id": 136
   },
   {
     "name": "Canva Magic Design",
@@ -1918,5 +1927,53 @@
       "游戏体验"
     ],
     "id": 135
+  },
+  {
+    "name": "Describe",
+    "description": "AI图像描述工具，可将图片转化为详细文字描述，适用于内容策划与SEO优化。",
+    "url": "https://describe.ai",
+    "categoryId": 7,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "图像识别",
+      "文字生成",
+      "内容优化"
+    ],
+    "id": 137
+  },
+  {
+    "name": "AI Dungeon",
+    "description": "AI驱动的文字冒险游戏平台，支持用户自定义剧情和角色互动体验。",
+    "url": "https://aidungeon.io",
+    "categoryId": 2,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "游戏创作",
+      "AI互动",
+      "剧情生成"
+    ],
+    "id": 138
+  },
+  {
+    "name": "Grok",
+    "description": "由xAI开发的AI助手，擅长处理复杂查询、多轮对话与知识整合。",
+    "url": "https://grok.ai",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "知识整合",
+      "复杂查询",
+      "多轮对话"
+    ],
+    "id": 139
   }
 ]
