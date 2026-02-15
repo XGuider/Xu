@@ -44,7 +44,8 @@
       "智能问答",
       "中文优化",
       "多任务AI",
-      "本地部署"
+      "本地部署",
+      "文本生成"
     ],
     "id": 115
   },
@@ -269,7 +270,9 @@
       "自动化写作",
       "AI内容",
       "视频制作",
-      "视觉内容"
+      "视觉内容",
+      "内容自动化",
+      "图文结合"
     ]
   },
   {
@@ -473,7 +476,8 @@
       "营销工具",
       "视频对话",
       "多语言",
-      "营销应用"
+      "营销应用",
+      "虚拟人视频"
     ]
   },
   {
@@ -740,7 +744,8 @@
       "办公自动化",
       "文档助手",
       "笔记管理",
-      "生产力工具"
+      "生产力工具",
+      "文档优化"
     ],
     "id": 49
   },
@@ -950,7 +955,8 @@
       "AI肖像",
       "风格转换",
       "社交应用",
-      "肖像处理"
+      "肖像处理",
+      "照片处理"
     ],
     "id": 101
   },
@@ -1024,7 +1030,8 @@
       "轻量级工具",
       "快速生成",
       "艺术创作",
-      "快速创作"
+      "快速创作",
+      "在线工具"
     ],
     "id": 102
   },
@@ -1049,7 +1056,8 @@
       "多语言",
       "多语言支持",
       "语音转写",
-      "语音识别"
+      "语音识别",
+      "实时记录"
     ],
     "id": 125
   },
@@ -1975,5 +1983,69 @@
       "多轮对话"
     ],
     "id": 139
+  },
+  {
+    "name": "Canva Magic Design",
+    "description": "AI辅助设计工具，通过文字自动生成海报、社交媒体设计图等视觉内容。",
+    "url": "https://www.canva.com/magic-design/",
+    "categoryId": 6,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "设计工具",
+      "AI辅助",
+      "视觉创作"
+    ],
+    "id": 140
+  },
+  {
+    "name": "Cursor",
+    "description": "AI编程助手，支持代码补全、重构和调试，提升开发效率。",
+    "url": "https://cursor.app",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "编程工具",
+      "AI辅助开发",
+      "代码补全"
+    ],
+    "id": 141
+  },
+  {
+    "name": "Fotor",
+    "description": "AI图像编辑工具，支持智能修图、背景替换、AI生成图像等功能。",
+    "url": "https://www.fotor.com",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "图像编辑",
+      "AI修图",
+      "智能工具"
+    ],
+    "id": 142
+  },
+  {
+    "name": "Cleverbot",
+    "description": "经典对话式AI机器人，支持自然语言对话，可用于测试和娱乐场景。",
+    "url": "https://www.cleverbot.com",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "对话AI",
+      "聊天机器人",
+      "娱乐工具"
+    ],
+    "id": 143
   }
 ]
