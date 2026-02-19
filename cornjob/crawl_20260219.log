@@ -1,0 +1,5 @@
+2026-02-19 04:28:17,587 - providers.siliconflow - ERROR - SiliconFlow API 请求失败: 503 Server Error: Service Unavailable for url: https://api.siliconflow.cn/v1/chat/completions
+2026-02-19 04:28:17,587 - base - ERROR - SiliconFlowProvider 错误: 请求失败: 503 Server Error: Service Unavailable for url: https://api.siliconflow.cn/v1/chat/completions
+2026-02-19 04:28:17,589 - __main__ - WARNING - AI响应失败: 请求失败: 503 Server Error: Service Unavailable for url: https://api.siliconflow.cn/v1/chat/completions
+2026-02-19 04:28:17,589 - __main__ - WARNING - siliconflow 未提取到工具
+2026-02-19 04:28:17,589 - __main__ - WARNING - 所有提供者都未能提取到工具
