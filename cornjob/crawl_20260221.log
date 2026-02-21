@@ -1,0 +1,2 @@
+2026-02-21 04:13:31,913 - __main__ - ERROR - 解析AI响应JSON失败: Expecting property name enclosed in double quotes: line 315 column 69 (char 5392)
+2026-02-21 04:13:31,913 - __main__ - WARNING - AI整合失败，使用简单去重
