@@ -123,7 +123,9 @@
       "多轮对话",
       "推理能力",
       "AI推理",
-      "代码生成"
+      "代码生成",
+      "语言模型",
+      "智能推理"
     ],
     "id": 109
   },
@@ -362,7 +364,8 @@
       "社交媒体",
       "内容创作",
       "营销工具",
-      "商业应用"
+      "商业应用",
+      "广告制作"
     ]
   },
   {
@@ -393,7 +396,8 @@
       "对话助手",
       "智能搜索",
       "谷歌开发",
-      "综合助手"
+      "综合助手",
+      "智能对话"
     ]
   },
   {
@@ -1035,7 +1039,7 @@
   },
   {
     "name": "Qwen",
-    "description": "阿里云开发的大规模语言模型，支持对话、写作、编程与多模态任务。",
+    "description": "阿里云开发的大语言模型，支持中文场景下的对话、写作、编程与多任务处理。",
     "url": "https://qwen.aliyun.com",
     "categoryId": 4,
     "rating": 0,
@@ -1051,9 +1055,11 @@
       "中文支持",
       "多语言模型",
       "代码生成",
-      "企业级应用"
+      "企业级应用",
+      "中文模型",
+      "阿里云产品"
     ],
-    "id": 38
+    "id": 157
   },
   {
     "name": "Stable Diffusion",
@@ -1603,7 +1609,8 @@
       "大模型",
       "智能交互",
       "高级模型",
-      "企业级应用"
+      "企业级应用",
+      "高性能模型"
     ],
     "id": 147
   },
@@ -2170,7 +2177,10 @@
     "tags": [
       "AI搜索",
       "信息检索",
-      "问答工具"
+      "问答工具",
+      "学术研究",
+      "知识检索",
+      "AI助手"
     ],
     "id": 145
   },
@@ -2269,5 +2279,53 @@
       "高精度"
     ],
     "id": 156
+  },
+  {
+    "name": "Canva AI",
+    "description": "AI辅助设计工具，帮助用户快速生成海报、PPT、社交媒体内容等视觉设计。",
+    "url": "https://www.canva.com/ai/",
+    "categoryId": 7,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "设计工具",
+      "AI辅助",
+      "视觉创作"
+    ],
+    "id": 158
+  },
+  {
+    "name": "Luna AI",
+    "description": "AI驱动的音乐创作平台，支持旋律生成、歌词创作、音频合成与音乐风格转换。",
+    "url": "https://luna.ai",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "音乐创作",
+      "AI音频",
+      "创意工具"
+    ],
+    "id": 159
+  },
+  {
+    "name": "Wav2Lip",
+    "description": "开源AI工具，可将音频口型同步到视频人脸，实现口型动画生成。",
+    "url": "https://github.com/Rudrabha/Wav2Lip",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频处理",
+      "开源工具",
+      "口型同步"
+    ],
+    "id": 160
   }
 ]
