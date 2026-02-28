@@ -126,7 +126,8 @@
       "代码生成",
       "语言模型",
       "智能推理",
-      "专业分析"
+      "专业分析",
+      "多模态AI"
     ],
     "id": 109
   },
@@ -293,7 +294,9 @@
       "AI创作",
       "内容生成",
       "AI工具",
-      "AI制作"
+      "AI制作",
+      "可视化工具",
+      "自动化报告"
     ]
   },
   {
@@ -452,7 +455,8 @@
       "文献分析",
       "问答工具",
       "实时搜索",
-      "引用分析"
+      "引用分析",
+      "上下文问答"
     ],
     "id": 110
   },
@@ -726,7 +730,8 @@
       "多任务处理",
       "微软生态",
       "多场景应用",
-      "智能办公"
+      "智能办公",
+      "智能文档"
     ]
   },
   {
@@ -801,9 +806,9 @@
   },
   {
     "name": "Hugging Face",
-    "description": "AI模型平台，提供海量预训练模型和API，支持自然语言处理、图像识别等任务。",
+    "description": "AI模型托管与开发平台，提供大量开源模型和API，支持自然语言处理与计算机视觉任务。",
     "url": "https://huggingface.co",
-    "categoryId": 7,
+    "categoryId": 3,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -834,7 +839,7 @@
       "模型微调",
       "社区共享"
     ],
-    "id": 76
+    "id": 164
   },
   {
     "name": "Copilot",
@@ -1138,7 +1143,8 @@
       "语音转写",
       "语音识别",
       "实时记录",
-      "实录转写"
+      "实录转写",
+      "实时处理"
     ],
     "id": 125
   },
@@ -1401,7 +1407,8 @@
       "音频编辑",
       "AI创作",
       "语音转文字",
-      "AI剪辑"
+      "AI剪辑",
+      "内容重写"
     ],
     "id": 67
   },
@@ -2109,9 +2116,9 @@
   },
   {
     "name": "Canva Magic Design",
-    "description": "AI辅助设计工具，通过文字自动生成海报、社交媒体设计图等视觉内容。",
+    "description": "AI辅助设计工具，自动根据文本生成排版精美的海报、社交媒体内容与演示文稿。",
     "url": "https://www.canva.com/magic-design/",
-    "categoryId": 6,
+    "categoryId": 7,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -2119,9 +2126,11 @@
     "tags": [
       "设计工具",
       "AI辅助",
-      "视觉创作"
+      "视觉创作",
+      "AI排版",
+      "社交媒体"
     ],
-    "id": 140
+    "id": 165
   },
   {
     "name": "Cursor",
@@ -2368,5 +2377,37 @@
       "在线工具"
     ],
     "id": 163
+  },
+  {
+    "name": "Lobe",
+    "description": "AI模型可视化开发平台，无需编码即可构建和训练图像识别模型。",
+    "url": "https://lobe.ai",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "无代码AI",
+      "图像识别",
+      "模型训练"
+    ],
+    "id": 166
+  },
+  {
+    "name": "AutoGPT",
+    "description": "自主AI代理工具，可自动完成任务链、多步骤操作与目标导向式执行。",
+    "url": "https://autogpt.ai",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "自主代理",
+      "任务自动化",
+      "AI执行"
+    ],
+    "id": 167
   }
 ]
