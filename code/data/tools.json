@@ -406,7 +406,9 @@
       "智能对话",
       "内容生成",
       "自然语言",
-      "跨模态处理"
+      "跨模态处理",
+      "办公助手",
+      "教育应用"
     ]
   },
   {
@@ -458,7 +460,8 @@
       "问答工具",
       "实时搜索",
       "引用分析",
-      "上下文问答"
+      "上下文问答",
+      "问答助手"
     ],
     "id": 110
   },
@@ -735,7 +738,8 @@
       "多场景应用",
       "智能办公",
       "智能文档",
-      "AI开发"
+      "AI开发",
+      "办公辅助"
     ]
   },
   {
@@ -885,9 +889,9 @@
   },
   {
     "name": "ElevenLabs",
-    "description": "AI语音合成平台，支持多语种、多风格语音生成，适用于播客、游戏与语音助手开发。",
+    "description": "AI语音合成工具，支持生成高度自然的语音，适用于播客、视频配音、虚拟助手等场景。",
     "url": "https://elevenlabs.io",
-    "categoryId": 3,
+    "categoryId": 9,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -915,15 +919,16 @@
       "音效生成",
       "角色配音",
       "AI音频",
-      "拟人声"
+      "拟人声",
+      "内容配音"
     ],
-    "id": 50
+    "id": 168
   },
   {
     "name": "Synthesia",
-    "description": "AI虚拟人视频生成平台，支持自定义虚拟形象和背景，适用于营销、教育和培训视频。",
+    "description": "AI虚拟人视频生成平台，支持通过文本生成带虚拟人物的视频，适用于企业培训和营销。",
     "url": "https://www.synthesia.io",
-    "categoryId": 9,
+    "categoryId": 8,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -952,9 +957,10 @@
       "企业视频",
       "口型同步",
       "AI演示",
-      "AI演讲"
+      "AI演讲",
+      "虚拟人视频"
     ],
-    "id": 100
+    "id": 169
   },
   {
     "name": "Kling",
@@ -1037,7 +1043,8 @@
       "社交分享",
       "社交媒体",
       "AI美化",
-      "头像生成"
+      "头像生成",
+      "风格迁移"
     ],
     "id": 101
   },
@@ -1124,7 +1131,8 @@
       "创意生成",
       "便捷工具",
       "图像生成",
-      "创意设计"
+      "创意设计",
+      "风格化生成"
     ],
     "id": 149
   },
@@ -1200,9 +1208,9 @@
   },
   {
     "name": "Pictory",
-    "description": "AI视频生成工具，可将文章、脚本自动转化为视频，适合营销、教育和内容创作者。",
+    "description": "AI视频创作工具，支持将文章、脚本或PDF自动转换为视频，适用于内容营销和教育。",
     "url": "https://pictory.ai",
-    "categoryId": 7,
+    "categoryId": 8,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -1234,9 +1242,10 @@
       "自动视频",
       "脚本转视频",
       "短视频",
-      "AI工具"
+      "AI工具",
+      "教育视频"
     ],
-    "id": 112
+    "id": 170
   },
   {
     "name": "Adobe Firefly",
@@ -1455,7 +1464,8 @@
     "tags": [
       "开源模型",
       "本地部署",
-      "图像生成"
+      "图像生成",
+      "开源工具"
     ],
     "id": 71
   },
@@ -1822,7 +1832,9 @@
       "高精度",
       "商业设计",
       "高保真",
-      "文本到图像"
+      "文本到图像",
+      "细节渲染",
+      "高精度AI"
     ],
     "id": 106
   },
@@ -2031,7 +2043,7 @@
   },
   {
     "name": "Krea AI",
-    "description": "AI图像与视频编辑工具，支持一键生成艺术风格图像与视频特效处理。",
+    "description": "AI绘画工具，支持多种风格和工具，专注于插画、漫画、角色设计等创意场景。",
     "url": "https://krea.ai",
     "categoryId": 8,
     "rating": 0,
@@ -2041,9 +2053,12 @@
     "tags": [
       "图像编辑",
       "视频特效",
-      "AI创作"
+      "AI创作",
+      "AI绘画",
+      "角色设计",
+      "创意插画"
     ],
-    "id": 133
+    "id": 171
   },
   {
     "name": "Bing Image Creator",
@@ -2423,5 +2438,37 @@
       "AI执行"
     ],
     "id": 167
+  },
+  {
+    "name": "Canva Magic Write",
+    "description": "Canva设计平台中的AI文案生成器，帮助用户快速生成设计文案、社交媒体内容和广告语。",
+    "url": "https://www.canva.com/magic-write",
+    "categoryId": 6,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "文案生成",
+      "设计辅助",
+      "营销内容"
+    ],
+    "id": 172
+  },
+  {
+    "name": "Lumiere",
+    "description": "AI视频生成工具，支持从文本生成视频，适用于营销、教育、创意内容制作。",
+    "url": "https://lumiere.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频生成",
+      "营销工具",
+      "创意内容"
+    ],
+    "id": 173
   }
 ]
