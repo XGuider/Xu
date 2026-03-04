@@ -45,7 +45,9 @@
       "中文优化",
       "多任务AI",
       "本地部署",
-      "文本生成"
+      "文本生成",
+      "中文AI",
+      "内容创作"
     ],
     "id": 115
   },
@@ -171,7 +173,9 @@
       "文档助手",
       "项目管理",
       "办公助手",
-      "文档管理"
+      "文档管理",
+      "办公工具",
+      "智能协作"
     ]
   },
   {
@@ -692,7 +696,8 @@
       "视觉创意",
       "图形编辑",
       "模板丰富",
-      "视觉设计"
+      "视觉设计",
+      "图形创作"
     ]
   },
   {
@@ -1418,7 +1423,8 @@
     "tags": [
       "企业AI",
       "文本生成",
-      "语义分析"
+      "语义分析",
+      "API服务"
     ],
     "id": 66
   },
@@ -1441,7 +1447,8 @@
       "AI创作",
       "语音转文字",
       "AI剪辑",
-      "内容重写"
+      "内容重写",
+      "AI工具"
     ],
     "id": 67
   },
@@ -1660,7 +1667,9 @@
       "智能交互",
       "高级模型",
       "企业级应用",
-      "高性能模型"
+      "高性能模型",
+      "AI模型",
+      "综合处理"
     ],
     "id": 147
   },
@@ -2514,5 +2523,69 @@
       "照片处理"
     ],
     "id": 175
+  },
+  {
+    "name": "Wiz",
+    "description": "AI企业知识管理工具，帮助团队自动化文档整理、问答与知识检索。",
+    "url": "https://www.wiz.ai",
+    "categoryId": 5,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "知识管理",
+      "企业工具",
+      "智能问答"
+    ],
+    "id": 176
+  },
+  {
+    "name": "Kensho",
+    "description": "AI金融数据分析工具，支持股票、市场趋势预测和风险评估。",
+    "url": "https://www.kensho.com",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "金融分析",
+      "数据挖掘",
+      "AI预测"
+    ],
+    "id": 177
+  },
+  {
+    "name": "AIGC Studio",
+    "description": "中文AI内容生成平台，支持图文、视频、音频一站式创作。",
+    "url": "https://www.aigcstudio.com",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "AIGC",
+      "内容创作",
+      "中文工具"
+    ],
+    "id": 178
+  },
+  {
+    "name": "Adobe Firefly",
+    "description": "Adobe推出的AI图像和视频生成工具，支持创意内容生成与设计优化。",
+    "url": "https://www.adobe.com/firefly",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "图像生成",
+      "创意设计",
+      "Adobe生态"
+    ],
+    "id": 179
   }
 ]
