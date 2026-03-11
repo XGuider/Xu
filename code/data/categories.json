@@ -37,7 +37,7 @@
     "icon": "ai-chat.svg",
     "sort": 4,
     "isActive": true,
-    "toolCount": 24
+    "toolCount": 25
   },
   {
     "id": 5,
@@ -57,7 +57,7 @@
     "icon": "ai-learning.svg",
     "sort": 6,
     "isActive": true,
-    "toolCount": 8
+    "toolCount": 9
   },
   {
     "id": 7,
