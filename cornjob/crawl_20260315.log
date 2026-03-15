@@ -1,0 +1,5 @@
+2026-03-15 04:43:22,886 - providers.siliconflow - ERROR - SiliconFlow API 请求超时: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Read timed out. (read timeout=360)
+2026-03-15 04:43:22,886 - base - ERROR - SiliconFlowProvider 错误: 请求超时: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Read timed out. (read timeout=360)
+2026-03-15 04:43:22,887 - __main__ - WARNING - AI响应失败: 请求超时: HTTPSConnectionPool(host='api.siliconflow.cn', port=443): Read timed out. (read timeout=360)
+2026-03-15 04:43:22,887 - __main__ - WARNING - siliconflow 未提取到工具
+2026-03-15 04:43:22,887 - __main__ - WARNING - 所有提供者都未能提取到工具
