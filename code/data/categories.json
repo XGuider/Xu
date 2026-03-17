@@ -17,7 +17,7 @@
     "icon": "ai-video.svg",
     "sort": 2,
     "isActive": true,
-    "toolCount": 10
+    "toolCount": 11
   },
   {
     "id": 3,
@@ -37,7 +37,7 @@
     "icon": "ai-chat.svg",
     "sort": 4,
     "isActive": true,
-    "toolCount": 25
+    "toolCount": 24
   },
   {
     "id": 5,
@@ -67,7 +67,7 @@
     "icon": "ai-office.svg",
     "sort": 7,
     "isActive": true,
-    "toolCount": 11
+    "toolCount": 12
   },
   {
     "id": 8,
@@ -87,6 +87,6 @@
     "icon": "ai-office.svg",
     "sort": 9,
     "isActive": true,
-    "toolCount": 14
+    "toolCount": 13
   }
 ]
