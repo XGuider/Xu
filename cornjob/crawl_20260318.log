@@ -1,0 +1,5 @@
+2026-03-18 04:29:36,906 - providers.siliconflow - ERROR - SiliconFlow API 请求失败: 500 Server Error: Internal Server Error for url: https://api.siliconflow.cn/v1/chat/completions
+2026-03-18 04:29:36,907 - base - ERROR - SiliconFlowProvider 错误: 请求失败: 500 Server Error: Internal Server Error for url: https://api.siliconflow.cn/v1/chat/completions
+2026-03-18 04:29:36,908 - __main__ - WARNING - AI响应失败: 请求失败: 500 Server Error: Internal Server Error for url: https://api.siliconflow.cn/v1/chat/completions
+2026-03-18 04:29:36,908 - __main__ - WARNING - siliconflow 未提取到工具
+2026-03-18 04:29:36,908 - __main__ - WARNING - 所有提供者都未能提取到工具
