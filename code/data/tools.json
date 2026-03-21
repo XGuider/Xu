@@ -1078,9 +1078,9 @@
   },
   {
     "name": "Pika Labs",
-    "description": "AI视频生成工具，支持从文本或图像生成动态视频，适用于创意与教育。",
+    "description": "AI视频生成工具，支持通过文本或图像生成动态视频，适用于创意内容制作。",
     "url": "https://pika.art",
-    "categoryId": 8,
+    "categoryId": 9,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -1094,9 +1094,10 @@
       "AI动画",
       "动画生成",
       "AI视频",
-      "创意表达"
+      "创意表达",
+      "动态视频"
     ],
-    "id": 35
+    "id": 203
   },
   {
     "name": "Lensa AI",
@@ -1265,7 +1266,8 @@
       "实时处理",
       "内容整理",
       "AI语音",
-      "实时文字"
+      "实时文字",
+      "学习工具"
     ],
     "id": 125
   },
@@ -1837,7 +1839,9 @@
       "自动化",
       "AI视频",
       "内容转视频",
-      "自动化视频"
+      "自动化视频",
+      "内容转换",
+      "视频营销"
     ],
     "id": 104
   },
@@ -2850,9 +2854,9 @@
   },
   {
     "name": "Copy.ai",
-    "description": "AI文案生成工具，可快速生成广告文案、邮件、社交媒体内容等。",
+    "description": "AI文案生成工具，提供广告、邮件、社交媒体等各类文案模板，快速生成创意内容。",
     "url": "https://www.copy.ai",
-    "categoryId": 6,
+    "categoryId": 4,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -2860,9 +2864,11 @@
     "tags": [
       "文案生成",
       "营销内容",
-      "自动化写作"
+      "自动化写作",
+      "营销创意",
+      "内容模板"
     ],
-    "id": 189
+    "id": 204
   },
   {
     "name": "Kaiber",
@@ -2943,5 +2949,37 @@
       "个性化推荐"
     ],
     "id": 202
+  },
+  {
+    "name": "Kling",
+    "description": "腾讯推出的AI视频生成工具，支持文本到视频的快速创作，适合短视频和广告制作。",
+    "url": "https://kling.qq.com",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频生成",
+      "AI创作",
+      "短视频"
+    ],
+    "id": 205
+  },
+  {
+    "name": "Kore.ai",
+    "description": "企业级AI对话平台，支持构建智能客服机器人，提升客户服务效率。",
+    "url": "https://www.kore.ai",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "客服机器人",
+      "企业应用",
+      "对话系统"
+    ],
+    "id": 206
   }
 ]
