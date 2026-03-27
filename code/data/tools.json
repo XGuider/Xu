@@ -573,7 +573,8 @@
       "企业应用",
       "真人视频",
       "虚拟形象",
-      "内容创作"
+      "内容创作",
+      "多语言支持"
     ]
   },
   {
@@ -1373,7 +1374,8 @@
       "教育视频",
       "自动化视频",
       "视频创作",
-      "自动化创作"
+      "自动化创作",
+      "视频转制"
     ],
     "id": 170
   },
@@ -3030,5 +3032,37 @@
       "工作效率"
     ],
     "id": 208
+  },
+  {
+    "name": "Kimi",
+    "description": "月之暗面推出的超大规模AI助手，支持长文本对话和多模态理解。",
+    "url": "https://kimi.com",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "长文本处理",
+      "多模态",
+      "中文优化"
+    ],
+    "id": 210
+  },
+  {
+    "name": "Text-to-Speech Studio",
+    "description": "专业的AI语音合成工具，支持自定义音色和多语言朗读功能。",
+    "url": "https://text-to-speech-studio.com",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "语音合成",
+      "多语言",
+      "专业音色"
+    ],
+    "id": 211
   }
 ]
