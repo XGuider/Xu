@@ -325,7 +325,8 @@
       "可视化工具",
       "自动化报告",
       "内容制作",
-      "AI办公"
+      "AI办公",
+      "商业智能"
     ]
   },
   {
@@ -1057,7 +1058,8 @@
       "虚拟人视频",
       "数字人",
       "内容制作",
-      "虚拟形象"
+      "虚拟形象",
+      "视频创作"
     ],
     "id": 169
   },
@@ -1428,7 +1430,8 @@
       "自动化写作",
       "AI写作",
       "营销工具",
-      "SEO优化"
+      "SEO优化",
+      "文案生成"
     ],
     "id": 130
   },
@@ -2388,7 +2391,8 @@
       "创意设计",
       "AI美化",
       "批量处理",
-      "创意滤镜"
+      "创意滤镜",
+      "照片处理"
     ],
     "id": 161
   },
@@ -3133,5 +3137,37 @@
       "智能纪要"
     ],
     "id": 215
+  },
+  {
+    "name": "Lately",
+    "description": "AI驱动的社交媒体内容生成工具，支持生成帖子、广告、评论和视觉素材。",
+    "url": "https://lately.ai",
+    "categoryId": 7,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "内容营销",
+      "社交媒体",
+      "AI生成"
+    ],
+    "id": 216
+  },
+  {
+    "name": "ChatPDF",
+    "description": "AI工具，支持上传PDF并提取、总结、问答和生成内容。",
+    "url": "https://chatpdf.com",
+    "categoryId": 5,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "文档处理",
+      "AI问答",
+      "PDF工具"
+    ],
+    "id": 217
   }
 ]
