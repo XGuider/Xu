@@ -47,7 +47,7 @@
     "icon": "ai-writing.svg",
     "sort": 5,
     "isActive": true,
-    "toolCount": 13
+    "toolCount": 12
   },
   {
     "id": 6,
@@ -77,7 +77,7 @@
     "icon": "ai-office.svg",
     "sort": 8,
     "isActive": true,
-    "toolCount": 36
+    "toolCount": 37
   },
   {
     "id": 9,
@@ -87,6 +87,6 @@
     "icon": "ai-office.svg",
     "sort": 9,
     "isActive": true,
-    "toolCount": 15
+    "toolCount": 16
   }
 ]
