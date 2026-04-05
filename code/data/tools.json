@@ -272,7 +272,8 @@
       "AI剪辑",
       "AI增强",
       "图像增强",
-      "风格迁移"
+      "风格迁移",
+      "图像修复"
     ]
   },
   {
@@ -1110,7 +1111,9 @@
       "AI生成",
       "自动化内容",
       "多语言",
-      "创意视频"
+      "创意视频",
+      "动画生成",
+      "创意内容"
     ],
     "id": 197
   },
@@ -1410,7 +1413,8 @@
       "自动化视频",
       "视频创作",
       "自动化创作",
-      "视频转制"
+      "视频转制",
+      "AI剪辑"
     ],
     "id": 170
   },
@@ -1513,7 +1517,8 @@
       "效率工具",
       "智能连接",
       "智能触发",
-      "生产力"
+      "生产力",
+      "AI集成"
     ],
     "id": 57
   },
@@ -1937,8 +1942,8 @@
     "id": 123
   },
   {
-    "name": "Jasper",
-    "description": "AI内容生成工具，支持撰写博客、广告、产品描述、营销邮件等多种文本内容。",
+    "name": "Jasper AI",
+    "description": "AI内容创作平台，专注于营销文案、广告、博客、邮件等文本内容的自动化生成。",
     "url": "https://www.jasper.ai",
     "categoryId": 3,
     "rating": 0,
@@ -1957,9 +1962,10 @@
       "SEO优化",
       "营销内容",
       "商业文案",
-      "商业写作"
+      "商业写作",
+      "自动化写作"
     ],
-    "id": 155
+    "id": 223
   },
   {
     "name": "Cursor",
@@ -1983,9 +1989,9 @@
   },
   {
     "name": "Wav2Lip",
-    "description": "AI视频换脸工具，支持将任意人脸与音频对齐，生成逼真唇动视频。",
+    "description": "AI视频唇形同步工具，可将音频与视频人脸进行唇形匹配，用于视频合成。",
     "url": "https://github.com/junyanz/Wav2Lip",
-    "categoryId": 8,
+    "categoryId": 5,
     "rating": 0,
     "ratingCount": 0,
     "isActive": true,
@@ -1993,9 +1999,12 @@
     "tags": [
       "视频换脸",
       "开源AI",
-      "音频同步"
+      "音频同步",
+      "视频合成",
+      "唇形同步",
+      "开源项目"
     ],
-    "id": 97
+    "id": 224
   },
   {
     "name": "Llama 3",
@@ -2439,7 +2448,7 @@
   },
   {
     "name": "Cleverbot",
-    "description": "经典对话式AI机器人，支持自然语言对话，可用于测试和娱乐场景。",
+    "description": "经典AI聊天机器人，支持自然语言对话，可用于测试、教育、娱乐等多种场景。",
     "url": "https://www.cleverbot.com",
     "categoryId": 4,
     "rating": 0,
@@ -2449,9 +2458,10 @@
     "tags": [
       "对话AI",
       "聊天机器人",
-      "娱乐工具"
+      "娱乐工具",
+      "教育工具"
     ],
-    "id": 143
+    "id": 225
   },
   {
     "name": "Phind",
@@ -2967,7 +2977,10 @@
       "内容模板",
       "内容创作",
       "营销文案",
-      "AI写作"
+      "AI写作",
+      "文案写作",
+      "营销工具",
+      "AI生成"
     ],
     "id": 204
   },
@@ -3274,5 +3287,37 @@
       "会议记录"
     ],
     "id": 222
+  },
+  {
+    "name": "Notion AI",
+    "description": "集成在Notion中的AI助手，帮助用户整理笔记、撰写内容、优化结构和生成摘要。",
+    "url": "https://www.notion.ai",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "笔记工具",
+      "智能写作",
+      "知识管理"
+    ],
+    "id": 226
+  },
+  {
+    "name": "Gamma.app",
+    "description": "AI驱动的可视化内容创作平台，支持从文本到图表、PPT、视频的自动化生成。",
+    "url": "https://www.gamma.app",
+    "categoryId": 7,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "数据可视化",
+      "内容生成",
+      "PPT制作"
+    ],
+    "id": 227
   }
 ]
