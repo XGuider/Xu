@@ -1,0 +1,5 @@
+2026-04-07 04:43:19,621 - providers.siliconflow - ERROR - SiliconFlow API 请求失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-04-07 04:43:19,622 - base - ERROR - SiliconFlowProvider 错误: 请求失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-04-07 04:43:19,622 - __main__ - WARNING - AI响应失败: 请求失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-04-07 04:43:19,622 - __main__ - WARNING - siliconflow 未提取到工具
+2026-04-07 04:43:19,622 - __main__ - WARNING - 所有提供者都未能提取到工具
