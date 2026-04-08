@@ -6,3 +6,15 @@ Traceback (most recent call last):
     raise ValueError(
 ValueError: 未找到 siliconflow 的配置。请设置环境变量 SILICONFLOW_API_KEY
 2026-04-08 18:20:35,829 - __main__ - WARNING - 所有提供者都未能提取到工具
+2026-04-08 11:59:19,100 - __main__ - WARNING - 所有提供者都未能提取到工具
+2026-04-08 11:59:19,240 - __main__ - WARNING - 下载favicon异常，工具: Copilot, url: https://copilot.microsoft.com, err: HTTP Error 404: Not Found
+2026-04-08 11:59:19,406 - __main__ - WARNING - 下载favicon异常，工具: Elicit, url: https://www.elicit.ai, err: HTTP Error 404: Not Found
+2026-04-08 11:59:19,568 - __main__ - WARNING - 下载favicon异常，工具: Copilot, url: https://copilot.github.com, err: HTTP Error 404: Not Found
+2026-04-08 11:59:19,727 - __main__ - WARNING - 下载favicon异常，工具: Baidu ERNIE Bot, url: https://erniebot.baidu.com, err: HTTP Error 404: Not Found
+2026-04-08 11:59:19,853 - __main__ - WARNING - 下载favicon异常，工具: Qwen, url: https://qwen.aliyun.com, err: HTTP Error 404: Not Found
+2026-04-08 11:59:19,992 - __main__ - WARNING - 下载favicon异常，工具: DALL·E 2, url: https://dall-e.com, err: HTTP Error 404: Not Found
+2026-04-08 11:59:20,126 - __main__ - WARNING - 下载favicon异常，工具: Describe, url: https://describe.ai, err: HTTP Error 404: Not Found
+2026-04-08 11:59:20,275 - __main__ - WARNING - 下载favicon异常，工具: Phind, url: https://www.phind.com, err: HTTP Error 404: Not Found
+2026-04-08 11:59:20,413 - __main__ - WARNING - 下载favicon异常，工具: Wiz, url: https://www.wiz.ai, err: HTTP Error 404: Not Found
+2026-04-08 11:59:20,536 - __main__ - WARNING - 下载favicon异常，工具: AIGC Studio, url: https://www.aigcstudio.com, err: HTTP Error 404: Not Found
+2026-04-08 11:59:20,796 - __main__ - WARNING - 下载favicon异常，工具: Text-to-Speech Studio, url: https://text-to-speech-studio.com, err: HTTP Error 404: Not Found

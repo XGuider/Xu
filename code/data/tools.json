@@ -2834,7 +2834,8 @@
     ],
     "id": 152,
     "developer": "",
-    "pricing": ""
+    "pricing": "",
+    "logo": "/assets/images/tools/clipdrop.png"
   },
   {
     "name": "PlayHT",
@@ -3479,7 +3480,8 @@
     ],
     "id": 208,
     "developer": "",
-    "pricing": ""
+    "pricing": "",
+    "logo": "/assets/images/tools/rekordai.png"
   },
   {
     "name": "Kimi",
