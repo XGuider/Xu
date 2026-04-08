@@ -1,2 +1,8 @@
-2026-04-08 04:47:57,613 - __main__ - ERROR - 解析AI响应JSON失败: Expecting value: line 323 column 14 (char 5454)
-2026-04-08 04:47:57,614 - __main__ - WARNING - AI整合失败，使用简单去重
+2026-04-08 18:20:35,828 - __main__ - ERROR - 使用 siliconflow 提取工具时出错: 未找到 siliconflow 的配置。请设置环境变量 SILICONFLOW_API_KEY
+Traceback (most recent call last):
+  File "/Users/faqingxiong/Documents/code/Xu/cornjob/./crawel.py", line 543, in extract_tools_with_ai
+    provider = AIProviderFactory.create_provider(provider_name)
+  File "/Users/faqingxiong/Documents/code/Xu/cornjob/factory.py", line 82, in create_provider
+    raise ValueError(
+ValueError: 未找到 siliconflow 的配置。请设置环境变量 SILICONFLOW_API_KEY
+2026-04-08 18:20:35,829 - __main__ - WARNING - 所有提供者都未能提取到工具

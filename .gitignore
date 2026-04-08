@@ -1,6 +1,14 @@
 node_modules
 .next
-.cursor
+.cursor/*
 .DS_Store
 .cursorrules
 code/local.db/*
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Crawler logs
+cornjob/crawl_*.log
+crawl_*.log

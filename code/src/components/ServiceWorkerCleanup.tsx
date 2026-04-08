@@ -25,7 +25,6 @@ export function ServiceWorkerCleanup() {
 
           // 取消注册旧的Service Worker
           await registration.unregister();
-          // eslint-disable-next-line no-console
           console.warn('已清理旧的Service Worker:', scope);
         }
 

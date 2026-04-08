@@ -13,7 +13,10 @@
       "办公",
       "AI",
       "文档"
-    ]
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/wpsai.png"
   },
   {
     "name": "DeepSeek",
@@ -54,7 +57,10 @@
       "中文大模型",
       "科研助手"
     ],
-    "id": 191
+    "id": 191,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/deepseek.png"
   },
   {
     "id": 3,
@@ -70,7 +76,10 @@
       "聊天",
       "AI",
       "对话"
-    ]
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/腾讯元宝.png"
   },
   {
     "id": 4,
@@ -92,7 +101,10 @@
       "内容创作",
       "代码生成",
       "AI助手"
-    ]
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/chatgpt.png"
   },
   {
     "name": "Claude",
@@ -143,7 +155,10 @@
       "深度推理",
       "多模态"
     ],
-    "id": 109
+    "id": 109,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/claude.png"
   },
   {
     "id": 6,
@@ -194,7 +209,10 @@
       "自动化写作",
       "项目协作",
       "效率工具"
-    ]
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/notionai.png"
   },
   {
     "id": 7,
@@ -239,8 +257,13 @@
       "营销创作",
       "图形生成",
       "自动排版",
-      "图形创作"
-    ]
+      "图形创作",
+      "AI设计",
+      "创意工具"
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/canvaai.png"
   },
   {
     "id": 8,
@@ -276,8 +299,12 @@
       "AI增强",
       "图像增强",
       "风格迁移",
-      "图像修复"
-    ]
+      "图像修复",
+      "AI视频"
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/runwayml.png"
   },
   {
     "id": 9,
@@ -336,7 +363,10 @@
       "AI报告",
       "商务分析",
       "演示文稿"
-    ]
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/gammaapp.png"
   },
   {
     "id": 10,
@@ -364,7 +394,10 @@
       "代码效率",
       "多语言支持",
       "编程助手"
-    ]
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/tabnine.png"
   },
   {
     "id": 11,
@@ -382,7 +415,10 @@
       "审查",
       "生成",
       "AI办公"
-    ]
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/wisestamp.png"
   },
   {
     "id": 12,
@@ -423,7 +459,10 @@
       "创意制作",
       "AI动画",
       "教育工具"
-    ]
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/kling.png"
   },
   {
     "id": 13,
@@ -463,7 +502,10 @@
       "搜索助手",
       "智能问答",
       "实时交互"
-    ]
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/gemini.png"
   },
   {
     "name": "Perplexity AI",
@@ -524,7 +566,10 @@
       "信息搜索",
       "引用来源"
     ],
-    "id": 110
+    "id": 110,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/perplexityai.png"
   },
   {
     "id": 15,
@@ -558,7 +603,10 @@
       "数据查询",
       "专业工具",
       "数学引擎"
-    ]
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/wolframalpha.png"
   },
   {
     "id": 16,
@@ -596,8 +644,12 @@
       "AI对话",
       "视频营销",
       "内容制作",
-      "视频合成"
-    ]
+      "视频合成",
+      "企业营销"
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/heygen.png"
   },
   {
     "name": "DALL·E 3",
@@ -649,7 +701,10 @@
       "定制化",
       "风格控制"
     ],
-    "id": 192
+    "id": 192,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/dalle3.png"
   },
   {
     "id": 18,
@@ -666,7 +721,10 @@
       "开源",
       "本地部署",
       "多语言支持"
-    ]
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/tabby.png"
   },
   {
     "id": 19,
@@ -694,12 +752,15 @@
       "语法纠错",
       "文本优化",
       "写作润色"
-    ]
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/grammarlyai.png"
   },
   {
     "name": "Canva Magic Design",
     "description": "AI辅助设计工具，自动根据文本生成设计图，适用于社交媒体、海报与广告制作。",
-    "url": "https://www.canva.com/magic-design",
+    "url": "https://www.canva.com/magic-design/",
     "categoryId": 6,
     "rating": 0,
     "ratingCount": 0,
@@ -714,9 +775,17 @@
       "AI辅助",
       "社交媒体",
       "AI生成",
-      "视觉创意"
+      "视觉创意",
+      "AI排版",
+      "视觉设计",
+      "一键生成",
+      "品牌素材",
+      "图形设计"
     ],
-    "id": 48
+    "id": 48,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/canvamagicdesign.png"
   },
   {
     "id": 21,
@@ -732,7 +801,10 @@
       "对话AI",
       "自然语言处理",
       "多场景应用"
-    ]
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/chatgpt.png"
   },
   {
     "id": 22,
@@ -750,7 +822,10 @@
       "AI绘图",
       "AI艺术",
       "创意设计"
-    ]
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/midjourney.png"
   },
   {
     "id": 23,
@@ -784,7 +859,10 @@
       "智能排版",
       "视觉优化",
       "营销设计"
-    ]
+    ],
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/canvaai.png"
   },
   {
     "id": 24,
@@ -841,7 +919,9 @@
       "办公集成",
       "开发助手",
       "集成开发"
-    ]
+    ],
+    "developer": "",
+    "pricing": ""
   },
   {
     "id": 25,
@@ -857,7 +937,9 @@
       "学术研究",
       "文献分析",
       "智能摘要"
-    ]
+    ],
+    "developer": "",
+    "pricing": ""
   },
   {
     "name": "Stable Diffusion",
@@ -874,7 +956,10 @@
       "图像生成",
       "开源模型"
     ],
-    "id": 207
+    "id": 207,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/stablediffusion.png"
   },
   {
     "name": "Notion AI",
@@ -913,9 +998,13 @@
       "智能组织",
       "办公辅助",
       "知识整理",
-      "文档辅助"
+      "文档辅助",
+      "AI写作"
     ],
-    "id": 49
+    "id": 49,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/notionai.png"
   },
   {
     "name": "Hugging Face",
@@ -958,7 +1047,10 @@
       "社区协作",
       "AI推理"
     ],
-    "id": 164
+    "id": 164,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/huggingface.png"
   },
   {
     "name": "Copilot",
@@ -985,7 +1077,9 @@
       "代码补全",
       "云工具"
     ],
-    "id": 85
+    "id": 85,
+    "developer": "",
+    "pricing": ""
   },
   {
     "name": "Microsoft Bing AI",
@@ -1001,7 +1095,10 @@
       "对话AI",
       "内容摘要"
     ],
-    "id": 31
+    "id": 31,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/microsoftbingai.png"
   },
   {
     "name": "ElevenLabs",
@@ -1045,7 +1142,10 @@
       "语音定制",
       "播客制作"
     ],
-    "id": 196
+    "id": 196,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/elevenlabs.png"
   },
   {
     "name": "Synthesia",
@@ -1088,7 +1188,10 @@
       "视频创作",
       "AI形象"
     ],
-    "id": 169
+    "id": 169,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/synthesia.png"
   },
   {
     "name": "Kling",
@@ -1125,7 +1228,10 @@
       "动画生成",
       "创意内容"
     ],
-    "id": 197
+    "id": 197,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/kling.png"
   },
   {
     "name": "Pika Labs",
@@ -1149,7 +1255,10 @@
       "动态视频",
       "短视频制作"
     ],
-    "id": 203
+    "id": 203,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/pikalabs.png"
   },
   {
     "name": "Lensa AI",
@@ -1196,7 +1305,10 @@
       "AI头像",
       "艺术滤镜"
     ],
-    "id": 101
+    "id": 101,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/lensaai.png"
   },
   {
     "name": "Baidu ERNIE Bot",
@@ -1212,7 +1324,9 @@
       "中文支持",
       "客服工具"
     ],
-    "id": 37
+    "id": 37,
+    "developer": "",
+    "pricing": ""
   },
   {
     "name": "Qwen",
@@ -1239,12 +1353,14 @@
       "大模型",
       "多语言"
     ],
-    "id": 157
+    "id": 157,
+    "developer": "",
+    "pricing": ""
   },
   {
     "name": "Stable Diffusion",
     "description": "开源AI图像生成模型，支持本地部署，可生成高质量图像并适用于多种创意场景。",
-    "url": "https://stability.ai",
+    "url": "https://stability.ai/",
     "categoryId": 8,
     "rating": 0,
     "ratingCount": 0,
@@ -1256,11 +1372,14 @@
       "本地部署",
       "开源工具"
     ],
-    "id": 193
+    "id": 193,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/stablediffusion.png"
   },
   {
     "name": "Wombo Dream",
-    "description": "AI绘画工具，通过文字描述生成梦幻风格的艺术图像，适合快速创作与灵感激发。",
+    "description": "AI艺术生成工具，通过文本提示生成动漫风格图像，适合创意设计与社交媒体内容。",
     "url": "https://wombo.ai",
     "categoryId": 8,
     "rating": 0,
@@ -1293,9 +1412,13 @@
       "风格多样",
       "零基础创作",
       "易上手",
-      "数字艺术"
+      "数字艺术",
+      "创意工具"
     ],
-    "id": 149
+    "id": 149,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/wombodream.png"
   },
   {
     "name": "Otter.ai",
@@ -1329,9 +1452,13 @@
       "内容摘要",
       "实时转写",
       "字幕生成",
-      "会议纪要"
+      "会议纪要",
+      "AI助手"
     ],
-    "id": 125
+    "id": 125,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/otterai.png"
   },
   {
     "name": "Claude",
@@ -1357,11 +1484,14 @@
       "推理能力",
       "专业助手"
     ],
-    "id": 119
+    "id": 119,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/claude.png"
   },
   {
     "name": "Loom",
-    "description": "AI辅助录屏与视频沟通工具，支持自动字幕、AI摘要和团队协作。",
+    "description": "AI增强的屏幕录制与视频协作工具，支持智能字幕、AI摘要和团队沟通。",
     "url": "https://www.loom.com",
     "categoryId": 6,
     "rating": 0,
@@ -1379,9 +1509,14 @@
       "视频会议",
       "AI剪辑",
       "会议记录",
-      "远程协作"
+      "远程协作",
+      "视频协作",
+      "远程办公"
     ],
-    "id": 95
+    "id": 95,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/loom.png"
   },
   {
     "name": "Pictory",
@@ -1425,9 +1560,13 @@
       "视频创作",
       "自动化创作",
       "视频转制",
-      "AI剪辑"
+      "AI剪辑",
+      "AI视频"
     ],
-    "id": 170
+    "id": 170,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/pictory.png"
   },
   {
     "name": "Adobe Firefly",
@@ -1454,7 +1593,10 @@
       "风格迁移",
       "AI重绘"
     ],
-    "id": 180
+    "id": 180,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/adobefirefly.png"
   },
   {
     "name": "Jasper AI",
@@ -1474,7 +1616,10 @@
       "SEO优化",
       "文案生成"
     ],
-    "id": 130
+    "id": 130,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/jasperai.png"
   },
   {
     "name": "Writesonic",
@@ -1490,7 +1635,10 @@
       "SEO内容",
       "广告文案"
     ],
-    "id": 55
+    "id": 55,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/writesonic.png"
   },
   {
     "name": "DeepSeek",
@@ -1511,7 +1659,10 @@
       "多任务",
       "国产模型"
     ],
-    "id": 56
+    "id": 56,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/deepseek.png"
   },
   {
     "name": "Zapier AI",
@@ -1531,7 +1682,10 @@
       "生产力",
       "AI集成"
     ],
-    "id": 57
+    "id": 57,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/zapierai.png"
   },
   {
     "name": "Lensa AI",
@@ -1553,7 +1707,10 @@
       "人像生成",
       "人像处理"
     ],
-    "id": 58
+    "id": 58,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/lensaai.png"
   },
   {
     "name": "Playground AI",
@@ -1569,7 +1726,10 @@
       "AI生成",
       "风格控制"
     ],
-    "id": 62
+    "id": 62,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/playgroundai.png"
   },
   {
     "name": "DALL·E 2",
@@ -1585,7 +1745,9 @@
       "文本生成",
       "高精度"
     ],
-    "id": 65
+    "id": 65,
+    "developer": "",
+    "pricing": ""
   },
   {
     "name": "Cohere",
@@ -1605,7 +1767,10 @@
       "NLP服务",
       "语义搜索"
     ],
-    "id": 198
+    "id": 198,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/cohere.png"
   },
   {
     "name": "Descript",
@@ -1632,7 +1797,10 @@
       "自动化剪辑",
       "AI转录"
     ],
-    "id": 67
+    "id": 67,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/descript.png"
   },
   {
     "name": "Pictory",
@@ -1654,7 +1822,10 @@
       "营销工具",
       "视频生成"
     ],
-    "id": 68
+    "id": 68,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/pictory.png"
   },
   {
     "name": "Stable Diffusion",
@@ -1671,7 +1842,10 @@
       "图像生成",
       "开源工具"
     ],
-    "id": 71
+    "id": 71,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/stablediffusion.png"
   },
   {
     "name": "Suno AI",
@@ -1696,9 +1870,14 @@
       "多风格",
       "创意工具",
       "音频生成",
-      "创意娱乐"
+      "创意娱乐",
+      "创意生成",
+      "音频工具"
     ],
-    "id": 131
+    "id": 131,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/sunoai.png"
   },
   {
     "name": "Copy.ai",
@@ -1720,7 +1899,10 @@
       "自动化写作",
       "商业写作"
     ],
-    "id": 113
+    "id": 113,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/copyai.png"
   },
   {
     "name": "Microsoft Designer",
@@ -1742,7 +1924,10 @@
       "微软工具",
       "视觉创作"
     ],
-    "id": 74
+    "id": 74,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/microsoftdesigner.png"
   },
   {
     "name": "Linguee AI",
@@ -1762,23 +1947,10 @@
       "多语言支持",
       "AI翻译"
     ],
-    "id": 75
-  },
-  {
-    "name": "Stable Diffusion",
-    "description": "开源AI图像生成模型，支持本地部署，可根据文字提示生成多样化的图像。",
-    "url": "https://stability.ai/",
-    "categoryId": 8,
-    "rating": 0,
-    "ratingCount": 0,
-    "isActive": true,
-    "isFeatured": false,
-    "tags": [
-      "开源工具",
-      "本地部署",
-      "图像生成"
-    ],
-    "id": 77
+    "id": 75,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/lingueeai.png"
   },
   {
     "name": "Claude",
@@ -1794,7 +1966,10 @@
       "逻辑推理",
       "企业级AI"
     ],
-    "id": 78
+    "id": 78,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/claude.png"
   },
   {
     "name": "Reka AI",
@@ -1810,7 +1985,10 @@
       "内容摘要",
       "数据提取"
     ],
-    "id": 79
+    "id": 79,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/rekaai.png"
   },
   {
     "name": "Tabby AI",
@@ -1829,7 +2007,10 @@
       "编程开发",
       "AI编程"
     ],
-    "id": 81
+    "id": 81,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/tabbyai.png"
   },
   {
     "name": "Zapier",
@@ -1849,7 +2030,10 @@
       "智能连接",
       "智能决策"
     ],
-    "id": 82
+    "id": 82,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/zapier.png"
   },
   {
     "name": "GPT-4o",
@@ -1872,7 +2056,10 @@
       "实时交互",
       "高精度生成"
     ],
-    "id": 147
+    "id": 147,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/gpt4o.png"
   },
   {
     "name": "Zhipu AI",
@@ -1888,7 +2075,10 @@
       "大语言模型",
       "本地部署"
     ],
-    "id": 88
+    "id": 88,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/zhipuai.png"
   },
   {
     "name": "Kimi",
@@ -1904,7 +2094,10 @@
       "多轮对话",
       "中文优化"
     ],
-    "id": 89
+    "id": 89,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/kimi.png"
   },
   {
     "name": "Lumen5",
@@ -1933,7 +2126,10 @@
       "视频营销",
       "AI转化"
     ],
-    "id": 104
+    "id": 104,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/lumen5.png"
   },
   {
     "name": "Lexica",
@@ -1951,7 +2147,10 @@
       "AI灵感",
       "创意设计"
     ],
-    "id": 123
+    "id": 123,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/lexica.png"
   },
   {
     "name": "Jasper AI",
@@ -1977,7 +2176,10 @@
       "商业写作",
       "自动化写作"
     ],
-    "id": 223
+    "id": 223,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/jasperai.png"
   },
   {
     "name": "Cursor",
@@ -1997,7 +2199,10 @@
       "AI编程",
       "代码助手"
     ],
-    "id": 144
+    "id": 144,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/cursor.png"
   },
   {
     "name": "Wav2Lip",
@@ -2016,7 +2221,10 @@
       "唇形同步",
       "开源项目"
     ],
-    "id": 224
+    "id": 224,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/wav2lip.png"
   },
   {
     "name": "Llama 3",
@@ -2033,7 +2241,10 @@
       "自然语言处理",
       "大语言模型"
     ],
-    "id": 98
+    "id": 98,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/llama3.png"
   },
   {
     "name": "Leonardo.AI",
@@ -2054,7 +2265,10 @@
       "风格迁移",
       "高精度生成"
     ],
-    "id": 114
+    "id": 114,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/leonardoai.png"
   },
   {
     "name": "DALL·E 3",
@@ -2075,7 +2289,10 @@
       "高精度AI",
       "创意设计"
     ],
-    "id": 106
+    "id": 106,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/dalle3.png"
   },
   {
     "name": "ChatPDF",
@@ -2091,7 +2308,10 @@
       "内容提取",
       "智能问答"
     ],
-    "id": 107
+    "id": 107,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/chatpdf.png"
   },
   {
     "name": "Veed.io",
@@ -2107,9 +2327,15 @@
       "自动字幕",
       "内容创作",
       "AI转码",
-      "字幕生成"
+      "字幕生成",
+      "视频编辑",
+      "AI工具",
+      "在线协作"
     ],
-    "id": 108
+    "id": 108,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/veedio.png"
   },
   {
     "name": "Krea AI",
@@ -2127,7 +2353,10 @@
       "视频生成",
       "AI剪辑"
     ],
-    "id": 116
+    "id": 116,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/kreaai.png"
   },
   {
     "name": "Fotor AI",
@@ -2147,7 +2376,10 @@
       "AI美化",
       "创意设计"
     ],
-    "id": 124
+    "id": 124,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/fotorai.png"
   },
   {
     "name": "KrispCall",
@@ -2166,7 +2398,10 @@
       "会议工具",
       "AI通话"
     ],
-    "id": 118
+    "id": 118,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/krispcall.png"
   },
   {
     "name": "Runway ML",
@@ -2184,7 +2419,10 @@
       "AI创作",
       "图像处理"
     ],
-    "id": 126
+    "id": 126,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/runwayml.png"
   },
   {
     "name": "Replit AI",
@@ -2203,7 +2441,10 @@
       "代码补全",
       "实时调试"
     ],
-    "id": 219
+    "id": 219,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/replitai.png"
   },
   {
     "name": "Lumen5",
@@ -2223,7 +2464,10 @@
       "内容转换",
       "营销视频"
     ],
-    "id": 136
+    "id": 136,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/lumen5.png"
   },
   {
     "name": "Canva Magic Design",
@@ -2239,7 +2483,10 @@
       "AI辅助",
       "品牌设计"
     ],
-    "id": 127
+    "id": 127,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/canvamagicdesign.png"
   },
   {
     "name": "Fireflies.ai",
@@ -2259,11 +2506,14 @@
       "智能摘要",
       "效率工具"
     ],
-    "id": 128
+    "id": 128,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/firefliesai.png"
   },
   {
     "name": "Playground AI",
-    "description": "AI图像生成工具，支持多风格、多尺寸图像生成，提供大量预设模型和参数控制。",
+    "description": "AI图像生成平台，支持多种模型（如Stable Diffusion、DALL·E），提供高质量图像生成。",
     "url": "https://playgroundai.com",
     "categoryId": 8,
     "rating": 0,
@@ -2273,9 +2523,14 @@
     "tags": [
       "图像生成",
       "多风格",
-      "参数控制"
+      "参数控制",
+      "AI艺术",
+      "创意设计"
     ],
-    "id": 129
+    "id": 129,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/playgroundai.png"
   },
   {
     "name": "OpenAI Whisper",
@@ -2291,7 +2546,10 @@
       "开源模型",
       "多语言支持"
     ],
-    "id": 132
+    "id": 132,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/openaiwhisper.png"
   },
   {
     "name": "Krea AI",
@@ -2310,7 +2568,10 @@
       "角色设计",
       "创意插画"
     ],
-    "id": 171
+    "id": 171,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/kreaai.png"
   },
   {
     "name": "Bing Image Creator",
@@ -2328,7 +2589,10 @@
       "AI绘画",
       "微软工具"
     ],
-    "id": 209
+    "id": 209,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/bingimagecreator.png"
   },
   {
     "name": "AI Dungeon",
@@ -2344,7 +2608,10 @@
       "AI剧情",
       "游戏体验"
     ],
-    "id": 135
+    "id": 135,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/aidungeon.png"
   },
   {
     "name": "Describe",
@@ -2360,7 +2627,9 @@
       "文字生成",
       "内容优化"
     ],
-    "id": 137
+    "id": 137,
+    "developer": "",
+    "pricing": ""
   },
   {
     "name": "AI Dungeon",
@@ -2379,7 +2648,10 @@
       "AI叙事",
       "游戏化AI"
     ],
-    "id": 138
+    "id": 138,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/aidungeon.png"
   },
   {
     "name": "Grok",
@@ -2395,31 +2667,10 @@
       "复杂查询",
       "多轮对话"
     ],
-    "id": 139
-  },
-  {
-    "name": "Canva Magic Design",
-    "description": "AI辅助设计工具，自动根据文本生成排版精美的海报、社交媒体内容与演示文稿。",
-    "url": "https://www.canva.com/magic-design/",
-    "categoryId": 7,
-    "rating": 0,
-    "ratingCount": 0,
-    "isActive": true,
-    "isFeatured": false,
-    "tags": [
-      "设计工具",
-      "AI辅助",
-      "视觉创作",
-      "AI排版",
-      "社交媒体",
-      "AI生成",
-      "视觉设计",
-      "一键生成",
-      "品牌素材",
-      "模板生成",
-      "图形设计"
-    ],
-    "id": 165
+    "id": 139,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/grok.png"
   },
   {
     "name": "Cursor",
@@ -2435,7 +2686,10 @@
       "AI辅助开发",
       "代码补全"
     ],
-    "id": 141
+    "id": 141,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/cursor.png"
   },
   {
     "name": "Fotor AI",
@@ -2454,9 +2708,14 @@
       "AI美化",
       "批量处理",
       "创意滤镜",
-      "照片处理"
+      "照片处理",
+      "AI设计",
+      "视觉创作"
     ],
-    "id": 161
+    "id": 161,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/fotorai.png"
   },
   {
     "name": "Cleverbot",
@@ -2473,7 +2732,10 @@
       "娱乐工具",
       "教育工具"
     ],
-    "id": 225
+    "id": 225,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/cleverbot.png"
   },
   {
     "name": "Phind",
@@ -2495,7 +2757,9 @@
       "专业问答",
       "研究工具"
     ],
-    "id": 145
+    "id": 145,
+    "developer": "",
+    "pricing": ""
   },
   {
     "name": "AutoGPT",
@@ -2511,7 +2775,10 @@
       "任务代理",
       "AI助手"
     ],
-    "id": 148
+    "id": 148,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/autogpt.png"
   },
   {
     "name": "Cohere AI",
@@ -2527,7 +2794,10 @@
       "文本处理",
       "对话生成"
     ],
-    "id": 150
+    "id": 150,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/cohereai.png"
   },
   {
     "name": "Fliki",
@@ -2543,7 +2813,10 @@
       "AI配音",
       "自动化"
     ],
-    "id": 151
+    "id": 151,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/fliki.png"
   },
   {
     "name": "ClipDrop",
@@ -2559,7 +2832,9 @@
       "AI修图",
       "创意设计"
     ],
-    "id": 152
+    "id": 152,
+    "developer": "",
+    "pricing": ""
   },
   {
     "name": "PlayHT",
@@ -2577,7 +2852,10 @@
       "多语言",
       "角色音色"
     ],
-    "id": 154
+    "id": 154,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/playht.png"
   },
   {
     "name": "DeepL",
@@ -2593,23 +2871,10 @@
       "多语种",
       "高精度"
     ],
-    "id": 156
-  },
-  {
-    "name": "Canva AI",
-    "description": "AI辅助设计工具，帮助用户快速生成海报、PPT、社交媒体内容等视觉设计。",
-    "url": "https://www.canva.com/ai/",
-    "categoryId": 7,
-    "rating": 0,
-    "ratingCount": 0,
-    "isActive": true,
-    "isFeatured": false,
-    "tags": [
-      "设计工具",
-      "AI辅助",
-      "视觉创作"
-    ],
-    "id": 158
+    "id": 156,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/deepl.png"
   },
   {
     "name": "Luna AI",
@@ -2625,7 +2890,10 @@
       "AI音频",
       "创意工具"
     ],
-    "id": 159
+    "id": 159,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/lunaai.png"
   },
   {
     "name": "Wav2Lip",
@@ -2641,7 +2909,10 @@
       "开源工具",
       "口型同步"
     ],
-    "id": 160
+    "id": 160,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/wav2lip.png"
   },
   {
     "name": "BuzzSumo",
@@ -2657,7 +2928,10 @@
       "社交媒体",
       "趋势洞察"
     ],
-    "id": 162
+    "id": 162,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/buzzsumo.png"
   },
   {
     "name": "Kapwing",
@@ -2673,7 +2947,10 @@
       "AI剪辑",
       "在线工具"
     ],
-    "id": 163
+    "id": 163,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/kapwing.png"
   },
   {
     "name": "Lobe",
@@ -2692,7 +2969,10 @@
       "拖拽式",
       "低代码AI"
     ],
-    "id": 194
+    "id": 194,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/lobe.png"
   },
   {
     "name": "AutoGPT",
@@ -2708,7 +2988,10 @@
       "任务自动化",
       "AI执行"
     ],
-    "id": 167
+    "id": 167,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/autogpt.png"
   },
   {
     "name": "Canva Magic Write",
@@ -2724,7 +3007,10 @@
       "设计辅助",
       "营销内容"
     ],
-    "id": 172
+    "id": 172,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/canvamagicwrite.png"
   },
   {
     "name": "Lumiere",
@@ -2740,11 +3026,14 @@
       "营销工具",
       "创意内容"
     ],
-    "id": 173
+    "id": 173,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/lumiere.png"
   },
   {
     "name": "Cursor",
-    "description": "AI编程助手，支持代码补全、重构、调试与文档生成，提升开发者效率。",
+    "description": "AI驱动的智能代码编辑器，支持自动补全、重构、调试和多语言支持，提升开发效率。",
     "url": "https://cursor.sh",
     "categoryId": 2,
     "rating": 0,
@@ -2756,9 +3045,14 @@
       "AI编码",
       "开发者工具",
       "代码生成",
-      "智能编程"
+      "智能编程",
+      "代码助手",
+      "AI编程"
     ],
-    "id": 174
+    "id": 174,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/cursor.png"
   },
   {
     "name": "Lensa AI",
@@ -2774,7 +3068,10 @@
       "风格转换",
       "照片处理"
     ],
-    "id": 175
+    "id": 175,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/lensaai.png"
   },
   {
     "name": "Wiz",
@@ -2790,7 +3087,9 @@
       "企业工具",
       "智能问答"
     ],
-    "id": 176
+    "id": 176,
+    "developer": "",
+    "pricing": ""
   },
   {
     "name": "Kensho",
@@ -2806,7 +3105,10 @@
       "数据挖掘",
       "AI预测"
     ],
-    "id": 177
+    "id": 177,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/kensho.png"
   },
   {
     "name": "AIGC Studio",
@@ -2822,7 +3124,9 @@
       "内容创作",
       "中文工具"
     ],
-    "id": 178
+    "id": 178,
+    "developer": "",
+    "pricing": ""
   },
   {
     "name": "Adobe Firefly",
@@ -2838,7 +3142,10 @@
       "创意设计",
       "Adobe生态"
     ],
-    "id": 179
+    "id": 179,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/adobefirefly.png"
   },
   {
     "name": "Clipdrop by Adobe",
@@ -2854,7 +3161,10 @@
       "AI修复",
       "创意工具"
     ],
-    "id": 181
+    "id": 181,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/clipdropbyadobe.png"
   },
   {
     "name": "Ollama",
@@ -2870,7 +3180,10 @@
       "大模型",
       "开发者工具"
     ],
-    "id": 182
+    "id": 182,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/ollama.png"
   },
   {
     "name": "DALL·E 3",
@@ -2886,7 +3199,10 @@
       "AI创作",
       "高精度"
     ],
-    "id": 183
+    "id": 183,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/dalle3.png"
   },
   {
     "name": "GPT-4o",
@@ -2905,7 +3221,10 @@
       "智能处理",
       "前沿模型"
     ],
-    "id": 214
+    "id": 214,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/gpt4o.png"
   },
   {
     "name": "ElevenLabs",
@@ -2922,7 +3241,10 @@
       "音频生成",
       "多音色"
     ],
-    "id": 199
+    "id": 199,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/elevenlabs.png"
   },
   {
     "name": "Einstein GPT",
@@ -2938,7 +3260,10 @@
       "销售预测",
       "企业AI"
     ],
-    "id": 186
+    "id": 186,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/einsteingpt.png"
   },
   {
     "name": "Flux AI",
@@ -2954,7 +3279,10 @@
       "高分辨率",
       "艺术风格"
     ],
-    "id": 187
+    "id": 187,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/fluxai.png"
   },
   {
     "name": "Google Bard",
@@ -2970,7 +3298,10 @@
       "多语言支持",
       "知识查询"
     ],
-    "id": 188
+    "id": 188,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/googlebard.png"
   },
   {
     "name": "Copy.ai",
@@ -2994,7 +3325,10 @@
       "营销工具",
       "AI生成"
     ],
-    "id": 204
+    "id": 204,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/copyai.png"
   },
   {
     "name": "Kaiber",
@@ -3010,7 +3344,10 @@
       "AI创作",
       "创意音频"
     ],
-    "id": 190
+    "id": 190,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/kaiber.png"
   },
   {
     "name": "Notion AI",
@@ -3026,7 +3363,10 @@
       "任务管理",
       "智能写作"
     ],
-    "id": 195
+    "id": 195,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/notionai.png"
   },
   {
     "name": "Together AI",
@@ -3042,7 +3382,10 @@
       "模型部署",
       "开发者工具"
     ],
-    "id": 200
+    "id": 200,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/togetherai.png"
   },
   {
     "name": "Open Interpreter",
@@ -3058,7 +3401,10 @@
       "任务自动化",
       "智能助手"
     ],
-    "id": 201
+    "id": 201,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/openinterpreter.png"
   },
   {
     "name": "You.com",
@@ -3074,7 +3420,10 @@
       "文档摘要",
       "个性化推荐"
     ],
-    "id": 202
+    "id": 202,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/youcom.png"
   },
   {
     "name": "Kling",
@@ -3090,7 +3439,10 @@
       "AI创作",
       "短视频"
     ],
-    "id": 205
+    "id": 205,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/kling.png"
   },
   {
     "name": "Kore.ai",
@@ -3106,7 +3458,10 @@
       "企业应用",
       "对话系统"
     ],
-    "id": 206
+    "id": 206,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/koreai.png"
   },
   {
     "name": "Rekord AI",
@@ -3122,7 +3477,9 @@
       "智能摘要",
       "工作效率"
     ],
-    "id": 208
+    "id": 208,
+    "developer": "",
+    "pricing": ""
   },
   {
     "name": "Kimi",
@@ -3138,7 +3495,10 @@
       "多模态",
       "中文优化"
     ],
-    "id": 210
+    "id": 210,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/kimi.png"
   },
   {
     "name": "Text-to-Speech Studio",
@@ -3154,7 +3514,9 @@
       "多语言",
       "专业音色"
     ],
-    "id": 211
+    "id": 211,
+    "developer": "",
+    "pricing": ""
   },
   {
     "name": "Wombo Dream",
@@ -3170,7 +3532,10 @@
       "艺术创作",
       "风格化图像"
     ],
-    "id": 212
+    "id": 212,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/wombodream.png"
   },
   {
     "name": "LangChain",
@@ -3186,7 +3551,10 @@
       "AI工程",
       "大模型应用"
     ],
-    "id": 213
+    "id": 213,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/langchain.png"
   },
   {
     "name": "Fireflies.ai",
@@ -3202,7 +3570,10 @@
       "语音转录",
       "智能纪要"
     ],
-    "id": 215
+    "id": 215,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/firefliesai.png"
   },
   {
     "name": "Lately",
@@ -3218,7 +3589,10 @@
       "社交媒体",
       "AI生成"
     ],
-    "id": 216
+    "id": 216,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/lately.png"
   },
   {
     "name": "ChatPDF",
@@ -3234,7 +3608,10 @@
       "AI问答",
       "PDF工具"
     ],
-    "id": 217
+    "id": 217,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/chatpdf.png"
   },
   {
     "name": "Koala AI",
@@ -3250,7 +3627,10 @@
       "AI修图",
       "去背景"
     ],
-    "id": 218
+    "id": 218,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/koalaai.png"
   },
   {
     "name": "Craiyon",
@@ -3266,7 +3646,10 @@
       "图像生成",
       "创意设计"
     ],
-    "id": 220
+    "id": 220,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/craiyon.png"
   },
   {
     "name": "NVIDIA Omniverse",
@@ -3282,7 +3665,10 @@
       "虚拟仿真",
       "跨平台协作"
     ],
-    "id": 221
+    "id": 221,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/nvidiaomniverse.png"
   },
   {
     "name": "Luminous AI",
@@ -3298,7 +3684,10 @@
       "实时翻译",
       "会议记录"
     ],
-    "id": 222
+    "id": 222,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/luminousai.png"
   },
   {
     "name": "Notion AI",
@@ -3314,7 +3703,10 @@
       "智能写作",
       "知识管理"
     ],
-    "id": 226
+    "id": 226,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/notionai.png"
   },
   {
     "name": "Gamma.app",
@@ -3330,7 +3722,10 @@
       "内容生成",
       "PPT制作"
     ],
-    "id": 227
+    "id": 227,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/gammaapp.png"
   },
   {
     "name": "PlayHT",
@@ -3346,6 +3741,47 @@
       "情绪语音",
       "音频内容"
     ],
-    "id": 228
+    "id": 228,
+    "developer": "",
+    "pricing": "",
+    "logo": "/assets/images/tools/playht.png"
+  },
+  {
+    "name": "Replicate",
+    "description": "AI模型即服务平台，支持快速部署和调用主流AI模型，如Stable Diffusion、GPT、Llama等。",
+    "url": "https://replicate.com",
+    "categoryId": 7,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "AI模型服务",
+      "模型部署",
+      "开发者平台"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 229,
+    "logo": "/assets/images/tools/replicate.png"
+  },
+  {
+    "name": "ClipDrop",
+    "description": "AI图像编辑工具，支持背景移除、图像修复、风格迁移等功能，操作简单高效。",
+    "url": "https://clipdrop.co",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "图像编辑",
+      "AI修图",
+      "创意设计"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 230,
+    "logo": "/assets/images/tools/clipdrop.png"
   }
 ]

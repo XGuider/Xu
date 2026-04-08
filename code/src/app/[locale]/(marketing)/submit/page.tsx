@@ -21,7 +21,7 @@ export default async function Page(props: {
   setRequestLocale(locale);
 
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">加载中...</div>}>
+    <Suspense fallback={<div className="flex min-h-screen items-center justify-center">加载中...</div>}>
       <SubmitPageWithSearchParams />
     </Suspense>
   );

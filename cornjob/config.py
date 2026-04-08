@@ -164,10 +164,23 @@ class ConfigManager:
         if not env_key:
             logger.warning(f"{provider_name_lower} 配置中未找到 env_key")
             return None
-        
+
+        # env_key 应该是“环境变量名”。如果误把真实 key 写进了 env_key，这里做兼容处理。
+        # 规则：如果 env_key 看起来不像环境变量名（包含非大写/下划线/数字），且长度较长，
+        # 则把它当作“直接的 api_key”使用，并输出警告。
         api_key = os.getenv(env_key)
         if not api_key:
-            return None
+            looks_like_env_name = bool(env_key) and all(
+                (c.isupper() or c.isdigit() or c == "_") for c in str(env_key)
+            )
+            if not looks_like_env_name and len(str(env_key)) >= 20:
+                logger.warning(
+                    f"{provider_name_lower} 的 env_key 疑似被误配置为真实密钥。"
+                    f"请改为环境变量名并通过环境变量注入。"
+                )
+                api_key = str(env_key)
+            else:
+                return None
         
         # 从配置文件获取其他配置
         base_url = provider_yaml_config.get("default_base_url")
