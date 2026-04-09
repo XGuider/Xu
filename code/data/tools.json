@@ -921,7 +921,8 @@
       "集成开发"
     ],
     "developer": "",
-    "pricing": ""
+    "pricing": "",
+    "logo": "/assets/images/tools/copilot.png"
   },
   {
     "id": 25,
@@ -1079,7 +1080,8 @@
     ],
     "id": 85,
     "developer": "",
-    "pricing": ""
+    "pricing": "",
+    "logo": "/assets/images/tools/copilot.png"
   },
   {
     "name": "Microsoft Bing AI",
