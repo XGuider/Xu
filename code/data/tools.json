@@ -423,7 +423,7 @@
   {
     "id": 12,
     "name": "Kling",
-    "description": "AI视频生成工具，支持文字到视频的快速转换，适用于营销、教育和创意内容制作。",
+    "description": "Kling AI专业版，支持AI视频生成、实时渲染与多语言配音，适用于内容创作者和营销团队。",
     "url": "https://kling.ai",
     "categoryId": 2,
     "rating": 0,
@@ -458,7 +458,9 @@
       "多风格输出",
       "创意制作",
       "AI动画",
-      "教育工具"
+      "教育工具",
+      "实时渲染",
+      "多语言"
     ],
     "developer": "",
     "pricing": "",
@@ -1104,7 +1106,7 @@
   },
   {
     "name": "ElevenLabs",
-    "description": "AI语音合成工具，支持多种语言与音色，用于生成自然语音用于配音、播客、游戏等场景。",
+    "description": "ElevenLabs最新AI语音合成工具，支持多语言语音生成与情感表达，适用于播客和配音。",
     "url": "https://elevenlabs.io",
     "categoryId": 7,
     "rating": 0,
@@ -1142,7 +1144,8 @@
       "语音克隆",
       "多声线",
       "语音定制",
-      "播客制作"
+      "播客制作",
+      "播客工具"
     ],
     "id": 196,
     "developer": "",
@@ -1151,7 +1154,7 @@
   },
   {
     "name": "Synthesia",
-    "description": "AI虚拟人视频生成平台，支持通过文本生成带虚拟人物的视频，适用于企业培训和营销。",
+    "description": "Synthesia最新AI视频生成平台，支持虚拟人物与多语言配音，适用于企业培训和营销。",
     "url": "https://www.synthesia.io",
     "categoryId": 8,
     "rating": 0,
@@ -1237,7 +1240,7 @@
   },
   {
     "name": "Pika Labs",
-    "description": "AI视频生成工具，支持通过文本或图像生成动态视频，适用于创意内容制作。",
+    "description": "Pika Labs最新AI视频生成工具，支持实时生成和3D动画，适用于游戏与创意行业。",
     "url": "https://pika.art",
     "categoryId": 9,
     "rating": 0,
@@ -1255,7 +1258,9 @@
       "AI视频",
       "创意表达",
       "动态视频",
-      "短视频制作"
+      "短视频制作",
+      "3D动画",
+      "实时渲染"
     ],
     "id": 203,
     "developer": "",
@@ -1381,7 +1386,7 @@
   },
   {
     "name": "Wombo Dream",
-    "description": "AI艺术生成工具，通过文本提示生成动漫风格图像，适合创意设计与社交媒体内容。",
+    "description": "Wombo Dream升级版，支持AI绘画与风格迁移，适用于艺术创作和设计灵感。",
     "url": "https://wombo.ai",
     "categoryId": 8,
     "rating": 0,
@@ -1415,7 +1420,8 @@
       "零基础创作",
       "易上手",
       "数字艺术",
-      "创意工具"
+      "创意工具",
+      "风格迁移"
     ],
     "id": 149,
     "developer": "",
@@ -1851,7 +1857,7 @@
   },
   {
     "name": "Suno AI",
-    "description": "AI音乐生成工具，可根据文本描述生成歌曲和旋律，支持多种风格和语言。",
+    "description": "Suno AI升级版，支持更高质量音乐生成与多语言歌词创作，适用于音乐制作和内容创作。",
     "url": "https://suno.ai",
     "categoryId": 9,
     "rating": 0,
@@ -1975,7 +1981,7 @@
   },
   {
     "name": "Reka AI",
-    "description": "AI对话与内容生成工具，支持多轮对话、文档摘要、数据提取和代码生成。",
+    "description": "Reka AI专业版，支持多语言对话与AI内容生成，适用于客服、写作和内容创作。",
     "url": "https://reka.ai",
     "categoryId": 4,
     "rating": 0,
@@ -1985,7 +1991,9 @@
     "tags": [
       "对话AI",
       "内容摘要",
-      "数据提取"
+      "数据提取",
+      "内容生成",
+      "多语言"
     ],
     "id": 79,
     "developer": "",
@@ -2128,7 +2136,8 @@
       "视频营销",
       "AI转化",
       "内容生成",
-      "短视频制作"
+      "短视频制作",
+      "自动化剪辑"
     ],
     "id": 104,
     "developer": "",
@@ -2252,7 +2261,7 @@
   },
   {
     "name": "Leonardo.AI",
-    "description": "AI图像生成工具，支持多种风格与参数调整，适合艺术创作、UI设计与数字资产生成。",
+    "description": "Leonardo.AI专业版，支持高精度图像生成与AI绘画，适用于设计师和艺术创作者。",
     "url": "https://leonardo.ai",
     "categoryId": 8,
     "rating": 0,
@@ -2267,7 +2276,9 @@
       "数字资产",
       "图像编辑",
       "风格迁移",
-      "高精度生成"
+      "高精度生成",
+      "AI绘画",
+      "创意设计"
     ],
     "id": 114,
     "developer": "",
@@ -2806,7 +2817,7 @@
   },
   {
     "name": "Fliki",
-    "description": "AI视频生成工具，支持文本到视频转换，自动生成字幕与配音，适合短视频制作。",
+    "description": "Fliki AI视频生成工具，支持AI视频制作与多语言配音，适用于教育和营销场景。",
     "url": "https://fliki.ai",
     "categoryId": 7,
     "rating": 0,
@@ -2816,7 +2827,10 @@
     "tags": [
       "短视频",
       "AI配音",
-      "自动化"
+      "自动化",
+      "AI视频",
+      "多语言",
+      "教育工具"
     ],
     "id": 151,
     "developer": "",
@@ -2825,7 +2839,7 @@
   },
   {
     "name": "ClipDrop",
-    "description": "AI图像编辑工具，支持图像背景移除、对象替换与风格迁移。",
+    "description": "ClipDrop最新版，支持AI图像编辑与风格迁移，适用于设计师和创意工作者。",
     "url": "https://clipdrop.com",
     "categoryId": 8,
     "rating": 0,
@@ -2835,7 +2849,9 @@
     "tags": [
       "图像编辑",
       "AI修图",
-      "创意设计"
+      "创意设计",
+      "AI设计",
+      "风格迁移"
     ],
     "id": 152,
     "developer": "",
@@ -3736,7 +3752,7 @@
   },
   {
     "name": "PlayHT",
-    "description": "AI语音生成平台，提供高质量语音合成，支持多种情绪与口音，适用于音频内容制作。",
+    "description": "PlayHT最新AI语音合成工具，支持多语言语音生成与情感表达，适用于播客和内容创作。",
     "url": "https://play.ht",
     "categoryId": 6,
     "rating": 0,
@@ -3746,7 +3762,9 @@
     "tags": [
       "语音合成",
       "情绪语音",
-      "音频内容"
+      "音频内容",
+      "情感语音",
+      "播客工具"
     ],
     "id": 228,
     "developer": "",
@@ -3866,5 +3884,156 @@
     "pricing": "",
     "id": 234,
     "logo": "/assets/images/tools/pixverse.png"
+  },
+  {
+    "name": "Llama 3.1",
+    "description": "Meta最新开源大模型，支持多语言对话与代码生成，适用于本地部署和企业级AI应用。",
+    "url": "https://ai.meta.com/llama/",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "开源模型",
+      "多语言支持",
+      "本地部署"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 235,
+    "logo": "/assets/images/tools/llama31.png"
+  },
+  {
+    "name": "Gemma 2",
+    "description": "Google新一代轻量级AI模型，专为移动设备和边缘计算设计，支持高效推理与多语言任务。",
+    "url": "https://ai.google.dev/gemma",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "轻量模型",
+      "边缘计算",
+      "多语言"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 236,
+    "logo": "/assets/images/tools/gemma2.png"
+  },
+  {
+    "name": "Qwen2.5",
+    "description": "阿里云最新大语言模型，提升推理能力与多模态支持，适用于企业级AI应用和开发者平台。",
+    "url": "https://www.qwen.cn/",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "多模态",
+      "企业级",
+      "大模型"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 237
+  },
+  {
+    "name": "DeepSeek-Coder 3",
+    "description": "深度求索最新代码生成模型，支持多语言编程与复杂工程任务，适合开发者社区使用。",
+    "url": "https://www.deepseek.com/coder",
+    "categoryId": 5,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "代码生成",
+      "编程助手",
+      "开发者工具"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 238,
+    "logo": "/assets/images/tools/deepseekcoder3.png"
+  },
+  {
+    "name": "Cohere Command R+",
+    "description": "Cohere最新多模态大模型，支持文本、图像、音频等多种输入，适合企业级AI集成。",
+    "url": "https://www.cohere.com/command-r-plus",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "多模态",
+      "企业集成",
+      "大模型"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 239,
+    "logo": "/assets/images/tools/coherecommandr.png"
+  },
+  {
+    "name": "NVIDIA NeMo Guardrails",
+    "description": "NVIDIA推出的AI安全框架，用于控制和过滤AI生成内容，确保合规性和安全性。",
+    "url": "https://developer.nvidia.com/nemo-guardrails",
+    "categoryId": 6,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "AI安全",
+      "内容过滤",
+      "合规工具"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 240,
+    "logo": "/assets/images/tools/nvidianemoguardrails.png"
+  },
+  {
+    "name": "Stable Diffusion 3",
+    "description": "Stability AI最新图像生成模型，支持高分辨率图像与复杂视觉风格，适用于创意设计。",
+    "url": "https://stability.ai/stable-diffusion-3",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "图像生成",
+      "AI艺术",
+      "创意设计"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 241,
+    "logo": "/assets/images/tools/stablediffusion3.png"
+  },
+  {
+    "name": "Runway Gen-3",
+    "description": "Runway最新视频生成工具，支持AI视频剪辑、风格迁移和动态生成，适用于影视制作。",
+    "url": "https://runwayml.com/gen-3",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频生成",
+      "AI剪辑",
+      "影视制作"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 242,
+    "logo": "/assets/images/tools/runwaygen3.png"
   }
 ]
