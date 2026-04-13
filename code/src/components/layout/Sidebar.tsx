@@ -60,24 +60,24 @@ const Sidebar: React.FC = () => {
       {/* 侧边栏 */}
       <div
         className={cn(
-          'fixed left-0 top-16 z-40 h-[calc(100vh-4rem)] w-80 transform bg-white shadow-xl transition-transform duration-300 ease-in-out',
+          'fixed left-0 top-16 z-40 h-[calc(100vh-4rem)] w-80 transform border-r border-zinc-200/90 bg-zinc-100/95 shadow-xl backdrop-blur-sm transition-transform duration-300 ease-in-out',
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full',
         )}
       >
 
         {/* 分类列表 */}
         <div className="p-4">
-          <h3 className="mb-4 text-lg font-semibold text-gray-900">AI工具分类</h3>
+          <h3 className="mb-4 text-lg font-semibold text-zinc-900">AI工具分类</h3>
           {isLoading
             ? (
                 <div className="space-y-2">
                   {[1, 2, 3, 4].map(i => (
-                    <div key={i} className="flex w-full animate-pulse items-center justify-between rounded-lg bg-gray-100 p-3">
+                    <div key={i} className="flex w-full animate-pulse items-center justify-between rounded-xl bg-zinc-200/60 p-3">
                       <div className="flex items-center space-x-3">
-                        <div className="h-3 w-3 rounded-full bg-gray-300"></div>
-                        <div className="h-4 w-20 rounded bg-gray-300"></div>
+                        <div className="h-3 w-3 rounded-full bg-zinc-300"></div>
+                        <div className="h-4 w-20 rounded bg-zinc-300"></div>
                       </div>
-                      <div className="h-4 w-8 rounded bg-gray-300"></div>
+                      <div className="h-4 w-8 rounded bg-zinc-300"></div>
                     </div>
                   ))}
                 </div>
@@ -89,10 +89,10 @@ const Sidebar: React.FC = () => {
                       key={category.id}
                       type="button"
                       className={cn(
-                        'flex w-full items-center rounded-lg px-3 py-3 text-sm transition-all duration-200',
+                        'flex w-full items-center rounded-xl px-3 py-3 text-sm transition-all duration-200',
                         activeCategory === category.id
-                          ? 'bg-blue-50 text-blue-600 border-l-4 border-blue-600'
-                          : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900',
+                          ? 'border-l-4 border-rose-500 bg-white text-rose-600 shadow-sm'
+                          : 'text-zinc-700 hover:bg-white/80 hover:text-zinc-900',
                       )}
                       onClick={() => handleCategoryClick(category.id)}
                     >
@@ -101,8 +101,8 @@ const Sidebar: React.FC = () => {
                         className={cn(
                           'mr-3 flex h-8 w-8 items-center justify-center rounded-lg',
                           activeCategory === category.id
-                            ? 'bg-blue-100'
-                            : 'bg-gray-100',
+                            ? 'bg-rose-100 text-rose-600'
+                            : 'bg-zinc-200/80 text-zinc-600',
                         )}
                       >
                         {categoryIcons[category.slug] || (
@@ -115,7 +115,7 @@ const Sidebar: React.FC = () => {
                       {/* 文字和数量 */}
                       <div className="flex flex-1 items-center justify-between">
                         <span className="font-medium">{category.name}</span>
-                        <span className="rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-600">
+                        <span className="rounded-full bg-zinc-200/80 px-2 py-1 text-xs text-zinc-600">
                           {category.toolCount}
                         </span>
                       </div>

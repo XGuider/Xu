@@ -26,3 +26,42 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* 首页公告横滚（尊重系统减少动效） */
+@keyframes home-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.home-marquee-track {
+  width: max-content;
+  animation: home-marquee 32s linear infinite;
+}
+
+.home-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-marquee-track {
+    animation: none;
+  }
+}
+
+/* 轻微星点背景层（纯 CSS，体积小） */
+.home-hero-stars {
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 60% 70%, rgba(255, 255, 255, 0.25), transparent),
+    radial-gradient(1px 1px at 80% 20%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 40% 80%, rgba(255, 255, 255, 0.2), transparent);
+  background-size:
+    200px 200px,
+    180px 180px,
+    220px 220px,
+    160px 160px;
+}

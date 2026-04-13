@@ -11,7 +11,12 @@ const languageNames: Record<string, string> = {
   en: 'English',
 };
 
-export const LocaleSwitcher = () => {
+type LocaleSwitcherProps = {
+  /** 深色顶栏（首页）上使用 */
+  variant?: 'light' | 'dark';
+};
+
+export const LocaleSwitcher = ({ variant = 'light' }: LocaleSwitcherProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const locale = useLocale();
@@ -21,12 +26,17 @@ export const LocaleSwitcher = () => {
     router.refresh(); // Ensure the page takes the new locale into account related to the issue #395
   };
 
+  const selectClass
+    = variant === 'dark'
+      ? 'appearance-none rounded-lg border border-slate-600 bg-slate-800/90 px-3 py-2 pr-8 text-sm font-medium text-slate-100 transition-colors duration-200 hover:border-slate-500 focus:border-rose-400 focus:ring-2 focus:ring-rose-500/40 focus:outline-none'
+      : 'appearance-none rounded-lg border border-gray-300 bg-white px-3 py-2 pr-8 text-sm font-medium text-gray-700 transition-colors duration-200 hover:border-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none';
+
   return (
     <div className="relative">
       <select
         defaultValue={locale}
         onChange={handleChange}
-        className="appearance-none rounded-lg border border-gray-300 bg-white px-3 py-2 pr-8 text-sm font-medium text-gray-700 transition-colors duration-200 hover:border-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        className={selectClass}
         aria-label="语言切换"
       >
         {routing.locales.map(elt => (
@@ -37,7 +47,7 @@ export const LocaleSwitcher = () => {
       </select>
       {/* 下拉箭头图标 */}
       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-        <svg className="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className={variant === 'dark' ? 'h-4 w-4 text-slate-400' : 'h-4 w-4 text-gray-400'} fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </div>

@@ -36,7 +36,18 @@
       "slide2_subtitle": "Explore cutting-edge AI technology",
       "slide3_title": "AI Programming Assistant",
       "slide3_subtitle": "Boost development efficiency"
-    }
+    },
+    "tab_site_search": "Search",
+    "tab_browse": "Categories",
+    "hero_tagline": "Find great AI tools",
+    "marquee_text": "Xu curates quality AI tools · Use the sidebar or filters below · Bookmark for quick access",
+    "filter_all": "All",
+    "quick_search": "Search",
+    "quick_featured": "Featured",
+    "quick_categories": "Browse",
+    "quick_submit": "Submit",
+    "back_to_top": "Back to top",
+    "spotlight_title": "Spotlight"
   },
   "CategoryPage": {
     "tools_count": "{count} tools",
