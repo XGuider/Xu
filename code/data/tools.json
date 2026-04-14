@@ -4035,5 +4035,23 @@
     "pricing": "",
     "id": 242,
     "logo": "/assets/images/tools/runwaygen3.png"
+  },
+  {
+    "name": "Lume AI",
+    "description": "AI视频生成与编辑工具，支持文本到视频、AI配音与智能剪辑。",
+    "url": "https://www.lume.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频生成",
+      "AI剪辑"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 243,
+    "logo": "/assets/images/tools/lumeai.png"
   }
 ]
