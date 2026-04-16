@@ -4053,5 +4053,24 @@
     "pricing": "",
     "id": 243,
     "logo": "/assets/images/tools/lumeai.png"
+  },
+  {
+    "name": "NVIDIA NIM",
+    "description": "NVIDIA推出的轻量级AI模型部署平台，支持在边缘设备上高效运行大语言模型。",
+    "url": "https://www.nvidia.com/en-us/ai-platform/nim/",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "模型部署",
+      "边缘计算",
+      "大模型优化"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 244,
+    "logo": "/assets/images/tools/nvidianim.png"
   }
 ]
