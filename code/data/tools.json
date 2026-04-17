@@ -4072,5 +4072,24 @@
     "pricing": "",
     "id": 244,
     "logo": "/assets/images/tools/nvidianim.png"
+  },
+  {
+    "name": "Luma AI",
+    "description": "AI视频生成与3D建模平台，支持高精度视频生成、虚拟人像与场景合成。",
+    "url": "https://www.luma.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "AI视频",
+      "3D建模",
+      "虚拟人像"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 245,
+    "logo": "/assets/images/tools/lumaai.png"
   }
 ]
