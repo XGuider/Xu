@@ -2581,7 +2581,9 @@
       "AI创作",
       "AI绘画",
       "角色设计",
-      "创意插画"
+      "创意插画",
+      "创意设计",
+      "多模态"
     ],
     "id": 171,
     "developer": "",
@@ -2830,7 +2832,9 @@
       "自动化",
       "AI视频",
       "多语言",
-      "教育工具"
+      "教育工具",
+      "视频生成",
+      "自动剪辑"
     ],
     "id": 151,
     "developer": "",
@@ -3107,7 +3111,9 @@
     "tags": [
       "知识管理",
       "企业工具",
-      "智能问答"
+      "智能问答",
+      "自动化",
+      "工作流"
     ],
     "id": 176,
     "developer": "",
@@ -3355,7 +3361,7 @@
   },
   {
     "name": "Kaiber",
-    "description": "AI音乐生成工具，支持根据文本或风格生成原创音乐作品。",
+    "description": "AI音乐生成平台，支持文本生成音乐、风格迁移与多乐器合成。",
     "url": "https://kaiber.ai",
     "categoryId": 9,
     "rating": 0,
@@ -3841,7 +3847,9 @@
     "tags": [
       "视频编辑",
       "AI动画",
-      "创意工具"
+      "创意工具",
+      "视频生成",
+      "多模态"
     ],
     "developer": "",
     "pricing": "",
@@ -4092,5 +4100,218 @@
     "pricing": "",
     "id": 245,
     "logo": "/assets/images/tools/lumaai.png"
+  },
+  {
+    "name": "PixAI",
+    "description": "AI驱动的图像编辑与生成工具，支持一键风格迁移与智能修图。",
+    "url": "https://www.pixai.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "图像编辑",
+      "AI绘画"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 246
+  },
+  {
+    "name": "Vidu AI",
+    "description": "AI视频生成与编辑平台，支持文本生成视频、视频剪辑与特效添加。",
+    "url": "https://www.vidu.ai",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频生成",
+      "AI剪辑"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 247,
+    "logo": "/assets/images/tools/viduai.png"
+  },
+  {
+    "name": "Sora-Clone",
+    "description": "基于OpenAI Sora架构的开源视频生成工具，支持长视频与复杂动作生成。",
+    "url": "https://sora-clone.github.io",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频生成",
+      "开源AI"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 248
+  },
+  {
+    "name": "Luma AI Pro",
+    "description": "专业级AI视频生成工具，支持文本到视频、视频修复与风格化处理。",
+    "url": "https://luma.ai/pro",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频生成",
+      "专业工具"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 249,
+    "logo": "/assets/images/tools/lumaaipro.png"
+  },
+  {
+    "name": "Suno AI Pro",
+    "description": "专业级AI音乐生成工具，支持多语言、多风格音乐创作与编曲。",
+    "url": "https://suno.ai/pro",
+    "categoryId": 7,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "音乐生成",
+      "专业创作"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 250,
+    "logo": "/assets/images/tools/sunoaipro.png"
+  },
+  {
+    "name": "Resemble AI",
+    "description": "AI语音合成与语音克隆平台，支持多语言、高保真语音生成。",
+    "url": "https://www.resemble.ai",
+    "categoryId": 6,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "语音合成",
+      "语音克隆"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 251,
+    "logo": "/assets/images/tools/resembleai.png"
+  },
+  {
+    "name": "ElevenLabs Pro",
+    "description": "高保真AI语音合成工具，支持多语言、情感控制与角色定制。",
+    "url": "https://elevenlabs.io/pro",
+    "categoryId": 6,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "语音合成",
+      "情感语音"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 252,
+    "logo": "/assets/images/tools/elevenlabspro.png"
+  },
+  {
+    "name": "Lumen5 Pro",
+    "description": "AI视频内容生成工具，支持文章转视频、自动剪辑与风格化输出。",
+    "url": "https://lumen5.com/pro",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "内容生成",
+      "视频营销"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 253,
+    "logo": "/assets/images/tools/lumen5pro.png"
+  },
+  {
+    "name": "Synthesia Pro",
+    "description": "AI虚拟主播与视频生成平台，支持多语言、角色定制与场景切换。",
+    "url": "https://www.synthesia.io/pro",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "虚拟主播",
+      "视频生成"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 254,
+    "logo": "/assets/images/tools/synthesiapro.png"
+  },
+  {
+    "name": "Loom AI",
+    "description": "AI视频会议与录屏工具，支持智能剪辑、字幕生成与内容摘要。",
+    "url": "https://www.loom.com/ai",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频会议",
+      "智能剪辑"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 255,
+    "logo": "/assets/images/tools/loomai.png"
+  },
+  {
+    "name": "ClipDrop AI",
+    "description": "AI图像编辑工具，支持图像修复、对象移除与风格迁移。",
+    "url": "https://clipdrop.create.net",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "图像编辑",
+      "AI修复"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 256
+  },
+  {
+    "name": "Ollama Pro",
+    "description": "本地部署AI模型平台，支持自定义模型加载、推理与API调用。",
+    "url": "https://ollama.com/pro",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "本地AI",
+      "模型部署"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 257,
+    "logo": "/assets/images/tools/ollamapro.png"
   }
 ]
