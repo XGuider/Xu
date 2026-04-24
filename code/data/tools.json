@@ -939,7 +939,9 @@
     "tags": [
       "学术研究",
       "文献分析",
-      "智能摘要"
+      "智能摘要",
+      "市场研究",
+      "数据分析"
     ],
     "developer": "",
     "pricing": ""
@@ -4313,5 +4315,22 @@
     "pricing": "",
     "id": 257,
     "logo": "/assets/images/tools/ollamapro.png"
+  },
+  {
+    "name": "You.com AI",
+    "description": "集成AI助手的搜索引擎，支持多轮对话和内容总结。",
+    "url": "https://www.you.com",
+    "categoryId": 5,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "搜索引擎",
+      "对话式AI"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 258
   }
 ]
