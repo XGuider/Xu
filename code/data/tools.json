@@ -511,7 +511,7 @@
   },
   {
     "name": "Perplexity AI",
-    "description": "智能问答与研究助手，支持实时联网搜索与多模态内容理解，适合学术、商业决策和知识探索。",
+    "description": "基于AI的智能搜索与问答工具，支持上下文理解与多源信息整合，适用于研究、写作与决策支持。",
     "url": "https://www.perplexity.ai",
     "categoryId": 4,
     "rating": 0,
