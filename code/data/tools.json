@@ -4333,5 +4333,359 @@
     "developer": "",
     "pricing": "",
     "id": 258
+  },
+  {
+    "name": "Phantom AI",
+    "description": "新一代AI助手，支持多模态交互与实时决策，适用于企业级自动化与创意生成。",
+    "url": "https://phantom.ai",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "多模态AI",
+      "企业自动化"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 259,
+    "logo": "/assets/images/tools/phantomai.png"
+  },
+  {
+    "name": "Nimble AI",
+    "description": "轻量级AI代理工具，支持任务拆解与自主执行，适合开发者与创作者快速原型开发。",
+    "url": "https://nimble.ai",
+    "categoryId": 6,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "AI代理",
+      "任务自动化"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 260,
+    "logo": "/assets/images/tools/nimbleai.png"
+  },
+  {
+    "name": "Sparrow AI",
+    "description": "专注于教育与学习场景的AI助手，支持个性化学习路径规划与知识点讲解。",
+    "url": "https://sparrow.ai",
+    "categoryId": 5,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "教育AI",
+      "学习助手"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 261,
+    "logo": "/assets/images/tools/sparrowai.png"
+  },
+  {
+    "name": "Astra AI",
+    "description": "AI驱动的会议助手，自动记录、总结、生成行动项，支持多语言实时转录与分析。",
+    "url": "https://astra.ai",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "会议助手",
+      "语音转录"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 262,
+    "logo": "/assets/images/tools/astraai.png"
+  },
+  {
+    "name": "Tactile AI",
+    "description": "AI触觉交互工具，将文本与图像转化为可交互的3D模型，用于设计与展示场景。",
+    "url": "https://tactile.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "3D生成",
+      "交互设计"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 263,
+    "logo": "/assets/images/tools/tactileai.png"
+  },
+  {
+    "name": "NovaCode",
+    "description": "AI编程助手，支持代码补全、漏洞检测与多语言项目重构，专为工程团队设计。",
+    "url": "https://novacode.ai",
+    "categoryId": 7,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "代码生成",
+      "工程AI"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 264
+  },
+  {
+    "name": "EchoLens",
+    "description": "AI视觉分析工具，可对图像进行语义理解、风格迁移与内容重绘，支持商业级输出。",
+    "url": "https://echolens.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视觉分析",
+      "风格迁移"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 265
+  },
+  {
+    "name": "Mimir AI",
+    "description": "AI知识图谱构建工具，自动从文档与数据中提取实体与关系，支持智能问答与推理。",
+    "url": "https://mimir.ai",
+    "categoryId": 2,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "知识图谱",
+      "智能问答"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 266,
+    "logo": "/assets/images/tools/mimirai.png"
+  },
+  {
+    "name": "Zephyr AI",
+    "description": "AI驱动的营销内容生成器，支持短视频脚本、社交媒体文案与广告创意自动创作。",
+    "url": "https://zephyr.ai",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "内容生成",
+      "营销AI"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 267,
+    "logo": "/assets/images/tools/zephyrai.png"
+  },
+  {
+    "name": "Aether AI",
+    "description": "AI视频编辑工具，支持智能剪辑、字幕生成与风格化转场，适用于短视频创作者。",
+    "url": "https://aether.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频编辑",
+      "AI剪辑"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 268,
+    "logo": "/assets/images/tools/aetherai.png"
+  },
+  {
+    "name": "Symbio AI",
+    "description": "AI协作平台，支持多人实时协作编辑文档、代码与设计，内置AI智能建议与反馈。",
+    "url": "https://symbio.ai",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "协作工具",
+      "团队AI"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 269,
+    "logo": "/assets/images/tools/symbioai.png"
+  },
+  {
+    "name": "Verdant AI",
+    "description": "AI生态模拟工具，用于模拟自然生态系统与气候模型，支持科研与教育场景。",
+    "url": "https://verdant.ai",
+    "categoryId": 2,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "科研AI",
+      "生态模拟"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 270
+  },
+  {
+    "name": "Nexus AI",
+    "description": "AI多模态内容引擎，支持文本、图像、音频与视频的跨模态理解与生成。",
+    "url": "https://nexus.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "跨模态AI",
+      "内容引擎"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 271,
+    "logo": "/assets/images/tools/nexusai.png"
+  },
+  {
+    "name": "Orion AI",
+    "description": "AI自动化流程引擎，支持从数据采集到决策执行的端到端自动化，降低企业成本。",
+    "url": "https://orion.ai",
+    "categoryId": 6,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "流程自动化",
+      "企业AI"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 272,
+    "logo": "/assets/images/tools/orionai.png"
+  },
+  {
+    "name": "Terra AI",
+    "description": "AI地理信息分析工具，支持卫星图像识别、地形建模与环境变化监测。",
+    "url": "https://terra.ai",
+    "categoryId": 2,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "地理AI",
+      "遥感分析"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 273
+  },
+  {
+    "name": "EchoFlow",
+    "description": "AI数据流处理平台，支持实时数据清洗、分析与可视化，适用于大数据场景。",
+    "url": "https://echoflow.ai",
+    "categoryId": 1,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "数据处理",
+      "实时分析"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 274,
+    "logo": "/assets/images/tools/echoflow.png"
+  },
+  {
+    "name": "VoxAI",
+    "description": "AI语音合成与情绪识别工具，支持多语言、多音色的自然语音生成与情感分析。",
+    "url": "https://voxa.ai",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "语音合成",
+      "情绪识别"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 275,
+    "logo": "/assets/images/tools/voxai.png"
+  },
+  {
+    "name": "CogniCraft",
+    "description": "AI创意生成平台，支持故事、剧本、广告创意与品牌内容的智能创作与优化。",
+    "url": "https://cognicraft.ai",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "创意生成",
+      "内容优化"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 276
+  },
+  {
+    "name": "Axiom AI",
+    "description": "AI法律文书助手，支持合同审查、条款生成与法律案例分析，面向法律专业人士。",
+    "url": "https://axiom.ai",
+    "categoryId": 5,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "法律AI",
+      "文书生成"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 277,
+    "logo": "/assets/images/tools/axiomai.png"
+  },
+  {
+    "name": "QuantumAI",
+    "description": "AI量子计算模拟器，支持量子电路设计、算法验证与物理模型仿真。",
+    "url": "https://quantumai.ai",
+    "categoryId": 2,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "量子AI",
+      "模拟器"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 278
   }
 ]
