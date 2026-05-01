@@ -1203,7 +1203,7 @@
   },
   {
     "name": "Kling",
-    "description": "AI视频生成工具，支持文本到视频的自动化创作，适用于短视频、广告、教学内容制作。",
+    "description": "AI视频生成平台，支持文本到视频的实时生成，适用于短视频创作、广告与教育内容制作。",
     "url": "https://www.kling.ai",
     "categoryId": 8,
     "rating": 0,
@@ -2333,7 +2333,7 @@
   },
   {
     "name": "Veed.io",
-    "description": "AI视频编辑工具，支持自动剪辑、字幕生成、配音，适用于视频创作者和内容团队。",
+    "description": "AI视频编辑平台，支持智能剪辑、字幕生成、转场特效，适用于自媒体与内容创作者。",
     "url": "https://www.veed.io",
     "categoryId": 9,
     "rating": 0,
@@ -2348,7 +2348,8 @@
       "字幕生成",
       "视频编辑",
       "AI工具",
-      "在线协作"
+      "在线协作",
+      "AI创作"
     ],
     "id": 108,
     "developer": "",
@@ -2964,7 +2965,7 @@
   },
   {
     "name": "Kapwing",
-    "description": "在线AI视频编辑工具，支持智能剪辑、字幕添加、AI特效和模板应用。",
+    "description": "AI视频与图像编辑工具，支持一键剪辑、字幕添加、特效生成，适用于社交媒体与教育内容。",
     "url": "https://www.kapwing.com",
     "categoryId": 9,
     "rating": 0,
@@ -2974,7 +2975,8 @@
     "tags": [
       "视频编辑",
       "AI剪辑",
-      "在线工具"
+      "在线工具",
+      "AI设计"
     ],
     "id": 163,
     "developer": "",
@@ -2983,7 +2985,7 @@
   },
   {
     "name": "Lobe",
-    "description": "AI模型开发工具，支持拖拽式界面构建机器学习模型，适合非专业用户。",
+    "description": "AI模型训练与部署平台，支持拖拽式界面，适用于非专业用户快速构建AI应用。",
     "url": "https://lobe.ai",
     "categoryId": 5,
     "rating": 0,
@@ -2996,7 +2998,8 @@
       "模型训练",
       "模型开发",
       "拖拽式",
-      "低代码AI"
+      "低代码AI",
+      "AI开发"
     ],
     "id": 194,
     "developer": "",
@@ -3793,7 +3796,9 @@
     "tags": [
       "AI模型服务",
       "模型部署",
-      "开发者平台"
+      "开发者平台",
+      "模型即服务",
+      "开发者工具"
     ],
     "developer": "",
     "pricing": "",
@@ -4194,7 +4199,7 @@
   },
   {
     "name": "Resemble AI",
-    "description": "AI语音合成与语音克隆平台，支持多语言、高保真语音生成。",
+    "description": "AI语音合成平台，支持多语言和角色音色定制，适用于播客、游戏配音与语音助手开发。",
     "url": "https://www.resemble.ai",
     "categoryId": 6,
     "rating": 0,
@@ -4203,7 +4208,8 @@
     "isFeatured": false,
     "tags": [
       "语音合成",
-      "语音克隆"
+      "语音克隆",
+      "AI音频"
     ],
     "developer": "",
     "pricing": "",
@@ -4687,5 +4693,23 @@
     "developer": "",
     "pricing": "",
     "id": 278
+  },
+  {
+    "name": "Pika Labs Pro",
+    "description": "AI图像与视频生成工具，支持文本到图像及视频的动态生成，适用于创意设计与内容营销。",
+    "url": "https://www.pika.art",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "图像生成",
+      "视频生成"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 279,
+    "logo": "/assets/images/tools/pikalabspro.png"
   }
 ]
