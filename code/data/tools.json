@@ -1493,7 +1493,10 @@
       "企业级AI",
       "多语言",
       "推理能力",
-      "专业助手"
+      "专业助手",
+      "高级推理",
+      "长上下文",
+      "专业写作"
     ],
     "id": 119,
     "developer": "",
@@ -4711,5 +4714,43 @@
     "pricing": "",
     "id": 279,
     "logo": "/assets/images/tools/pikalabspro.png"
+  },
+  {
+    "name": "Moonshot AI",
+    "description": "支持多语言对话与深度推理的AI助手，适用于企业级智能客服与内容创作。",
+    "url": "https://www.moonshot.ai",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "多语言AI",
+      "企业应用",
+      "对话助手"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 280,
+    "logo": "/assets/images/tools/moonshotai.png"
+  },
+  {
+    "name": "Qwen-VL",
+    "description": "通义千问视觉语言模型，支持图文理解与多模态内容生成。",
+    "url": "https://www.aliyun.com/product/qwen-vl",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "多模态AI",
+      "视觉理解",
+      "图文生成"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 281,
+    "logo": "/assets/images/tools/qwenvl.png"
   }
 ]
