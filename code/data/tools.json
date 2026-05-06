@@ -3206,7 +3206,7 @@
   },
   {
     "name": "Ollama",
-    "description": "本地AI模型运行工具，支持在个人电脑上运行和管理大语言模型。",
+    "description": "本地运行大模型的开源工具，支持在个人电脑或服务器上部署和运行AI模型。",
     "url": "https://ollama.com",
     "categoryId": 3,
     "rating": 0,
@@ -3216,7 +3216,9 @@
     "tags": [
       "本地部署",
       "大模型",
-      "开发者工具"
+      "开发者工具",
+      "开源AI",
+      "大模型运行"
     ],
     "id": 182,
     "developer": "",
@@ -4695,7 +4697,8 @@
     ],
     "developer": "",
     "pricing": "",
-    "id": 278
+    "id": 278,
+    "logo": "/assets/images/tools/quantumai.png"
   },
   {
     "name": "Pika Labs Pro",
