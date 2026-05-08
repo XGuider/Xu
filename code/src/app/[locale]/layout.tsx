@@ -3,6 +3,7 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { PostHogProvider } from '@/components/analytics/PostHogProvider';
+import WebAnalytics from '@/components/analytics/WebAnalytics';
 import { ServiceWorkerCleanup } from '@/components/ServiceWorkerCleanup';
 import { StagewiseToolbar } from '@/components/StagewiseToolbar';
 import ToolDetailModal from '@/components/tools/ToolDetailModal';
@@ -99,6 +100,7 @@ export default async function RootLayout(props: {
     <html lang={locale}>
       <body>
         <NextIntlClientProvider>
+          <WebAnalytics />
           <NotificationProvider>
             <ToolDetailProvider>
               <PostHogProvider>

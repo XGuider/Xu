@@ -28,15 +28,6 @@
     "browse_by_category": "Browse by Category",
     "browse_by_category_subtitle": "Explore AI tools by different categories",
     "tools_count": "{count} tools",
-    "explore_now": "Explore Now",
-    "carousel": {
-      "slide1_title": "AI Tool Navigation Platform",
-      "slide1_subtitle": "Discover the best AI tools",
-      "slide2_title": "Latest AI Tool Recommendations",
-      "slide2_subtitle": "Explore cutting-edge AI technology",
-      "slide3_title": "AI Programming Assistant",
-      "slide3_subtitle": "Boost development efficiency"
-    },
     "tab_site_search": "Search",
     "tab_browse": "Categories",
     "hero_tagline": "Find great AI tools",
@@ -46,8 +37,11 @@
     "quick_featured": "Featured",
     "quick_categories": "Browse",
     "quick_submit": "Submit",
-    "back_to_top": "Back to top",
-    "spotlight_title": "Spotlight"
+    "back_to_top": "Back to top"
+  },
+  "Footer": {
+    "copyright": "All rights reserved by faqingx.",
+    "version_label": "Version {version}"
   },
   "CategoryPage": {
     "tools_count": "{count} tools",

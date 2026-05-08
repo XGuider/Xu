@@ -3,3 +3,6 @@
 .env
 .env.local
 .env*.local
+
+# TypeScript 增量缓存
+tsconfig.tsbuildinfo

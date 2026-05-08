@@ -1,6 +1,6 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { createTool, getFeaturedTools, getLatestTools, getToolById, getTools, getToolsByCategoryId, searchTools, updateTool } from '@/services/fileDataService';
+import { createTool, getCategoryBySlug, getFeaturedTools, getLatestTools, getToolById, getTools, getToolsByCategoryId, searchTools, updateTool } from '@/services/fileDataService';
 import { createToolSchema, updateToolSchema } from '@/validations/toolValidation';
 
 // GET - 获取工具列表或单个工具（仅读取本地文件数据）
@@ -38,17 +38,33 @@ export async function GET(request: NextRequest) {
     const page = Number.parseInt(searchParams.get('page') || '1');
     const limit = Number.parseInt(searchParams.get('limit') || '10');
 
-    let tools = await getTools();
+    let tools: Awaited<ReturnType<typeof getTools>>;
 
-    // 应用筛选条件
     if (latest) {
       tools = await getLatestTools(limit);
     } else if (featured) {
       tools = await getFeaturedTools(limit);
-    } else if (category) {
-      tools = await getToolsByCategoryId(Number.parseInt(category));
-    } else if (search) {
-      tools = await searchTools(search);
+    } else {
+      tools = await getTools();
+
+      if (category) {
+        const trimmed = category.trim();
+        const isNumericId = /^\d+$/.test(trimmed);
+        if (isNumericId) {
+          tools = await getToolsByCategoryId(Number.parseInt(trimmed, 10));
+        } else {
+          const cat = await getCategoryBySlug(trimmed);
+          tools = cat ? await getToolsByCategoryId(cat.id) : [];
+        }
+      }
+
+      if (search) {
+        const matched = await searchTools(search);
+        const matchedIds = new Set(matched.map(t => t.id));
+        tools = category
+          ? tools.filter(t => matchedIds.has(t.id))
+          : matched;
+      }
     }
 
     // 只返回活跃的工具

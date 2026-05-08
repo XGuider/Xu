@@ -15,7 +15,6 @@ import { cn } from '@/utils/cn';
 
 const HomePage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [currentSlide, setCurrentSlide] = useState(0);
   const t = useTranslations('HomePage');
   const {
     activeCategory,
@@ -57,50 +56,6 @@ const HomePage: React.FC = () => {
 
     fetchLatestTools();
   }, []);
-
-  // 模拟轮播图数据
-  const carouselSlides = [
-    {
-      id: '1',
-      title: t('carousel.slide1_title'),
-      subtitle: t('carousel.slide1_subtitle'),
-      image: '/assets/images/carousel-1.jpg',
-      link: '/search?q=AI工具',
-    },
-    {
-      id: '2',
-      title: t('carousel.slide2_title'),
-      subtitle: t('carousel.slide2_subtitle'),
-      image: '/assets/images/carousel-2.jpg',
-      link: '/category/ai-office',
-    },
-    {
-      id: '3',
-      title: t('carousel.slide3_title'),
-      subtitle: t('carousel.slide3_subtitle'),
-      image: '/assets/images/carousel-3.jpg',
-      link: '/category/ai-coding',
-    },
-  ];
-
-  // 自动轮播
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => {
-        return (prev + 1) % carouselSlides.length;
-      });
-    }, 5000);
-
-    return () => clearInterval(timer);
-  }, [carouselSlides.length]);
-
-  // 模拟热搜数据
-  // const hotSearches = [
-  //   { id: '1', keyword: 'Liblibai', searchCount: 1250, isTrending: true },
-  //   { id: '2', keyword: 'Coze扣子', searchCount: 980, isTrending: true },
-  //   { id: '3', keyword: '剪映', searchCount: 856, isTrending: false },
-  //   { id: '4', keyword: 'Trac国内版', searchCount: 743, isTrending: false },
-  // ];
 
   const router = useRouter();
   const [isSearching, setIsSearching] = useState(false);
@@ -359,64 +314,6 @@ const HomePage: React.FC = () => {
 
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-10">
-            {/* 轮播精选（压低高度，承接英雄区） */}
-            <section className="scroll-mt-24" id="spotlight-carousel" aria-label={t('spotlight_title')}>
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-600 via-violet-600 to-rose-600 shadow-lg">
-                <div className="relative h-44 sm:h-52 md:h-56">
-                  {carouselSlides.map((slide, index) => {
-                    return (
-                      <div
-                        key={slide.id}
-                        className={cn(
-                          'absolute inset-0 transition-opacity duration-500',
-                          index === currentSlide ? 'opacity-100' : 'opacity-0',
-                        )}
-                      >
-                        <div className="flex h-full items-center justify-center p-6 text-center text-white sm:p-8">
-                          <div>
-                            <h3 className="mb-2 text-xl font-bold sm:text-2xl md:text-3xl">
-                              {slide.title}
-                            </h3>
-                            <p className="mb-4 text-sm opacity-90 sm:text-base md:text-lg">
-                              {slide.subtitle}
-                            </p>
-                            <Button
-                              variant="outline"
-                              className="border-white bg-white/20 text-white hover:bg-white hover:text-violet-700"
-                              onClick={() => {
-                                router.push(slide.link);
-                              }}
-                            >
-                              {t('explore_now')}
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {/* 轮播图指示器 */}
-                <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 space-x-2">
-                  {carouselSlides.map((slide, index) => {
-                    return (
-                      <button
-                        key={`indicator-${slide.id || index}`}
-                        type="button"
-                        onClick={() => {
-                          setCurrentSlide(index);
-                        }}
-                        className={cn(
-                          'w-3 h-3 rounded-full transition-all duration-200',
-                          index === currentSlide ? 'bg-white' : 'bg-white/50',
-                        )}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            </section>
-
             {/* 最新工具推荐 */}
             <section className="scroll-mt-24 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-zinc-200/80 sm:p-8" id="featured-section">
               <div className="mb-6 text-center sm:mb-8">

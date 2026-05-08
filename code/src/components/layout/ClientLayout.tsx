@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import { CategoryProvider } from '@/contexts/CategoryContext';
 import { SidebarProvider } from '@/contexts/SidebarContext';
@@ -15,6 +16,7 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({ children }) => {
       <SidebarProvider>
         <Header />
         <main>{children}</main>
+        <Footer />
       </SidebarProvider>
     </CategoryProvider>
   );

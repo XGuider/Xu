@@ -18,6 +18,7 @@ export default async function SearchPageRoute({ searchParams }: SearchPageProps)
 
   return (
     <SearchPage
+      key={`${query}-${category}-${page}`}
       query={query}
       category={category}
       page={page}

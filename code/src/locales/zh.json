@@ -28,15 +28,6 @@
     "browse_by_category": "按分类浏览",
     "browse_by_category_subtitle": "探索不同类别的AI工具",
     "tools_count": "共 {count} 个工具",
-    "explore_now": "立即探索",
-    "carousel": {
-      "slide1_title": "AI工具导航平台",
-      "slide1_subtitle": "发现最好的AI工具",
-      "slide2_title": "最新AI工具推荐",
-      "slide2_subtitle": "探索前沿AI技术",
-      "slide3_title": "AI编程助手",
-      "slide3_subtitle": "提升开发效率"
-    },
     "tab_site_search": "全站搜索",
     "tab_browse": "分类浏览",
     "hero_tagline": "发现好用的 AI 工具",
@@ -46,8 +37,11 @@
     "quick_featured": "热门推荐",
     "quick_categories": "分类目录",
     "quick_submit": "提交工具",
-    "back_to_top": "回到顶部",
-    "spotlight_title": "精选推荐"
+    "back_to_top": "回到顶部"
+  },
+  "Footer": {
+    "copyright": "本站归 faqingx 所有",
+    "version_label": "版本 {version}"
   },
   "CategoryPage": {
     "tools_count": "{count} 个工具",
