@@ -1,6 +1,16 @@
 import { createEnv } from '@t3-oss/env-nextjs';
 import z from 'zod';
 
+/**
+ * Arcjet 仅在密钥为合法 `ajkey_` 前缀时启用；占位符或错误格式会导致
+ * `createEnv` 在校验阶段抛错并阻断构建，故在注入 runtimeEnv 前归一为 undefined。
+ */
+const arcjetKeyRaw = process.env.ARCJET_KEY;
+const arcjetKeyNormalized =
+  typeof arcjetKeyRaw === 'string' && arcjetKeyRaw.length > 0 && arcjetKeyRaw.startsWith('ajkey_')
+    ? arcjetKeyRaw
+    : undefined;
+
 export const Env = createEnv({
   server: {
     ARCJET_KEY: z.string().startsWith('ajkey_').optional(),
@@ -20,7 +30,7 @@ export const Env = createEnv({
   },
   // You need to destructure all the keys manually
   runtimeEnv: {
-    ARCJET_KEY: process.env.ARCJET_KEY,
+    ARCJET_KEY: arcjetKeyNormalized,
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
     NEXT_PUBLIC_APP_VERSION: process.env.NEXT_PUBLIC_APP_VERSION,
     NEXT_PUBLIC_BETTER_STACK_SOURCE_TOKEN: process.env.NEXT_PUBLIC_BETTER_STACK_SOURCE_TOKEN,

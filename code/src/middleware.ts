@@ -27,7 +27,8 @@ export default async function middleware(
 ) {
   // Verify the request with Arcjet
   // Use `process.env` instead of Env to reduce bundle size in middleware
-  if (process.env.ARCJET_KEY) {
+  // 与 Env 一致：仅合法 ajkey_ 密钥才启用，避免占位符触发无效请求
+  if (process.env.ARCJET_KEY?.startsWith('ajkey_')) {
     const decision = await aj.protect(request);
 
     if (decision.isDenied()) {
