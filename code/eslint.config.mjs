@@ -36,9 +36,16 @@ export default antfu(
   {
     settings: {
       tailwindcss: {
-        // 还原为原始设置，避免 TS Config 导致的解析问题
+        // Tailwind v4 入口；eslint-plugin-tailwindcss 无法稳定解析本仓库的 tailwind.config.ts（TS 类型语法会报错）
         config: `${dirname(fileURLToPath(import.meta.url))}/src/styles/global.css`,
       },
+    },
+  },
+  {
+    files: ['src/contexts/**/*.{ts,tsx}'],
+    rules: {
+      // Context 文件同时导出 Provider 与 hook 是常见模式
+      'react-refresh/only-export-components': 'off',
     },
   },
   // --- Custom Rule Overrides ---
@@ -49,6 +56,8 @@ export default antfu(
       'ts/consistent-type-definitions': ['error', 'type'], // Use `type` instead of `interface`
       'react/prefer-destructuring-assignment': 'off', // Vscode doesn't support automatically destructuring, it's a pain to add a new variable
       'node/prefer-global/process': 'off', // Allow using `process.env`
+      // 自定义主题类写在 tailwind.config.ts，插件仅读 global.css 会误报
+      'tailwindcss/no-custom-classname': 'off',
     },
   },
 );

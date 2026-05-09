@@ -6,8 +6,8 @@ import z from 'zod';
  * `createEnv` 在校验阶段抛错并阻断构建，故在注入 runtimeEnv 前归一为 undefined。
  */
 const arcjetKeyRaw = process.env.ARCJET_KEY;
-const arcjetKeyNormalized =
-  typeof arcjetKeyRaw === 'string' && arcjetKeyRaw.length > 0 && arcjetKeyRaw.startsWith('ajkey_')
+const arcjetKeyNormalized
+  = typeof arcjetKeyRaw === 'string' && arcjetKeyRaw.length > 0 && arcjetKeyRaw.startsWith('ajkey_')
     ? arcjetKeyRaw
     : undefined;
 
