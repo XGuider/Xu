@@ -4756,5 +4756,23 @@
     "pricing": "",
     "id": 281,
     "logo": "/assets/images/tools/qwenvl.png"
+  },
+  {
+    "name": "GPT-5o",
+    "description": "OpenAI下一代多模态对话模型，支持更长上下文和实时多模态交互。",
+    "url": "https://openai.com/gpt-5o",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "多模态AI",
+      "对话增强"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 282,
+    "logo": "/assets/images/tools/gpt5o.png"
   }
 ]
