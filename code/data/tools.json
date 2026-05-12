@@ -4775,5 +4775,23 @@
     "pricing": "",
     "id": 282,
     "logo": "/assets/images/tools/gpt5o.png"
+  },
+  {
+    "name": "Kohya_ss",
+    "description": "开源AI图像生成与训练工具，支持Stable Diffusion模型本地化微调与插件扩展。",
+    "url": "https://github.com/kohya-ss/sd-webui-additional-networks",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "开源工具",
+      "图像生成"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 283,
+    "logo": "/assets/images/tools/kohyass.png"
   }
 ]
