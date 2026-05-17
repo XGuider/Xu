@@ -567,7 +567,8 @@
       "知识探索",
       "信息搜索",
       "引用来源",
-      "问答AI"
+      "问答AI",
+      "多源信息"
     ],
     "id": 110,
     "developer": "",
@@ -1194,7 +1195,8 @@
       "内容制作",
       "虚拟形象",
       "视频创作",
-      "AI形象"
+      "AI形象",
+      "品牌营销"
     ],
     "id": 169,
     "developer": "",
@@ -2980,7 +2982,8 @@
       "视频编辑",
       "AI剪辑",
       "在线工具",
-      "AI设计"
+      "AI设计",
+      "多语言"
     ],
     "id": 163,
     "developer": "",
@@ -3050,7 +3053,7 @@
   },
   {
     "name": "Lumiere",
-    "description": "AI视频生成工具，支持从文本生成视频，适用于营销、教育、创意内容制作。",
+    "description": "AI驱动的电影级视频生成平台，支持分镜脚本到高清视频的全流程自动化创作。",
     "url": "https://lumiere.ai",
     "categoryId": 8,
     "rating": 0,
@@ -3060,7 +3063,10 @@
     "tags": [
       "视频生成",
       "营销工具",
-      "创意内容"
+      "创意内容",
+      "电影级视频",
+      "AI创作",
+      "分镜生成"
     ],
     "id": 173,
     "developer": "",
@@ -4796,5 +4802,24 @@
     "pricing": "",
     "id": 283,
     "logo": "/assets/images/tools/kohyass.png"
+  },
+  {
+    "name": "Kimi by Moonshot",
+    "description": "国产大模型，支持长文本处理、多语言对话与知识库检索，适用于企业级智能客服与内容生成。",
+    "url": "https://kimi.moonshot.cn",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "大语言模型",
+      "长文本处理",
+      "企业级应用"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 284,
+    "logo": "/assets/images/tools/kimibymoonshot.png"
   }
 ]
