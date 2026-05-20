@@ -4821,5 +4821,24 @@
     "pricing": "",
     "id": 284,
     "logo": "/assets/images/tools/kimibymoonshot.png"
+  },
+  {
+    "name": "Cursor AI",
+    "description": "集成AI编程助手的代码编辑器，支持自动补全、重构与调试，提升开发者效率。",
+    "url": "https://cursor.ai",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "代码生成",
+      "AI编程",
+      "开发者工具"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 285,
+    "logo": "/assets/images/tools/cursorai.png"
   }
 ]
