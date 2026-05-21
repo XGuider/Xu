@@ -4840,5 +4840,24 @@
     "pricing": "",
     "id": 285,
     "logo": "/assets/images/tools/cursorai.png"
+  },
+  {
+    "name": "Aphrodite",
+    "description": "AI驱动的创意生成平台，支持图像、视频、音乐多模态内容创作。",
+    "url": "https://aphrodite.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "多模态生成",
+      "创意AI",
+      "内容创作"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 286,
+    "logo": "/assets/images/tools/aphrodite.png"
   }
 ]
