@@ -1,0 +1,10 @@
+[
+  {
+    "id": "mp-mock-5",
+    "name": "雪球股票",
+    "appId": "xueqiu-demo",
+    "desc": "股票行情与社区讨论",
+    "category": "财经",
+    "crawlTime": "2026-05-11T09:25:11.277Z"
+  }
+]

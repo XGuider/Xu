@@ -1,0 +1,18 @@
+[
+  {
+    "id": "mp-mock-1",
+    "name": "微信读书",
+    "appId": "wxread-demo",
+    "desc": "正版电子书与听书",
+    "category": "教育",
+    "crawlTime": "2026-05-11T09:25:10.217Z"
+  },
+  {
+    "id": "mp-mock-4",
+    "name": "课程格子",
+    "appId": "course-demo",
+    "desc": "大学生课表与学习计划",
+    "category": "教育",
+    "crawlTime": "2026-05-11T09:25:11.025Z"
+  }
+]

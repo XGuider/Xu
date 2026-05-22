@@ -12,7 +12,9 @@
     "home": "Home",
     "categories": "Categories",
     "search": "Search",
-    "submit_url": "Submit URL"
+    "submit_url": "Submit URL",
+    "wechat_official": "Official accounts",
+    "wechat_mini": "Mini programs"
   },
   "HomePage": {
     "hero_title": "AI Navigation Platform",
@@ -247,6 +249,33 @@
       "password_placeholder": "Enter password (at least 8 characters)",
       "confirm_password_placeholder": "Enter password again"
     }
+  },
+  "WechatOfficialPage": {
+    "meta_title": "WeChat Official Accounts",
+    "meta_description": "Browse, search, and manage WeChat official account records stored as local JSON",
+    "title": "WeChat official accounts",
+    "subtitle": "Search and category filters only. Data is produced by cornjob/wechat_crawl.py into code/data/official-accounts, isolated from the main AI tools dataset."
+  },
+  "WechatMiniPage": {
+    "meta_title": "WeChat Mini Programs",
+    "meta_description": "Browse, search, and manage WeChat mini program records stored as local JSON",
+    "title": "WeChat mini programs",
+    "subtitle": "Shows name, App ID, and description. Data is produced by cornjob/wechat_crawl.py into code/data/mini-programs."
+  },
+  "WechatManage": {
+    "search_placeholder": "Search name, description, or AppID",
+    "search_btn": "Search",
+    "stats_heading": "Categories",
+    "all_categories": "All",
+    "total_hint": "{total} items total",
+    "prev": "Previous",
+    "next": "Next",
+    "empty": "No data yet. Run python wechat_crawl.py under cornjob (or your scheduled job) to generate JSON first.",
+    "loading": "Loading…",
+    "load_error": "Failed to load. Please try again.",
+    "crawl_time": "Updated",
+    "app_id": "AppID",
+    "data_source_hint": "Records are written by the Python crawler (same multi-provider pattern as crawel.py). This site only reads and searches."
   },
   "Common": {
     "loading": "Loading...",

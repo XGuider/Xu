@@ -1,12 +1,12 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import Link from 'next/link';
 import React, { useState } from 'react';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import Input from '@/components/ui/Input';
 import { useSidebarContext } from '@/contexts/SidebarContext';
-import { usePathname } from '@/libs/I18nNavigation';
+import { Link, usePathname } from '@/libs/I18nNavigation';
 import { cn } from '@/utils/cn';
 
 /** next-intl 的 pathname 不含语言前缀，首页为 `/` */
@@ -43,12 +43,14 @@ const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const pathname = usePathname();
+  const tNav = useTranslations('Navigation');
   const { toggleSidebar } = useSidebarContext();
   const isHome = isMarketingHomePath(pathname);
 
   const navigation = [
-    { name: '首页', href: '/' },
-    // { name: '提交网址', href: '/submit' },
+    { name: tNav('home'), href: '/' },
+    { name: tNav('wechat_official'), href: '/wechat/official-accounts' },
+    { name: tNav('wechat_mini'), href: '/wechat/mini-programs' },
   ];
 
   const handleSearch = (e: React.FormEvent) => {

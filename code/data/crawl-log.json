@@ -1,0 +1,16 @@
+{
+  "official": [
+    "oa-mock-1",
+    "oa-mock-2",
+    "oa-mock-3",
+    "oa-mock-4",
+    "oa-mock-5"
+  ],
+  "mini": [
+    "mp-mock-1",
+    "mp-mock-2",
+    "mp-mock-3",
+    "mp-mock-4",
+    "mp-mock-5"
+  ]
+}

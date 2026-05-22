@@ -1,0 +1,271 @@
+# 微信公众号&小程序分类管理系统 技术设计文档
+## 文档版本
+V1.1（与 `code/` 主工程对齐修订）
+
+### 修订说明（V1.1）
+- 路由与接口由 **Pages Router** 更正为当前主工程采用的 **App Router + `[locale]` 国际化前缀**，与 [`doc/architecture.md`](architecture.md) 一致。
+- **数据与 API 边界**：微信模块使用 `code/data/` 下**独立子目录与 JSON**，不得改写或替代现有 `tools.json`、`categories.json` 及 [`code/src/services/fileDataService.ts`](../code/src/services/fileDataService.ts) 的数据契约，保证主站工具导航与现有 API **持续可运行**。
+- **爬虫落地**：仓库内已存在 Python 定时任务 [`cornjob/crawel.py`](../cornjob/crawel.py)（面向 AI 工具导航数据）；微信抓取可实现为 **Node 侧 `wechatDataService` + Route Handler**，或通过 **独立 Python/脚本** 写入本文档约定的 JSON 路径，由 Next 只读暴露——二者与 `crawel.py` **并行、数据源隔离**。
+- 搜索索引文件建议命名为 **`wechat-search-index.json`**（或放在 `code/data/wechat/` 子目录下），避免与根目录其他索引概念混淆。
+
+## 一、项目概述
+### 1.1 项目目标
+实现**微信公众号、微信小程序**两大载体的数据**抓取、清洗、自动分类、本地JSON持久化、前端可视化管理**，提供两个前端分类页面，支持搜索、分类统计、一键抓取、数据持久化存储，适配海量微信数据处理，无数据库依赖，纯JSON文件存储。
+
+### 1.2 核心特性
+1. 添加两个页面，公众号分类页、小程序分类管理页
+2. 数据持久化：**本地JSON文件分目录分分类存储**，不依赖MySQL/MongoDB
+3. 数据处理：抓取→清洗→自动归类→去重→增量更新→搜索索引构建
+4. 前端能力：列表展示、关键词搜索、分类标签统计、一键触发爬虫
+5. 海量数据适配：按分类拆分JSON、全局搜索索引、分页友好
+6. 防风控：抓取间隔休眠、重复ID拦截、增量抓取
+
+### 1.3 技术栈
+| 层级 | 技术选型 |
+|------|----------|
+| 前端框架 | Next.js + React + TypeScript |
+| 样式 | Tailwind CSS |
+| 后端接口 | Next.js API Routes |
+| 数据存储 | 本地JSON文件（文件型持久化） |
+| 爬虫逻辑 | Node.js 原生fs模块 + 异步IO |
+| 工程规范 | TS类型约束、模块化拆分；ESLint (`npm run lint`) |
+
+### 1.4 与 Xu-AI 主工程的关系（兼容性约束）
+| 项目 | 说明 |
+|------|------|
+| 主站技术栈 | Next.js 15 App Router、React 19、Tailwind 4、TypeScript、`next-intl`（[`doc/architecture.md`](architecture.md)） |
+| 已有数据 API | `GET/POST .../[locale]/api/tools`、`.../[locale]/api/categories`（[`code/src/app/[locale]/api/`](../code/src/app/[locale]/api/)） |
+| 本文档范围 | **仅新增**微信相关的页面、Route Handler、可选 `wechat*` Service 与 `data/` 下微信目录；**不删除、不改坏**现有营销页与工具数据流 |
+| 国际化 | 新页面文案需写入 `code/src/locales/zh.json`、`en.json`，并执行 `npm run check:i18n` 保持键完整 |
+| 导航入口 | 可选在主导航增加「公众号 / 小程序」入口；建议用功能开关或渐进上线，避免未完成接口时影响主站体验 |
+
+---
+
+## 二、整体架构设计
+### 2.1 架构分层
+1. **前端展示层**：两个业务页面 + 公共组件（搜索栏、分类卡片、弹窗）
+2. **接口服务层**：Next.js API 接口，接收前端请求、调用爬虫与数据读写能力
+3. **核心能力层**：爬虫工具库，封装抓取、自动分类、去重、文件读写、索引构建，同时也可以使用AI通过提示词获取相关信息，如：公众号/小程序的名称、描述、分类等。
+4. **数据存储层**：项目根目录 `data/` 下分级JSON文件存储
+
+### 2.2 目录结构规范（与当前仓库一致）
+```
+Xu/
+├── code/
+│   ├── data/                              # 工作目录为 code/ 时 process.cwd()/data
+│   │   ├── categories.json                # 【现有】工具分类，勿改契约
+│   │   ├── tools.json                     # 【现有】AI 工具列表，勿改契约
+│   │   ├── official-accounts/             # 【新增】按分类存放公众号 JSON
+│   │   ├── mini-programs/                 # 【新增】按分类存放小程序 JSON
+│   │   ├── crawl-log.json                 # 【新增】微信抓取去重日志（已抓 ID）
+│   │   └── wechat-search-index.json       # 【新增】微信关键词倒排索引（推荐文件名）
+│   ├── src/
+│   │   ├── app/[locale]/
+│   │   │   ├── api/
+│   │   │   │   ├── tools/                 # 【现有】工具 API
+│   │   │   │   ├── categories/            # 【现有】分类 API
+│   │   │   │   └── wechat/
+│   │   │   │       ├── official/route.ts  # 【规划】公众号 API
+│   │   │   │       └── mini/route.ts      # 【规划】小程序 API
+│   │   │   └── (marketing)/
+│   │   │       └── wechat/
+│   │   │           ├── official-accounts/page.tsx   # 【规划】公众号页
+│   │   │           └── mini-programs/page.tsx       # 【规划】小程序页
+│   │   ├── types/wechat.ts                # 【规划】公众号/小程序 TS 类型
+│   │   ├── components/wechat/             # 【规划】SearchBar、CategoryCard、AddEditModal 等
+│   │   └── services/
+│   │       ├── fileDataService.ts         # 【现有】工具/分类读写（勿破坏）
+│   │       └── wechatDataService.ts       # 【规划】微信 JSON、日志、索引（示例命名）
+│   └── package.json                       # engines: Node >=20 <24
+├── cornjob/                               # 【现有】Python AI 爬虫（工具导航数据）
+│   ├── crawel.py
+│   └── README.md
+└── doc/
+    ├── architecture.md
+    └── xiaochengxu                        # 本文档
+```
+
+**URL 示例（含默认语言前缀）**：页面 `/zh/wechat/official-accounts`；接口 `GET /zh/api/wechat/official`（与 [`code/src/middleware.ts`](../code/src/middleware.ts) 中国际化路由一致）。
+
+---
+
+## 三、数据存储设计
+### 3.1 存储方案选型，如：code/data下数据
+放弃单一大JSON文件，采用**按业务+按分类拆分多JSON文件**方案：
+- 优点：加载快、读写压力小、支持海量数据、前端按需加载、维护简单
+- 适配：10万条以内数据纯JSON完全够用，超量可平滑迁移SQLite
+
+### 3.2 文件存储规则
+1. 公众号数据：`data/official-accounts/分类名.json`
+2. 小程序数据：`data/mini-programs/分类名.json`
+3. 抓取日志：`crawl-log.json` 记录已抓取ID，用于**全局去重**
+4. 搜索索引：`wechat-search-index.json`（或 `data/wechat/search-index.json`）倒排索引，用于关键词快速检索
+
+### 3.3 核心数据结构
+#### 公众号结构
+```ts
+export interface OfficialAccount {
+  id: string;
+  name: string;
+  desc: string;
+  category: string;   // 自动分类结果
+  crawlTime: string;  // 抓取时间
+}
+```
+
+#### 小程序结构
+```ts
+export interface MiniProgram {
+  id: string;
+  name: string;
+  appId: string;
+  desc: string;
+  category: string;
+  crawlTime: string;
+}
+```
+
+#### 抓取日志结构
+```json
+{
+  "official": ["wx1","wx2"],
+  "mini": ["mini1","mini2"]
+}
+```
+
+#### 搜索索引结构（微信专用）
+```json
+{
+  "前端技术": ["wx1"],
+  "微信读书": ["mini1"]
+}
+```
+> 若采用 `data/wechat/search-index.json` 单文件方案，可与 `crawl-log.json` 同目录归类，便于备份。
+
+---
+
+## 四、核心业务流程
+### 4.1 完整数据流
+`触发前端一键抓取` → `调用Next.js API` → `调用爬虫核心方法`
+→ `真实抓取微信数据` → `自动分类规则打标签`
+→ `日志去重判断` → `按分类写入对应JSON文件`
+→ `重新构建全局搜索索引` → `前端重新加载列表与分类统计`
+
+### 4.2 数据处理流水线
+1. **数据抓取**：模拟数据占位，可替换为真实微信公开爬虫
+2. **自动分类**：基于名称+描述关键词规则匹配，自动归属分类
+3. **数据去重**：
+   - 维度1：抓取日志ID全局去重
+   - 维度2：单个分类JSON内ID二次去重
+4. **持久化写入**：按分类分文件追加写入
+5. **索引构建**：遍历全量数据，生成关键词倒排索引
+6. **前端加载**：接口读取分类文件、聚合列表、统计分类数量
+
+### 4.3 自动分类规则
+内置固定关键词匹配规则，可扩展：
+- 科技：科技、前端、AI、程序员、技术、开发、算法
+- 教育：教育、学习、考研、课程、读书、知识
+- 工具：工具、效率、神器、办公、计算器
+- 电商：电商、购物、商城、团购、外卖
+- 生活：美食、旅行、健康、生活、家居
+- 财经：财经、股票、基金、理财、投资
+- 其他：未匹配到规则默认归为其他
+
+---
+
+## 五、核心模块设计
+### 5.1 工具核心模块（wechatDataService / 可选外部脚本）
+提供所有底层能力，模块化函数（**推荐**在 `code/src/services/wechatDataService.ts` 实现，便于 Route Handler 与同进程 `fs` 读写；亦可将「抓取写入」放在 Python/CLI，由本模块仅负责「读列表 + 统计 + 触发子进程」）：
+
+| 方法名 | 作用 |
+|--------|------|
+| initDirs | 初始化data下所有目录，不存在则创建 |
+| autoCategory | 文本关键词自动分类 |
+| isDuplicate | 判断ID是否已抓取，去重拦截 |
+| logCrawled | 记录已抓取ID到日志文件 |
+| saveData | 按分类分文件保存单条数据 |
+| buildSearchIndex | 构建全局搜索倒排索引 |
+| crawlWechatData | 统一抓取入口（公众号/小程序） |
+| getList | 读取分类列表，支持分类筛选、关键词搜索 |
+| getCategoryStats | 统计每个分类下数据条数 |
+
+### 5.2 后端 API 模块（App Router Route Handler）
+基于 **`src/app/[locale]/api/wechat/*/route.ts`**，与前缀 **`/[locale]/`** 一致，两个接口族：
+1. **`/[locale]/api/wechat/official`**
+   - GET：获取公众号列表 + 分类统计，支持 `category`、`keyword` 查询参数
+   - POST：触发公众号数据抓取任务（建议校验调用来源或鉴权，避免开放网络任意触发）
+2. **`/[locale]/api/wechat/mini`**
+   - GET：获取小程序列表 + 分类统计
+   - POST：触发小程序数据抓取任务
+
+响应格式建议与主站习惯对齐（例如 `{ success, data, message? }`），便于前端统一错误处理。
+
+### 5.3 前端页面模块
+1. **公众号分类页**（`page.tsx` 默认可为 Server Component，交互按钮再用 Client 子组件）
+   - 搜索栏、一键抓取按钮、分类标签统计、卡片网格列表
+2. **小程序分类页**
+   - 布局与交互同公众号页，适配小程序特有 `appId` 字段
+3. **公共组件**
+   - SearchBar：通用搜索输入
+   - CategoryCard：通用数据卡片展示
+   - AddEditModal：新增编辑弹窗（预留扩展）
+
+### 5.4 分阶段落地（保证主站始终可构建可运行）
+| 阶段 | 目标 | 对主站影响 |
+|------|------|------------|
+| P0 | 仅文档与目录占位（空 JSON 目录、`.gitkeep`） | 无代码变更或零引用，**零风险** |
+| P1 | 新增 Route + Service 读空数据返回 `{ list: [], stats: {} }` + 两页静态 UI | 不改动 `fileDataService`，`npm run build` 通过即可 |
+| P2 | 接入真实 JSON 读写、索引与去重 | 仍隔离在 `wechat*` 与微信数据文件 |
+| P3 | 对接真实微信数据源或 Python 管道写入 JSON | `cornjob/crawel.py` 行为不变，可选新增独立脚本 |
+
+---
+
+## 六、接口文档
+### 6.1 公众号接口
+#### 获取列表
+- 请求地址：`GET /[locale]/api/wechat/official`（示例：`GET /zh/api/wechat/official`）
+- 请求参数：
+  - category：分类名称，all为全部
+  - keyword：搜索关键词
+- 返回：`{ list: 列表数组, stats: {分类名:数量} }`
+
+#### 触发抓取
+- 请求地址：`POST /[locale]/api/wechat/official`
+- 返回：`{success: true}`
+
+### 6.2 小程序接口
+与公众号接口**参数、入参、出参完全一致**，仅数据来源不同；路径为 `GET/POST /[locale]/api/wechat/mini`。
+
+---
+
+## 七、数据持久化与海量数据处理方案
+### 7.1 JSON文件优势
+- 零部署、零数据库依赖、开箱即用
+- 文本格式易查看、可手动编辑、可备份拷贝
+- 按分类拆分，单文件体积可控，读写不卡顿
+
+### 7.2 海量数据分级方案
+1. **10万条以内**：现有纯JSON架构完全满足
+2. **10万~100万条**：JSON压缩 + 按月份分目录归档
+
+### 7.3 性能优化点
+1. 按分类拆分文件，避免单JSON过大
+2. 预构建搜索倒排索引，避免全量遍历搜索
+3. 增量抓取，只拉取新数据，不重复全量爬取
+4. 抓取加入延时休眠，降低请求频率，防风控封号
+
+---
+
+## 八、验证清单（合并代码后执行）
+在 `code/` 目录下执行，确保**原项目**与新增模块均健康：
+
+| 命令 | 目的 |
+|------|------|
+| `npm run lint` | ESLint 通过 |
+| `npm run check:types` | TypeScript 类型检查 |
+| `npm run check:i18n` | 新增文案键中英文一致 |
+| `npm run build` | 生产构建成功 |
+
+**回归关注点**：首页、搜索、分类页、`/[locale]/api/tools` 与 `categories` 行为与修订前一致；微信 API 仅在显式请求新路径时参与。
+
+---

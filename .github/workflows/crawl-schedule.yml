@@ -15,6 +15,14 @@ on:
         description: '要使用的AI提供者（可选，留空使用所有可用提供者，多个用逗号分隔）'
         required: false
         type: string
+      wechat_content:
+        description: '微信抓取附加主题（可选，传给 wechat_crawl.py）'
+        required: false
+        type: string
+      wechat_providers:
+        description: '微信抓取提供者：siliconflow / deepseek,kimi / all（留空则默认 siliconflow）'
+        required: false
+        type: string
 
 jobs:
   crawl:
@@ -73,6 +81,20 @@ jobs:
           LOG_LEVEL: ${{ vars.LOG_LEVEL || '' }}
         run: |
           python crawel.py
+
+      - name: Run WeChat crawler (official accounts & mini programs)
+        working-directory: ./cornjob
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
+          KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
+          DOUBAO_API_KEY: ${{ secrets.DOUBAO_API_KEY }}
+          WECHAT_CRAWL_CONTENT: ${{ github.event.inputs.wechat_content }}
+          WECHAT_CRAWL_PROVIDERS: ${{ github.event.inputs.wechat_providers }}
+          MAX_CONTENT_LENGTH: ${{ vars.MAX_CONTENT_LENGTH || '' }}
+          LOG_LEVEL: ${{ vars.LOG_LEVEL || '' }}
+        run: |
+          python wechat_crawl.py
       
       - name: Configure Git
         run: |
@@ -122,7 +144,7 @@ jobs:
           echo "## 数据提取和整合任务完成" >> $GITHUB_STEP_SUMMARY
           echo "- 执行时间: $(date)" >> $GITHUB_STEP_SUMMARY
           echo "- 工作流运行: ${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
-          echo "- 数据文件: code/data/tools.json" >> $GITHUB_STEP_SUMMARY
+          echo "- 数据文件: code/data/tools.json；微信: code/data/official-accounts、mini-programs" >> $GITHUB_STEP_SUMMARY
           if [ "${{ steps.git-check.outputs.has_changes }}" == "true" ]; then
             echo "- ✅ 已自动提交变更到仓库" >> $GITHUB_STEP_SUMMARY
           elif [ -n "${{ steps.git-check.outputs.has_changes }}" ]; then

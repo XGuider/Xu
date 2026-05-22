@@ -12,7 +12,9 @@
     "home": "首页",
     "categories": "分类",
     "search": "搜索",
-    "submit_url": "提交网址"
+    "submit_url": "提交网址",
+    "wechat_official": "公众号",
+    "wechat_mini": "小程序"
   },
   "HomePage": {
     "hero_title": "Xu AI导航平台",
@@ -247,6 +249,33 @@
       "password_placeholder": "请输入密码（至少8位）",
       "confirm_password_placeholder": "请再次输入密码"
     }
+  },
+  "WechatOfficialPage": {
+    "meta_title": "公众号分类管理",
+    "meta_description": "微信公众号分类、搜索与本地 JSON 数据管理",
+    "title": "公众号分类管理",
+    "subtitle": "关键词筛选与分类统计；数据由 cornjob/wechat_crawl.py 写入 code/data/official-accounts，与主站 AI 工具数据隔离。"
+  },
+  "WechatMiniPage": {
+    "meta_title": "小程序分类管理",
+    "meta_description": "微信小程序分类、搜索与本地 JSON 数据管理",
+    "title": "小程序分类管理",
+    "subtitle": "展示名称、AppID 与描述；数据由 cornjob/wechat_crawl.py 写入 code/data/mini-programs。"
+  },
+  "WechatManage": {
+    "search_placeholder": "搜索名称、描述或 AppID",
+    "search_btn": "搜索",
+    "stats_heading": "分类统计",
+    "all_categories": "全部",
+    "total_hint": "共 {total} 条",
+    "prev": "上一页",
+    "next": "下一页",
+    "empty": "暂无数据。请在仓库 cornjob 目录运行 python wechat_crawl.py（或与 crawel.py 相同的定时任务）生成 JSON 后再查看。",
+    "loading": "加载中…",
+    "load_error": "加载失败，请稍后重试",
+    "crawl_time": "更新时间",
+    "app_id": "AppID",
+    "data_source_hint": "列表数据由 Python 任务写入本地 JSON（与 crawel.py 相同的多 AI 提供者流程），本站页面仅浏览与检索。"
   },
   "Common": {
     "loading": "加载中...",

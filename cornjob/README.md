@@ -74,14 +74,40 @@ CRAWL_PROVIDERS=doubao,kimi python crawel.py
 LOG_LEVEL=DEBUG python crawel.py
 ```
 
+### 2.1 微信公众号 / 小程序（wechat_crawl.py）
+
+与 `crawel.py` 对齐的流程：**多 AI 提供者顺序调用** → 解析 JSON → **本地按名称 / AppID 合并去重** → 写入 `code/data/official-accounts/`、`code/data/mini-programs/`（按分类拆分），并重建 `crawl-log.json`、`wechat-search-index.json`。
+
+```bash
+cd cornjob
+
+# 默认使用 siliconflow（需在环境变量中配置密钥）
+python wechat_crawl.py
+
+# 指定主题说明（写入提示词）
+WECHAT_CRAWL_CONTENT="偏向教育与工具类小程序" python wechat_crawl.py
+
+# 多提供者或与 crawel 一致使用全部已配置密钥
+WECHAT_CRAWL_PROVIDERS=deepseek,siliconflow python wechat_crawl.py
+WECHAT_CRAWL_PROVIDERS=all python wechat_crawl.py
+
+# 只跑公众号或只跑小程序
+WECHAT_KIND=official python wechat_crawl.py
+WECHAT_KIND=mini python wechat_crawl.py
+```
+
+Next.js 侧页面 **仅读取** 上述 JSON，不在站内触发抓取。
+
 ### 3. GitHub Actions 定时任务
 
 定时任务已配置在 `.github/workflows/crawl-schedule.yml`：
 
 - **定时执行**：每天 UTC 时间 2:00（北京时间 10:00）
+- **执行顺序**：先 `crawel.py`（AI 工具列表），再 `wechat_crawl.py`（公众号与小程序 JSON）
 - **手动触发**：在 GitHub Actions 页面可以手动触发，并可以指定：
   - Content：可选的内容参数（留空则使用默认提示词）
   - Providers：要使用的 AI 提供者（多个用逗号分隔）
+  - WeChat content / WeChat providers：`wechat_crawl.py` 专用可选参数
 
 ## 数据文件
 
@@ -128,7 +154,8 @@ LOG_LEVEL=DEBUG python crawel.py
 
 ## 代码结构
 
-- `crawel.py` - 主程序文件
+- `crawel.py` - AI 工具列表主程序
+- `wechat_crawl.py` - 微信公众号 / 小程序 JSON 抓取与合并
 - `factory.py` - AI 提供者工厂
 - `base.py` - AI 提供者基类
 - `config.py` - 配置管理（从 config.yaml 读取配置）
