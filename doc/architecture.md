@@ -32,8 +32,16 @@
 app/
 ├── [locale]/                    # 国际化路由
 │   ├── (marketing)/            # 营销页面组
-│   ├── (auth)/                 # 认证页面组
+│   │   ├── wechat/             # 微信模块（公众号/小程序）
+│   │   │   ├── official-accounts/
+│   │   │   └── mini-programs/
+│   │   └── ...                 # 其他营销页面
 │   └── api/                    # API 路由
+│       ├── tools/              # 工具数据 API
+│       ├── categories/         # 分类数据 API
+│       └── wechat/             # 微信数据 API
+│           ├── official/
+│           └── mini/
 └── global-error.tsx            # 全局错误处理
 ```
 
@@ -66,8 +74,19 @@ src/app/[locale]/api/
 ```
 data/
 ├── categories.json           # 分类数据文件
-├── tools.json               # 工具数据文件
-└── config.json              # 配置文件（可选）
+├── tools.json                # 工具数据文件
+├── config.json               # 配置文件（可选）
+├── crawl-log.json            # 微信抓取去重日志
+├── wechat-search-index.json  # 微信搜索倒排索引
+├── official-accounts/        # 公众号数据（按分类分文件）
+│   ├── 科技.json
+│   ├── 教育.json
+│   ├── 工具.json
+│   └── ...
+└── mini-programs/            # 小程序数据（按分类分文件）
+    ├── 科技.json
+    ├── 教育.json
+    └── ...
 ```
 
 ### 4.3 数据模型结构

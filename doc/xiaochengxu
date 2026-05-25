@@ -175,19 +175,19 @@ export interface MiniProgram {
 
 ## 五、核心模块设计
 ### 5.1 工具核心模块（wechatDataService / 可选外部脚本）
-提供所有底层能力，模块化函数（**推荐**在 `code/src/services/wechatDataService.ts` 实现，便于 Route Handler 与同进程 `fs` 读写；亦可将「抓取写入」放在 Python/CLI，由本模块仅负责「读列表 + 统计 + 触发子进程」）：
+提供所有底层能力，模块化函数（**已实现**于 `code/src/services/wechatDataService.ts`）：
 
-| 方法名 | 作用 |
-|--------|------|
-| initDirs | 初始化data下所有目录，不存在则创建 |
-| autoCategory | 文本关键词自动分类 |
-| isDuplicate | 判断ID是否已抓取，去重拦截 |
-| logCrawled | 记录已抓取ID到日志文件 |
-| saveData | 按分类分文件保存单条数据 |
-| buildSearchIndex | 构建全局搜索倒排索引 |
-| crawlWechatData | 统一抓取入口（公众号/小程序） |
-| getList | 读取分类列表，支持分类筛选、关键词搜索 |
-| getCategoryStats | 统计每个分类下数据条数 |
+| 方法名 | 作用 | 状态 |
+|--------|------|------|
+| initDirs | 初始化data下所有目录，不存在则创建 | ✅ 已实现 |
+| autoCategory | 文本关键词自动分类 | ✅ 已实现 |
+| isDuplicate | 判断ID是否已抓取，去重拦截 | ✅ 已实现 |
+| logCrawled | 记录已抓取ID到日志文件 | ✅ 已实现 |
+| saveData | 按分类分文件保存单条数据 | ✅ 已实现 |
+| buildSearchIndex | 构建全局搜索倒排索引 | ✅ 已实现 |
+| crawlWechatData | 统一抓取入口（公众号/小程序） | ✅ 已实现 (支持模拟数据) |
+| getList | 读取分类列表，支持分类筛选、关键词搜索 | ✅ 已实现 |
+| getCategoryStats | 统计每个分类下数据条数 | ✅ 已实现 |
 
 ### 5.2 后端 API 模块（App Router Route Handler）
 基于 **`src/app/[locale]/api/wechat/*/route.ts`**，与前缀 **`/[locale]/`** 一致，两个接口族：
@@ -206,9 +206,9 @@ export interface MiniProgram {
 2. **小程序分类页**
    - 布局与交互同公众号页，适配小程序特有 `appId` 字段
 3. **公共组件**
-   - SearchBar：通用搜索输入
-   - CategoryCard：通用数据卡片展示
-   - AddEditModal：新增编辑弹窗（预留扩展）
+   - SearchBar：通用搜索输入 ✅ 已实现
+   - CategoryCard：通用数据卡片展示 ✅ 已实现
+   - AddEditModal：新增编辑弹窗 ✅ 已实现
 
 ### 5.4 分阶段落地（保证主站始终可构建可运行）
 | 阶段 | 目标 | 对主站影响 |

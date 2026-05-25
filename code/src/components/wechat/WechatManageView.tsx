@@ -5,6 +5,7 @@ import { useFormatter, useLocale, useTranslations } from 'next-intl';
 import React, { useCallback, useMemo, useState } from 'react';
 import WechatCategoryCard from '@/components/wechat/WechatCategoryCard';
 import WechatSearchBar from '@/components/wechat/WechatSearchBar';
+import WechatAddEditModal from '@/components/wechat/WechatAddEditModal';
 import { intlApiPath } from '@/utils/intlApiPath';
 
 const CATEGORY_ORDER = ['科技', '教育', '工具', '电商', '生活', '财经', '其他'] as const;
@@ -38,6 +39,12 @@ type ApiPayload = {
   message?: string;
 };
 
+type CrawlResponse = {
+  success: boolean;
+  message?: string;
+  data?: { output?: string };
+};
+
 type WechatManageViewProps = {
   kind: WechatKind;
   title: string;
@@ -57,7 +64,11 @@ export default function WechatManageView({ kind, title, subtitle }: WechatManage
   const [stats, setStats] = useState<WechatCategoryStats>({});
   const [pagination, setPagination] = useState({ page: 1, limit: 20, total: 0, totalPages: 1 });
   const [loading, setLoading] = useState(true);
-  const [banner, setBanner] = useState<{ type: 'err'; text: string } | null>(null);
+  const [crawling, setCrawling] = useState(false);
+  const [banner, setBanner] = useState<{ type: 'err' | 'success'; text: string } | null>(null);
+
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [editingItem, setEditingItem] = useState<WechatListItem | null>(null);
 
   const apiBase = kind === 'official' ? '/api/wechat/official' : '/api/wechat/mini';
 
@@ -88,6 +99,58 @@ export default function WechatManageView({ kind, title, subtitle }: WechatManage
     }
   }, [apiBase, category, keyword, locale, page, t]);
 
+  const handleCrawl = useCallback(async () => {
+    setCrawling(true);
+    setBanner(null);
+    try {
+      const url = intlApiPath(locale, apiBase);
+      const res = await fetch(url, { method: 'POST', cache: 'no-store' });
+      const body = (await res.json()) as CrawlResponse;
+      if (body.success) {
+        setBanner({ type: 'success', text: body.message || '抓取完成' });
+        await fetchList();
+      } else {
+        setBanner({ type: 'err', text: body.message || '抓取失败' });
+      }
+    } catch (err) {
+      setBanner({ type: 'err', text: err instanceof Error ? err.message : '抓取失败' });
+    } finally {
+      setCrawling(false);
+    }
+  }, [apiBase, locale, fetchList]);
+
+  const handleSave = useCallback(async (item: Partial<WechatListItem>) => {
+    const url = intlApiPath(locale, apiBase);
+    const method = editingItem ? 'PUT' : 'POST';
+    const res = await fetch(url, {
+      method,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(item),
+    });
+    const body = (await res.json()) as CrawlResponse;
+    if (!body.success) {
+      throw new Error(body.message || '保存失败');
+    }
+    await fetchList();
+  }, [apiBase, locale, editingItem, fetchList]);
+
+  const handleDelete = useCallback(async (id: string) => {
+    if (!confirm('确定要删除这条数据吗？')) return;
+    try {
+      const url = `${intlApiPath(locale, apiBase)}?id=${encodeURIComponent(id)}`;
+      const res = await fetch(url, { method: 'DELETE', cache: 'no-store' });
+      const body = (await res.json()) as CrawlResponse;
+      if (body.success) {
+        setBanner({ type: 'success', text: '删除成功' });
+        await fetchList();
+      } else {
+        setBanner({ type: 'err', text: body.message || '删除失败' });
+      }
+    } catch (err) {
+      setBanner({ type: 'err', text: err instanceof Error ? err.message : '删除失败' });
+    }
+  }, [apiBase, locale, fetchList]);
+
   React.useEffect(() => {
     fetchList();
   }, [fetchList]);
@@ -105,12 +168,43 @@ export default function WechatManageView({ kind, title, subtitle }: WechatManage
     }
   };
 
+  const handleAdd = () => {
+    setEditingItem(null);
+    setModalOpen(true);
+  };
+
+  const handleEdit = (item: WechatListItem) => {
+    setEditingItem(item);
+    setModalOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 pt-20 pb-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="mb-8">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900">{title}</h1>
-          <p className="mt-2 max-w-3xl text-gray-600">{subtitle}</p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold tracking-tight text-gray-900">{title}</h1>
+              <p className="mt-2 max-w-3xl text-gray-600">{subtitle}</p>
+            </div>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={handleCrawl}
+                disabled={crawling}
+                className="rounded-lg bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700 disabled:opacity-50"
+              >
+                {crawling ? '抓取中...' : '一键抓取'}
+              </button>
+              <button
+                type="button"
+                onClick={handleAdd}
+                className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+              >
+                新增
+              </button>
+            </div>
+          </div>
           <p className="mt-3 max-w-3xl rounded-lg border border-blue-100 bg-blue-50/80 px-4 py-3 text-sm text-blue-900">
             {t('data_source_hint')}
           </p>
@@ -118,7 +212,11 @@ export default function WechatManageView({ kind, title, subtitle }: WechatManage
 
         {banner
           ? (
-              <div className="mb-6 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-900">
+              <div className={`mb-6 rounded-lg px-4 py-3 text-sm ${
+                banner.type === 'success' 
+                  ? 'border border-green-200 bg-green-50 text-green-900'
+                  : 'border border-red-200 bg-red-50 text-red-900'
+              }`}>
                 {banner.text}
               </div>
             )
@@ -202,6 +300,8 @@ export default function WechatManageView({ kind, title, subtitle }: WechatManage
                           appId={appId}
                           crawlTimeLabel={t('crawl_time')}
                           appIdLabel={t('app_id')}
+                          onEdit={() => handleEdit(item)}
+                          onDelete={() => handleDelete(item.id)}
                         />
                       </li>
                     );
@@ -236,6 +336,14 @@ export default function WechatManageView({ kind, title, subtitle }: WechatManage
               </nav>
             )
           : null}
+
+        <WechatAddEditModal
+          isOpen={isModalOpen}
+          onClose={() => setModalOpen(false)}
+          onSave={handleSave}
+          kind={kind}
+          editItem={editingItem ?? undefined}
+        />
       </div>
     </div>
   );

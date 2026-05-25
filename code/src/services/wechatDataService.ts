@@ -1,5 +1,6 @@
 import type {
   CrawlLog,
+  MiniProgram,
   WechatCategoryStats,
   WechatKind,
   WechatListItem,
@@ -288,4 +289,115 @@ export async function getCategoryStats(kind: WechatKind): Promise<WechatCategory
     stats[cat] = list.length;
   }
   return stats;
+}
+
+/** 统一抓取入口 */
+export async function crawlWechatData(
+  kind: WechatKind,
+  options: { count?: number; useMock?: boolean } = {},
+): Promise<{ success: boolean; added: number; message: string }> {
+  const { count = 10, useMock = true } = options;
+  await initDirs();
+
+  let items: WechatListItem[] = [];
+
+  if (useMock) {
+    const mockNames = kind === 'official'
+      ? ['科技前沿', 'AI实验室', '编程之家', '数据观察', '算法之美', '技术Weekly', '开发者社区', '智能硬件', '云计算观察', '软件架构']
+      : ['微信读书', '乘车码', '健康码', '小程序助手', '生活缴费', '城市服务', '腾讯文档', '企微助手', '物流查询', '外卖小程序'];
+
+    const mockDescs = kind === 'official'
+      ? ['分享最新科技资讯', '探索AI技术应用', '专注编程技巧分享', '数据驱动决策', '算法与数据结构', '技术趋势分析', '开发者交流平台', '智能硬件评测', '云计算最佳实践', '软件架构设计']
+      : ['便捷阅读体验', '出行交通助手', '日常健康管理', '小程序开发工具', '生活服务聚合', '政务服务入口', '在线文档协作', '企业微信配套', '物流跟踪服务', '外卖订餐平台'];
+
+    for (let i = 0; i < count; i++) {
+      const idx = i % mockNames.length;
+      const name = useMock ? `${mockNames[idx] ?? ''}${Math.floor(i / mockNames.length) + 1}` : (mockNames[idx] ?? '');
+      const desc = mockDescs[idx] ?? '';
+
+      const item: WechatListItem = {
+        id: `${kind}-${Date.now()}-${i}`,
+        name,
+        desc,
+        category: autoCategory(`${name} ${desc}`),
+        crawlTime: new Date().toISOString(),
+      };
+
+      if (kind === 'mini') {
+        (item as MiniProgram).appId = `wx${Math.random().toString(36).slice(2, 10)}`;
+      }
+
+      items.push(item);
+    }
+  }
+
+  let added = 0;
+  for (const item of items) {
+    const saved = await saveData(kind, item);
+    if (saved) {
+      await logCrawled(kind, item.id);
+      added++;
+    }
+  }
+
+  if (added > 0) {
+    await buildSearchIndex();
+  }
+
+  return {
+    success: true,
+    added,
+    message: useMock ? `模拟抓取完成，新增 ${added} 条数据` : `抓取完成，新增 ${added} 条数据`,
+  };
+}
+
+/** 根据 ID 删除数据 */
+export async function deleteById(kind: WechatKind, id: string): Promise<boolean> {
+  await initDirs();
+  const base = dirFor(kind);
+  let names: string[] = [];
+  try {
+    names = await readdir(base);
+  } catch {
+    return false;
+  }
+
+  for (const name of names) {
+    if (!name.endsWith('.json')) {
+      continue;
+    }
+    const cat = name.slice(0, -'.json'.length);
+    const list = await readCategoryFile(kind, cat);
+    const idx = list.findIndex(item => item.id === id);
+    if (idx !== -1) {
+      list.splice(idx, 1);
+      await writeCategoryFile(kind, cat, list);
+      
+      // 更新 crawl-log
+      const log = await readCrawlLog();
+      const bucket = kind === 'official' ? log.official : log.mini;
+      const idIdx = bucket.indexOf(id);
+      if (idIdx !== -1) {
+        bucket.splice(idIdx, 1);
+        await writeCrawlLog(log);
+      }
+      
+      // 重建搜索索引
+      await buildSearchIndex();
+      return true;
+    }
+  }
+  return false;
+}
+
+/** 创建新数据 */
+export async function createItem(kind: WechatKind, item: WechatListItem): Promise<boolean> {
+  await initDirs();
+  const saved = await saveData(kind, item);
+  if (saved) {
+    await logCrawled(kind, item.id);
+    await buildSearchIndex();
+    return true;
+  }
+  return false;
 }

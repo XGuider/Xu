@@ -1,6 +1,11 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { getCategoryStats, getList } from '@/services/wechatDataService';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+import { join } from 'node:path';
+import { deleteById, getCategoryStats, getList } from '@/services/wechatDataService';
+
+const execAsync = promisify(execFile);
 
 export async function GET(request: NextRequest) {
   try {
@@ -10,40 +15,10 @@ export async function GET(request: NextRequest) {
     const page = Number.parseInt(searchParams.get('page') || '1', 10);
     const limit = Number.parseInt(searchParams.get('limit') || '20', 10);
 
-    // #region agent log
-    fetch('http://127.0.0.1:7518/ingest/fc43bbf8-4676-4620-a8bd-026decddd0c4', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '8a8b40' },
-      body: JSON.stringify({
-        sessionId: '8a8b40',
-        hypothesisId: 'H3',
-        location: 'api/wechat/official/route.ts:GET:entry',
-        message: 'wechat official GET entry',
-        data: { cwd: process.cwd(), category, keyword, page, limit },
-        timestamp: Date.now(),
-      }),
-    }).catch(() => {});
-    // #endregion
-
     const [listResult, stats] = await Promise.all([
       getList('official', { category, keyword, page, limit }),
       getCategoryStats('official'),
     ]);
-
-    // #region agent log
-    fetch('http://127.0.0.1:7518/ingest/fc43bbf8-4676-4620-a8bd-026decddd0c4', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '8a8b40' },
-      body: JSON.stringify({
-        sessionId: '8a8b40',
-        hypothesisId: 'H4',
-        location: 'api/wechat/official/route.ts:GET:success',
-        message: 'wechat official GET ok',
-        data: { listLen: listResult.list.length, statsKeys: Object.keys(stats).length },
-        timestamp: Date.now(),
-      }),
-    }).catch(() => {});
-    // #endregion
 
     return NextResponse.json({
       success: true,
@@ -55,28 +30,75 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error('[api/wechat/official GET]', error);
-
-    // #region agent log
-    fetch('http://127.0.0.1:7518/ingest/fc43bbf8-4676-4620-a8bd-026decddd0c4', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '8a8b40' },
-      body: JSON.stringify({
-        sessionId: '8a8b40',
-        hypothesisId: 'H4',
-        location: 'api/wechat/official/route.ts:GET:catch',
-        message: 'wechat official GET error',
-        data: {
-          cwd: process.cwd(),
-          err: error instanceof Error ? error.message : String(error),
-          name: error instanceof Error ? error.name : 'unknown',
-        },
-        timestamp: Date.now(),
-      }),
-    }).catch(() => {});
-    // #endregion
-
     return NextResponse.json(
       { success: false, message: '读取公众号数据失败' },
+      { status: 500 },
+    );
+  }
+}
+
+export async function POST() {
+  try {
+    const projectRoot = join(process.cwd(), '..');
+    const pythonScript = join(projectRoot, 'cornjob', 'wechat_crawl.py');
+
+    console.log('[api/wechat/official POST] 开始抓取公众号数据...');
+
+    const { stdout, stderr } = await execAsync('python', [pythonScript], {
+      cwd: projectRoot,
+      env: {
+        ...process.env,
+        WECHAT_CRAWL_KIND: 'official',
+        PYTHONPATH: projectRoot,
+      },
+      timeout: 300000,
+    });
+
+    if (stderr) {
+      console.warn('[api/wechat/official POST] 警告:', stderr);
+    }
+
+    console.log('[api/wechat/official POST] 抓取完成:', stdout);
+
+    return NextResponse.json({
+      success: true,
+      message: '公众号数据抓取完成',
+      data: { output: stdout.trim() },
+    });
+  } catch (error) {
+    console.error('[api/wechat/official POST] 抓取失败:', error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    return NextResponse.json(
+      { success: false, message: `抓取公众号数据失败: ${errorMessage}` },
+      { status: 500 },
+    );
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+    if (!id) {
+      return NextResponse.json(
+        { success: false, message: '缺少 ID 参数' },
+        { status: 400 },
+      );
+    }
+
+    const deleted = await deleteById('official', id);
+    if (deleted) {
+      return NextResponse.json({ success: true, message: '删除成功' });
+    } else {
+      return NextResponse.json(
+        { success: false, message: '删除失败，数据不存在' },
+        { status: 404 },
+      );
+    }
+  } catch (error) {
+    console.error('[api/wechat/official DELETE]', error);
+    return NextResponse.json(
+      { success: false, message: '删除公众号数据失败' },
       { status: 500 },
     );
   }

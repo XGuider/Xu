@@ -10,6 +10,8 @@ export type WechatCategoryCardProps = {
   appId?: string;
   crawlTimeLabel: string;
   appIdLabel: string;
+  onEdit?: () => void;
+  onDelete?: () => void;
 };
 
 export default function WechatCategoryCard({
@@ -20,6 +22,8 @@ export default function WechatCategoryCard({
   appId,
   crawlTimeLabel,
   appIdLabel,
+  onEdit,
+  onDelete,
 }: WechatCategoryCardProps) {
   return (
     <article
@@ -49,6 +53,28 @@ export default function WechatCategoryCard({
           <dd className="text-right text-gray-700">{crawlTime}</dd>
         </div>
       </dl>
+      {(onEdit || onDelete) && (
+        <div className="mt-3 flex justify-end gap-2 border-t border-gray-100 pt-3">
+          {onEdit && (
+            <button
+              type="button"
+              onClick={onEdit}
+              className="rounded px-2 py-1 text-xs font-medium text-blue-600 hover:bg-blue-50"
+            >
+              编辑
+            </button>
+          )}
+          {onDelete && (
+            <button
+              type="button"
+              onClick={onDelete}
+              className="rounded px-2 py-1 text-xs font-medium text-red-600 hover:bg-red-50"
+            >
+              删除
+            </button>
+          )}
+        </div>
+      )}
     </article>
   );
 }
