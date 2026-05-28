@@ -2381,7 +2381,10 @@
       "移动端",
       "内容创作",
       "视频生成",
-      "AI剪辑"
+      "AI剪辑",
+      "视觉生成",
+      "创意设计",
+      "AI绘图"
     ],
     "id": 116,
     "developer": "",
@@ -3233,7 +3236,9 @@
       "开源AI",
       "大模型运行",
       "本地AI",
-      "模型部署"
+      "模型部署",
+      "开源模型",
+      "边缘计算"
     ],
     "id": 182,
     "developer": "",
@@ -3435,7 +3440,9 @@
     "tags": [
       "API服务",
       "模型部署",
-      "开发者工具"
+      "开发者工具",
+      "大模型",
+      "企业部署"
     ],
     "id": 200,
     "developer": "",
@@ -4148,7 +4155,7 @@
   },
   {
     "name": "Vidu AI",
-    "description": "AI视频生成与编辑平台，支持文本生成视频、视频剪辑与特效添加。",
+    "description": "AI视频编辑与生成平台，支持文本到视频、图像到视频、多模态融合创作。",
     "url": "https://www.vidu.ai",
     "categoryId": 9,
     "rating": 0,
@@ -4157,7 +4164,10 @@
     "isFeatured": false,
     "tags": [
       "视频生成",
-      "AI剪辑"
+      "AI剪辑",
+      "视频编辑",
+      "多模态",
+      "创意视频"
     ],
     "developer": "",
     "pricing": "",
@@ -4229,7 +4239,9 @@
     "tags": [
       "语音合成",
       "语音克隆",
-      "AI音频"
+      "AI音频",
+      "声音合成",
+      "语音创作"
     ],
     "developer": "",
     "pricing": "",
@@ -4848,7 +4860,7 @@
   },
   {
     "name": "Aphrodite",
-    "description": "AI驱动的创意生成平台，支持图像、视频、音乐多模态内容创作。",
+    "description": "AI图像与视频生成一体化平台，支持高清图像、视频、3D内容生成与编辑。",
     "url": "https://aphrodite.ai",
     "categoryId": 8,
     "rating": 0,
@@ -4858,11 +4870,89 @@
     "tags": [
       "多模态生成",
       "创意AI",
-      "内容创作"
+      "内容创作",
+      "AI生成",
+      "创意设计",
+      "多模态内容"
     ],
     "developer": "",
     "pricing": "",
     "id": 286,
     "logo": "/assets/images/tools/aphrodite.png"
+  },
+  {
+    "name": "Luma AI Studio",
+    "description": "专业级AI视频生成平台，支持从文本到视频的创意制作，含角色驱动与场景编辑功能。",
+    "url": "https://luma.ai",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频生成",
+      "AI创作",
+      "影视制作"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 287,
+    "logo": "/assets/images/tools/lumaaistudio.png"
+  },
+  {
+    "name": "Sora-Clone Pro",
+    "description": "基于Sora架构的开源视频生成工具，支持长时序、高分辨率视频内容生成与编辑。",
+    "url": "https://sora-clone.com",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频AI",
+      "开源工具",
+      "长视频生成"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 288
+  },
+  {
+    "name": "Zhipu AI CodeX",
+    "description": "AI编程辅助工具，支持代码生成、调试、注释、多语言支持与项目整合。",
+    "url": "https://www.zhipu.ai/codex",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "编程助手",
+      "AI代码",
+      "开发者工具"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 289,
+    "logo": "/assets/images/tools/zhipuaicodex.png"
+  },
+  {
+    "name": "Moonshot AI LLM Studio",
+    "description": "AI大模型本地化开发与调优平台，支持多模型微调、推理优化与部署。",
+    "url": "https://www.moonshot.cn/llm-studio",
+    "categoryId": 2,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "大模型",
+      "本地化",
+      "AI开发"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 290,
+    "logo": "/assets/images/tools/moonshotaillmstudio.png"
   }
 ]
