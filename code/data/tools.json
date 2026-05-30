@@ -4954,5 +4954,24 @@
     "pricing": "",
     "id": 290,
     "logo": "/assets/images/tools/moonshotaillmstudio.png"
+  },
+  {
+    "name": "Claude 3",
+    "description": "Anthropic推出的第三代AI助手，支持长文本处理、复杂推理和多语言对话，适用于写作、研究、编程和商业分析。",
+    "url": "https://www.anthropic.com/claude",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "大语言模型",
+      "多轮对话",
+      "专业写作"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 291,
+    "logo": "/assets/images/tools/claude3.png"
   }
 ]
