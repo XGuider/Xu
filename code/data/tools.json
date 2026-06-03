@@ -568,7 +568,8 @@
       "信息搜索",
       "引用来源",
       "问答AI",
-      "多源信息"
+      "多源信息",
+      "多源检索"
     ],
     "id": 110,
     "developer": "",
@@ -4974,5 +4975,24 @@
     "pricing": "",
     "id": 291,
     "logo": "/assets/images/tools/claude3.png"
+  },
+  {
+    "name": "Reka AI Pro",
+    "description": "企业级AI助手，支持文档分析、会议转录与智能摘要，专为办公自动化设计。",
+    "url": "https://www.reka.ai",
+    "categoryId": 4,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "办公自动化",
+      "会议转录",
+      "智能摘要"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 292,
+    "logo": "/assets/images/tools/rekaaipro.png"
   }
 ]
