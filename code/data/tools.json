@@ -1206,7 +1206,7 @@
   },
   {
     "name": "Kling",
-    "description": "AI视频生成平台，支持文本到视频的实时生成，适用于短视频创作、广告与教育内容制作。",
+    "description": "AI视频生成工具，支持文本到视频、图像到视频的智能创作，适用于营销、教育和创意内容。",
     "url": "https://www.kling.ai",
     "categoryId": 8,
     "rating": 0,
@@ -2343,7 +2343,7 @@
   },
   {
     "name": "Veed.io",
-    "description": "AI视频编辑平台，支持智能剪辑、字幕生成、转场特效，适用于自媒体与内容创作者。",
+    "description": "AI视频编辑平台，支持智能剪辑、字幕、配音、特效生成，适用于内容创作者与营销团队。",
     "url": "https://www.veed.io",
     "categoryId": 9,
     "rating": 0,
