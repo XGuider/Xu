@@ -3431,7 +3431,7 @@
   },
   {
     "name": "Together AI",
-    "description": "AI模型服务平台，提供多种AI模型的API调用，支持文本、图像、语音等任务。",
+    "description": "一站式AI模型部署与调优平台，支持本地/云端模型训练、API调用与可视化监控。",
     "url": "https://www.together.ai",
     "categoryId": 6,
     "rating": 0,
@@ -3443,7 +3443,9 @@
       "模型部署",
       "开发者工具",
       "大模型",
-      "企业部署"
+      "企业部署",
+      "AI开发",
+      "云服务"
     ],
     "id": 200,
     "developer": "",
