@@ -4996,5 +4996,154 @@
     "pricing": "",
     "id": 292,
     "logo": "/assets/images/tools/rekaaipro.png"
+  },
+  {
+    "name": "NovelAI",
+    "description": "基于扩散模型的AI文本生成与图像创作工具，支持小说、插画、艺术风格生成。",
+    "url": "https://novelai.net",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "文本生成",
+      "AI绘画",
+      "创意写作"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 293,
+    "logo": "/assets/images/tools/novelai.png"
+  },
+  {
+    "name": "Stable Audio",
+    "description": "由Stability AI推出的AI音频生成工具，支持从文本生成音乐或语音。",
+    "url": "https://stableaudio.ai",
+    "categoryId": 7,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "音频生成",
+      "AI音乐",
+      "文本转语音"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 294
+  },
+  {
+    "name": "Lingua AI",
+    "description": "多语言翻译与内容本地化AI工具，支持实时翻译、语义优化和文化适配。",
+    "url": "https://lingua.ai",
+    "categoryId": 6,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "多语言",
+      "翻译",
+      "本地化"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 295
+  },
+  {
+    "name": "VQGAN+CLIP",
+    "description": "开源AI图像生成框架，结合视觉编码器与文本提示，支持高质量图像合成。",
+    "url": "https://github.com/CompVis/taming-transformers",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "开源工具",
+      "图像生成",
+      "学术研究"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 296,
+    "logo": "/assets/images/tools/vqganclip.png"
+  },
+  {
+    "name": "Lumalab",
+    "description": "AI驱动的创意视频生成平台，支持文本到视频、风格迁移、动态效果生成。",
+    "url": "https://www.lumalab.ai",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频生成",
+      "AI创意",
+      "动态效果"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 297
+  },
+  {
+    "name": "Veed.io AI",
+    "description": "AI视频编辑与生成平台，支持自动剪辑、字幕生成、画面增强和风格转换。",
+    "url": "https://www.veed.io/ai",
+    "categoryId": 9,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频编辑",
+      "AI剪辑",
+      "自动化"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 298,
+    "logo": "/assets/images/tools/veedioai.png"
+  },
+  {
+    "name": "Craiyon Pro",
+    "description": "AI图像生成器，支持高分辨率图像生成、风格定制与批量下载功能。",
+    "url": "https://www.craiyon.com/pro",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "图像生成",
+      "AI艺术",
+      "高分辨率"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 299,
+    "logo": "/assets/images/tools/craiyonpro.png"
+  },
+  {
+    "name": "DeepSeek Code",
+    "description": "专注代码生成的AI编程助手，支持多语言、实时调试与文档自动生成。",
+    "url": "https://www.deepseek.com/code",
+    "categoryId": 5,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "编程助手",
+      "代码生成",
+      "开发工具"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 300,
+    "logo": "/assets/images/tools/deepseekcode.png"
   }
 ]
