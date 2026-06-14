@@ -5146,5 +5146,97 @@
     "pricing": "",
     "id": 300,
     "logo": "/assets/images/tools/deepseekcode.png"
+  },
+  {
+    "name": "Traffix AI",
+    "description": "AI驱动的实时流量分析与预测工具，适用于电商、物流与广告投放优化。",
+    "url": "https://traffix.ai",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "流量分析",
+      "AI预测",
+      "商业智能"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 301
+  },
+  {
+    "name": "Nexa AI",
+    "description": "新一代AI协作平台，支持跨团队智能文档生成、会议纪要与决策辅助。",
+    "url": "https://nexa.ai",
+    "categoryId": 5,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "团队协作",
+      "智能文档",
+      "会议助手"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 302,
+    "logo": "/assets/images/tools/nexaai.png"
+  },
+  {
+    "name": "VoxAI Studio",
+    "description": "AI语音合成与情感控制平台，支持多语言、多音色、实时情感调节。",
+    "url": "https://voxai.studio",
+    "categoryId": 7,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "语音合成",
+      "情感语音",
+      "多语言支持"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 303
+  },
+  {
+    "name": "NeuraFlow",
+    "description": "AI驱动的创意流程自动化工具，帮助设计师、开发者快速构建原型与原型迭代。",
+    "url": "https://neuraf.com",
+    "categoryId": 6,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "创意工具",
+      "流程自动化",
+      "原型设计"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 304
+  },
+  {
+    "name": "Moonshot AI Studio",
+    "description": "AI模型训练与部署平台，支持自定义模型训练、微调与API集成。",
+    "url": "https://moonshot.ai/studio",
+    "categoryId": 1,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "模型训练",
+      "AI部署",
+      "开发者工具"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 305,
+    "logo": "/assets/images/tools/moonshotaistudio.png"
   }
 ]
