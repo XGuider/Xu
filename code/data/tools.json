@@ -5238,5 +5238,43 @@
     "pricing": "",
     "id": 305,
     "logo": "/assets/images/tools/moonshotaistudio.png"
+  },
+  {
+    "name": "NVIDIA OMEGA",
+    "description": "NVIDIA推出的下一代多模态AI平台，支持文本、图像、视频、音频一体化生成与推理。",
+    "url": "https://www.nvidia.com/en-us/ai/omega/",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "多模态AI",
+      "视频生成",
+      "AI推理"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 306,
+    "logo": "/assets/images/tools/nvidiaomega.png"
+  },
+  {
+    "name": "Stable Video Diffusion 3",
+    "description": "基于Stable Diffusion的视频生成模型，支持长视频、高分辨率、动作连贯的AI视频创作。",
+    "url": "https://stability.ai/stable-video-diffusion-3",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频生成",
+      "AI动画",
+      "工业级模型"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 307,
+    "logo": "/assets/images/tools/stablevideodiffusion3.png"
   }
 ]
