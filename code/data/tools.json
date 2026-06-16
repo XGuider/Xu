@@ -5276,5 +5276,24 @@
     "pricing": "",
     "id": 307,
     "logo": "/assets/images/tools/stablevideodiffusion3.png"
+  },
+  {
+    "name": "D-ID",
+    "description": "AI驱动的实时数字人视频生成工具，支持自然口型与表情同步。",
+    "url": "https://www.d-id.com",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "数字人",
+      "视频生成",
+      "AI动画"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 308,
+    "logo": "/assets/images/tools/did.png"
   }
 ]
