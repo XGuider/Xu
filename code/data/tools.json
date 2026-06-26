@@ -1767,7 +1767,8 @@
     ],
     "id": 65,
     "developer": "",
-    "pricing": ""
+    "pricing": "",
+    "logo": "/assets/images/tools/dalle2.png"
   },
   {
     "name": "Cohere",
