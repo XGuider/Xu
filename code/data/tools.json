@@ -2420,7 +2420,7 @@
   },
   {
     "name": "KrispCall",
-    "description": "AI语音会议工具，自动降噪、转文字，提升远程会议沟通效率。",
+    "description": "AI语音通话平台，支持实时转录、情感识别和智能摘要，适用于客服与会议场景。",
     "url": "https://www.krispcall.com",
     "categoryId": 7,
     "rating": 0,
@@ -2433,7 +2433,9 @@
       "会议效率",
       "语音识别",
       "会议工具",
-      "AI通话"
+      "AI通话",
+      "会议助手",
+      "客服系统"
     ],
     "id": 118,
     "developer": "",
@@ -3228,7 +3230,7 @@
   },
   {
     "name": "Ollama",
-    "description": "本地运行大模型的开源工具，支持在个人电脑或服务器上部署和运行AI模型。",
+    "description": "基于NVIDIA生态的本地化AI模型部署工具，支持在消费级硬件上高效运行大模型。",
     "url": "https://ollama.com",
     "categoryId": 3,
     "rating": 0,
@@ -3244,7 +3246,9 @@
       "本地AI",
       "模型部署",
       "开源模型",
-      "边缘计算"
+      "边缘计算",
+      "AI模型管理",
+      "消费级硬件"
     ],
     "id": 182,
     "developer": "",
