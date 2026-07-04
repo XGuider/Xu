@@ -5306,5 +5306,24 @@
     "pricing": "",
     "id": 308,
     "logo": "/assets/images/tools/did.png"
+  },
+  {
+    "name": "Lore.ai",
+    "description": "AI驱动的知识库构建工具，支持从文档中自动提取结构化知识与问答能力。",
+    "url": "https://lore.ai",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "知识库",
+      "结构化数据",
+      "智能问答"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 309,
+    "logo": "/assets/images/tools/loreai.png"
   }
 ]
