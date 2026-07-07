@@ -3868,7 +3868,7 @@
   },
   {
     "name": "Kling AI",
-    "description": "由阿里云推出的AI视频生成工具，支持文本到视频的智能创作，适用于广告、教育、娱乐等场景。",
+    "description": "由阿里云推出的AI视频生成工具，支持文本到视频的高质量创作，适用于广告、影视、教育等领域。",
     "url": "https://www.aliyun.com/product/kling",
     "categoryId": 7,
     "rating": 0,
@@ -3878,7 +3878,9 @@
     "tags": [
       "视频生成",
       "AI创意",
-      "内容营销"
+      "内容营销",
+      "AI创作",
+      "商业应用"
     ],
     "developer": "",
     "pricing": "",
