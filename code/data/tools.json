@@ -3240,7 +3240,7 @@
   },
   {
     "name": "Ollama",
-    "description": "基于NVIDIA生态的本地化AI模型部署工具，支持在消费级硬件上高效运行大模型。",
+    "description": "基于NVIDIA生态的本地AI模型运行平台，支持多模态模型在消费级硬件上高效部署。",
     "url": "https://ollama.com",
     "categoryId": 3,
     "rating": 0,
@@ -3258,7 +3258,9 @@
       "开源模型",
       "边缘计算",
       "AI模型管理",
-      "消费级硬件"
+      "消费级硬件",
+      "多模态模型",
+      "AI推理"
     ],
     "id": 182,
     "developer": "",
