@@ -3174,7 +3174,8 @@
     "tags": [
       "金融分析",
       "数据挖掘",
-      "AI预测"
+      "AI预测",
+      "AI决策"
     ],
     "id": 177,
     "developer": "",
@@ -5243,7 +5244,9 @@
     "tags": [
       "创意工具",
       "流程自动化",
-      "原型设计"
+      "原型设计",
+      "内容创作",
+      "AI生成"
     ],
     "developer": "",
     "pricing": "",
@@ -5344,5 +5347,22 @@
     "pricing": "",
     "id": 309,
     "logo": "/assets/images/tools/loreai.png"
+  },
+  {
+    "name": "Kling AI Studio",
+    "description": "AI视频生成平台，支持文本到视频的高精度创作与多场景定制化输出。",
+    "url": "https://www.kling.com",
+    "categoryId": 8,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视频生成",
+      "AI创作"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 310
   }
 ]
