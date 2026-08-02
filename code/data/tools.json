@@ -5364,5 +5364,95 @@
     "developer": "",
     "pricing": "",
     "id": 310
+  },
+  {
+    "name": "Zep",
+    "description": "AI驱动的会议记录与知识提取工具，支持自动转录、摘要、问答和团队协作。",
+    "url": "https://www.zep.ai",
+    "categoryId": 5,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "会议助手",
+      "AI摘要"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 311,
+    "logo": "/assets/images/tools/zep.png"
+  },
+  {
+    "name": "ReScript AI",
+    "description": "AI驱动的代码重构与自动补全工具，专为前端和后端开发者优化。",
+    "url": "https://www.rescript.ai",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "代码助手",
+      "AI编程"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 312,
+    "logo": "/assets/images/tools/rescriptai.png"
+  },
+  {
+    "name": "Codeium",
+    "description": "基于AI的代码补全与项目生成工具，支持主流编程语言和框架。",
+    "url": "https://www.codeium.com",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "AI编程",
+      "代码生成"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 313,
+    "logo": "/assets/images/tools/codeium.png"
+  },
+  {
+    "name": "Vercel AI SDK",
+    "description": "为开发者提供托管式AI模型集成平台，支持快速接入LLM和多模态模型。",
+    "url": "https://vercel.com/ai",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "开发者工具",
+      "AI集成"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 314,
+    "logo": "/assets/images/tools/vercelaisdk.png"
+  },
+  {
+    "name": "RapidAPI AI",
+    "description": "AI服务聚合平台，提供API接入主流AI模型，支持快速调用与集成。",
+    "url": "https://rapidapi.com/ai",
+    "categoryId": 5,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "API服务",
+      "AI集成"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 315,
+    "logo": "/assets/images/tools/rapidapiai.png"
   }
 ]
