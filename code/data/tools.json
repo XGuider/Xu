@@ -5457,5 +5457,22 @@
     "pricing": "",
     "id": 315,
     "logo": "/assets/images/tools/rapidapiai.png"
+  },
+  {
+    "name": "FiftyOne AI",
+    "description": "AI数据标注与视觉分析平台，支持计算机视觉项目的数据管理与模型训练优化。",
+    "url": "https://www.fiftyone.ai",
+    "categoryId": 7,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "视觉分析",
+      "数据标注"
+    ],
+    "developer": "",
+    "pricing": "",
+    "id": 316
   }
 ]
