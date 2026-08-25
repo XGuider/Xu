@@ -5084,7 +5084,8 @@
     ],
     "developer": "",
     "pricing": "",
-    "id": 295
+    "id": 295,
+    "logo": "/assets/images/tools/linguaai.png"
   },
   {
     "name": "VQGAN+CLIP",
