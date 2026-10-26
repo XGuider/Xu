@@ -5475,5 +5475,25 @@
     "developer": "",
     "pricing": "",
     "id": 316
+  },
+  {
+    "id": 317,
+    "name": "agent-qa",
+    "description": "用自然语言测试 Web、Android 和 iOS 应用，结合持久记忆、经验证的自我改进及 CLI/MCP 接口。",
+    "url": "https://vostride.com",
+    "categoryId": 3,
+    "rating": 0,
+    "ratingCount": 0,
+    "isActive": true,
+    "isFeatured": false,
+    "tags": [
+      "应用测试",
+      "持久记忆",
+      "自我改进",
+      "MCP"
+    ],
+    "developer": "vostride",
+    "pricing": "本地软件免费；模型服务费用另计",
+    "logo": "https://www.vostride.com/icon.png?icon.1muy1ymeud8i8.png"
   }
 ]
